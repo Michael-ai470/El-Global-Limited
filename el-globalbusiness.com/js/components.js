@@ -31,15 +31,15 @@
 
       <!-- Desktop Menu -->
       <div class="nav-menu" id="navMenu">
-        <div class="nav-item"><a class="nav-link" href="%24%7bBASE%7djet-el/index.html">Jet-El</a></div>
-        <div class="nav-item"><a class="nav-link" href="%24%7bBASE%7del-access/index.html">El-Access</a></div>
-        <div class="nav-item"><a class="nav-link" href="%24%7bBASE%7dhl/index.html">H&L</a></div>
-        <div class="nav-item"><a class="nav-link" href="%24%7bBASE%7done-percent/index.html">The 1%</a></div>
-        <div class="nav-item"><a class="nav-link" href="%24%7bBASE%7del-rock/index.html">El&Rock</a></div>
-        <div class="nav-item"><a class="nav-link" href="%24%7bBASE%7del-business/index.html">El-Business</a></div>
-        <div class="nav-item"><a class="nav-link" href="%24%7bBASE%7dtoken-el/index.html">Token-El</a></div>
-        <div class="nav-item"><a class="nav-link" href="%24%7bBASE%7dabout.html">About</a></div>
-        <div class="nav-item"><a class="nav-link" href="%24%7bBASE%7dcontact.html">Enquire</a></div>
+        <div class="nav-item"><a class="nav-link" href="${BASE}jet-el/index.html">Jet-El</a></div>
+        <div class="nav-item"><a class="nav-link" href="${BASE}el-access/index.html">El-Access</a></div>
+        <div class="nav-item"><a class="nav-link" href="${BASE}hl/index.html">H&L</a></div>
+        <div class="nav-item"><a class="nav-link" href="${BASE}one-percent/index.html">The 1%</a></div>
+        <div class="nav-item"><a class="nav-link" href="${BASE}el-rock/index.html">El&Rock</a></div>
+        <div class="nav-item"><a class="nav-link" href="${BASE}el-business/index.html">El-Business</a></div>
+        <div class="nav-item"><a class="nav-link" href="${BASE}token-el/index.html">Token-El</a></div>
+        <div class="nav-item"><a class="nav-link" href="${BASE}about.html">About</a></div>
+        <div class="nav-item"><a class="nav-link" href="${BASE}contact.html">Enquire</a></div>
       </div>
 
       <!-- Desktop CTA -->
@@ -55,28 +55,28 @@
   <!-- Mobile Nav Overlay -->
   <div class="mobile-nav" id="mobileNav">
     <div class="mobile-nav-item">
-      <a class="mobile-nav-trigger" href="%24%7bBASE%7djet-el/index.html">Jet-El</a>
+      <a class="mobile-nav-trigger" href="${BASE}jet-el/index.html">Jet-El</a>
     </div>
     <div class="mobile-nav-item">
-      <a class="mobile-nav-trigger" href="%24%7bBASE%7del-access/index.html">El-Access</a>
+      <a class="mobile-nav-trigger" href="${BASE}el-access/index.html">El-Access</a>
     </div>
     <div class="mobile-nav-item">
-      <a class="mobile-nav-trigger" href="%24%7bBASE%7dhl/index.html">H&L</a>
+      <a class="mobile-nav-trigger" href="${BASE}hl/index.html">H&L</a>
     </div>
     <div class="mobile-nav-item">
-      <a class="mobile-nav-trigger" href="%24%7bBASE%7done-percent/index.html">The 1%</a>
+      <a class="mobile-nav-trigger" href="${BASE}one-percent/index.html">The 1%</a>
     </div>
     <div class="mobile-nav-item">
-      <a class="mobile-nav-trigger" href="%24%7bBASE%7del-rock/index.html">El&Rock</a>
+      <a class="mobile-nav-trigger" href="${BASE}el-rock/index.html">El&Rock</a>
     </div>
     <div class="mobile-nav-item">
-      <a class="mobile-nav-trigger" href="%24%7bBASE%7del-business/index.html">El-Business</a>
+      <a class="mobile-nav-trigger" href="${BASE}el-business/index.html">El-Business</a>
     </div>
     <div class="mobile-nav-item">
-      <a class="mobile-nav-trigger" href="%24%7bBASE%7dtoken-el/index.html">Token-El</a>
+      <a class="mobile-nav-trigger" href="${BASE}token-el/index.html">Token-El</a>
     </div>
     <div class="mobile-nav-item">
-      <a class="mobile-nav-trigger" href="%24%7bBASE%7dabout.html">About</a>
+      <a class="mobile-nav-trigger" href="${BASE}about.html">About</a>
     </div>
     <a href="${BASE}contact.html" class="mobile-nav-cta">Enquire Now</a>
   </div>
@@ -112,13 +112,13 @@
         <div>
           <div class="footer-heading">Divisions</div>
           <ul class="footer-links">
-            <li><a href="%24%7bBASE%7djet-el/index.html">Jet-El</a></li>
-            <li><a href="%24%7bBASE%7del-access/index.html">El-Access</a></li>
-            <li><a href="%24%7bBASE%7dhl/index.html">H&L</a></li>
-            <li><a href="%24%7bBASE%7done-percent/index.html">The 1%</a></li>
-            <li><a href="%24%7bBASE%7del-rock/index.html">El&Rock</a></li>
-            <li><a href="%24%7bBASE%7del-business/index.html">El-Business</a></li>
-            <li><a href="%24%7bBASE%7dtoken-el/index.html">Token-El</a></li>
+            <li><a href="${BASE}jet-el/index.html">Jet-El</a></li>
+            <li><a href="${BASE}el-access/index.html">El-Access</a></li>
+            <li><a href="${BASE}hl/index.html">H&L</a></li>
+            <li><a href="${BASE}one-percent/index.html">The 1%</a></li>
+            <li><a href="${BASE}el-rock/index.html">El&Rock</a></li>
+            <li><a href="${BASE}el-business/index.html">El-Business</a></li>
+            <li><a href="${BASE}token-el/index.html">Token-El</a></li>
           </ul>
         </div>
 
@@ -126,8 +126,8 @@
         <div>
           <div class="footer-heading">Quick Links</div>
           <ul class="footer-links">
-            <li><a href="%24%7bBASE%7dabout.html">About Us</a></li>
-            <li><a href="%24%7bBASE%7dcontact.html">Enquire</a></li>
+            <li><a href="${BASE}about.html">About Us</a></li>
+            <li><a href="${BASE}contact.html">Enquire</a></li>
           </ul>
         </div>
 
