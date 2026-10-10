@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from https://el-globalbusiness.com/jet-el/ by HTTrack Website Copier/3.x [XR&CO], Wed, 07 Oct 2026 11:06:13 GMT -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jet-El — Private Aviation | El-Global Business</title>
+  <meta name="description" content="Jet-El is El-Global's private aviation division. Strategic advisory on charter services, aircraft sales, fractional ownership, leasing, membership programs, and aviation investments.">
+
+  <meta property="og:title" content="Jet-El — Private Aviation | El-Global Business">
+  <meta property="og:description" content="Private aviation portfolio management. Charter, sales, fractional ownership, leasing, and aviation investment advisory.">
+  <meta property="og:type" content="website">
+
+  <link rel="stylesheet" href="../css/style.css">
+
+  <style>
+    /* ═══ PAGE HERO — 60vh ═══ */
+    .jetel-hero {
+      position: relative;
+      height: 60vh;
+      max-height: 60vh;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+    }
+
+    .jetel-hero-bg {
+      position: absolute;
+      inset: 0;
+    }
+
+    .jetel-hero-bg img,
+    .jetel-hero-bg video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 40%;
+      filter: brightness(0.22) saturate(0.7);
+    }
+
+    .jetel-hero-bg video {
+      position: absolute;
+      inset: 0;
+    }
+
+    /* Hide fallback image when video is playing */
+    .jetel-hero-bg video.is-playing + img {
+      display: none;
+    }
+
+    .jetel-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.25) 40%, rgba(0,0,0,0.92) 100%);
+    }
+
+    .jetel-hero-content {
+      position: relative;
+      z-index: 2;
+      padding: calc(var(--nav-height) + 40px) 0 56px;
+      max-width: 700px;
+    }
+
+    .jetel-hero .eyebrow { margin-bottom: 20px; }
+
+    .jetel-hero h1 {
+      font-size: clamp(36px, 5vw, 64px);
+      font-weight: 300;
+      margin-bottom: 16px;
+      line-height: 1.1;
+    }
+
+    .jetel-hero-desc {
+      font-family: var(--font-subheading);
+      font-size: clamp(16px, 2vw, 20px);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      max-width: 540px;
+    }
+
+    .jetel-hero-pills {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+
+    .jetel-hero-pill {
+      font-family: var(--font-accent);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      border: 1px solid var(--border-mid);
+      padding: 7px 18px;
+      border-radius: 100px;
+      text-decoration: none;
+      transition: all var(--transition);
+    }
+
+    .jetel-hero-pill:hover {
+      color: var(--white);
+      border-color: var(--gold);
+      background: rgba(201,168,76,0.05);
+    }
+
+    @media (max-width: 768px) {
+      .jetel-hero { height: 50vh; }
+      .jetel-hero-content { padding: calc(var(--nav-height) + 20px) 0 40px; }
+      .jetel-hero-pill { font-size: 9px; padding: 6px 14px; }
+    }
+
+    /* ═══ INTRODUCTION ═══ */
+    .jetel-intro { padding: 120px 0; }
+
+    .jetel-intro-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .jetel-intro-text .eyebrow { margin-bottom: 20px; }
+
+    .jetel-intro-text h2 {
+      font-size: clamp(30px, 3.5vw, 48px);
+      font-weight: 300;
+      margin-bottom: 24px;
+      line-height: 1.15;
+    }
+
+    .jetel-intro-text p {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.85;
+      margin-bottom: 20px;
+    }
+
+    .jetel-intro-image {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 4 / 5;
+    }
+
+    .jetel-intro-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.85) saturate(0.9);
+      transition: transform 0.6s var(--ease);
+    }
+
+    .jetel-intro-image:hover img { transform: scale(1.04); }
+
+    .jetel-intro-image::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--gradient-signature);
+    }
+
+    @media (max-width: 1024px) {
+      .jetel-intro-grid { grid-template-columns: 1fr; gap: 48px; }
+      .jetel-intro-image { max-width: 480px; aspect-ratio: 16/10; }
+      .jetel-intro { padding: 88px 0; }
+    }
+
+    @media (max-width: 768px) {
+      .jetel-intro { padding: 64px 0; }
+    }
+
+    /* ═══ SERVICES GRID ═══ */
+    .services-section {
+      padding: 120px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .services-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .services-header .eyebrow {
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .services-header .eyebrow::after {
+      content: '';
+      width: 40px;
+      height: 1px;
+      background: var(--gradient-signature);
+    }
+
+    .services-header p {
+      font-size: 15px;
+      color: var(--text-muted);
+      max-width: 540px;
+      margin: 16px auto 0;
+      line-height: 1.8;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .service-card {
+      background: var(--charcoal);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      transition: all 0.4s var(--ease);
+      display: block;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .service-card:hover {
+      border-color: var(--border-mid);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+    }
+
+    .service-card-image {
+      position: relative;
+      aspect-ratio: 16 / 10;
+      overflow: hidden;
+    }
+
+    .service-card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.55) saturate(0.8);
+      transition: all 0.6s var(--ease);
+    }
+
+    .service-card:hover .service-card-image img {
+      filter: brightness(0.7) saturate(0.9);
+      transform: scale(1.08);
+    }
+
+    .service-card-image::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.6) 100%);
+    }
+
+    .service-card-num {
+      position: absolute;
+      top: 14px;
+      right: 16px;
+      z-index: 2;
+      font-family: var(--font-heading);
+      font-size: 32px;
+      font-weight: 300;
+      background: var(--gradient-signature);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      opacity: 0.3;
+    }
+
+    .service-card-content {
+      padding: 28px;
+    }
+
+    .service-card-dash {
+      width: 28px;
+      height: 2px;
+      background: var(--gradient-signature);
+      margin-bottom: 14px;
+      transition: width 0.4s var(--ease);
+    }
+
+    .service-card:hover .service-card-dash { width: 48px; }
+
+    .service-card-content h3 {
+      font-family: var(--font-heading);
+      font-size: 22px;
+      font-weight: 400;
+      margin-bottom: 10px;
+      line-height: 1.2;
+    }
+
+    .service-card-content p {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+
+    .service-card-link {
+      font-family: var(--font-accent);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: var(--gradient-signature);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .service-card-link::after {
+      content: ' \2192';
+      transition: transform var(--transition);
+    }
+
+    @media (max-width: 1024px) {
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .services-section { padding: 88px 0; }
+    }
+
+    @media (max-width: 768px) {
+      .services-grid { grid-template-columns: 1fr; }
+      .services-section { padding: 64px 0; }
+      .service-card-content { padding: 22px; }
+    }
+
+    /* ═══ WHY JET-EL ═══ */
+    .why-jetel {
+      padding: 120px 0;
+      border-top: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .why-jetel::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 40% 50% at 80% 20%, rgba(201,168,76,0.025) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 50% at 10% 80%, rgba(201,168,76,0.02) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .why-jetel-header {
+      text-align: center;
+      margin-bottom: 64px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .why-jetel-header .eyebrow {
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .why-jetel-header .eyebrow::after {
+      content: '';
+      width: 40px;
+      height: 1px;
+      background: var(--gradient-signature);
+    }
+
+    .why-jetel-header p {
+      font-size: 15px;
+      color: var(--text-muted);
+      max-width: 520px;
+      margin: 16px auto 0;
+      line-height: 1.8;
+    }
+
+    .why-jetel-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      border: 1px solid var(--border);
+      position: relative;
+      z-index: 1;
+    }
+
+    .why-jetel-card {
+      padding: 40px 28px;
+      border-right: 1px solid var(--border);
+      transition: all 0.4s var(--ease);
+      position: relative;
+    }
+
+    .why-jetel-card:last-child { border-right: none; }
+
+    .why-jetel-card::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--gradient-signature);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.5s var(--ease);
+    }
+
+    .why-jetel-card:hover { background: var(--surface-hover); }
+    .why-jetel-card:hover::after { transform: scaleX(1); }
+
+    .why-jetel-num {
+      font-family: var(--font-heading);
+      font-size: 40px;
+      font-weight: 300;
+      background: var(--gradient-signature);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      opacity: 0.12;
+      line-height: 1;
+      margin-bottom: 20px;
+    }
+
+    .why-jetel-card h4 {
+      font-family: var(--font-heading);
+      font-size: 20px;
+      font-weight: 400;
+      margin-bottom: 10px;
+    }
+
+    .why-jetel-card p {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.75;
+    }
+
+    @media (max-width: 1024px) {
+      .why-jetel-grid { grid-template-columns: repeat(2, 1fr); }
+      .why-jetel-card:nth-child(2) { border-right: none; }
+      .why-jetel-card:nth-child(3),
+      .why-jetel-card:nth-child(4) { border-top: 1px solid var(--border); }
+      .why-jetel { padding: 88px 0; }
+    }
+
+    @media (max-width: 768px) {
+      .why-jetel-grid { grid-template-columns: 1fr; }
+      .why-jetel-card { border-right: none; border-bottom: 1px solid var(--border); }
+      .why-jetel-card:last-child { border-bottom: none; }
+      .why-jetel { padding: 64px 0; }
+    }
+
+    /* ═══ PROCESS ═══ */
+    .process-section {
+      padding: 120px 0;
+      border-top: 1px solid var(--border);
+      background: var(--charcoal);
+    }
+
+    .process-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .process-header .eyebrow {
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .process-header .eyebrow::after {
+      content: '';
+      width: 40px;
+      height: 1px;
+      background: var(--gradient-signature);
+    }
+
+    .process-header p {
+      font-size: 15px;
+      color: var(--text-muted);
+      max-width: 480px;
+      margin: 16px auto 0;
+      line-height: 1.8;
+    }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      border: 1px solid var(--border);
+      counter-reset: step;
+    }
+
+    .process-card {
+      padding: 40px 28px;
+      border-right: 1px solid var(--border);
+      counter-increment: step;
+      position: relative;
+      background: var(--black);
+      transition: all 0.4s var(--ease);
+    }
+
+    .process-card:last-child { border-right: none; }
+    .process-card:hover { background: var(--surface-hover); }
+
+    .process-card::before {
+      content: counter(step, decimal-leading-zero);
+      font-family: var(--font-heading);
+      font-size: 52px;
+      font-weight: 300;
+      background: var(--gradient-signature);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: block;
+      margin-bottom: 24px;
+      line-height: 1;
+    }
+
+    .process-card-dash {
+      width: 28px;
+      height: 2px;
+      background: var(--gradient-signature);
+      margin-bottom: 16px;
+      transition: width 0.4s var(--ease);
+    }
+
+    .process-card:hover .process-card-dash { width: 48px; }
+
+    .process-card h4 {
+      font-family: var(--font-heading);
+      font-size: 20px;
+      font-weight: 400;
+      margin-bottom: 10px;
+    }
+
+    .process-card p {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.75;
+    }
+
+    @media (max-width: 1024px) {
+      .process-grid { grid-template-columns: repeat(2, 1fr); }
+      .process-card:nth-child(2) { border-right: none; }
+      .process-card:nth-child(3),
+      .process-card:nth-child(4) { border-top: 1px solid var(--border); }
+      .process-section { padding: 88px 0; }
+    }
+
+    @media (max-width: 768px) {
+      .process-grid { grid-template-columns: 1fr; }
+      .process-card { border-right: none; border-bottom: 1px solid var(--border); }
+      .process-card:last-child { border-bottom: none; }
+      .process-section { padding: 64px 0; }
+    }
+
+    /* ═══ CTA ═══ */
+    .jetel-cta {
+      padding: 100px 0;
+      text-align: center;
+      position: relative;
+    }
+
+    .jetel-cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 50% 60% at 50% 50%, rgba(201,168,76,0.03) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .jetel-cta .eyebrow {
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .jetel-cta .eyebrow::after {
+      content: '';
+      width: 40px;
+      height: 1px;
+      background: var(--gradient-signature);
+    }
+
+    .jetel-cta h2 {
+      font-size: clamp(30px, 4vw, 48px);
+      font-weight: 300;
+      margin-bottom: 16px;
+    }
+
+    .jetel-cta p {
+      font-size: 15px;
+      color: var(--text-muted);
+      max-width: 480px;
+      margin: 0 auto 40px;
+      line-height: 1.8;
+    }
+
+    .jetel-cta .btn-row { justify-content: center; }
+
+    @media (max-width: 768px) {
+      .jetel-cta { padding: 64px 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <main>
+
+    <!-- ═══ HERO ═══ -->
+    <section class="jetel-hero">
+      <div class="jetel-hero-bg">
+        <!-- Replace src with your jet video file: ../img/jet-hero.mp4 -->
+        <video
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="auto"
+          poster="https://images.unsplash.com/photo-1542296332-2e4473faf563?w=1920&amp;q=80&amp;auto=format&amp;fit=crop"
+          id="jetHeroVideo">
+          <source src="../img/jet-hero.mp4.html" type="video/mp4">
+        </video>
+        <!-- Fallback image shown while video loads or if video fails -->
+        <img src="https://images.unsplash.com/photo-1542296332-2e4473faf563?w=1920&amp;q=80&amp;auto=format&amp;fit=crop"
+             alt="Luxury jet on tarmac at golden hour"
+             loading="eager">
+      </div>
+      <div class="jetel-hero-overlay"></div>
+      <div class="jetel-hero-content container">
+        <div class="eyebrow fade-up">Jet-El</div>
+        <h1 class="fade-up fade-up-d1">Private Aviation<br><em>Portfolio</em></h1>
+        <p class="jetel-hero-desc fade-up fade-up-d2">
+          Strategic aviation asset advisory, from on-demand charter to full aircraft
+          acquisition, fractional ownership, and portfolio-grade aviation investments.
+        </p>
+        <div class="jetel-hero-pills fade-up fade-up-d3">
+          <a href="#charter" class="jetel-hero-pill">Charter</a>
+          <a href="#sales" class="jetel-hero-pill">Sales</a>
+          <a href="#fractional" class="jetel-hero-pill">Fractional</a>
+          <a href="#lease" class="jetel-hero-pill">Lease</a>
+          <a href="#membership" class="jetel-hero-pill">Membership</a>
+          <a href="#investments" class="jetel-hero-pill">Investments</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ INTRODUCTION ═══ -->
+    <section class="jetel-intro">
+      <div class="container">
+        <div class="jetel-intro-grid">
+
+          <div class="jetel-intro-text reveal">
+            <div class="eyebrow">The Division</div>
+            <h2>Aviation as an <em>Asset</em> Class</h2>
+            <p>
+              Jet-El is El-Global's private aviation division, providing strategic
+              advisory across the full spectrum of aviation asset management. We
+              don't operate aircraft. We advise clients on how to acquire, structure,
+              and optimize aviation assets within their broader investment portfolios.
+            </p>
+            <p>
+              Whether you're exploring charter as a cost-efficient alternative to
+              ownership, considering a full aircraft acquisition, or seeking
+              fractional exposure to aviation assets, Jet-El provides the expertise,
+              market intelligence, and global network to execute with precision.
+            </p>
+            <a href="enquiry.html" class="btn btn-ghost">Make an Enquiry</a>
+          </div>
+
+          <div class="jetel-intro-image reveal reveal-delay-2">
+            <img src="https://images.unsplash.com/photo-1504150558240-0b4fd8946624?w=800&amp;q=80&amp;auto=format&amp;fit=crop"
+                 alt="Private jet soaring above clouds with blue sky"
+                 loading="lazy">
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ SERVICES ═══ -->
+    <section class="services-section">
+      <div class="container">
+
+        <div class="services-header reveal">
+          <div class="eyebrow">Our Services</div>
+          <h2>What Jet-El <em>Offers</em></h2>
+          <p>Six integrated aviation advisory services designed to maximize value, minimize risk, and align with your portfolio strategy.</p>
+        </div>
+
+        <div class="services-grid">
+
+          <!-- Charter -->
+          <a href="charter.html" class="service-card reveal" id="charter">
+            <div class="service-card-image">
+              <img src="https://images.unsplash.com/photo-1499063078284-f78f7d89616a?w=600&amp;q=80&amp;auto=format&amp;fit=crop"
+                   alt="Private jet ascending through dramatic sunset clouds"
+                   loading="lazy">
+              <span class="service-card-num">01</span>
+            </div>
+            <div class="service-card-content">
+              <div class="service-card-dash"></div>
+              <h3>Charter Services</h3>
+              <p>On-demand private flight advisory worldwide. We source the optimal aircraft, route, and operator for every journey, ensuring safety, efficiency, and the highest standards of service.</p>
+              <span class="service-card-link">Learn More</span>
+            </div>
+          </a>
+
+          <!-- Aircraft Sales -->
+          <a href="sales.html" class="service-card reveal reveal-delay-1" id="sales">
+            <div class="service-card-image">
+              <img src="https://images.unsplash.com/photo-1559628233-100c798642d4?w=600&amp;q=80&amp;auto=format&amp;fit=crop"
+                   alt="Luxury business jet parked in hangar with polished floors"
+                   loading="lazy">
+              <span class="service-card-num">02</span>
+            </div>
+            <div class="service-card-content">
+              <div class="service-card-dash"></div>
+              <h3>Aircraft Sales</h3>
+              <p>Strategic aircraft acquisition advisory. From market analysis and valuation to negotiation and closing, we guide you through every stage of acquiring the right aircraft for your needs and budget.</p>
+              <span class="service-card-link">Learn More</span>
+            </div>
+          </a>
+
+          <!-- Fractional Ownership -->
+          <a href="../jetel-elite/index.html" class="service-card reveal reveal-delay-2" id="fractional">
+            <div class="service-card-image">
+              <img src="https://images.unsplash.com/photo-1569154941061-e231b4725ef1?w=600&amp;q=80&amp;auto=format&amp;fit=crop"
+                   alt="Private jet wing view above the clouds at golden hour"
+                   loading="lazy">
+              <span class="service-card-num">03</span>
+            </div>
+            <div class="service-card-content">
+              <div class="service-card-dash"></div>
+              <h3>Fractional Ownership</h3>
+              <p>Shared ownership investment structures that provide the benefits of private aviation at a fraction of the cost. We structure deals that align usage with ownership stakes for optimal returns.</p>
+              <span class="service-card-link">Learn More</span>
+            </div>
+          </a>
+
+          <!-- Aircraft Lease -->
+          <a href="../jetel-elite/index.html#lease" class="service-card reveal" id="lease">
+            <div class="service-card-image">
+              <img src="https://images.unsplash.com/photo-1581094271901-8022df4466f9?w=600&amp;q=80&amp;auto=format&amp;fit=crop"
+                   alt="Private jet exterior at twilight with dramatic sky"
+                   loading="lazy">
+              <span class="service-card-num">04</span>
+            </div>
+            <div class="service-card-content">
+              <div class="service-card-dash"></div>
+              <h3>Aircraft Lease</h3>
+              <p>Flexible leasing arrangements tailored to your operational requirements. Wet lease, dry lease, or ACMI configurations structured to optimize cost efficiency and fleet flexibility.</p>
+              <span class="service-card-link">Learn More</span>
+            </div>
+          </a>
+
+          <!-- Jet Membership -->
+          <a href="membership.html" class="service-card reveal reveal-delay-1" id="membership">
+            <div class="service-card-image">
+              <img src="https://images.unsplash.com/photo-1474302770737-173ee21bab63?w=600&amp;q=80&amp;auto=format&amp;fit=crop"
+                   alt="Premium private jet cabin with cream leather seating"
+                   loading="lazy">
+              <span class="service-card-num">05</span>
+            </div>
+            <div class="service-card-content">
+              <div class="service-card-dash"></div>
+              <h3>Jet Membership</h3>
+              <p>Exclusive membership programs providing guaranteed access to private aviation at pre-negotiated rates. Designed for frequent flyers who demand reliability, privacy, and consistency.</p>
+              <span class="service-card-link">Learn More</span>
+            </div>
+          </a>
+
+          <!-- Aviation Investments -->
+          <a href="investments.html" class="service-card reveal reveal-delay-2" id="investments">
+            <div class="service-card-image">
+              <img src="https://images.unsplash.com/photo-1564769625905-50e93615e769?w=600&amp;q=80&amp;auto=format&amp;fit=crop"
+                   alt="Fleet of private jets lined up on an airfield"
+                   loading="lazy">
+              <span class="service-card-num">06</span>
+            </div>
+            <div class="service-card-content">
+              <div class="service-card-dash"></div>
+              <h3>Aviation Investments</h3>
+              <p>Strategic aviation portfolio growth. We identify, structure, and manage aviation assets as investment vehicles, delivering returns through leasing revenue, appreciation, and strategic resale.</p>
+              <span class="service-card-link">Learn More</span>
+            </div>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ WHY JET-EL ═══ -->
+    <section class="why-jetel">
+      <div class="container">
+
+        <div class="why-jetel-header reveal">
+          <div class="eyebrow">Why Jet-El</div>
+          <h2>The Jet-El <em>Advantage</em></h2>
+          <p>What makes our aviation advisory different from every other firm in the market.</p>
+        </div>
+
+        <div class="why-jetel-grid">
+
+          <div class="why-jetel-card reveal">
+            <div class="why-jetel-num">01</div>
+            <h4>Advisory, Not Brokerage</h4>
+            <p>We act in your interest, not the seller's. Our fee structure aligns our incentives with your outcomes, not transaction volume.</p>
+          </div>
+
+          <div class="why-jetel-card reveal reveal-delay-1">
+            <div class="why-jetel-num">02</div>
+            <h4>Portfolio Integration</h4>
+            <p>Aviation assets don't sit in isolation. We integrate them into your broader portfolio strategy alongside real estate, M&A, and alternative investments.</p>
+          </div>
+
+          <div class="why-jetel-card reveal reveal-delay-2">
+            <div class="why-jetel-num">03</div>
+            <h4>Global Market Access</h4>
+            <p>Our network spans manufacturers, operators, and private sellers across every major aviation market. We find opportunities others cannot access.</p>
+          </div>
+
+          <div class="why-jetel-card reveal reveal-delay-3">
+            <div class="why-jetel-num">04</div>
+            <h4>Data-Driven Decisions</h4>
+            <p>AI-powered analytics for valuation, market timing, and operational cost forecasting. Every recommendation is backed by data, not intuition.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ PROCESS ═══ -->
+    <section class="process-section">
+      <div class="container">
+
+        <div class="process-header reveal">
+          <div class="eyebrow">How It Works</div>
+          <h2>Our <em>Process</em></h2>
+          <p>From first conversation to portfolio management, a structured approach that delivers results.</p>
+        </div>
+
+        <div class="process-grid">
+
+          <div class="process-card reveal">
+            <div class="process-card-dash"></div>
+            <h4>Consultation</h4>
+            <p>We begin with a confidential consultation to understand your aviation needs, investment objectives, and risk profile.</p>
+          </div>
+
+          <div class="process-card reveal reveal-delay-1">
+            <div class="process-card-dash"></div>
+            <h4>Strategy</h4>
+            <p>Our team develops a tailored aviation strategy, whether that's charter optimization, acquisition planning, or investment structuring.</p>
+          </div>
+
+          <div class="process-card reveal reveal-delay-2">
+            <div class="process-card-dash"></div>
+            <h4>Execution</h4>
+            <p>We manage the entire execution process, from sourcing and due diligence to negotiation and closing, with full transparency at every stage.</p>
+          </div>
+
+          <div class="process-card reveal reveal-delay-3">
+            <div class="process-card-dash"></div>
+            <h4>Management</h4>
+            <p>Post-acquisition, we provide ongoing portfolio management, performance monitoring, and strategic recommendations to maximize asset value.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ CTA ═══ -->
+    <section class="jetel-cta">
+      <div class="container reveal">
+        <div class="eyebrow">Get Started</div>
+        <h2>Ready to <em>Elevate</em> Your Portfolio?</h2>
+        <p>Connect with our aviation advisory team to explore how Jet-El can serve your investment objectives.</p>
+        <div class="btn-row">
+          <a href="enquiry.html" class="btn btn-primary btn-lg">Make an Enquiry</a>
+          <a href="../contact.html" class="btn btn-outline btn-lg">Book a Consultation</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="../js/components.js"></script>
+  <script src="../js/main.js"></script>
+
+  <!-- Hero Video Handling -->
+  <script>
+    (function() {
+      var video = document.getElementById('jetHeroVideo');
+      if (!video) return;
+
+      // Mark video as playing when it starts
+      video.addEventListener('playing', function() {
+        video.classList.add('is-playing');
+      });
+
+      // If video fails to load, hide it and show fallback image
+      video.addEventListener('error', function() {
+        video.style.display = 'none';
+      });
+
+      // Also handle source errors
+      var sources = video.querySelectorAll('source');
+      sources.forEach(function(source) {
+        source.addEventListener('error', function() {
+          video.style.display = 'none';
+        });
+      });
+    })();
+  </script>
+</body>
+
+<!-- Mirrored from https://el-globalbusiness.com/jet-el/ by HTTrack Website Copier/3.x [XR&CO], Wed, 07 Oct 2026 11:06:15 GMT -->
+</html>

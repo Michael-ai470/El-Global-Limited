@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from https://el-globalbusiness.com/jet-el/charter.html by HTTrack Website Copier/3.x [XR&CO], Wed, 07 Oct 2026 11:06:21 GMT -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Charter Services - Jet-El | El-Global Business</title>
+  <meta name="description" content="On-demand private flight advisory worldwide. Jet-El sources the optimal aircraft, route, and operator for every journey, ensuring safety, efficiency, and the highest standards.">
+
+  <meta property="og:title" content="Charter Services - Jet-El | El-Global Business">
+  <meta property="og:description" content="Strategic advisory on private charter flights. Aircraft selection, route optimization, and cost-efficiency analysis for discerning clients.">
+  <meta property="og:type" content="website">
+
+  <link rel="stylesheet" href="../css/style.css">
+
+  <style>
+    /* ═══ CHARTER HERO ═══ */
+    .charter-hero {
+      position: relative;
+      height: 60vh;
+      max-height: 60vh;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+    }
+
+    .charter-hero-bg {
+      position: absolute;
+      inset: 0;
+    }
+
+    .charter-hero-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 40%;
+      filter: brightness(0.22) saturate(0.7);
+    }
+
+    .charter-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.25) 40%, rgba(0,0,0,0.92) 100%);
+    }
+
+    .charter-hero-content {
+      position: relative;
+      z-index: 2;
+      padding: calc(var(--nav-height) + 40px) 0 56px;
+      max-width: 700px;
+    }
+
+    .charter-hero .eyebrow { margin-bottom: 20px; }
+
+    .charter-hero h1 {
+      font-size: clamp(36px, 5vw, 64px);
+      font-weight: 300;
+      margin-bottom: 16px;
+      line-height: 1.1;
+    }
+
+    .charter-hero-desc {
+      font-family: var(--font-subheading);
+      font-size: clamp(16px, 2vw, 20px);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      max-width: 540px;
+    }
+
+    @media (max-width: 768px) {
+      .charter-hero { height: 50vh; }
+      .charter-hero-content { padding: calc(var(--nav-height) + 20px) 0 40px; }
+    }
+
+    /* ═══ CHARTER INTRO ═══ */
+    .charter-intro { padding: 120px 0; }
+
+    .charter-intro-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .charter-intro-text .eyebrow { margin-bottom: 20px; }
+
+    .charter-intro-text h2 {
+      font-size: clamp(30px, 3.5vw, 48px);
+      font-weight: 300;
+      margin-bottom: 24px;
+      line-height: 1.15;
+    }
+
+    .charter-intro-text p {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.85;
+      margin-bottom: 20px;
+    }
+
+    .charter-intro-image {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 4 / 5;
+    }
+
+    .charter-intro-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.85) saturate(0.9);
+      transition: transform 0.6s var(--ease);
+    }
+
+    .charter-intro-image:hover img { transform: scale(1.04); }
+
+    .charter-intro-image::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--gradient-signature);
+    }
+
+    @media (max-width: 1024px) {
+      .charter-intro-grid { grid-template-columns: 1fr; gap: 48px; }
+      .charter-intro-image { max-width: 480px; aspect-ratio: 16/10; }
+      .charter-intro { padding: 88px 0; }
+    }
+
+    @media (max-width: 768px) {
+      .charter-intro { padding: 64px 0; }
+    }
+
+    /* ═══ CHARTER FEATURES ═══ */
+    .charter-features {
+      padding: 120px 0;
+      border-top: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .charter-features::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 40% 50% at 80% 20%, rgba(201,168,76,0.025) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 50% at 10% 80%, rgba(201,168,76,0.02) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .charter-features-header {
+      text-align: center;
+      margin-bottom: 64px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .charter-features-header .eyebrow {
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .charter-features-header .eyebrow::after {
+      content: '';
+      width: 40px;
+      height: 1px;
+      background: var(--gradient-signature);
+    }
+
+    .charter-features-header p {
+      font-size: 15px;
+      color: var(--text-muted);
+      max-width: 520px;
+      margin: 16px auto 0;
+      line-height: 1.8;
+    }
+
+    .charter-features-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      border: 1px solid var(--border);
+      position: relative;
+      z-index: 1;
+    }
+
+    .charter-feature-card {
+      padding: 40px 28px;
+      border-right: 1px solid var(--border);
+      transition: all 0.4s var(--ease);
+      position: relative;
+    }
+
+    .charter-feature-card:last-child { border-right: none; }
+
+    .charter-feature-card::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--gradient-signature);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.5s var(--ease);
+    }
+
+    .charter-feature-card:hover { background: var(--surface-hover); }
+    .charter-feature-card:hover::after { transform: scaleX(1); }
+
+    .charter-feature-num {
+      font-family: var(--font-heading);
+      font-size: 40px;
+      font-weight: 300;
+      background: var(--gradient-signature);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      opacity: 0.12;
+      line-height: 1;
+      margin-bottom: 20px;
+    }
+
+    .charter-feature-dash {
+      width: 28px;
+      height: 2px;
+      background: var(--gradient-signature);
+      margin-bottom: 14px;
+      transition: width 0.4s var(--ease);
+    }
+
+    .charter-feature-card:hover .charter-feature-dash { width: 48px; }
+
+    .charter-feature-card h4 {
+      font-family: var(--font-heading);
+      font-size: 20px;
+      font-weight: 400;
+      margin-bottom: 10px;
+    }
+
+    .charter-feature-card p {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.75;
+    }
+
+    @media (max-width: 1024px) {
+      .charter-features-grid { grid-template-columns: repeat(2, 1fr); }
+      .charter-feature-card:nth-child(2) { border-right: none; }
+      .charter-feature-card:nth-child(3),
+      .charter-feature-card:nth-child(4) { border-top: 1px solid var(--border); }
+      .charter-features { padding: 88px 0; }
+    }
+
+    @media (max-width: 768px) {
+      .charter-features-grid { grid-template-columns: 1fr; }
+      .charter-feature-card { border-right: none; border-bottom: 1px solid var(--border); }
+      .charter-feature-card:last-child { border-bottom: none; }
+      .charter-features { padding: 64px 0; }
+    }
+
+    /* ═══ CHARTER PROCESS ═══ */
+    .charter-process {
+      padding: 120px 0;
+      border-top: 1px solid var(--border);
+      background: var(--charcoal);
+    }
+
+    .charter-process-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .charter-process-header .eyebrow {
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .charter-process-header .eyebrow::after {
+      content: '';
+      width: 40px;
+      height: 1px;
+      background: var(--gradient-signature);
+    }
+
+    .charter-process-header p {
+      font-size: 15px;
+      color: var(--text-muted);
+      max-width: 480px;
+      margin: 16px auto 0;
+      line-height: 1.8;
+    }
+
+    .charter-process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      border: 1px solid var(--border);
+      counter-reset: step;
+    }
+
+    .charter-process-card {
+      padding: 40px 28px;
+      border-right: 1px solid var(--border);
+      counter-increment: step;
+      position: relative;
+      background: var(--black);
+      transition: all 0.4s var(--ease);
+    }
+
+    .charter-process-card:last-child { border-right: none; }
+    .charter-process-card:hover { background: var(--surface-hover); }
+
+    .charter-process-card::before {
+      content: counter(step, decimal-leading-zero);
+      font-family: var(--font-heading);
+      font-size: 52px;
+      font-weight: 300;
+      background: var(--gradient-signature);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: block;
+      margin-bottom: 24px;
+      line-height: 1;
+    }
+
+    .charter-process-dash {
+      width: 28px;
+      height: 2px;
+      background: var(--gradient-signature);
+      margin-bottom: 16px;
+      transition: width 0.4s var(--ease);
+    }
+
+    .charter-process-card:hover .charter-process-dash { width: 48px; }
+
+    .charter-process-card h4 {
+      font-family: var(--font-heading);
+      font-size: 20px;
+      font-weight: 400;
+      margin-bottom: 10px;
+    }
+
+    .charter-process-card p {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.75;
+    }
+
+    @media (max-width: 1024px) {
+      .charter-process-grid { grid-template-columns: repeat(2, 1fr); }
+      .charter-process-card:nth-child(2) { border-right: none; }
+      .charter-process-card:nth-child(3),
+      .charter-process-card:nth-child(4) { border-top: 1px solid var(--border); }
+      .charter-process { padding: 88px 0; }
+    }
+
+    @media (max-width: 768px) {
+      .charter-process-grid { grid-template-columns: 1fr; }
+      .charter-process-card { border-right: none; border-bottom: 1px solid var(--border); }
+      .charter-process-card:last-child { border-bottom: none; }
+      .charter-process { padding: 64px 0; }
+    }
+
+    /* ═══ CHARTER CTA ═══ */
+    .charter-cta {
+      padding: 100px 0;
+      text-align: center;
+      position: relative;
+    }
+
+    .charter-cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 50% 60% at 50% 50%, rgba(201,168,76,0.03) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .charter-cta .eyebrow {
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .charter-cta .eyebrow::after {
+      content: '';
+      width: 40px;
+      height: 1px;
+      background: var(--gradient-signature);
+    }
+
+    .charter-cta h2 {
+      font-size: clamp(30px, 4vw, 48px);
+      font-weight: 300;
+      margin-bottom: 16px;
+    }
+
+    .charter-cta p {
+      font-size: 15px;
+      color: var(--text-muted);
+      max-width: 480px;
+      margin: 0 auto 40px;
+      line-height: 1.8;
+    }
+
+    .charter-cta .btn-row { justify-content: center; }
+
+    @media (max-width: 768px) {
+      .charter-cta { padding: 64px 0; }
+    }
+
+    /* ═══ CHARTER BOOKING FORM ═══ */
+    .charter-booking {
+      padding: 120px 0; border-top: 1px solid var(--border); position: relative;
+    }
+    .charter-booking::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(201,168,76,0.02) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .charter-booking-header { text-align: center; margin-bottom: 48px; }
+    .charter-booking-header .eyebrow { justify-content: center; margin-bottom: 20px; }
+    .charter-booking-header .eyebrow::after { content: ''; width: 40px; height: 1px; background: var(--gradient-signature); }
+    .charter-booking-header p { font-size: 15px; color: var(--text-muted); max-width: 520px; margin: 16px auto 0; line-height: 1.8; }
+
+    .booking-form-container {
+      max-width: 900px; margin: 0 auto;
+      border: 1px solid var(--border-mid); padding: 48px;
+      background: rgba(10,10,10,0.6); position: relative;
+    }
+    .booking-form-container::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: var(--gradient-signature);
+    }
+    .booking-form-top {
+      display: flex; gap: 16px; margin-bottom: 32px; padding-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+    }
+    .booking-trip-type {
+      display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px;
+      font-family: var(--font-accent); font-size: 11px; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-dim);
+      border: 1px solid var(--border); cursor: pointer; transition: all 0.3s ease;
+      background: transparent;
+    }
+    .booking-trip-type.active,
+    .booking-trip-type:hover {
+      border-color: var(--gold); color: var(--gold); background: rgba(201,168,76,0.04);
+    }
+    .booking-form-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+    }
+    .booking-form-grid .form-group { margin-bottom: 0; }
+    .booking-form-full { grid-column: span 2; }
+    .booking-form-actions {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--border);
+    }
+    .booking-form-note {
+      font-size: 12px; color: var(--text-dim); font-style: italic;
+    }
+    @media (max-width: 768px) {
+      .booking-form-container { padding: 28px 20px; }
+      .booking-form-grid { grid-template-columns: 1fr; }
+      .booking-form-full { grid-column: span 1; }
+      .booking-form-top { flex-wrap: wrap; }
+      .booking-form-actions { flex-direction: column; gap: 16px; }
+      .charter-booking { padding: 64px 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <main>
+
+    <!-- ═══ HERO ═══ -->
+    <section class="charter-hero">
+      <div class="charter-hero-bg">
+        <img src="https://images.unsplash.com/photo-1540962351504-03099e0a754b?w=1920&amp;q=80&amp;auto=format&amp;fit=crop"
+             alt="Private jet soaring through golden sunset skies above the clouds"
+             loading="eager">
+      </div>
+      <div class="charter-hero-overlay"></div>
+      <div class="charter-hero-content container">
+        <div class="eyebrow fade-up">Jet-El / Charter</div>
+        <h1 class="fade-up fade-up-d1">Charter <em>Services</em></h1>
+        <p class="charter-hero-desc fade-up fade-up-d2">
+          On-demand private flight advisory worldwide. We source the optimal
+          aircraft, route, and operator for every journey you undertake.
+        </p>
+      </div>
+    </section>
+
+    <!-- ═══ OVERVIEW ═══ -->
+    <section class="charter-intro">
+      <div class="container">
+        <div class="charter-intro-grid">
+
+          <div class="charter-intro-text reveal">
+            <div class="eyebrow">Overview</div>
+            <h2>Fly Smarter, Not <em>Just</em> Further</h2>
+            <p>
+              Private aviation charter is not simply about booking a plane. It is a strategic
+              decision that balances cost, time, safety, and service quality across thousands
+              of operators and aircraft types worldwide. Jet-El acts as your independent
+              advisor, ensuring every charter arrangement serves your specific objectives
+              rather than an operator's revenue targets.
+            </p>
+            <p>
+              Our advisory team maintains relationships with vetted operators across six
+              continents, giving you access to the global fleet without the conflicts
+              inherent in broker-driven models. We analyze route efficiency, aircraft
+              suitability, operator safety records, and total cost of each journey before
+              presenting our recommendation.
+            </p>
+            <p>
+              Whether you require a light jet for a regional day trip, a heavy-cabin aircraft
+              for intercontinental travel, or a helicopter transfer to complete the last
+              mile, Jet-El coordinates the entire itinerary. Our role is to ensure you
+              arrive on time, within budget, and with complete peace of mind.
+            </p>
+          </div>
+
+          <div class="charter-intro-image reveal reveal-delay-2">
+            <img src="https://images.unsplash.com/photo-1499063078284-f78f7d89616a?w=800&amp;q=80&amp;auto=format&amp;fit=crop"
+                 alt="Private jet ascending through dramatic sunset clouds"
+                 loading="lazy">
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ KEY FEATURES ═══ -->
+    <section class="charter-features">
+      <div class="container">
+
+        <div class="charter-features-header reveal">
+          <div class="eyebrow">Key Features</div>
+          <h2>Why Choose Jet-El <em>Charter</em></h2>
+          <p>Four pillars that define our approach to private charter advisory and set us apart from conventional brokers.</p>
+        </div>
+
+        <div class="charter-features-grid">
+
+          <div class="charter-feature-card reveal">
+            <div class="charter-feature-num">01</div>
+            <div class="charter-feature-dash"></div>
+            <h4>Global Network Access</h4>
+            <p>Relationships with vetted operators across every major aviation market. We source aircraft from a network that spans over 5,000 aircraft worldwide, ensuring availability even during peak demand periods.</p>
+          </div>
+
+          <div class="charter-feature-card reveal reveal-delay-1">
+            <div class="charter-feature-num">02</div>
+            <div class="charter-feature-dash"></div>
+            <h4>Aircraft Selection Advisory</h4>
+            <p>Not every aircraft suits every mission. We match cabin size, range, runway requirements, and amenities to your specific journey profile, ensuring optimal comfort and cost efficiency on every flight.</p>
+          </div>
+
+          <div class="charter-feature-card reveal reveal-delay-2">
+            <div class="charter-feature-num">03</div>
+            <div class="charter-feature-dash"></div>
+            <h4>Route Optimization</h4>
+            <p>Fuel stops, overflight permits, weather diversions, and slot availability all affect your journey. Our team plans routes that minimize transit time and maximize reliability for every itinerary.</p>
+          </div>
+
+          <div class="charter-feature-card reveal reveal-delay-3">
+            <div class="charter-feature-num">04</div>
+            <div class="charter-feature-dash"></div>
+            <h4>Cost Efficiency Analysis</h4>
+            <p>Transparent cost breakdowns that compare operators, aircraft types, and routing options. We identify savings through repositioning opportunities, empty-leg matching, and strategic scheduling.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ HOW IT WORKS ═══ -->
+    <section class="charter-process">
+      <div class="container">
+
+        <div class="charter-process-header reveal">
+          <div class="eyebrow">How It Works</div>
+          <h2>The Charter <em>Process</em></h2>
+          <p>From your initial brief to wheels-up, a structured advisory process that delivers results at every stage.</p>
+        </div>
+
+        <div class="charter-process-grid">
+
+          <div class="charter-process-card reveal">
+            <div class="charter-process-dash"></div>
+            <h4>Brief Requirements</h4>
+            <p>We begin by understanding your travel needs: passenger count, destinations, dates, cabin preferences, and any special requirements such as ground transport or catering specifications.</p>
+          </div>
+
+          <div class="charter-process-card reveal reveal-delay-1">
+            <div class="charter-process-dash"></div>
+            <h4>Aircraft Matching</h4>
+            <p>Our team evaluates the global fleet to identify the best-suited aircraft for your mission. We shortlist options based on range, cabin configuration, operator safety ratings, and value.</p>
+          </div>
+
+          <div class="charter-process-card reveal reveal-delay-2">
+            <div class="charter-process-dash"></div>
+            <h4>Itinerary Planning</h4>
+            <p>We build a detailed itinerary covering routing, fuel stops, ground handling, permits, and contingency plans. Every variable is accounted for before we present the final recommendation.</p>
+          </div>
+
+          <div class="charter-process-card reveal reveal-delay-3">
+            <div class="charter-process-dash"></div>
+            <h4>Flight Coordination</h4>
+            <p>Once approved, we coordinate directly with the operator to manage all logistics. You receive a single point of contact from confirmation through to arrival at your destination.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ CHARTER BOOKING ═══ -->
+    <section class="charter-booking" id="book">
+      <div class="container">
+        <div class="charter-booking-header reveal">
+          <div class="eyebrow">Request a Charter</div>
+          <h2>Book Your <em>Flight</em></h2>
+          <p>Submit your flight requirements and our aviation advisory team will source the optimal aircraft and route for your journey.</p>
+        </div>
+
+        <div class="booking-form-container reveal">
+          <form data-ajax>
+            <div class="booking-form-top">
+              <button type="button" class="booking-trip-type active">One Way</button>
+              <button type="button" class="booking-trip-type">Round Trip</button>
+              <button type="button" class="booking-trip-type">Multi-Leg</button>
+            </div>
+
+            <div class="booking-form-grid">
+              <div class="form-group">
+                <label class="form-label" for="departure-city">Departure City *</label>
+                <input class="form-input" type="text" id="departure-city" name="departure_city" placeholder="e.g. Johannesburg, London, Dubai" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="arrival-city">Arrival City *</label>
+                <input class="form-input" type="text" id="arrival-city" name="arrival_city" placeholder="e.g. Zurich, New York, Madrid" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="departure-date">Departure Date *</label>
+                <input class="form-input" type="date" id="departure-date" name="departure_date" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="departure-time">Preferred Time</label>
+                <select class="form-select" id="departure-time" name="departure_time">
+                  <option value="" disabled selected>Select departure time</option>
+                  <option value="early-morning">Early Morning (05:00 - 08:00)</option>
+                  <option value="morning">Morning (08:00 - 12:00)</option>
+                  <option value="afternoon">Afternoon (12:00 - 17:00)</option>
+                  <option value="evening">Evening (17:00 - 21:00)</option>
+                  <option value="night">Night (21:00 - 05:00)</option>
+                  <option value="flexible">Flexible</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="passengers">Number of Passengers *</label>
+                <select class="form-select" id="passengers" name="passengers" required>
+                  <option value="" disabled selected>Select passengers</option>
+                  <option value="1-2">1 - 2</option>
+                  <option value="3-5">3 - 5</option>
+                  <option value="6-9">6 - 9</option>
+                  <option value="10-14">10 - 14</option>
+                  <option value="15+">15+</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="jet-type">Preferred Jet Category</label>
+                <select class="form-select" id="jet-type" name="jet_type">
+                  <option value="" disabled selected>Select category</option>
+                  <option value="light">Light Jet (up to 8 pax)</option>
+                  <option value="midsize">Midsize Jet (up to 9 pax)</option>
+                  <option value="super-midsize">Super Midsize (up to 10 pax)</option>
+                  <option value="heavy">Heavy Jet (up to 16 pax)</option>
+                  <option value="ultra-long">Ultra Long Range (up to 19 pax)</option>
+                  <option value="vip-airliner">VIP Airliner (20+ pax)</option>
+                  <option value="recommend">Recommend for Me</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="charter-name">Full Name *</label>
+                <input class="form-input" type="text" id="charter-name" name="name" placeholder="Your full name" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="charter-email">Email *</label>
+                <input class="form-input" type="email" id="charter-email" name="email" placeholder="you@example.com" required>
+              </div>
+              <div class="form-group booking-form-full">
+                <label class="form-label" for="special-requests">Special Requests</label>
+                <textarea class="form-textarea" id="special-requests" name="special_requests" placeholder="Catering preferences, ground transport, pet-friendly, medical equipment, additional stops..." style="min-height: 100px;"></textarea>
+              </div>
+            </div>
+
+            <div class="booking-form-actions">
+              <span class="booking-form-note">Our team will respond with aircraft options and pricing within 2 hours.</span>
+              <button type="submit" class="btn btn-primary btn-lg">Request Quote</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ CTA ═══ -->
+    <section class="charter-cta">
+      <div class="container reveal">
+        <div class="eyebrow">Get Started</div>
+        <h2>Ready to <em>Charter</em> Smarter?</h2>
+        <p>Connect with our charter advisory team to explore how Jet-El can optimize your next private flight.</p>
+        <div class="btn-row">
+          <a href="enquiry.html" class="btn btn-primary btn-lg">Make an Enquiry</a>
+          <a href="../contact.html" class="btn btn-outline btn-lg">Book a Consultation</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="../js/components.js"></script>
+  <script src="../js/main.js"></script>
+  <script>
+    // Trip type toggle
+    document.querySelectorAll('.booking-trip-type').forEach(btn => {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('.booking-trip-type').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
+  </script>
+</body>
+
+<!-- Mirrored from https://el-globalbusiness.com/jet-el/charter.html by HTTrack Website Copier/3.x [XR&CO], Wed, 07 Oct 2026 11:06:21 GMT -->
+</html>

@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from https://el-globalbusiness.com/hl/hotels.html by HTTrack Website Copier/3.x [XR&CO], Wed, 07 Oct 2026 11:06:22 GMT -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hotel Acquisitions — H&L | El-Global Business</title>
+  <meta name="description" content="Strategic advisory for acquiring portfolio-grade hotel assets worldwide. Boutique hotels, resort properties, luxury chains, and mixed-use hospitality investment advisory from H&L, El-Global's hotels division.">
+
+  <meta property="og:title" content="Hotel Acquisitions — H&L | El-Global Business">
+  <meta property="og:description" content="Portfolio-grade hotel acquisition advisory across global hospitality markets.">
+  <meta property="og:type" content="website">
+
+  <link rel="stylesheet" href="../css/style.css">
+
+  <style>
+    /* ═══ HERO ═══ */
+    .htl-hero {
+      position: relative; height: 60vh; max-height: 60vh;
+      display: flex; align-items: flex-end; overflow: hidden;
+    }
+
+    .htl-hero-bg { position: absolute; inset: 0; }
+
+    .htl-hero-bg img {
+      width: 100%; height: 100%; object-fit: cover;
+      object-position: center 40%;
+      filter: brightness(0.2) saturate(0.7);
+    }
+
+    .htl-hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.25) 40%, rgba(0,0,0,0.92) 100%);
+    }
+
+    .htl-hero-content {
+      position: relative; z-index: 2;
+      padding: calc(var(--nav-height) + 40px) 0 56px; max-width: 700px;
+    }
+
+    .htl-hero .eyebrow { margin-bottom: 20px; }
+
+    .htl-hero h1 {
+      font-size: clamp(36px, 5vw, 64px);
+      font-weight: 300; margin-bottom: 16px; line-height: 1.1;
+    }
+
+    .htl-hero-desc {
+      font-family: var(--font-subheading);
+      font-size: clamp(16px, 2vw, 20px);
+      font-weight: 300; font-style: italic;
+      color: var(--text-secondary); line-height: 1.65; max-width: 540px;
+    }
+
+    @media (max-width: 768px) {
+      .htl-hero { height: 50vh; }
+      .htl-hero-content { padding: calc(var(--nav-height) + 20px) 0 40px; }
+    }
+
+    /* ═══ OVERVIEW ═══ */
+    .htl-overview { padding: 120px 0; }
+
+    .htl-overview-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: center;
+    }
+
+    .htl-overview-text .eyebrow { margin-bottom: 20px; }
+
+    .htl-overview-text h2 {
+      font-size: clamp(30px, 3.5vw, 48px);
+      font-weight: 300; margin-bottom: 24px; line-height: 1.15;
+    }
+
+    .htl-overview-text p {
+      font-size: 15px; color: var(--text-muted);
+      line-height: 1.85; margin-bottom: 20px;
+    }
+
+    .htl-overview-image {
+      position: relative; overflow: hidden; aspect-ratio: 4 / 5;
+    }
+
+    .htl-overview-image img {
+      width: 100%; height: 100%; object-fit: cover;
+      filter: brightness(0.85) saturate(0.9);
+      transition: transform 0.6s var(--ease);
+    }
+
+    .htl-overview-image:hover img { transform: scale(1.04); }
+
+    .htl-overview-image::after {
+      content: ''; position: absolute;
+      bottom: 0; left: 0; right: 0; height: 3px;
+      background: var(--gradient-signature);
+    }
+
+    @media (max-width: 1024px) {
+      .htl-overview-grid { grid-template-columns: 1fr; gap: 48px; }
+      .htl-overview-image { max-width: 480px; aspect-ratio: 16/10; }
+      .htl-overview { padding: 88px 0; }
+    }
+
+    @media (max-width: 768px) { .htl-overview { padding: 64px 0; } }
+
+    /* ═══ KEY FEATURES ═══ */
+    .htl-features {
+      padding: 120px 0; border-top: 1px solid var(--border);
+      position: relative; overflow: hidden;
+    }
+
+    .htl-features::before {
+      content: ''; position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 40% 50% at 80% 20%, rgba(201,168,76,0.025) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 50% at 10% 80%, rgba(201,168,76,0.02) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .htl-features-header {
+      text-align: center; margin-bottom: 64px;
+      position: relative; z-index: 1;
+    }
+
+    .htl-features-header .eyebrow {
+      justify-content: center; margin-bottom: 20px;
+    }
+
+    .htl-features-header .eyebrow::after {
+      content: ''; width: 40px; height: 1px;
+      background: var(--gradient-signature);
+    }
+
+    .htl-features-header p {
+      font-size: 15px; color: var(--text-muted);
+      max-width: 520px; margin: 16px auto 0; line-height: 1.8;
+    }
+
+    .htl-features-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 0; border: 1px solid var(--border);
+      position: relative; z-index: 1;
+    }
+
+    .htl-features-card {
+      padding: 40px 28px; border-right: 1px solid var(--border);
+      transition: all 0.4s var(--ease); position: relative;
+    }
+
+    .htl-features-card:last-child { border-right: none; }
+
+    .htl-features-card::after {
+      content: ''; position: absolute;
+      top: 0; left: 0; right: 0; height: 2px;
+      background: var(--gradient-signature);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 0.5s var(--ease);
+    }
+
+    .htl-features-card:hover { background: var(--surface-hover); }
+    .htl-features-card:hover::after { transform: scaleX(1); }
+
+    .htl-features-num {
+      font-family: var(--font-heading); font-size: 40px; font-weight: 300;
+      background: var(--gradient-signature);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text; opacity: 0.12; line-height: 1; margin-bottom: 20px;
+    }
+
+    .htl-features-dash {
+      width: 28px; height: 2px;
+      background: var(--gradient-signature); margin-bottom: 16px;
+      transition: width 0.4s var(--ease);
+    }
+
+    .htl-features-card:hover .htl-features-dash { width: 48px; }
+
+    .htl-features-card h4 {
+      font-family: var(--font-heading); font-size: 20px;
+      font-weight: 400; margin-bottom: 10px;
+    }
+
+    .htl-features-card p { font-size: 13px; color: var(--text-muted); line-height: 1.75; }
+
+    @media (max-width: 1024px) {
+      .htl-features-grid { grid-template-columns: repeat(2, 1fr); }
+      .htl-features-card:nth-child(2) { border-right: none; }
+      .htl-features-card:nth-child(3),
+      .htl-features-card:nth-child(4) { border-top: 1px solid var(--border); }
+      .htl-features { padding: 88px 0; }
+    }
+
+    @media (max-width: 768px) {
+      .htl-features-grid { grid-template-columns: 1fr; }
+      .htl-features-card { border-right: none; border-bottom: 1px solid var(--border); }
+      .htl-features-card:last-child { border-bottom: none; }
+      .htl-features { padding: 64px 0; }
+    }
+
+    /* ═══ PROCESS ═══ */
+    .htl-process {
+      padding: 120px 0; border-top: 1px solid var(--border);
+      background: var(--charcoal);
+    }
+
+    .htl-process-header {
+      text-align: center; margin-bottom: 64px;
+    }
+
+    .htl-process-header .eyebrow {
+      justify-content: center; margin-bottom: 20px;
+    }
+
+    .htl-process-header .eyebrow::after {
+      content: ''; width: 40px; height: 1px;
+      background: var(--gradient-signature);
+    }
+
+    .htl-process-header p {
+      font-size: 15px; color: var(--text-muted);
+      max-width: 480px; margin: 16px auto 0; line-height: 1.8;
+    }
+
+    .htl-process-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 0; border: 1px solid var(--border); counter-reset: step;
+    }
+
+    .htl-process-card {
+      padding: 40px 28px; border-right: 1px solid var(--border);
+      counter-increment: step; background: var(--black);
+      transition: all 0.4s var(--ease);
+    }
+
+    .htl-process-card:last-child { border-right: none; }
+    .htl-process-card:hover { background: var(--surface-hover); }
+
+    .htl-process-card::before {
+      content: counter(step, decimal-leading-zero);
+      font-family: var(--font-heading); font-size: 52px; font-weight: 300;
+      background: var(--gradient-signature);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text; display: block; margin-bottom: 24px; line-height: 1;
+    }
+
+    .htl-process-dash {
+      width: 28px; height: 2px;
+      background: var(--gradient-signature); margin-bottom: 16px;
+      transition: width 0.4s var(--ease);
+    }
+
+    .htl-process-card:hover .htl-process-dash { width: 48px; }
+
+    .htl-process-card h4 {
+      font-family: var(--font-heading); font-size: 20px;
+      font-weight: 400; margin-bottom: 10px;
+    }
+
+    .htl-process-card p { font-size: 13px; color: var(--text-muted); line-height: 1.75; }
+
+    @media (max-width: 1024px) {
+      .htl-process-grid { grid-template-columns: repeat(2, 1fr); }
+      .htl-process-card:nth-child(2) { border-right: none; }
+      .htl-process-card:nth-child(3),
+      .htl-process-card:nth-child(4) { border-top: 1px solid var(--border); }
+      .htl-process { padding: 88px 0; }
+    }
+
+    @media (max-width: 768px) {
+      .htl-process-grid { grid-template-columns: 1fr; }
+      .htl-process-card { border-right: none; border-bottom: 1px solid var(--border); }
+      .htl-process-card:last-child { border-bottom: none; }
+      .htl-process { padding: 64px 0; }
+    }
+
+    /* ═══ CTA ═══ */
+    .htl-cta {
+      padding: 100px 0; text-align: center; position: relative;
+    }
+
+    .htl-cta::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 50% 60% at 50% 50%, rgba(201,168,76,0.03) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .htl-cta .eyebrow { justify-content: center; margin-bottom: 20px; }
+
+    .htl-cta .eyebrow::after {
+      content: ''; width: 40px; height: 1px;
+      background: var(--gradient-signature);
+    }
+
+    .htl-cta h2 { font-size: clamp(30px, 4vw, 48px); font-weight: 300; margin-bottom: 16px; }
+
+    .htl-cta p {
+      font-size: 15px; color: var(--text-muted);
+      max-width: 480px; margin: 0 auto 40px; line-height: 1.8;
+    }
+
+    .htl-cta .btn-row { justify-content: center; }
+
+    @media (max-width: 768px) { .htl-cta { padding: 64px 0; } }
+  </style>
+</head>
+<body>
+
+  <main>
+
+    <!-- ═══ HERO ═══ -->
+    <section class="htl-hero">
+      <div class="htl-hero-bg">
+        <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=1920&amp;q=80&amp;auto=format&amp;fit=crop"
+             alt="Palatial five-star hotel room with king-size bed, silk drapes and panoramic city views"
+             loading="eager">
+      </div>
+      <div class="htl-hero-overlay"></div>
+      <div class="htl-hero-content container">
+        <div class="eyebrow fade-up">H&L &middot; Hotels</div>
+        <h1 class="fade-up fade-up-d1">Hotel <em>Acquisitions</em></h1>
+        <p class="htl-hero-desc fade-up fade-up-d2">
+          Strategic advisory for acquiring portfolio-grade hotel assets
+          worldwide. From boutique properties to luxury resort chains,
+          we guide every stage of the investment lifecycle.
+        </p>
+      </div>
+    </section>
+
+    <!-- ═══ OVERVIEW ═══ -->
+    <section class="htl-overview">
+      <div class="container">
+        <div class="htl-overview-grid">
+
+          <div class="htl-overview-text reveal">
+            <div class="eyebrow">The Service</div>
+            <h2>Hospitality as a <em>Portfolio</em> Asset</h2>
+            <p>
+              Hotel acquisitions represent one of the most compelling asset classes
+              in global real estate. The right property, in the right market, with
+              the right operator, can deliver exceptional returns through a combination
+              of operational yield and long-term capital appreciation. But identifying
+              those opportunities requires deep market intelligence and sector expertise.
+            </p>
+            <p>
+              H&L advises investors on acquiring hotel assets across every hospitality
+              segment. Whether you are targeting a boutique hotel in a European capital,
+              a resort property in the Caribbean, a luxury chain expansion, or a mixed-use
+              hospitality development, our advisory covers market analysis, asset valuation,
+              operational due diligence, deal structuring, and post-acquisition strategy.
+            </p>
+            <p>
+              We do not operate hotels. We advise on how to acquire them strategically,
+              structure ownership efficiently, and position them within a diversified
+              portfolio for maximum long-term value.
+            </p>
+            <a href="enquiry.html" class="btn btn-ghost">Enquire About Hotels</a>
+          </div>
+
+          <div class="htl-overview-image reveal reveal-delay-2">
+            <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?w=800&amp;q=80&amp;auto=format&amp;fit=crop"
+                 alt="Ultra-luxury resort with overwater bungalows and crystal-clear turquoise lagoon"
+                 loading="lazy">
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ KEY FEATURES ═══ -->
+    <section class="htl-features">
+      <div class="container">
+
+        <div class="htl-features-header reveal">
+          <div class="eyebrow">Key Features</div>
+          <h2>What Sets Our Hotel Advisory <em>Apart</em></h2>
+          <p>Four pillars of expertise that define our hotel acquisition advisory service.</p>
+        </div>
+
+        <div class="htl-features-grid">
+          <div class="htl-features-card reveal">
+            <div class="htl-features-num">01</div>
+            <div class="htl-features-dash"></div>
+            <h4>Market Intelligence</h4>
+            <p>Proprietary analysis of global hospitality markets, occupancy trends, RevPAR data, tourism growth corridors, and emerging destinations. We identify opportunities before they become obvious to the broader market.</p>
+          </div>
+          <div class="htl-features-card reveal reveal-delay-1">
+            <div class="htl-features-num">02</div>
+            <div class="htl-features-dash"></div>
+            <h4>Asset Valuation</h4>
+            <p>Comprehensive hotel valuation combining income capitalization, comparable transactions, and replacement cost methodologies. Every asset is assessed against realistic performance benchmarks and market conditions.</p>
+          </div>
+          <div class="htl-features-card reveal reveal-delay-2">
+            <div class="htl-features-num">03</div>
+            <div class="htl-features-dash"></div>
+            <h4>Operational Due Diligence</h4>
+            <p>Deep-dive analysis of hotel operations including management agreements, staffing structures, brand compliance, capital expenditure requirements, and revenue management systems to uncover hidden risks and value.</p>
+          </div>
+          <div class="htl-features-card reveal reveal-delay-3">
+            <div class="htl-features-num">04</div>
+            <div class="htl-features-dash"></div>
+            <h4>Yield Optimization</h4>
+            <p>Post-acquisition advisory on revenue management, operator selection, brand repositioning, renovation strategy, and ancillary revenue development to maximize both operational yield and capital appreciation.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══ PROCESS ═══ -->
+    <section class="htl-process">
+      <div class="container">
+
+        <div class="htl-process-header reveal">
+          <div class="eyebrow">How It Works</div>
+          <h2>Our <em>Process</em></h2>
+          <p>A structured approach from market identification through to post-acquisition management advisory.</p>
+        </div>
+
+        <div class="htl-process-grid">
+          <div class="htl-process-card reveal">
+            <div class="htl-process-dash"></div>
+            <h4>Market Screening</h4>
+            <p>We analyze global hospitality markets to identify regions, segments, and specific assets that align with your investment thesis, risk profile, and return expectations.</p>
+          </div>
+          <div class="htl-process-card reveal reveal-delay-1">
+            <div class="htl-process-dash"></div>
+            <h4>Asset Evaluation</h4>
+            <p>Shortlisted properties undergo rigorous financial modeling, physical inspection coordination, operational analysis, and competitive positioning review against market benchmarks.</p>
+          </div>
+          <div class="htl-process-card reveal reveal-delay-2">
+            <div class="htl-process-dash"></div>
+            <h4>Deal Structuring</h4>
+            <p>We advise on optimal ownership structures, financing arrangements, management agreements, and tax-efficient acquisition frameworks across single or multi-jurisdiction deals.</p>
+          </div>
+          <div class="htl-process-card reveal reveal-delay-3">
+            <div class="htl-process-dash"></div>
+            <h4>Post-Acquisition Management</h4>
+            <p>Ongoing advisory on asset performance, operator oversight, capital expenditure planning, brand strategy, and portfolio-level optimization to protect and grow your investment.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══ CTA ═══ -->
+    <section class="htl-cta">
+      <div class="container reveal">
+        <div class="eyebrow">Get Started</div>
+        <h2>Ready to Acquire Your Next <em>Hotel</em> Asset?</h2>
+        <p>Connect with our hospitality advisory team to explore portfolio-grade hotel investment opportunities worldwide.</p>
+        <div class="btn-row">
+          <a href="enquiry.html" class="btn btn-primary btn-lg">Hotel Enquiry</a>
+          <a href="../contact.html" class="btn btn-outline btn-lg">Book a Consultation</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="../js/components.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+
+<!-- Mirrored from https://el-globalbusiness.com/hl/hotels.html by HTTrack Website Copier/3.x [XR&CO], Wed, 07 Oct 2026 11:06:22 GMT -->
+</html>

@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from https://el-globalbusiness.com/jet-el/investments.html by HTTrack Website Copier/3.x [XR&CO], Wed, 07 Oct 2026 11:06:22 GMT -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aviation Investments - Jet-El | El-Global Business</title>
+  <meta name="description" content="Aviation as a portfolio asset class. Jet-El advises on asset valuation, revenue modeling, fleet portfolio strategy, and exit planning for aviation investment vehicles.">
+
+  <meta property="og:title" content="Aviation Investments - Jet-El | El-Global Business">
+  <meta property="og:description" content="Strategic aviation investment advisory. Portfolio analysis, opportunity identification, investment structuring, and performance management.">
+  <meta property="og:type" content="website">
+
+  <link rel="stylesheet" href="../css/style.css">
+
+  <style>
+    /* ═══ INVESTMENTS HERO ═══ */
+    .investments-hero {
+      position: relative;
+      height: 60vh;
+      max-height: 60vh;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+    }
+
+    .investments-hero-bg {
+      position: absolute;
+      inset: 0;
+    }
+
+    .investments-hero-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 40%;
+      filter: brightness(0.22) saturate(0.7);
+    }
+
+    .investments-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.25) 40%, rgba(0,0,0,0.92) 100%);
+    }
+
+    .investments-hero-content {
+      position: relative;
+      z-index: 2;
+      padding: calc(var(--nav-height) + 40px) 0 56px;
+      max-width: 700px;
+    }
+
+    .investments-hero .eyebrow { margin-bottom: 20px; }
+
+    .investments-hero h1 {
+      font-size: clamp(36px, 5vw, 64px);
+      font-weight: 300;
+      margin-bottom: 16px;
+      line-height: 1.1;
+    }
+
+    .investments-hero-desc {
+      font-family: var(--font-subheading);
+      font-size: clamp(16px, 2vw, 20px);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      max-width: 540px;
+    }
+
+    @media (max-width: 768px) {
+      .investments-hero { height: 50vh; }
+      .investments-hero-content { padding: calc(var(--nav-height) + 20px) 0 40px; }
+    }
+
+    /* ═══ INVESTMENTS INTRO ═══ */
+    .investments-intro { padding: 120px 0; }
+
+    .investments-intro-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .investments-intro-text .eyebrow { margin-bottom: 20px; }
+
+    .investments-intro-text h2 {
+      font-size: clamp(30px, 3.5vw, 48px);
+      font-weight: 300;
+      margin-bottom: 24px;
+      line-height: 1.15;
+    }
+
+    .investments-intro-text p {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.85;
+      margin-bottom: 20px;
+    }
+
+    .investments-intro-image {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 4 / 5;
+    }
+
+    .investments-intro-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.85) saturate(0.9);
+      transition: transform 0.6s var(--ease);
+    }
+
+    .investments-intro-image:hover img { transform: scale(1.04); }
+
+    .investments-intro-image::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--gradient-signature);
+    }
+
+    @media (max-width: 1024px) {
+      .investments-intro-grid { grid-template-columns: 1fr; gap: 48px; }
+      .investments-intro-image { max-width: 480px; aspect-ratio: 16/10; }
+      .investments-intro { padding: 88px 0; }
+    }
+
+    @media (max-width: 768px) {
+      .investments-intro { padding: 64px 0; }
+    }
+
+    /* ═══ INVESTMENTS FEATURES ═══ */
+    .investments-features {
+      padding: 120px 0;
+      border-top: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .investments-features::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 40% 50% at 80% 20%, rgba(201,168,76,0.025) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 50% at 10% 80%, rgba(201,168,76,0.02) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .investments-features-header {
+      text-align: center;
+      margin-bottom: 64px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .investments-features-header .eyebrow {
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .investments-features-header .eyebrow::after {
+      content: '';
+      width: 40px;
+      height: 1px;
+      background: var(--gradient-signature);
+    }
+
+    .investments-features-header p {
+      font-size: 15px;
+      color: var(--text-muted);
+      max-width: 520px;
+      margin: 16px auto 0;
+      line-height: 1.8;
+    }
+
+    .investments-features-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      border: 1px solid var(--border);
+      position: relative;
+      z-index: 1;
+    }
+
+    .investments-feature-card {
+      padding: 40px 28px;
+      border-right: 1px solid var(--border);
+      transition: all 0.4s var(--ease);
+      position: relative;
+    }
+
+    .investments-feature-card:last-child { border-right: none; }
+
+    .investments-feature-card::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--gradient-signature);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.5s var(--ease);
+    }
+
+    .investments-feature-card:hover { background: var(--surface-hover); }
+    .investments-feature-card:hover::after { transform: scaleX(1); }
+
+    .investments-feature-num {
+      font-family: var(--font-heading);
+      font-size: 40px;
+      font-weight: 300;
+      background: var(--gradient-signature);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      opacity: 0.12;
+      line-height: 1;
+      margin-bottom: 20px;
+    }
+
+    .investments-feature-dash {
+      width: 28px;
+      height: 2px;
+      background: var(--gradient-signature);
+      margin-bottom: 14px;
+      transition: width 0.4s var(--ease);
+    }
+
+    .investments-feature-card:hover .investments-feature-dash { width: 48px; }
+
+    .investments-feature-card h4 {
+      font-family: var(--font-heading);
+      font-size: 20px;
+      font-weight: 400;
+      margin-bottom: 10px;
+    }
+
+    .investments-feature-card p {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.75;
+    }
+
+    @media (max-width: 1024px) {
+      .investments-features-grid { grid-template-columns: repeat(2, 1fr); }
+      .investments-feature-card:nth-child(2) { border-right: none; }
+      .investments-feature-card:nth-child(3),
+      .investments-feature-card:nth-child(4) { border-top: 1px solid var(--border); }
+      .investments-features { padding: 88px 0; }
+    }
+
+    @media (max-width: 768px) {
+      .investments-features-grid { grid-template-columns: 1fr; }
+      .investments-feature-card { border-right: none; border-bottom: 1px solid var(--border); }
+      .investments-feature-card:last-child { border-bottom: none; }
+      .investments-features { padding: 64px 0; }
+    }
+
+    /* ═══ INVESTMENTS PROCESS ═══ */
+    .investments-process {
+      padding: 120px 0;
+      border-top: 1px solid var(--border);
+      background: var(--charcoal);
+    }
+
+    .investments-process-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .investments-process-header .eyebrow {
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .investments-process-header .eyebrow::after {
+      content: '';
+      width: 40px;
+      height: 1px;
+      background: var(--gradient-signature);
+    }
+
+    .investments-process-header p {
+      font-size: 15px;
+      color: var(--text-muted);
+      max-width: 480px;
+      margin: 16px auto 0;
+      line-height: 1.8;
+    }
+
+    .investments-process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      border: 1px solid var(--border);
+      counter-reset: step;
+    }
+
+    .investments-process-card {
+      padding: 40px 28px;
+      border-right: 1px solid var(--border);
+      counter-increment: step;
+      position: relative;
+      background: var(--black);
+      transition: all 0.4s var(--ease);
+    }
+
+    .investments-process-card:last-child { border-right: none; }
+    .investments-process-card:hover { background: var(--surface-hover); }
+
+    .investments-process-card::before {
+      content: counter(step, decimal-leading-zero);
+      font-family: var(--font-heading);
+      font-size: 52px;
+      font-weight: 300;
+      background: var(--gradient-signature);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: block;
+      margin-bottom: 24px;
+      line-height: 1;
+    }
+
+    .investments-process-dash {
+      width: 28px;
+      height: 2px;
+      background: var(--gradient-signature);
+      margin-bottom: 16px;
+      transition: width 0.4s var(--ease);
+    }
+
+    .investments-process-card:hover .investments-process-dash { width: 48px; }
+
+    .investments-process-card h4 {
+      font-family: var(--font-heading);
+      font-size: 20px;
+      font-weight: 400;
+      margin-bottom: 10px;
+    }
+
+    .investments-process-card p {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.75;
+    }
+
+    @media (max-width: 1024px) {
+      .investments-process-grid { grid-template-columns: repeat(2, 1fr); }
+      .investments-process-card:nth-child(2) { border-right: none; }
+      .investments-process-card:nth-child(3),
+      .investments-process-card:nth-child(4) { border-top: 1px solid var(--border); }
+      .investments-process { padding: 88px 0; }
+    }
+
+    @media (max-width: 768px) {
+      .investments-process-grid { grid-template-columns: 1fr; }
+      .investments-process-card { border-right: none; border-bottom: 1px solid var(--border); }
+      .investments-process-card:last-child { border-bottom: none; }
+      .investments-process { padding: 64px 0; }
+    }
+
+    /* ═══ INVESTMENTS CTA ═══ */
+    .investments-cta {
+      padding: 100px 0;
+      text-align: center;
+      position: relative;
+    }
+
+    .investments-cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 50% 60% at 50% 50%, rgba(201,168,76,0.03) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .investments-cta .eyebrow {
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .investments-cta .eyebrow::after {
+      content: '';
+      width: 40px;
+      height: 1px;
+      background: var(--gradient-signature);
+    }
+
+    .investments-cta h2 {
+      font-size: clamp(30px, 4vw, 48px);
+      font-weight: 300;
+      margin-bottom: 16px;
+    }
+
+    .investments-cta p {
+      font-size: 15px;
+      color: var(--text-muted);
+      max-width: 480px;
+      margin: 0 auto 40px;
+      line-height: 1.8;
+    }
+
+    .investments-cta .btn-row { justify-content: center; }
+
+    @media (max-width: 768px) {
+      .investments-cta { padding: 64px 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <main>
+
+    <!-- ═══ HERO ═══ -->
+    <section class="investments-hero">
+      <div class="investments-hero-bg">
+        <img src="https://images.unsplash.com/photo-1564769625905-50e93615e769?w=1920&amp;q=80&amp;auto=format&amp;fit=crop"
+             alt="Fleet of private jets lined up on an airfield at golden hour with dramatic sky"
+             loading="eager">
+      </div>
+      <div class="investments-hero-overlay"></div>
+      <div class="investments-hero-content container">
+        <div class="eyebrow fade-up">Jet-El / Investments</div>
+        <h1 class="fade-up fade-up-d1">Aviation <em>Investments</em></h1>
+        <p class="investments-hero-desc fade-up fade-up-d2">
+          Aviation as a portfolio asset class. Strategic advisory on structuring,
+          managing, and optimizing aviation investment vehicles.
+        </p>
+      </div>
+    </section>
+
+    <!-- ═══ OVERVIEW ═══ -->
+    <section class="investments-intro">
+      <div class="container">
+        <div class="investments-intro-grid">
+
+          <div class="investments-intro-text reveal">
+            <div class="eyebrow">Overview</div>
+            <h2>Aviation as an <em>Asset</em> Class</h2>
+            <p>
+              Aviation assets offer a compelling alternative investment class within
+              diversified portfolios. Aircraft generate revenue through charter
+              operations, lease income, and strategic appreciation, while providing
+              tangible asset backing that purely financial instruments cannot match.
+              For qualified investors, aviation represents an opportunity to capture
+              returns that are largely uncorrelated with traditional equity and fixed
+              income markets.
+            </p>
+            <p>
+              Jet-El provides the specialized advisory required to navigate this
+              complex asset class. We evaluate aircraft as financial instruments,
+              modeling acquisition costs, operational revenue potential, maintenance
+              reserves, depreciation schedules, and residual values across the full
+              lifecycle. Our analysis goes beyond simple appreciation forecasts to
+              deliver comprehensive return profiles that account for every variable
+              affecting investment performance.
+            </p>
+            <p>
+              Whether you are considering a single-aircraft acquisition, building a
+              fleet portfolio, or structuring a multi-investor aviation fund, Jet-El
+              provides the market intelligence, financial modeling, and operational
+              expertise to make informed decisions. We advise on the investment. We do
+              not operate the assets.
+            </p>
+          </div>
+
+          <div class="investments-intro-image reveal reveal-delay-2">
+            <img src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=800&amp;q=80&amp;auto=format&amp;fit=crop"
+                 alt="Modern aviation hangar interior with business jets and dramatic industrial architecture"
+                 loading="lazy">
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ KEY FEATURES ═══ -->
+    <section class="investments-features">
+      <div class="container">
+
+        <div class="investments-features-header reveal">
+          <div class="eyebrow">Key Features</div>
+          <h2>Investment <em>Capabilities</em></h2>
+          <p>Four core advisory capabilities that transform aviation from a cost center into a performing portfolio asset.</p>
+        </div>
+
+        <div class="investments-features-grid">
+
+          <div class="investments-feature-card reveal">
+            <div class="investments-feature-num">01</div>
+            <div class="investments-feature-dash"></div>
+            <h4>Asset Valuation</h4>
+            <p>Proprietary valuation frameworks that assess current market value, replacement cost, and future value trajectories based on aircraft type, condition, market cycles, and regulatory developments affecting the fleet.</p>
+          </div>
+
+          <div class="investments-feature-card reveal reveal-delay-1">
+            <div class="investments-feature-num">02</div>
+            <div class="investments-feature-dash"></div>
+            <h4>Revenue Modeling</h4>
+            <p>Detailed financial models projecting charter revenue, lease income, and operational costs over the investment horizon. We stress-test assumptions against historical data and multiple market scenarios.</p>
+          </div>
+
+          <div class="investments-feature-card reveal reveal-delay-2">
+            <div class="investments-feature-num">03</div>
+            <div class="investments-feature-dash"></div>
+            <h4>Fleet Portfolio Strategy</h4>
+            <p>For multi-asset investors, we design fleet portfolios that balance risk across aircraft types, age profiles, and market segments. Diversification strategies reduce concentration risk and smooth revenue streams.</p>
+          </div>
+
+          <div class="investments-feature-card reveal reveal-delay-3">
+            <div class="investments-feature-num">04</div>
+            <div class="investments-feature-dash"></div>
+            <h4>Exit Planning</h4>
+            <p>Every investment needs a defined exit. We model disposition timing, secondary market liquidity, part-out economics, and strategic resale positioning to maximize returns at the point of exit.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ HOW IT WORKS ═══ -->
+    <section class="investments-process">
+      <div class="container">
+
+        <div class="investments-process-header reveal">
+          <div class="eyebrow">How It Works</div>
+          <h2>The Investment <em>Process</em></h2>
+          <p>A disciplined advisory methodology that guides aviation investment decisions from analysis through ongoing management.</p>
+        </div>
+
+        <div class="investments-process-grid">
+
+          <div class="investments-process-card reveal">
+            <div class="investments-process-dash"></div>
+            <h4>Portfolio Analysis</h4>
+            <p>We evaluate your existing portfolio, risk appetite, return objectives, and investment horizon to determine how aviation assets can complement and enhance your overall investment strategy.</p>
+          </div>
+
+          <div class="investments-process-card reveal reveal-delay-1">
+            <div class="investments-process-dash"></div>
+            <h4>Opportunity Identification</h4>
+            <p>Our team scans the global market for aircraft that meet your investment criteria: the right type, age, condition, and price point to deliver target returns within acceptable risk parameters.</p>
+          </div>
+
+          <div class="investments-process-card reveal reveal-delay-2">
+            <div class="investments-process-dash"></div>
+            <h4>Investment Structuring</h4>
+            <p>We design the investment vehicle: entity structure, financing arrangements, management agreements, and revenue distribution frameworks tailored to your tax, regulatory, and governance requirements.</p>
+          </div>
+
+          <div class="investments-process-card reveal reveal-delay-3">
+            <div class="investments-process-dash"></div>
+            <h4>Performance Management</h4>
+            <p>Post-acquisition, we provide ongoing performance monitoring, benchmarking against market indices, and strategic recommendations for optimization, reinvestment, or exit based on evolving market conditions.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ CTA ═══ -->
+    <section class="investments-cta">
+      <div class="container reveal">
+        <div class="eyebrow">Get Started</div>
+        <h2>Ready to <em>Invest</em> in Aviation?</h2>
+        <p>Connect with our aviation investment team to explore how aircraft assets can enhance your portfolio returns.</p>
+        <div class="btn-row">
+          <a href="enquiry.html" class="btn btn-primary btn-lg">Make an Enquiry</a>
+          <a href="../contact.html" class="btn btn-outline btn-lg">Book a Consultation</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="../js/components.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+
+<!-- Mirrored from https://el-globalbusiness.com/jet-el/investments.html by HTTrack Website Copier/3.x [XR&CO], Wed, 07 Oct 2026 11:06:22 GMT -->
+</html>

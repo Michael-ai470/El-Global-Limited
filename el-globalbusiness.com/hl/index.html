@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from https://el-globalbusiness.com/hl/ by HTTrack Website Copier/3.x [XR&CO], Wed, 07 Oct 2026 11:06:15 GMT -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>H&L — Hotels & Luxury Real Estate | El-Global Business</title>
+  <meta name="description" content="H&L is El-Global's hotels and luxury real estate division. Portfolio-grade hotel acquisitions and ultra-premium property investment advisory across the USA, Europe, Dubai, and beyond.">
+
+  <meta property="og:title" content="H&L — Hotels & Luxury Real Estate | El-Global Business">
+  <meta property="og:description" content="Hotel acquisitions and luxury real estate investment advisory across global markets.">
+  <meta property="og:type" content="website">
+
+  <link rel="stylesheet" href="../css/style.css">
+
+  <style>
+    /* ═══ HERO ═══ */
+    .hl-hero {
+      position: relative;
+      height: 60vh;
+      max-height: 60vh;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+    }
+
+    .hl-hero-bg { position: absolute; inset: 0; }
+
+    .hl-hero-bg img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center 60%;
+      filter: brightness(0.22) saturate(0.7);
+    }
+
+    .hl-hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.25) 40%, rgba(0,0,0,0.92) 100%);
+    }
+
+    .hl-hero-content {
+      position: relative; z-index: 2;
+      padding: calc(var(--nav-height) + 40px) 0 56px;
+      max-width: 700px;
+    }
+
+    .hl-hero .eyebrow { margin-bottom: 20px; }
+
+    .hl-hero h1 {
+      font-size: clamp(36px, 5vw, 64px);
+      font-weight: 300; margin-bottom: 16px; line-height: 1.1;
+    }
+
+    .hl-hero-desc {
+      font-family: var(--font-subheading);
+      font-size: clamp(16px, 2vw, 20px);
+      font-weight: 300; font-style: italic;
+      color: var(--text-secondary); line-height: 1.65;
+      max-width: 540px;
+    }
+
+    .hl-hero-pills {
+      display: flex; gap: 8px; flex-wrap: wrap; margin-top: 28px;
+    }
+
+    .hl-hero-pill {
+      font-family: var(--font-accent);
+      font-size: 10px; font-weight: 500;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--text-muted);
+      border: 1px solid var(--border-mid);
+      padding: 7px 18px; border-radius: 100px;
+      text-decoration: none; transition: all var(--transition);
+    }
+
+    .hl-hero-pill:hover {
+      color: var(--white); border-color: var(--gold);
+      background: rgba(201,168,76,0.05);
+    }
+
+    @media (max-width: 768px) {
+      .hl-hero { height: 50vh; }
+      .hl-hero-content { padding: calc(var(--nav-height) + 20px) 0 40px; }
+    }
+
+    /* ═══ INTRO ═══ */
+    .hl-intro { padding: 120px 0; }
+
+    .hl-intro-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: center;
+    }
+
+    .hl-intro-text .eyebrow { margin-bottom: 20px; }
+
+    .hl-intro-text h2 {
+      font-size: clamp(30px, 3.5vw, 48px);
+      font-weight: 300; margin-bottom: 24px; line-height: 1.15;
+    }
+
+    .hl-intro-text p {
+      font-size: 15px; color: var(--text-muted);
+      line-height: 1.85; margin-bottom: 20px;
+    }
+
+    .hl-intro-image {
+      position: relative; overflow: hidden; aspect-ratio: 4 / 5;
+    }
+
+    .hl-intro-image img {
+      width: 100%; height: 100%; object-fit: cover;
+      filter: brightness(0.85) saturate(0.9);
+      transition: transform 0.6s var(--ease);
+    }
+
+    .hl-intro-image:hover img { transform: scale(1.04); }
+
+    .hl-intro-image::after {
+      content: ''; position: absolute;
+      bottom: 0; left: 0; right: 0; height: 3px;
+      background: var(--gradient-signature);
+    }
+
+    @media (max-width: 1024px) {
+      .hl-intro-grid { grid-template-columns: 1fr; gap: 48px; }
+      .hl-intro-image { max-width: 480px; aspect-ratio: 16/10; }
+      .hl-intro { padding: 88px 0; }
+    }
+
+    @media (max-width: 768px) { .hl-intro { padding: 64px 0; } }
+
+    /* ═══ SERVICES — 2 Large Cards ═══ */
+    .hl-services {
+      padding: 120px 0; border-top: 1px solid var(--border);
+    }
+
+    .hl-services-header {
+      text-align: center; margin-bottom: 64px;
+    }
+
+    .hl-services-header .eyebrow {
+      justify-content: center; margin-bottom: 20px;
+    }
+
+    .hl-services-header .eyebrow::after {
+      content: ''; width: 40px; height: 1px;
+      background: var(--gradient-signature);
+    }
+
+    .hl-services-header p {
+      font-size: 15px; color: var(--text-muted);
+      max-width: 540px; margin: 16px auto 0; line-height: 1.8;
+    }
+
+    .hl-services-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+    }
+
+    .hl-service-card {
+      position: relative; overflow: hidden;
+      min-height: 500px; display: flex;
+      flex-direction: column; justify-content: flex-end;
+      border: 1px solid var(--border);
+      transition: all 0.4s var(--ease);
+    }
+
+    .hl-service-card:hover { border-color: var(--border-mid); }
+
+    .hl-service-card::before {
+      content: ''; position: absolute;
+      top: 0; left: 0; right: 0; height: 2px;
+      background: var(--gradient-signature); z-index: 3;
+      transform: scaleX(0); transition: transform 0.5s var(--ease);
+    }
+
+    .hl-service-card:hover::before { transform: scaleX(1); }
+
+    .hl-service-card-bg { position: absolute; inset: 0; }
+
+    .hl-service-card-bg img {
+      width: 100%; height: 100%; object-fit: cover;
+      filter: brightness(0.3) saturate(0.75);
+      transition: all 0.6s var(--ease);
+    }
+
+    .hl-service-card:hover .hl-service-card-bg img {
+      filter: brightness(0.4) saturate(0.85);
+      transform: scale(1.05);
+    }
+
+    .hl-service-card-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, transparent 20%, rgba(0,0,0,0.85) 100%);
+    }
+
+    .hl-service-card-content {
+      position: relative; z-index: 2; padding: 44px;
+    }
+
+    .hl-service-card-num {
+      font-family: var(--font-heading);
+      font-size: 56px; font-weight: 300;
+      background: var(--gradient-signature);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text; opacity: 0.2;
+      position: absolute; top: 28px; right: 36px; z-index: 2; line-height: 1;
+    }
+
+    .hl-service-card-dash {
+      width: 32px; height: 2px;
+      background: var(--gradient-signature);
+      margin-bottom: 16px;
+      transition: width 0.4s var(--ease);
+    }
+
+    .hl-service-card:hover .hl-service-card-dash { width: 56px; }
+
+    .hl-service-card-content h3 {
+      font-family: var(--font-heading);
+      font-size: 28px; font-weight: 300;
+      margin-bottom: 14px; line-height: 1.2;
+    }
+
+    .hl-service-card-content p {
+      font-size: 14px; color: var(--text-muted);
+      line-height: 1.85; margin-bottom: 20px; max-width: 420px;
+    }
+
+    .hl-service-tags {
+      display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 20px;
+    }
+
+    .hl-service-tag {
+      font-family: var(--font-accent);
+      font-size: 9px; font-weight: 500;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--text-dim);
+      border: 1px solid var(--border);
+      padding: 5px 14px; border-radius: 100px;
+      transition: all var(--transition);
+    }
+
+    .hl-service-card:hover .hl-service-tag {
+      border-color: var(--border-mid); color: var(--text-muted);
+    }
+
+    .hl-service-card-link {
+      font-family: var(--font-accent);
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      background: var(--gradient-signature);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hl-service-card-link::after { content: ' \2192'; }
+
+    @media (max-width: 1024px) {
+      .hl-services-grid { grid-template-columns: 1fr; }
+      .hl-services { padding: 88px 0; }
+    }
+
+    @media (max-width: 768px) {
+      .hl-services { padding: 64px 0; }
+      .hl-service-card { min-height: 400px; }
+      .hl-service-card-content { padding: 32px; }
+    }
+
+    /* ═══ MARKETS ═══ */
+    .markets-section {
+      padding: 100px 0;
+      border-top: 1px solid var(--border);
+      background: var(--charcoal);
+    }
+
+    .markets-header {
+      text-align: center; margin-bottom: 56px;
+    }
+
+    .markets-header .eyebrow {
+      justify-content: center; margin-bottom: 20px;
+    }
+
+    .markets-header .eyebrow::after {
+      content: ''; width: 40px; height: 1px;
+      background: var(--gradient-signature);
+    }
+
+    .markets-header p {
+      font-size: 15px; color: var(--text-muted);
+      max-width: 480px; margin: 16px auto 0; line-height: 1.8;
+    }
+
+    .markets-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 0; border: 1px solid var(--border);
+    }
+
+    .market-card {
+      padding: 40px 28px; text-align: center;
+      border-right: 1px solid var(--border);
+      background: var(--black);
+      transition: all 0.4s var(--ease);
+    }
+
+    .market-card:last-child { border-right: none; }
+    .market-card:hover { background: var(--surface-hover); }
+
+    .market-card-flag {
+      font-size: 32px; margin-bottom: 16px; display: block;
+    }
+
+    .market-card h4 {
+      font-family: var(--font-heading);
+      font-size: 20px; font-weight: 300; margin-bottom: 8px;
+    }
+
+    .market-card p {
+      font-size: 13px; color: var(--text-muted); line-height: 1.7;
+    }
+
+    @media (max-width: 1024px) {
+      .markets-grid { grid-template-columns: repeat(2, 1fr) !important; }
+    }
+
+    @media (max-width: 768px) {
+      .markets-grid { grid-template-columns: 1fr !important; }
+      .market-card { border-right: none !important; border-bottom: 1px solid var(--border); }
+      .market-card:last-child { border-bottom: none; }
+      .markets-section { padding: 64px 0; }
+    }
+
+    /* ═══ WHY H&L ═══ */
+    .why-hl {
+      padding: 120px 0; border-top: 1px solid var(--border);
+      position: relative; overflow: hidden;
+    }
+
+    .why-hl::before {
+      content: ''; position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 40% 50% at 80% 20%, rgba(201,168,76,0.025) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 50% at 10% 80%, rgba(201,168,76,0.02) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .why-hl-header {
+      text-align: center; margin-bottom: 64px;
+      position: relative; z-index: 1;
+    }
+
+    .why-hl-header .eyebrow {
+      justify-content: center; margin-bottom: 20px;
+    }
+
+    .why-hl-header .eyebrow::after {
+      content: ''; width: 40px; height: 1px;
+      background: var(--gradient-signature);
+    }
+
+    .why-hl-header p {
+      font-size: 15px; color: var(--text-muted);
+      max-width: 520px; margin: 16px auto 0; line-height: 1.8;
+    }
+
+    .why-hl-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 0; border: 1px solid var(--border);
+      position: relative; z-index: 1;
+    }
+
+    .why-hl-card {
+      padding: 40px 28px; border-right: 1px solid var(--border);
+      transition: all 0.4s var(--ease); position: relative;
+    }
+
+    .why-hl-card:last-child { border-right: none; }
+
+    .why-hl-card::after {
+      content: ''; position: absolute;
+      top: 0; left: 0; right: 0; height: 2px;
+      background: var(--gradient-signature);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 0.5s var(--ease);
+    }
+
+    .why-hl-card:hover { background: var(--surface-hover); }
+    .why-hl-card:hover::after { transform: scaleX(1); }
+
+    .why-hl-num {
+      font-family: var(--font-heading);
+      font-size: 40px; font-weight: 300;
+      background: var(--gradient-signature);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      opacity: 0.12; line-height: 1; margin-bottom: 20px;
+    }
+
+    .why-hl-card h4 {
+      font-family: var(--font-heading);
+      font-size: 20px; font-weight: 400; margin-bottom: 10px;
+    }
+
+    .why-hl-card p {
+      font-size: 13px; color: var(--text-muted); line-height: 1.75;
+    }
+
+    @media (max-width: 1024px) {
+      .why-hl-grid { grid-template-columns: repeat(2, 1fr); }
+      .why-hl-card:nth-child(2) { border-right: none; }
+      .why-hl-card:nth-child(3),
+      .why-hl-card:nth-child(4) { border-top: 1px solid var(--border); }
+      .why-hl { padding: 88px 0; }
+    }
+
+    @media (max-width: 768px) {
+      .why-hl-grid { grid-template-columns: 1fr; }
+      .why-hl-card { border-right: none; border-bottom: 1px solid var(--border); }
+      .why-hl-card:last-child { border-bottom: none; }
+      .why-hl { padding: 64px 0; }
+    }
+
+    /* ═══ PROCESS ═══ */
+    .hl-process {
+      padding: 120px 0; border-top: 1px solid var(--border);
+      background: var(--charcoal);
+    }
+
+    .hl-process-header {
+      text-align: center; margin-bottom: 64px;
+    }
+
+    .hl-process-header .eyebrow {
+      justify-content: center; margin-bottom: 20px;
+    }
+
+    .hl-process-header .eyebrow::after {
+      content: ''; width: 40px; height: 1px;
+      background: var(--gradient-signature);
+    }
+
+    .hl-process-header p {
+      font-size: 15px; color: var(--text-muted);
+      max-width: 480px; margin: 16px auto 0; line-height: 1.8;
+    }
+
+    .hl-process-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 0; border: 1px solid var(--border);
+      counter-reset: step;
+    }
+
+    .hl-process-card {
+      padding: 40px 28px; border-right: 1px solid var(--border);
+      counter-increment: step; background: var(--black);
+      transition: all 0.4s var(--ease);
+    }
+
+    .hl-process-card:last-child { border-right: none; }
+    .hl-process-card:hover { background: var(--surface-hover); }
+
+    .hl-process-card::before {
+      content: counter(step, decimal-leading-zero);
+      font-family: var(--font-heading);
+      font-size: 52px; font-weight: 300;
+      background: var(--gradient-signature);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: block; margin-bottom: 24px; line-height: 1;
+    }
+
+    .hl-process-dash {
+      width: 28px; height: 2px;
+      background: var(--gradient-signature);
+      margin-bottom: 16px;
+      transition: width 0.4s var(--ease);
+    }
+
+    .hl-process-card:hover .hl-process-dash { width: 48px; }
+
+    .hl-process-card h4 {
+      font-family: var(--font-heading);
+      font-size: 20px; font-weight: 400; margin-bottom: 10px;
+    }
+
+    .hl-process-card p {
+      font-size: 13px; color: var(--text-muted); line-height: 1.75;
+    }
+
+    @media (max-width: 1024px) {
+      .hl-process-grid { grid-template-columns: repeat(2, 1fr); }
+      .hl-process-card:nth-child(2) { border-right: none; }
+      .hl-process-card:nth-child(3),
+      .hl-process-card:nth-child(4) { border-top: 1px solid var(--border); }
+      .hl-process { padding: 88px 0; }
+    }
+
+    @media (max-width: 768px) {
+      .hl-process-grid { grid-template-columns: 1fr; }
+      .hl-process-card { border-right: none; border-bottom: 1px solid var(--border); }
+      .hl-process-card:last-child { border-bottom: none; }
+      .hl-process { padding: 64px 0; }
+    }
+
+    /* ═══ CTA ═══ */
+    .hl-cta {
+      padding: 100px 0; text-align: center; position: relative;
+    }
+
+    .hl-cta::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 50% 60% at 50% 50%, rgba(201,168,76,0.03) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hl-cta .eyebrow {
+      justify-content: center; margin-bottom: 20px;
+    }
+
+    .hl-cta .eyebrow::after {
+      content: ''; width: 40px; height: 1px;
+      background: var(--gradient-signature);
+    }
+
+    .hl-cta h2 {
+      font-size: clamp(30px, 4vw, 48px);
+      font-weight: 300; margin-bottom: 16px;
+    }
+
+    .hl-cta p {
+      font-size: 15px; color: var(--text-muted);
+      max-width: 480px; margin: 0 auto 40px; line-height: 1.8;
+    }
+
+    .hl-cta .btn-row { justify-content: center; }
+
+    @media (max-width: 768px) { .hl-cta { padding: 64px 0; } }
+  </style>
+</head>
+<body>
+
+  <main>
+
+    <!-- ═══ HERO ═══ -->
+    <section class="hl-hero">
+      <div class="hl-hero-bg">
+        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1920&amp;q=80&amp;auto=format&amp;fit=crop"
+             alt="Five-star luxury resort with pristine infinity pool and tropical gardens at golden hour"
+             loading="eager">
+      </div>
+      <div class="hl-hero-overlay"></div>
+      <div class="hl-hero-content container">
+        <div class="eyebrow fade-up">H&L</div>
+        <h1 class="fade-up fade-up-d1">Hotels &amp; Luxury<br><em>Real Estate</em></h1>
+        <p class="hl-hero-desc fade-up fade-up-d2">
+          Portfolio-grade hotel acquisitions and ultra-premium property
+          investment advisory across the USA, Europe, Dubai, and beyond.
+        </p>
+        <div class="hl-hero-pills fade-up fade-up-d3">
+          <a href="#hotels" class="hl-hero-pill">Hotels</a>
+          <a href="#real-estate" class="hl-hero-pill">Real Estate</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ INTRO ═══ -->
+    <section class="hl-intro">
+      <div class="container">
+        <div class="hl-intro-grid">
+
+          <div class="hl-intro-text reveal">
+            <div class="eyebrow">The Division</div>
+            <h2>Real Estate as a <em>Portfolio</em> Asset</h2>
+            <p>
+              H&L is El-Global's hotels and luxury real estate division, providing
+              strategic advisory for investors seeking portfolio-grade property assets.
+              We don't sell properties. We advise clients on how to identify, acquire,
+              and optimize hotel and residential real estate investments for maximum
+              long-term value.
+            </p>
+            <p>
+              From boutique hotel acquisitions to ultra-premium residential portfolios
+              across global luxury markets, H&L delivers the market intelligence,
+              deal structuring, and due diligence that transforms capital into
+              enduring real estate wealth.
+            </p>
+            <a href="enquiry.html" class="btn btn-ghost">Make an Enquiry</a>
+          </div>
+
+          <div class="hl-intro-image reveal reveal-delay-2">
+            <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=800&amp;q=80&amp;auto=format&amp;fit=crop"
+                 alt="Grand five-star hotel lobby with soaring atrium, marble columns and crystal chandeliers"
+                 loading="lazy">
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ SERVICES — 2 Large Cards ═══ -->
+    <section class="hl-services">
+      <div class="container">
+
+        <div class="hl-services-header reveal">
+          <div class="eyebrow">Our Services</div>
+          <h2>What H&L <em>Offers</em></h2>
+          <p>Two core advisory verticals covering every dimension of hospitality and luxury property investment.</p>
+        </div>
+
+        <div class="hl-services-grid">
+
+          <!-- Hotel Acquisitions -->
+          <a href="hotels.html" class="hl-service-card reveal" id="hotels">
+            <div class="hl-service-card-bg">
+              <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=900&amp;q=80&amp;auto=format&amp;fit=crop"
+                   alt="Opulent hotel interior with designer furnishings, ambient lighting and gold accents"
+                   loading="lazy">
+            </div>
+            <div class="hl-service-card-overlay"></div>
+            <span class="hl-service-card-num">01</span>
+            <div class="hl-service-card-content">
+              <div class="hl-service-card-dash"></div>
+              <h3>Hotel Acquisitions</h3>
+              <p>Strategic advisory for acquiring portfolio-grade hotel assets worldwide. We identify undervalued properties, structure deals, conduct due diligence, and optimize for both yield and appreciation across all hospitality segments.</p>
+              <div class="hl-service-tags">
+                <span class="hl-service-tag">Boutique Hotels</span>
+                <span class="hl-service-tag">Resort Properties</span>
+                <span class="hl-service-tag">Luxury Chains</span>
+                <span class="hl-service-tag">Mixed-Use</span>
+              </div>
+              <span class="hl-service-card-link">Learn More</span>
+            </div>
+          </a>
+
+          <!-- Luxury Real Estate -->
+          <a href="real-estate.html" class="hl-service-card reveal reveal-delay-1" id="real-estate">
+            <div class="hl-service-card-bg">
+              <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=900&amp;q=80&amp;auto=format&amp;fit=crop"
+                   alt="Ultra-luxury penthouse suite with panoramic floor-to-ceiling windows and designer interiors"
+                   loading="lazy">
+            </div>
+            <div class="hl-service-card-overlay"></div>
+            <span class="hl-service-card-num">02</span>
+            <div class="hl-service-card-content">
+              <div class="hl-service-card-dash"></div>
+              <h3>Luxury Real Estate</h3>
+              <p>Ultra-premium residential and commercial property investment advisory. From penthouses and villas to prime commercial developments, we provide end-to-end acquisition support in the world's most desirable markets.</p>
+              <div class="hl-service-tags">
+                <span class="hl-service-tag">Residential</span>
+                <span class="hl-service-tag">Commercial</span>
+                <span class="hl-service-tag">Development</span>
+                <span class="hl-service-tag">Off-Market</span>
+              </div>
+              <span class="hl-service-card-link">Learn More</span>
+            </div>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ MARKETS ═══ -->
+    <section class="markets-section">
+      <div class="container">
+
+        <div class="markets-header reveal">
+          <div class="eyebrow">Our Markets</div>
+          <h2>Where We <em>Operate</em></h2>
+          <p>Active across the world's most dynamic luxury property markets.</p>
+        </div>
+
+        <div class="markets-grid" style="grid-template-columns: repeat(3, 1fr);">
+          <div class="market-card reveal">
+            <span class="market-card-flag">US</span>
+            <h4>United States</h4>
+            <p>New York, Miami, Los Angeles, Aspen</p>
+          </div>
+          <div class="market-card reveal reveal-delay-1">
+            <span class="market-card-flag">UK</span>
+            <h4>United Kingdom</h4>
+            <p>London, Edinburgh, Manchester</p>
+          </div>
+          <div class="market-card reveal reveal-delay-2">
+            <span class="market-card-flag">ES</span>
+            <h4>Spain</h4>
+            <p>Madrid, Marbella, Ibiza, Barcelona</p>
+          </div>
+          <div class="market-card reveal">
+            <span class="market-card-flag">PT</span>
+            <h4>Portugal</h4>
+            <p>Lisbon, Algarve, Porto</p>
+          </div>
+          <div class="market-card reveal reveal-delay-1" style="border-right: 1px solid var(--border);">
+            <span class="market-card-flag">AE</span>
+            <h4>Dubai &amp; GCC</h4>
+            <p>Palm Jumeirah, DIFC, Abu Dhabi</p>
+          </div>
+          <div class="market-card reveal reveal-delay-2">
+            <span class="market-card-flag">EM</span>
+            <h4>Europe &amp; Beyond</h4>
+            <p>Italy, France, Germany, Poland, Cyprus, Greece, Georgia, Monaco, Montenegro</p>
+          </div>
+          <div class="market-card reveal" style="border-top: 1px solid var(--border);">
+            <span class="market-card-flag">SA</span>
+            <h4>South Africa</h4>
+            <p>Johannesburg, Cape Town</p>
+          </div>
+          <div class="market-card reveal reveal-delay-1" style="border-top: 1px solid var(--border); border-right: 1px solid var(--border);">
+            <span class="market-card-flag">NG</span>
+            <h4>Nigeria</h4>
+            <p>Lagos, Abuja</p>
+          </div>
+          <div class="market-card reveal reveal-delay-2" style="border-top: 1px solid var(--border);">
+            <span class="market-card-flag">EM</span>
+            <h4>Emerging Markets</h4>
+            <p>Bali, Maldives, Caribbean, Southeast Asia</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══ WHY H&L ═══ -->
+    <section class="why-hl">
+      <div class="container">
+
+        <div class="why-hl-header reveal">
+          <div class="eyebrow">Why H&L</div>
+          <h2>The H&L <em>Advantage</em></h2>
+          <p>What makes our property advisory different from conventional real estate firms.</p>
+        </div>
+
+        <div class="why-hl-grid">
+          <div class="why-hl-card reveal">
+            <div class="why-hl-num">01</div>
+            <h4>Portfolio Approach</h4>
+            <p>We treat property as a portfolio asset, not a standalone transaction. Every acquisition is evaluated in context of your broader investment strategy.</p>
+          </div>
+          <div class="why-hl-card reveal reveal-delay-1">
+            <div class="why-hl-num">02</div>
+            <h4>Off-Market Access</h4>
+            <p>Our network provides access to properties that never reach the open market. Discreet, exclusive, and often at significantly better valuations.</p>
+          </div>
+          <div class="why-hl-card reveal reveal-delay-2">
+            <div class="why-hl-num">03</div>
+            <h4>Cross-Border Expertise</h4>
+            <p>Structuring acquisitions across multiple jurisdictions, tax regimes, and regulatory frameworks with precision and compliance.</p>
+          </div>
+          <div class="why-hl-card reveal reveal-delay-3">
+            <div class="why-hl-num">04</div>
+            <h4>Yield Optimization</h4>
+            <p>Post-acquisition management advisory to maximize rental yield, operational efficiency, and long-term capital appreciation.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══ PROCESS ═══ -->
+    <section class="hl-process">
+      <div class="container">
+
+        <div class="hl-process-header reveal">
+          <div class="eyebrow">How It Works</div>
+          <h2>Our <em>Process</em></h2>
+          <p>A structured approach from initial brief to portfolio management.</p>
+        </div>
+
+        <div class="hl-process-grid">
+          <div class="hl-process-card reveal">
+            <div class="hl-process-dash"></div>
+            <h4>Discovery</h4>
+            <p>We begin with a confidential briefing to understand your property investment goals, risk appetite, preferred markets, and timeline.</p>
+          </div>
+          <div class="hl-process-card reveal reveal-delay-1">
+            <div class="hl-process-dash"></div>
+            <h4>Sourcing</h4>
+            <p>Our global network identifies opportunities matching your criteria, including off-market assets and pre-launch developments.</p>
+          </div>
+          <div class="hl-process-card reveal reveal-delay-2">
+            <div class="hl-process-dash"></div>
+            <h4>Acquisition</h4>
+            <p>Full transaction management from due diligence and valuation through negotiation, legal structuring, and closing.</p>
+          </div>
+          <div class="hl-process-card reveal reveal-delay-3">
+            <div class="hl-process-dash"></div>
+            <h4>Optimization</h4>
+            <p>Post-acquisition advisory on asset management, yield optimization, renovation, and strategic repositioning for maximum value.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══ OFF-MARKET ACQUISITIONS ═══ -->
+    <section style="padding: 120px 0; border-top: 1px solid var(--border); position: relative; overflow: hidden;">
+      <!-- Subtle radial glow background -->
+      <div style="position: absolute; inset: 0; background: radial-gradient(ellipse 50% 60% at 50% 30%, rgba(201,168,76,0.03) 0%, transparent 70%); pointer-events: none;"></div>
+      <div class="container" style="position: relative; z-index: 1;">
+
+        <div style="text-align: center; margin-bottom: 64px;" class="reveal">
+          <div class="eyebrow" style="justify-content: center; margin-bottom: 20px;">Exclusive Opportunities</div>
+          <h2 style="font-size: clamp(30px, 4vw, 48px); font-weight: 300; margin-bottom: 16px; line-height: 1.15;">Off-Market Hotel <em>Acquisitions</em></h2>
+          <p style="font-size: 15px; color: var(--text-muted); max-width: 580px; margin: 16px auto 0; line-height: 1.8;">
+            We source exclusive, off-market hotel properties across the globe through our established network of private sellers, family offices, and institutional partners -- delivering acquisition opportunities that never reach public listings.
+          </p>
+        </div>
+
+        <!-- Full-width luxury image band -->
+        <div style="position: relative; overflow: hidden; margin-bottom: 64px; aspect-ratio: 21/7;" class="reveal">
+          <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=1400&amp;q=80&amp;auto=format&amp;fit=crop"
+               alt="Breathtaking luxury resort infinity pool overlooking turquoise ocean at sunset"
+               style="width: 100%; height: 100%; object-fit: cover; filter: brightness(0.55) saturate(0.85);"
+               loading="lazy">
+          <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.6) 100%);"></div>
+          <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: var(--gradient-signature);"></div>
+          <div style="position: absolute; bottom: 32px; left: 40px; z-index: 2;">
+            <span style="font-family: var(--font-accent); font-size: 10px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold);">Private & Confidential Transactions</span>
+          </div>
+        </div>
+
+        <!-- 3 Feature Cards -->
+        <div class="offmarket-grid-responsive" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border: 1px solid var(--border);">
+
+          <!-- Card 1: Discreet Sourcing -->
+          <div class="reveal" style="padding: 44px 32px; border-right: 1px solid var(--border); transition: all 0.4s ease; position: relative; background: var(--black);">
+            <div style="position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--gradient-signature); transform: scaleX(0); transition: transform 0.5s ease;"></div>
+            <div style="font-family: var(--font-heading); font-size: 40px; font-weight: 300; background: var(--gradient-signature); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; opacity: 0.15; line-height: 1; margin-bottom: 20px;">01</div>
+            <div style="width: 32px; height: 2px; background: var(--gradient-signature); margin-bottom: 16px;"></div>
+            <h4 style="font-family: var(--font-heading); font-size: 22px; font-weight: 400; margin-bottom: 12px;">Discreet Sourcing</h4>
+            <p style="font-size: 14px; color: var(--text-muted); line-height: 1.85; margin-bottom: 20px;">
+              We identify and secure premium hotel properties before they reach the open market. Through trusted relationships with owners, developers, and private equity groups, our clients gain first-mover advantage on the world's most sought-after hospitality assets.
+            </p>
+            <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+              <span style="font-family: var(--font-accent); font-size: 9px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-dim); border: 1px solid var(--border); padding: 5px 14px; border-radius: 100px;">Pre-Market</span>
+              <span style="font-family: var(--font-accent); font-size: 9px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-dim); border: 1px solid var(--border); padding: 5px 14px; border-radius: 100px;">Private Sellers</span>
+              <span style="font-family: var(--font-accent); font-size: 9px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-dim); border: 1px solid var(--border); padding: 5px 14px; border-radius: 100px;">Confidential</span>
+            </div>
+          </div>
+
+          <!-- Card 2: Hotel M&A Advisory -->
+          <div class="reveal reveal-delay-1" style="padding: 44px 32px; border-right: 1px solid var(--border); transition: all 0.4s ease; position: relative; background: var(--black);">
+            <div style="position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--gradient-signature); transform: scaleX(0); transition: transform 0.5s ease;"></div>
+            <div style="font-family: var(--font-heading); font-size: 40px; font-weight: 300; background: var(--gradient-signature); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; opacity: 0.15; line-height: 1; margin-bottom: 20px;">02</div>
+            <div style="width: 32px; height: 2px; background: var(--gradient-signature); margin-bottom: 16px;"></div>
+            <h4 style="font-family: var(--font-heading); font-size: 22px; font-weight: 400; margin-bottom: 12px;">Hotel M&amp;A Advisory</h4>
+            <p style="font-size: 14px; color: var(--text-muted); line-height: 1.85; margin-bottom: 20px;">
+              Full-service mergers and acquisitions advisory for hospitality assets. From target identification and financial modeling through deal negotiation, regulatory compliance, and post-merger integration, we manage every phase of complex hotel M&amp;A transactions.
+            </p>
+            <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+              <span style="font-family: var(--font-accent); font-size: 9px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-dim); border: 1px solid var(--border); padding: 5px 14px; border-radius: 100px;">Mergers</span>
+              <span style="font-family: var(--font-accent); font-size: 9px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-dim); border: 1px solid var(--border); padding: 5px 14px; border-radius: 100px;">Acquisitions</span>
+              <span style="font-family: var(--font-accent); font-size: 9px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-dim); border: 1px solid var(--border); padding: 5px 14px; border-radius: 100px;">Due Diligence</span>
+            </div>
+          </div>
+
+          <!-- Card 3: Portfolio Optimization -->
+          <div class="reveal reveal-delay-2" style="padding: 44px 32px; transition: all 0.4s ease; position: relative; background: var(--black);">
+            <div style="position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--gradient-signature); transform: scaleX(0); transition: transform 0.5s ease;"></div>
+            <div style="font-family: var(--font-heading); font-size: 40px; font-weight: 300; background: var(--gradient-signature); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; opacity: 0.15; line-height: 1; margin-bottom: 20px;">03</div>
+            <div style="width: 32px; height: 2px; background: var(--gradient-signature); margin-bottom: 16px;"></div>
+            <h4 style="font-family: var(--font-heading); font-size: 22px; font-weight: 400; margin-bottom: 12px;">Portfolio Optimization</h4>
+            <p style="font-size: 14px; color: var(--text-muted); line-height: 1.85; margin-bottom: 20px;">
+              Strategic hotel asset management and value maximization for existing portfolios. We advise on repositioning, brand affiliation, operational restructuring, capital expenditure planning, and strategic dispositions to unlock maximum value from hospitality holdings.
+            </p>
+            <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+              <span style="font-family: var(--font-accent); font-size: 9px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-dim); border: 1px solid var(--border); padding: 5px 14px; border-radius: 100px;">Asset Management</span>
+              <span style="font-family: var(--font-accent); font-size: 9px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-dim); border: 1px solid var(--border); padding: 5px 14px; border-radius: 100px;">Value Creation</span>
+              <span style="font-family: var(--font-accent); font-size: 9px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-dim); border: 1px solid var(--border); padding: 5px 14px; border-radius: 100px;">Repositioning</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Responsive override for mobile -->
+        <style>
+          @media (max-width: 1024px) {
+            .offmarket-grid-responsive { grid-template-columns: 1fr !important; }
+          }
+        </style>
+
+        <!-- CTA link -->
+        <div style="text-align: center; margin-top: 48px;" class="reveal">
+          <a href="enquiry.html" class="btn btn-primary btn-lg">Explore Off-Market Opportunities</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══ CTA ═══ -->
+    <section class="hl-cta">
+      <div class="container reveal">
+        <div class="eyebrow">Get Started</div>
+        <h2>Ready to Build Your <em>Property</em> Portfolio?</h2>
+        <p>Connect with our real estate advisory team to explore investment opportunities across global luxury markets.</p>
+        <div class="btn-row">
+          <a href="enquiry.html" class="btn btn-primary btn-lg">Property Enquiry</a>
+          <a href="../contact.html" class="btn btn-outline btn-lg">Book a Consultation</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="../js/components.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+
+<!-- Mirrored from https://el-globalbusiness.com/hl/ by HTTrack Website Copier/3.x [XR&CO], Wed, 07 Oct 2026 11:06:16 GMT -->
+</html>

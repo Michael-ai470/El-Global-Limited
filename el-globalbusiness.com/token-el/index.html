@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from https://el-globalbusiness.com/token-el/ by HTTrack Website Copier/3.x [XR&CO], Wed, 07 Oct 2026 11:06:18 GMT -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Token-El — Asset Tokenization | El-Global Business</title>
+  <meta name="description" content="Token-El is El-Global's asset tokenization division. Fractional ownership via blockchain for private jets, superyachts, luxury real estate, and blue-chip art. The future of ownership.">
+  <meta property="og:title" content="Token-El — Asset Tokenization | El-Global Business">
+  <meta property="og:type" content="website">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    /* ═══ TOKEN-EL — FUTURISTIC BLOCKCHAIN AESTHETIC ═══ */
+
+    /* ── Hero ── */
+    .te-hero {
+      position: relative; min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden; text-align: center;
+    }
+    .te-hero-bg {
+      position: absolute; inset: 0; z-index: 0;
+      background: radial-gradient(ellipse 80% 80% at 50% 40%, #0a0e1a 0%, #000000 100%);
+    }
+
+    /* Animated grid lines */
+    .te-hero-grid {
+      position: absolute; inset: 0; z-index: 1;
+      background-image:
+        linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      animation: gridPulse 4s ease-in-out infinite alternate;
+    }
+    @keyframes gridPulse {
+      0% { opacity: 0.3; }
+      100% { opacity: 0.8; }
+    }
+
+    /* Floating blockchain nodes */
+    .te-hero-particles {
+      position: absolute; inset: 0; z-index: 1; overflow: hidden;
+    }
+    .te-particle {
+      position: absolute; width: 4px; height: 4px; background: var(--gold);
+      border-radius: 50%; opacity: 0;
+      animation: particleFloat 6s ease-in-out infinite;
+    }
+    .te-particle:nth-child(1) { left: 10%; top: 20%; animation-delay: 0s; }
+    .te-particle:nth-child(2) { left: 25%; top: 60%; animation-delay: 1s; }
+    .te-particle:nth-child(3) { left: 45%; top: 30%; animation-delay: 2s; }
+    .te-particle:nth-child(4) { left: 65%; top: 70%; animation-delay: 0.5s; }
+    .te-particle:nth-child(5) { left: 80%; top: 25%; animation-delay: 1.5s; }
+    .te-particle:nth-child(6) { left: 90%; top: 55%; animation-delay: 3s; }
+    .te-particle:nth-child(7) { left: 35%; top: 80%; animation-delay: 2.5s; }
+    .te-particle:nth-child(8) { left: 55%; top: 15%; animation-delay: 3.5s; }
+    .te-particle::after {
+      content: ''; position: absolute; top: 50%; left: 50%;
+      width: 40px; height: 40px; transform: translate(-50%, -50%);
+      border: 1px solid rgba(201,168,76,0.08); border-radius: 50%;
+      animation: nodeRing 4s ease-in-out infinite;
+    }
+    @keyframes particleFloat {
+      0%, 100% { opacity: 0; transform: translateY(0) scale(0.5); }
+      20% { opacity: 0.8; transform: translateY(-20px) scale(1); }
+      80% { opacity: 0.6; transform: translateY(-60px) scale(0.8); }
+    }
+    @keyframes nodeRing {
+      0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.3; }
+      50% { transform: translate(-50%, -50%) scale(2); opacity: 0; }
+    }
+
+    /* Connecting lines */
+    .te-hero-lines {
+      position: absolute; inset: 0; z-index: 1; overflow: hidden;
+    }
+    .te-line {
+      position: absolute; height: 1px; background: linear-gradient(90deg, transparent, rgba(201,168,76,0.15), transparent);
+      animation: lineSlide 8s linear infinite;
+    }
+    .te-line:nth-child(1) { top: 30%; width: 300px; left: -300px; animation-delay: 0s; }
+    .te-line:nth-child(2) { top: 50%; width: 200px; left: -200px; animation-delay: 2s; }
+    .te-line:nth-child(3) { top: 70%; width: 250px; left: -250px; animation-delay: 4s; }
+    @keyframes lineSlide {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(calc(100vw + 400px)); }
+    }
+
+    .te-hero-glow {
+      position: absolute; inset: 0; z-index: 1;
+      background:
+        radial-gradient(circle 400px at 50% 50%, rgba(201,168,76,0.06) 0%, transparent 70%),
+        radial-gradient(circle 200px at 30% 60%, rgba(212,118,44,0.04) 0%, transparent 60%),
+        radial-gradient(circle 200px at 70% 40%, rgba(201,168,76,0.04) 0%, transparent 60%);
+      animation: heroGlowPulse 6s ease-in-out infinite alternate;
+    }
+    @keyframes heroGlowPulse {
+      0% { opacity: 0.5; }
+      100% { opacity: 1; }
+    }
+
+    .te-hero-content {
+      position: relative; z-index: 3; max-width: 800px; padding: calc(var(--nav-height) + 60px) 32px 100px;
+    }
+    .te-hero .eyebrow { justify-content: center; margin-bottom: 24px; }
+    .te-hero h1 {
+      font-size: clamp(40px, 6vw, 80px); font-weight: 300; margin-bottom: 20px; line-height: 1.05;
+    }
+    .te-hero h1 em {
+      background: linear-gradient(135deg, var(--gold) 0%, var(--orange) 50%, var(--gold) 100%);
+      background-size: 200% 100%;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      animation: textShimmer 4s ease-in-out infinite;
+    }
+    .te-hero-desc {
+      font-family: var(--font-subheading); font-size: clamp(16px, 2vw, 20px);
+      font-weight: 300; font-style: italic; color: var(--text-muted);
+      line-height: 1.65; max-width: 580px; margin: 0 auto 32px;
+    }
+    .te-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--font-accent); font-size: 12px; font-weight: 600;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      border: 1px solid var(--gold); color: var(--gold);
+      padding: 12px 28px; position: relative; overflow: hidden;
+    }
+    .te-badge::before {
+      content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(201,168,76,0.12), transparent);
+      animation: badgeShine 3s ease-in-out infinite;
+    }
+    @keyframes badgeShine {
+      0% { left: -100%; }
+      100% { left: 200%; }
+    }
+    .te-badge-dot {
+      width: 6px; height: 6px; border-radius: 50%; background: var(--gold);
+      animation: dotPulse 2s ease-in-out infinite;
+    }
+    @keyframes dotPulse {
+      0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(201,168,76,0.5); }
+      50% { opacity: 0.7; box-shadow: 0 0 8px 4px rgba(201,168,76,0.2); }
+    }
+    .te-hero-stats {
+      display: flex; justify-content: center; gap: 48px;
+      margin-top: 56px; padding-top: 32px;
+      border-top: 1px solid rgba(201,168,76,0.1);
+    }
+    .te-hero-stat { text-align: center; }
+    .te-hero-stat-value {
+      font-family: var(--font-heading); font-size: 28px; font-weight: 300;
+      color: var(--gold); display: block; margin-bottom: 4px;
+    }
+    .te-hero-stat-label {
+      font-family: var(--font-accent); font-size: 10px; font-weight: 500;
+      letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-dim);
+    }
+    @media (max-width: 768px) {
+      .te-hero { min-height: 90vh; }
+      .te-hero-stats { flex-wrap: wrap; gap: 24px; }
+    }
+
+    /* ── Intro Section ── */
+    .te-intro { padding: 120px 0; position: relative; }
+    .te-intro::before {
+      content: ''; position: absolute; top: 0; left: 50%; width: 1px; height: 80px;
+      background: linear-gradient(180deg, var(--gold), transparent); transform: translateX(-50%); opacity: 0.3;
+    }
+    .te-intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .te-intro-text .eyebrow { margin-bottom: 20px; }
+    .te-intro-text h2 { font-size: clamp(30px, 3.5vw, 48px); font-weight: 300; margin-bottom: 24px; line-height: 1.15; }
+    .te-intro-text p { font-size: 15px; color: var(--text-muted); line-height: 1.85; margin-bottom: 20px; }
+    .te-intro-visual { position: relative; }
+    .te-intro-visual-inner {
+      position: relative; aspect-ratio: 1; border: 1px solid rgba(201,168,76,0.12);
+      display: flex; align-items: center; justify-content: center; overflow: hidden;
+      background: radial-gradient(circle at center, rgba(201,168,76,0.03) 0%, transparent 70%);
+    }
+    .te-intro-visual-inner::before {
+      content: ''; position: absolute; inset: 20px;
+      border: 1px solid rgba(201,168,76,0.06); animation: spinSlow 30s linear infinite;
+    }
+    .te-intro-visual-inner::after {
+      content: ''; position: absolute; inset: 40px;
+      border: 1px solid rgba(201,168,76,0.04); animation: spinSlow 30s linear infinite reverse;
+    }
+    @keyframes spinSlow {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .te-token-icon {
+      font-size: 80px; position: relative; z-index: 2;
+      filter: drop-shadow(0 0 30px rgba(201,168,76,0.2));
+      animation: tokenFloat 4s ease-in-out infinite;
+    }
+    @keyframes tokenFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+    .te-chain-nodes {
+      position: absolute; inset: 0;
+    }
+    .te-node {
+      position: absolute; width: 8px; height: 8px; border-radius: 50%;
+      background: var(--gold); opacity: 0.3;
+    }
+    .te-node::after {
+      content: ''; position: absolute; top: 50%; left: 50%;
+      width: 24px; height: 24px; border-radius: 50%;
+      border: 1px solid rgba(201,168,76,0.15);
+      transform: translate(-50%, -50%);
+    }
+    .te-node:nth-child(1) { top: 10%; left: 50%; }
+    .te-node:nth-child(2) { top: 30%; right: 10%; }
+    .te-node:nth-child(3) { bottom: 30%; right: 10%; }
+    .te-node:nth-child(4) { bottom: 10%; left: 50%; }
+    .te-node:nth-child(5) { bottom: 30%; left: 10%; }
+    .te-node:nth-child(6) { top: 30%; left: 10%; }
+    @media (max-width: 1024px) { .te-intro-grid { grid-template-columns: 1fr; gap: 48px; } .te-intro-visual-inner { max-width: 400px; margin: 0 auto; } .te-intro { padding: 88px 0; } }
+    @media (max-width: 768px) { .te-intro { padding: 64px 0; } }
+
+    /* ── Asset Classes ── */
+    .te-assets {
+      padding: 120px 0; position: relative;
+      background: linear-gradient(180deg, transparent 0%, rgba(10,14,26,0.5) 50%, transparent 100%);
+    }
+    .te-assets-header { text-align: center; margin-bottom: 64px; }
+    .te-assets-header .eyebrow { justify-content: center; margin-bottom: 20px; }
+    .te-assets-header .eyebrow::after { content: ''; width: 40px; height: 1px; background: var(--gradient-signature); }
+    .te-assets-header p { font-size: 15px; color: var(--text-muted); max-width: 540px; margin: 16px auto 0; line-height: 1.8; }
+    .te-assets-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; }
+    .te-asset-card {
+      padding: 44px 28px; text-align: center; position: relative;
+      background: rgba(10,14,26,0.8); border: 1px solid rgba(201,168,76,0.06);
+      transition: all 0.5s cubic-bezier(0.25, 0.1, 0.25, 1); overflow: hidden;
+    }
+    .te-asset-card::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(circle at 50% 0%, rgba(201,168,76,0.06) 0%, transparent 70%);
+      opacity: 0; transition: opacity 0.5s ease;
+    }
+    .te-asset-card:hover::before { opacity: 1; }
+    .te-asset-card::after {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: var(--gradient-signature); transform: scaleX(0); transition: transform 0.5s var(--ease);
+    }
+    .te-asset-card:hover { background: rgba(15,20,35,0.9); border-color: rgba(201,168,76,0.15); transform: translateY(-4px); box-shadow: 0 12px 40px rgba(201,168,76,0.06); }
+    .te-asset-card:hover::after { transform: scaleX(1); }
+    .te-asset-icon { font-size: 36px; margin-bottom: 20px; display: block; position: relative; z-index: 1; }
+    .te-asset-card h4 { font-family: var(--font-heading); font-size: 18px; font-weight: 400; margin-bottom: 8px; position: relative; z-index: 1; }
+    .te-asset-card-sub { font-family: var(--font-accent); font-size: 10px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; background: var(--gradient-signature); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 12px; display: block; position: relative; z-index: 1; }
+    .te-asset-card p { font-size: 13px; color: var(--text-muted); line-height: 1.7; margin-bottom: 16px; position: relative; z-index: 1; }
+    .te-asset-meta { font-family: var(--font-accent); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); opacity: 0.7; position: relative; z-index: 1; }
+    @media (max-width: 1024px) { .te-assets-grid { grid-template-columns: repeat(2, 1fr); } .te-assets { padding: 88px 0; } }
+    @media (max-width: 768px) { .te-assets-grid { grid-template-columns: 1fr; } .te-assets { padding: 64px 0; } }
+
+    /* ── Features Section ── */
+    .te-features {
+      padding: 120px 0; position: relative;
+      background: radial-gradient(ellipse 80% 60% at 50% 50%, rgba(10,14,26,0.8) 0%, var(--black) 100%);
+    }
+    .te-features::before {
+      content: ''; position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(201,168,76,0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201,168,76,0.015) 1px, transparent 1px);
+      background-size: 40px 40px; pointer-events: none;
+    }
+    .te-features-header { text-align: center; margin-bottom: 64px; position: relative; z-index: 1; }
+    .te-features-header .eyebrow { justify-content: center; margin-bottom: 20px; }
+    .te-features-header .eyebrow::after { content: ''; width: 40px; height: 1px; background: var(--gradient-signature); }
+    .te-features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; position: relative; z-index: 1; }
+    .te-feature-card {
+      padding: 56px 36px; text-align: center; position: relative; overflow: hidden;
+      background: rgba(10,14,26,0.6); border: 1px solid rgba(201,168,76,0.06);
+      transition: all 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+    .te-feature-card::before {
+      content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+      background: conic-gradient(from 0deg, transparent, rgba(201,168,76,0.03), transparent, rgba(201,168,76,0.03), transparent);
+      animation: featureSpin 12s linear infinite; opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+    .te-feature-card:hover::before { opacity: 1; }
+    .te-feature-card:hover { border-color: rgba(201,168,76,0.15); transform: translateY(-4px); }
+    @keyframes featureSpin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .te-feature-num {
+      font-family: var(--font-heading); font-size: 56px; font-weight: 300;
+      background: var(--gradient-signature); -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent; background-clip: text;
+      opacity: 0.1; line-height: 1; margin-bottom: 20px; position: relative; z-index: 1;
+    }
+    .te-feature-card:hover .te-feature-num { opacity: 0.25; }
+    .te-feature-card h4 { font-family: var(--font-heading); font-size: 22px; font-weight: 400; margin-bottom: 12px; position: relative; z-index: 1; }
+    .te-feature-card p { font-size: 14px; color: var(--text-muted); line-height: 1.8; position: relative; z-index: 1; }
+    @media (max-width: 768px) { .te-features-grid { grid-template-columns: 1fr; } .te-features { padding: 64px 0; } }
+
+    /* ── Blockchain Visual Section ── */
+    .te-blockchain {
+      padding: 100px 0; position: relative; overflow: hidden;
+      border-top: 1px solid rgba(201,168,76,0.06); border-bottom: 1px solid rgba(201,168,76,0.06);
+    }
+    .te-blockchain-inner {
+      display: flex; align-items: center; justify-content: center; gap: 20px;
+      font-family: var(--font-accent); font-size: 11px; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--text-dim); flex-wrap: wrap;
+    }
+    .te-blockchain-block {
+      display: flex; align-items: center; gap: 12px; padding: 16px 24px;
+      border: 1px solid rgba(201,168,76,0.1); position: relative;
+      transition: all 0.4s ease;
+    }
+    .te-blockchain-block:hover {
+      border-color: rgba(201,168,76,0.25); background: rgba(201,168,76,0.02);
+    }
+    .te-blockchain-block-hash {
+      font-family: 'Courier New', monospace; font-size: 9px; color: var(--gold);
+      opacity: 0.4; letter-spacing: 0.05em;
+    }
+    .te-blockchain-connector {
+      width: 40px; height: 1px; background: linear-gradient(90deg, rgba(201,168,76,0.2), rgba(201,168,76,0.05));
+    }
+    @media (max-width: 768px) { .te-blockchain-connector { display: none; } .te-blockchain { padding: 64px 0; } }
+
+    /* ── Register Section ── */
+    .te-register { padding: 120px 0; position: relative; }
+    .te-register::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent); opacity: 0.2;
+    }
+    .te-register-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+    .te-register-text .eyebrow { margin-bottom: 20px; }
+    .te-register-text h2 { font-size: clamp(28px, 3vw, 40px); font-weight: 300; margin-bottom: 16px; }
+    .te-register-text p { font-size: 15px; color: var(--text-muted); line-height: 1.85; margin-bottom: 20px; }
+    .te-register-form .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .te-register-form .form-group { margin-bottom: 20px; }
+    .te-register-form .btn { margin-top: 8px; width: 100%; }
+    .te-register-form .form-input,
+    .te-register-form .form-select,
+    .te-register-form .form-textarea {
+      background: rgba(10,14,26,0.8); border-color: rgba(201,168,76,0.12);
+    }
+    .te-register-form .form-input:focus,
+    .te-register-form .form-select:focus,
+    .te-register-form .form-textarea:focus {
+      border-color: var(--gold); box-shadow: 0 0 20px rgba(201,168,76,0.08);
+    }
+    @media (max-width: 1024px) { .te-register-grid { grid-template-columns: 1fr; gap: 48px; } .te-register { padding: 88px 0; } }
+    @media (max-width: 768px) { .te-register { padding: 64px 0; } .te-register-form .form-row { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <main>
+
+    <!-- ═══ HERO — Futuristic Blockchain ═══ -->
+    <section class="te-hero">
+      <div class="te-hero-bg"></div>
+      <div class="te-hero-grid"></div>
+      <div class="te-hero-particles">
+        <div class="te-particle"></div>
+        <div class="te-particle"></div>
+        <div class="te-particle"></div>
+        <div class="te-particle"></div>
+        <div class="te-particle"></div>
+        <div class="te-particle"></div>
+        <div class="te-particle"></div>
+        <div class="te-particle"></div>
+      </div>
+      <div class="te-hero-lines">
+        <div class="te-line"></div>
+        <div class="te-line"></div>
+        <div class="te-line"></div>
+      </div>
+      <div class="te-hero-glow"></div>
+
+      <div class="te-hero-content">
+        <div class="eyebrow fade-up">Token-El</div>
+        <h1 class="fade-up fade-up-d1">The Future of<br><em>Asset Tokenization</em></h1>
+        <p class="te-hero-desc fade-up fade-up-d2">Fractional ownership powered by blockchain. Democratizing access to private jets, superyachts, luxury real estate, and blue-chip art.</p>
+        <div class="te-badge fade-up fade-up-d3">
+          <span class="te-badge-dot"></span>
+          Coming Soon
+        </div>
+        <div class="te-hero-stats fade-up fade-up-d4">
+          <div class="te-hero-stat">
+            <span class="te-hero-stat-value">$1K</span>
+            <span class="te-hero-stat-label">Minimum Entry</span>
+          </div>
+          <div class="te-hero-stat">
+            <span class="te-hero-stat-value">4</span>
+            <span class="te-hero-stat-label">Asset Classes</span>
+          </div>
+          <div class="te-hero-stat">
+            <span class="te-hero-stat-value">24/7</span>
+            <span class="te-hero-stat-label">Tradeable</span>
+          </div>
+          <div class="te-hero-stat">
+            <span class="te-hero-stat-value">100%</span>
+            <span class="te-hero-stat-label">Blockchain Secured</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ INTRO — The Vision ═══ -->
+    <section class="te-intro">
+      <div class="container">
+        <div class="te-intro-grid">
+          <div class="te-intro-text reveal">
+            <div class="eyebrow">The Vision</div>
+            <h2>Redefining <em>Ownership</em></h2>
+            <p>Token-El is El-Global's asset tokenization division, engineered to break down barriers to premium alternative investments. Through blockchain technology, we create fractional ownership structures that give investors access to asset classes previously reserved for the ultra-wealthy.</p>
+            <p>Imagine owning a share of a private jet, a fraction of a Mediterranean superyacht, or a piece of a landmark luxury property &mdash; all secured by blockchain, all tradeable, all starting from $1,000.</p>
+          </div>
+          <div class="te-intro-visual reveal reveal-delay-2">
+            <div class="te-intro-visual-inner">
+              <div class="te-chain-nodes">
+                <div class="te-node"></div>
+                <div class="te-node"></div>
+                <div class="te-node"></div>
+                <div class="te-node"></div>
+                <div class="te-node"></div>
+                <div class="te-node"></div>
+              </div>
+              <div class="te-token-icon"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M12 2l10 10-10 10L2 12 12 2z"/><path d="M12 6l6 6-6 6-6-6 6-6z"/></svg></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ ASSET CLASSES ═══ -->
+    <section class="te-assets">
+      <div class="container">
+        <div class="te-assets-header reveal">
+          <div class="eyebrow">Asset Classes</div>
+          <h2>What You Can <em>Tokenize</em></h2>
+          <p>Premium asset classes available for fractional ownership through Token-El's blockchain-secured platform.</p>
+        </div>
+        <div class="te-assets-grid">
+          <div class="te-asset-card reveal">
+            <span class="te-asset-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg></span>
+            <h4>Private Jets</h4>
+            <span class="te-asset-card-sub">Jet-El Division</span>
+            <p>Fractional aviation asset ownership with charter revenue distribution.</p>
+            <div class="te-asset-meta">From $10,000 &middot; 8-12% Target Yield</div>
+          </div>
+          <div class="te-asset-card reveal reveal-delay-1">
+            <span class="te-asset-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 20c2-1 4-2 6-2s4 1 6 2 4 2 6 2"/><path d="M4 18l-1-5h18l-1 5M12 3v10M8 7h8"/></svg></span>
+            <h4>Superyachts</h4>
+            <span class="te-asset-card-sub">The 1% Division</span>
+            <p>Tokenized superyacht shares with charter income and appreciation potential.</p>
+            <div class="te-asset-meta">From $25,000 &middot; 10-15% Target Yield</div>
+          </div>
+          <div class="te-asset-card reveal reveal-delay-2">
+            <span class="te-asset-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="2" width="16" height="20"/><path d="M9 22V12h6v10M8 6h2M14 6h2M8 10h2M14 10h2"/></svg></span>
+            <h4>Luxury Real Estate</h4>
+            <span class="te-asset-card-sub">H&amp;L Division</span>
+            <p>Fractional ownership of premium properties with rental yield distribution.</p>
+            <div class="te-asset-meta">From $5,000 &middot; 6-10% Target Yield</div>
+          </div>
+          <div class="te-asset-card reveal reveal-delay-3">
+            <span class="te-asset-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l10 10-10 10L2 12 12 2z"/></svg></span>
+            <h4>Blue-Chip Art</h4>
+            <span class="te-asset-card-sub">The 1% Division</span>
+            <p>Tokenized ownership of museum-quality art with appreciation-driven returns.</p>
+            <div class="te-asset-meta">From $1,000 &middot; Variable Yield</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ BLOCKCHAIN VISUAL ═══ -->
+    <section class="te-blockchain">
+      <div class="container">
+        <div class="te-blockchain-inner reveal">
+          <div class="te-blockchain-block">
+            <span>Block #001</span>
+            <div class="te-blockchain-block-hash">0x7a3f...e92c</div>
+          </div>
+          <div class="te-blockchain-connector"></div>
+          <div class="te-blockchain-block">
+            <span>Block #002</span>
+            <div class="te-blockchain-block-hash">0x4b1d...f83a</div>
+          </div>
+          <div class="te-blockchain-connector"></div>
+          <div class="te-blockchain-block">
+            <span>Block #003</span>
+            <div class="te-blockchain-block-hash">0x9c2e...a71b</div>
+          </div>
+          <div class="te-blockchain-connector"></div>
+          <div class="te-blockchain-block">
+            <span>Block #004</span>
+            <div class="te-blockchain-block-hash">0x5f8a...d46e</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ PLATFORM FEATURES ═══ -->
+    <section class="te-features">
+      <div class="container">
+        <div class="te-features-header reveal">
+          <div class="eyebrow">Platform Features</div>
+          <h2>Built for <em>Trust</em></h2>
+        </div>
+        <div class="te-features-grid">
+          <div class="te-feature-card reveal">
+            <div class="te-feature-num">01</div>
+            <h4>Fractional Ownership</h4>
+            <p>Own a fraction of premium assets starting from $1,000. Real ownership, real returns, real liquidity &mdash; without the barriers of traditional acquisition.</p>
+          </div>
+          <div class="te-feature-card reveal reveal-delay-1">
+            <div class="te-feature-num">02</div>
+            <h4>Blockchain Security</h4>
+            <p>Every token is secured on blockchain, providing immutable proof of ownership, transparent transaction history, and tamper-proof asset records.</p>
+          </div>
+          <div class="te-feature-card reveal reveal-delay-2">
+            <div class="te-feature-num">03</div>
+            <h4>Global Liquidity</h4>
+            <p>Trade your tokens on secondary markets. Unlike traditional alternative investments, Token-El assets are designed for liquidity from day one.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ REGISTER INTEREST ═══ -->
+    <section class="te-register" id="register">
+      <div class="container">
+        <div class="te-register-grid">
+          <div class="te-register-text reveal">
+            <div class="eyebrow">Register Interest</div>
+            <h2>Be the First to <em>Access</em> Token-El</h2>
+            <p>Token-El is currently in development. Register your interest below to receive priority access when we launch, exclusive early-bird investment opportunities, and platform updates.</p>
+            <p>Early registrants will be offered priority allocation on launch assets and access to our founding investor program.</p>
+          </div>
+          <div class="reveal reveal-delay-2">
+            <form class="te-register-form" data-ajax action="https://el-globalbusiness.com/token-el-register-handler.php" method="POST">
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="name">Full Name *</label>
+                  <input class="form-input" type="text" id="name" name="name" placeholder="Your full name" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="email">Email Address *</label>
+                  <input class="form-input" type="email" id="email" name="email" placeholder="you@example.com" required>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="phone">Phone Number</label>
+                  <input class="form-input" type="tel" id="phone" name="phone" placeholder="+1 (555) 000-0000">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="asset-interest">Asset Interest</label>
+                  <select class="form-select" id="asset-interest" name="asset_interest">
+                    <option value="" disabled selected>Which assets interest you?</option>
+                    <option value="aviation">Private Aviation</option>
+                    <option value="yachts">Superyachts</option>
+                    <option value="real-estate">Luxury Real Estate</option>
+                    <option value="art">Blue-Chip Art</option>
+                    <option value="multiple">Multiple Asset Classes</option>
+                    <option value="all">All Asset Classes</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="invest-budget">Investment Budget</label>
+                  <select class="form-select" id="invest-budget" name="investment_budget">
+                    <option value="" disabled selected>Anticipated investment</option>
+                    <option value="1k-10k">$1,000 - $10,000</option>
+                    <option value="10k-50k">$10,000 - $50,000</option>
+                    <option value="50k-100k">$50,000 - $100,000</option>
+                    <option value="100k-500k">$100,000 - $500,000</option>
+                    <option value="500k-plus">$500,000+</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="experience">Investment Experience</label>
+                  <select class="form-select" id="experience" name="experience">
+                    <option value="" disabled selected>Your experience level</option>
+                    <option value="beginner">New to Alternative Investments</option>
+                    <option value="intermediate">Some Experience</option>
+                    <option value="experienced">Experienced Investor</option>
+                    <option value="professional">Professional/Institutional</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="interest-desc">Tell Us More</label>
+                <textarea class="form-textarea" id="interest-desc" name="interest_description" placeholder="What excites you about asset tokenization? Any specific questions or requirements..."></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary btn-lg">Register Interest</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <script src="../js/components.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+
+<!-- Mirrored from https://el-globalbusiness.com/token-el/ by HTTrack Website Copier/3.x [XR&CO], Wed, 07 Oct 2026 11:06:18 GMT -->
+</html>

@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from https://el-globalbusiness.com/hl/real-estate.html by HTTrack Website Copier/3.x [XR&CO], Wed, 07 Oct 2026 11:06:22 GMT -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luxury Real Estate — H&L | El-Global Business</title>
+  <meta name="description" content="Ultra-premium residential and commercial property investment advisory. Penthouses, villas, prime commercial, and off-market opportunities across the world's most desirable markets.">
+
+  <meta property="og:title" content="Luxury Real Estate — H&L | El-Global Business">
+  <meta property="og:description" content="Ultra-premium property investment advisory across global luxury markets.">
+  <meta property="og:type" content="website">
+
+  <link rel="stylesheet" href="../css/style.css">
+
+  <style>
+    /* ═══ HERO ═══ */
+    .lre-hero {
+      position: relative; height: 60vh; max-height: 60vh;
+      display: flex; align-items: flex-end; overflow: hidden;
+    }
+
+    .lre-hero-bg { position: absolute; inset: 0; }
+
+    .lre-hero-bg img {
+      width: 100%; height: 100%; object-fit: cover;
+      object-position: center 50%;
+      filter: brightness(0.2) saturate(0.7);
+    }
+
+    .lre-hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.25) 40%, rgba(0,0,0,0.92) 100%);
+    }
+
+    .lre-hero-content {
+      position: relative; z-index: 2;
+      padding: calc(var(--nav-height) + 40px) 0 56px; max-width: 700px;
+    }
+
+    .lre-hero .eyebrow { margin-bottom: 20px; }
+
+    .lre-hero h1 {
+      font-size: clamp(36px, 5vw, 64px);
+      font-weight: 300; margin-bottom: 16px; line-height: 1.1;
+    }
+
+    .lre-hero-desc {
+      font-family: var(--font-subheading);
+      font-size: clamp(16px, 2vw, 20px);
+      font-weight: 300; font-style: italic;
+      color: var(--text-secondary); line-height: 1.65; max-width: 540px;
+    }
+
+    @media (max-width: 768px) {
+      .lre-hero { height: 50vh; }
+      .lre-hero-content { padding: calc(var(--nav-height) + 20px) 0 40px; }
+    }
+
+    /* ═══ OVERVIEW ═══ */
+    .lre-overview { padding: 120px 0; }
+
+    .lre-overview-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: center;
+    }
+
+    .lre-overview-text .eyebrow { margin-bottom: 20px; }
+
+    .lre-overview-text h2 {
+      font-size: clamp(30px, 3.5vw, 48px);
+      font-weight: 300; margin-bottom: 24px; line-height: 1.15;
+    }
+
+    .lre-overview-text p {
+      font-size: 15px; color: var(--text-muted);
+      line-height: 1.85; margin-bottom: 20px;
+    }
+
+    .lre-overview-image {
+      position: relative; overflow: hidden; aspect-ratio: 4 / 5;
+    }
+
+    .lre-overview-image img {
+      width: 100%; height: 100%; object-fit: cover;
+      filter: brightness(0.85) saturate(0.9);
+      transition: transform 0.6s var(--ease);
+    }
+
+    .lre-overview-image:hover img { transform: scale(1.04); }
+
+    .lre-overview-image::after {
+      content: ''; position: absolute;
+      bottom: 0; left: 0; right: 0; height: 3px;
+      background: var(--gradient-signature);
+    }
+
+    @media (max-width: 1024px) {
+      .lre-overview-grid { grid-template-columns: 1fr; gap: 48px; }
+      .lre-overview-image { max-width: 480px; aspect-ratio: 16/10; }
+      .lre-overview { padding: 88px 0; }
+    }
+
+    @media (max-width: 768px) { .lre-overview { padding: 64px 0; } }
+
+    /* ═══ KEY FEATURES ═══ */
+    .lre-features {
+      padding: 120px 0; border-top: 1px solid var(--border);
+      position: relative; overflow: hidden;
+    }
+
+    .lre-features::before {
+      content: ''; position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 40% 50% at 80% 20%, rgba(201,168,76,0.025) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 50% at 10% 80%, rgba(201,168,76,0.02) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .lre-features-header {
+      text-align: center; margin-bottom: 64px;
+      position: relative; z-index: 1;
+    }
+
+    .lre-features-header .eyebrow {
+      justify-content: center; margin-bottom: 20px;
+    }
+
+    .lre-features-header .eyebrow::after {
+      content: ''; width: 40px; height: 1px;
+      background: var(--gradient-signature);
+    }
+
+    .lre-features-header p {
+      font-size: 15px; color: var(--text-muted);
+      max-width: 520px; margin: 16px auto 0; line-height: 1.8;
+    }
+
+    .lre-features-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 0; border: 1px solid var(--border);
+      position: relative; z-index: 1;
+    }
+
+    .lre-features-card {
+      padding: 40px 28px; border-right: 1px solid var(--border);
+      transition: all 0.4s var(--ease); position: relative;
+    }
+
+    .lre-features-card:last-child { border-right: none; }
+
+    .lre-features-card::after {
+      content: ''; position: absolute;
+      top: 0; left: 0; right: 0; height: 2px;
+      background: var(--gradient-signature);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 0.5s var(--ease);
+    }
+
+    .lre-features-card:hover { background: var(--surface-hover); }
+    .lre-features-card:hover::after { transform: scaleX(1); }
+
+    .lre-features-num {
+      font-family: var(--font-heading); font-size: 40px; font-weight: 300;
+      background: var(--gradient-signature);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text; opacity: 0.12; line-height: 1; margin-bottom: 20px;
+    }
+
+    .lre-features-dash {
+      width: 28px; height: 2px;
+      background: var(--gradient-signature); margin-bottom: 16px;
+      transition: width 0.4s var(--ease);
+    }
+
+    .lre-features-card:hover .lre-features-dash { width: 48px; }
+
+    .lre-features-card h4 {
+      font-family: var(--font-heading); font-size: 20px;
+      font-weight: 400; margin-bottom: 10px;
+    }
+
+    .lre-features-card p { font-size: 13px; color: var(--text-muted); line-height: 1.75; }
+
+    @media (max-width: 1024px) {
+      .lre-features-grid { grid-template-columns: repeat(2, 1fr); }
+      .lre-features-card:nth-child(2) { border-right: none; }
+      .lre-features-card:nth-child(3),
+      .lre-features-card:nth-child(4) { border-top: 1px solid var(--border); }
+      .lre-features { padding: 88px 0; }
+    }
+
+    @media (max-width: 768px) {
+      .lre-features-grid { grid-template-columns: 1fr; }
+      .lre-features-card { border-right: none; border-bottom: 1px solid var(--border); }
+      .lre-features-card:last-child { border-bottom: none; }
+      .lre-features { padding: 64px 0; }
+    }
+
+    /* ═══ PROCESS ═══ */
+    .lre-process {
+      padding: 120px 0; border-top: 1px solid var(--border);
+      background: var(--charcoal);
+    }
+
+    .lre-process-header {
+      text-align: center; margin-bottom: 64px;
+    }
+
+    .lre-process-header .eyebrow {
+      justify-content: center; margin-bottom: 20px;
+    }
+
+    .lre-process-header .eyebrow::after {
+      content: ''; width: 40px; height: 1px;
+      background: var(--gradient-signature);
+    }
+
+    .lre-process-header p {
+      font-size: 15px; color: var(--text-muted);
+      max-width: 480px; margin: 16px auto 0; line-height: 1.8;
+    }
+
+    .lre-process-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 0; border: 1px solid var(--border); counter-reset: step;
+    }
+
+    .lre-process-card {
+      padding: 40px 28px; border-right: 1px solid var(--border);
+      counter-increment: step; background: var(--black);
+      transition: all 0.4s var(--ease);
+    }
+
+    .lre-process-card:last-child { border-right: none; }
+    .lre-process-card:hover { background: var(--surface-hover); }
+
+    .lre-process-card::before {
+      content: counter(step, decimal-leading-zero);
+      font-family: var(--font-heading); font-size: 52px; font-weight: 300;
+      background: var(--gradient-signature);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text; display: block; margin-bottom: 24px; line-height: 1;
+    }
+
+    .lre-process-dash {
+      width: 28px; height: 2px;
+      background: var(--gradient-signature); margin-bottom: 16px;
+      transition: width 0.4s var(--ease);
+    }
+
+    .lre-process-card:hover .lre-process-dash { width: 48px; }
+
+    .lre-process-card h4 {
+      font-family: var(--font-heading); font-size: 20px;
+      font-weight: 400; margin-bottom: 10px;
+    }
+
+    .lre-process-card p { font-size: 13px; color: var(--text-muted); line-height: 1.75; }
+
+    @media (max-width: 1024px) {
+      .lre-process-grid { grid-template-columns: repeat(2, 1fr); }
+      .lre-process-card:nth-child(2) { border-right: none; }
+      .lre-process-card:nth-child(3),
+      .lre-process-card:nth-child(4) { border-top: 1px solid var(--border); }
+      .lre-process { padding: 88px 0; }
+    }
+
+    @media (max-width: 768px) {
+      .lre-process-grid { grid-template-columns: 1fr; }
+      .lre-process-card { border-right: none; border-bottom: 1px solid var(--border); }
+      .lre-process-card:last-child { border-bottom: none; }
+      .lre-process { padding: 64px 0; }
+    }
+
+    /* ═══ CTA ═══ */
+    .lre-cta {
+      padding: 100px 0; text-align: center; position: relative;
+    }
+
+    .lre-cta::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 50% 60% at 50% 50%, rgba(201,168,76,0.03) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .lre-cta .eyebrow { justify-content: center; margin-bottom: 20px; }
+
+    .lre-cta .eyebrow::after {
+      content: ''; width: 40px; height: 1px;
+      background: var(--gradient-signature);
+    }
+
+    .lre-cta h2 { font-size: clamp(30px, 4vw, 48px); font-weight: 300; margin-bottom: 16px; }
+
+    .lre-cta p {
+      font-size: 15px; color: var(--text-muted);
+      max-width: 480px; margin: 0 auto 40px; line-height: 1.8;
+    }
+
+    .lre-cta .btn-row { justify-content: center; }
+
+    @media (max-width: 768px) { .lre-cta { padding: 64px 0; } }
+  </style>
+</head>
+<body>
+
+  <main>
+
+    <!-- ═══ HERO ═══ -->
+    <section class="lre-hero">
+      <div class="lre-hero-bg">
+        <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=1920&amp;q=80&amp;auto=format&amp;fit=crop"
+             alt="Ultra-luxury penthouse suite with marble interiors, designer furnishings and sweeping ocean views"
+             loading="eager">
+      </div>
+      <div class="lre-hero-overlay"></div>
+      <div class="lre-hero-content container">
+        <div class="eyebrow fade-up">H&L &middot; Real Estate</div>
+        <h1 class="fade-up fade-up-d1">Luxury <em>Real Estate</em></h1>
+        <p class="lre-hero-desc fade-up fade-up-d2">
+          Ultra-premium residential and commercial property investment
+          advisory across the world's most coveted markets. Off-market
+          access, cross-border structuring, and portfolio integration.
+        </p>
+      </div>
+    </section>
+
+    <!-- ═══ OVERVIEW ═══ -->
+    <section class="lre-overview">
+      <div class="container">
+        <div class="lre-overview-grid">
+
+          <div class="lre-overview-text reveal">
+            <div class="eyebrow">The Service</div>
+            <h2>Property Investment at the <em>Highest</em> Level</h2>
+            <p>
+              Luxury real estate is more than a transaction. At the ultra-premium
+              level, property investment demands access to opportunities that never
+              reach the open market, expertise in cross-border ownership structures,
+              and the ability to evaluate assets not just for their current value
+              but for their strategic role within a diversified portfolio.
+            </p>
+            <p>
+              H&L's luxury real estate advisory serves investors seeking penthouses
+              in global financial capitals, waterfront villas in the Mediterranean,
+              prime commercial assets in emerging luxury corridors, and off-market
+              opportunities that are available only through established relationships
+              and discreet networks.
+            </p>
+            <p>
+              We do not sell properties. We advise on how to find them, evaluate them,
+              structure acquisitions across jurisdictions, and integrate them into a
+              broader wealth strategy for long-term appreciation and portfolio balance.
+            </p>
+            <a href="enquiry.html" class="btn btn-ghost">Enquire About Real Estate</a>
+          </div>
+
+          <div class="lre-overview-image reveal reveal-delay-2">
+            <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&amp;q=80&amp;auto=format&amp;fit=crop"
+                 alt="Exclusive beachfront luxury resort villa with private infinity pool and tropical garden"
+                 loading="lazy">
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ KEY FEATURES ═══ -->
+    <section class="lre-features">
+      <div class="container">
+
+        <div class="lre-features-header reveal">
+          <div class="eyebrow">Key Features</div>
+          <h2>What Defines Our Real Estate <em>Advisory</em></h2>
+          <p>Four capabilities that separate our property advisory from conventional real estate services.</p>
+        </div>
+
+        <div class="lre-features-grid">
+          <div class="lre-features-card reveal">
+            <div class="lre-features-num">01</div>
+            <div class="lre-features-dash"></div>
+            <h4>Off-Market Access</h4>
+            <p>Our global network of developers, family offices, and private sellers provides access to properties that never appear on public listings. Discreet transactions at valuations unavailable through conventional channels.</p>
+          </div>
+          <div class="lre-features-card reveal reveal-delay-1">
+            <div class="lre-features-num">02</div>
+            <div class="lre-features-dash"></div>
+            <h4>Cross-Border Structuring</h4>
+            <p>Expert advisory on multi-jurisdictional ownership structures, tax-efficient holding vehicles, and regulatory compliance across international property acquisitions from the USA to Dubai and beyond.</p>
+          </div>
+          <div class="lre-features-card reveal reveal-delay-2">
+            <div class="lre-features-num">03</div>
+            <div class="lre-features-dash"></div>
+            <h4>Valuation Advisory</h4>
+            <p>Independent property valuation combining comparable market analysis, replacement cost assessment, and income potential modeling. Every asset is benchmarked against current and projected market conditions.</p>
+          </div>
+          <div class="lre-features-card reveal reveal-delay-3">
+            <div class="lre-features-num">04</div>
+            <div class="lre-features-dash"></div>
+            <h4>Portfolio Integration</h4>
+            <p>Every property acquisition is evaluated in context of your total portfolio. We advise on how each asset contributes to diversification, yield generation, currency exposure, and long-term wealth preservation.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══ PROCESS ═══ -->
+    <section class="lre-process">
+      <div class="container">
+
+        <div class="lre-process-header reveal">
+          <div class="eyebrow">How It Works</div>
+          <h2>Our <em>Process</em></h2>
+          <p>A structured approach from initial brief through to transaction completion and beyond.</p>
+        </div>
+
+        <div class="lre-process-grid">
+          <div class="lre-process-card reveal">
+            <div class="lre-process-dash"></div>
+            <h4>Client Brief</h4>
+            <p>We begin with a confidential consultation to understand your investment objectives, preferred markets, property types, budget parameters, and how real estate fits within your broader portfolio strategy.</p>
+          </div>
+          <div class="lre-process-card reveal reveal-delay-1">
+            <div class="lre-process-dash"></div>
+            <h4>Property Sourcing</h4>
+            <p>Our global network activates to identify matching opportunities, including off-market properties, pre-launch developments, and exclusive listings. Each opportunity is pre-screened against your criteria.</p>
+          </div>
+          <div class="lre-process-card reveal reveal-delay-2">
+            <div class="lre-process-dash"></div>
+            <h4>Due Diligence</h4>
+            <p>Comprehensive analysis covering legal title verification, physical inspection coordination, market valuation, regulatory review, and financial modeling to ensure complete transparency before commitment.</p>
+          </div>
+          <div class="lre-process-card reveal reveal-delay-3">
+            <div class="lre-process-dash"></div>
+            <h4>Transaction Closing</h4>
+            <p>Full transaction management from negotiation through legal structuring, contract execution, fund transfer coordination, and post-completion handover. We remain engaged through the entire lifecycle.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══ CTA ═══ -->
+    <section class="lre-cta">
+      <div class="container reveal">
+        <div class="eyebrow">Get Started</div>
+        <h2>Ready to Invest in <em>Luxury</em> Property?</h2>
+        <p>Connect with our real estate advisory team to explore ultra-premium property opportunities across global markets.</p>
+        <div class="btn-row">
+          <a href="enquiry.html" class="btn btn-primary btn-lg">Property Enquiry</a>
+          <a href="../contact.html" class="btn btn-outline btn-lg">Book a Consultation</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="../js/components.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+
+<!-- Mirrored from https://el-globalbusiness.com/hl/real-estate.html by HTTrack Website Copier/3.x [XR&CO], Wed, 07 Oct 2026 11:06:22 GMT -->
+</html>

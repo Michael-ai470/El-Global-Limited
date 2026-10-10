@@ -1,0 +1,2671 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from https://el-globalbusiness.com/ by HTTrack Website Copier/3.x [XR&CO], Wed, 07 Oct 2026 11:06:10 GMT -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>El-Global Business — Welcome to the 1%</title>
+  <meta name="description" content="El-Global Business is a multidisciplinary portfolio management and investment advisory firm. Strategic asset acquisition, optimization, and digital transformation across aviation, real estate, and alternative investments.">
+  <meta name="keywords" content="portfolio management, investment advisory, private aviation, luxury real estate, M&A advisory, asset tokenization, UHNWI">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="El-Global Business — Welcome to the 1%">
+  <meta property="og:description" content="Multidisciplinary portfolio management and investment advisory firm specializing in strategic asset acquisition and optimization.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="index.html">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    /* ═══ HERO — Homepage Specific ═══ */
+    .hero-home {
+      min-height: auto;
+      height: 95vh;
+      max-height: 95vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .hero-home .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .hero-home .hero-bg img,
+    .hero-home .hero-bg video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+      filter: brightness(0.35) saturate(0.8);
+      transform: scale(1.05);
+      animation: heroZoom 20s ease-in-out infinite alternate;
+    }
+
+    .hero-home .hero-bg video {
+      position: absolute;
+      inset: 0;
+    }
+
+    /* Hide fallback image when video is playing */
+    .hero-home .hero-bg video.is-playing + img {
+      display: none;
+    }
+
+    @keyframes heroZoom {
+      0% { transform: scale(1.05); }
+      100% { transform: scale(1.12); }
+    }
+
+    .hero-home .hero-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background:
+        linear-gradient(180deg,
+          rgba(0,0,0,0.65) 0%,
+          rgba(0,0,0,0.3) 30%,
+          rgba(0,0,0,0.3) 60%,
+          rgba(0,0,0,0.85) 100%
+        );
+    }
+
+    .hero-home .hero-gradient-accent {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background:
+        radial-gradient(ellipse 50% 40% at 15% 85%, rgba(201,168,76,0.08) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 85% 20%, rgba(201,168,76,0.05) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-home .hero-grid-pattern {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background-image:
+        linear-gradient(rgba(201,168,76,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201,168,76,0.03) 1px, transparent 1px);
+      background-size: 80px 80px;
+      mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, rgba(0,0,0,0.6) 20%, transparent 80%);
+      -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, rgba(0,0,0,0.6) 20%, transparent 80%);
+      pointer-events: none;
+    }
+
+    .hero-home .hero-content {
+      position: relative;
+      z-index: 3;
+      max-width: 940px;
+      padding: calc(var(--nav-height) + 60px) 48px 100px;
+    }
+
+    /* Tagline decorative line */
+    .hero-tagline {
+      font-family: var(--font-accent);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .hero-tagline::before,
+    .hero-tagline::after {
+      content: '';
+      width: 50px;
+      height: 1px;
+      background: var(--gradient-signature);
+    }
+
+    .hero-home h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(48px, 7vw, 96px);
+      font-weight: 300;
+      line-height: 1.05;
+      margin-bottom: 28px;
+      letter-spacing: -0.01em;
+    }
+
+    .hero-home h1 .line-2 {
+      display: block;
+    }
+
+    .hero-home .hero-subtitle {
+      font-family: var(--font-subheading);
+      font-size: clamp(17px, 2vw, 22px);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--text-secondary);
+      max-width: 620px;
+      margin: 0 auto 44px;
+      line-height: 1.65;
+      letter-spacing: 0.01em;
+    }
+
+    /* Division pills row */
+    .hero-divisions {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 48px;
+    }
+
+    .hero-division-pill {
+      font-family: var(--font-accent);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      border: 1px solid var(--border-mid);
+      padding: 9px 22px;
+      border-radius: 100px;
+      transition: all var(--transition);
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .hero-division-pill:hover {
+      color: var(--white);
+      border-color: var(--orange);
+      background: rgba(224, 120, 48, 0.08);
+      transform: translateY(-2px);
+    }
+
+    /* Bottom edge gradient */
+    .hero-home .hero-bottom-fade {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 200px;
+      z-index: 2;
+      background: linear-gradient(transparent, var(--black));
+      pointer-events: none;
+    }
+
+    /* Floating stats bar overlaying hero bottom */
+    .hero-stats {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 4;
+      width: 100%;
+      max-width: var(--container-width);
+      padding: 0 48px;
+    }
+
+    .hero-stats-inner {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      background: rgba(0, 0, 0, 0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--border);
+      border-bottom: none;
+    }
+
+    .hero-stat {
+      padding: 28px 24px;
+      text-align: center;
+      border-right: 1px solid var(--border);
+      transition: background var(--transition);
+    }
+
+    .hero-stat:last-child { border-right: none; }
+
+    .hero-stat:hover {
+      background: rgba(201, 168, 76, 0.03);
+    }
+
+    .hero-stat-number {
+      font-family: var(--font-heading);
+      font-size: clamp(28px, 3vw, 40px);
+      font-weight: 300;
+      background: var(--gradient-signature);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: block;
+      line-height: 1.1;
+      margin-bottom: 6px;
+    }
+
+    .hero-stat-label {
+      font-family: var(--font-accent);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+    }
+
+    @media (max-width: 1024px) {
+      .hero-stats-inner { grid-template-columns: repeat(2, 1fr); }
+      .hero-stat:nth-child(2) { border-right: none; }
+    }
+
+    @media (max-width: 768px) {
+      .hero-home .hero-content { padding: calc(var(--nav-height) + 40px) 20px 160px; }
+      .hero-tagline { font-size: 11px; letter-spacing: 0.25em; }
+      .hero-tagline::before,
+      .hero-tagline::after { width: 30px; }
+      .hero-divisions { gap: 8px; }
+      .hero-division-pill { font-size: 9px; padding: 7px 16px; }
+      .hero-stats { padding: 0 20px; }
+      .hero-stats-inner { grid-template-columns: repeat(2, 1fr); }
+      .hero-stat { padding: 20px 16px; }
+      .hero-stat:nth-child(2) { border-right: none; }
+      .hero-stat-number { font-size: 24px; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-stats { padding: 0 16px; }
+      .hero-stat { padding: 16px 12px; }
+    }
+
+    /* ═══ PHASE 3: ABOUT / INTRODUCTION ═══ */
+
+    .intro-section {
+      padding: 140px 0 0;
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .intro-text .eyebrow {
+      margin-bottom: 20px;
+    }
+
+    .intro-text h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 400;
+      line-height: 1.12;
+      margin-bottom: 28px;
+    }
+
+    .intro-text .lead {
+      font-family: var(--font-subheading);
+      font-size: 20px;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    .intro-text p {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.85;
+      margin-bottom: 20px;
+    }
+
+    .intro-text .btn {
+      margin-top: 12px;
+    }
+
+    /* Image side with overlapping accent */
+    .intro-image {
+      position: relative;
+    }
+
+    .intro-image-main {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 4 / 5;
+    }
+
+    .intro-image-main img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.85) saturate(0.9);
+      transition: transform var(--transition-slow);
+    }
+
+    .intro-image-main:hover img {
+      transform: scale(1.04);
+    }
+
+    .intro-image-accent {
+      position: absolute;
+      bottom: -32px;
+      right: -32px;
+      width: 200px;
+      height: 200px;
+      border: 1px solid var(--border-mid);
+      background: var(--charcoal);
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      z-index: 2;
+    }
+
+    .intro-image-accent .accent-number {
+      font-family: var(--font-heading);
+      font-size: 48px;
+      font-weight: 300;
+      background: var(--gradient-signature);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .intro-image-accent .accent-label {
+      font-family: var(--font-accent);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    /* Decorative gradient line on the image */
+    .intro-image-main::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--gradient-signature);
+    }
+
+    /* Mission statement band */
+    .mission-band {
+      margin-top: 120px;
+      padding: 80px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: var(--charcoal);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .mission-band::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 50% 80% at 0% 50%, rgba(201,168,76,0.04) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 80% at 100% 50%, rgba(201,168,76,0.03) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .mission-inner {
+      max-width: 880px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .mission-inner .eyebrow {
+      justify-content: center;
+      margin-bottom: 28px;
+    }
+
+    .mission-inner .eyebrow::after {
+      content: '';
+      width: 40px;
+      height: 1px;
+      background: var(--gradient-signature);
+    }
+
+    .mission-quote {
+      font-family: var(--font-subheading);
+      font-size: clamp(22px, 3vw, 34px);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--text-primary);
+      line-height: 1.5;
+      margin-bottom: 28px;
+    }
+
+    .mission-quote span {
+      background: var(--gradient-signature);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .mission-attribution {
+      font-family: var(--font-accent);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+    }
+
+    /* Core activities row beneath mission */
+    .activities-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .activity-item {
+      padding: 48px 40px;
+      border-right: 1px solid var(--border);
+      transition: background var(--transition);
+    }
+
+    .activity-item:last-child { border-right: none; }
+
+    .activity-item:hover {
+      background: rgba(224, 120, 48, 0.03);
+    }
+
+    .activity-icon {
+      font-size: 28px;
+      margin-bottom: 20px;
+      display: block;
+      filter: grayscale(0.3);
+    }
+
+    .activity-item h4 {
+      font-family: var(--font-heading);
+      font-size: 20px;
+      font-weight: 400;
+      margin-bottom: 10px;
+      color: var(--text-primary);
+    }
+
+    .activity-item p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.75;
+    }
+
+    @media (max-width: 1024px) {
+      .intro-grid { grid-template-columns: 1fr; gap: 48px; }
+      .intro-image { max-width: 500px; }
+      .mission-band { margin-top: 80px; padding: 60px 0; }
+      .activities-row { grid-template-columns: 1fr 1fr; }
+      .activity-item:nth-child(2) { border-right: none; }
+      .activity-item:last-child { grid-column: span 2; border-top: 1px solid var(--border); }
+    }
+
+    @media (max-width: 768px) {
+      .intro-section { padding: 100px 0 0; }
+      .intro-image-accent { width: 160px; height: 160px; bottom: -20px; right: -12px; padding: 20px; }
+      .intro-image-accent .accent-number { font-size: 36px; }
+      .mission-band { margin-top: 60px; padding: 48px 0; }
+      .activities-row { grid-template-columns: 1fr; }
+      .activity-item { border-right: none; border-bottom: 1px solid var(--border); }
+      .activity-item:last-child { grid-column: span 1; border-top: none; }
+    }
+
+    /* ═══ PHASE 4: THE 5 DIVISIONS ═══ */
+
+    .divisions-section {
+      padding: 140px 0 120px;
+    }
+
+    .divisions-section .section-header-flex {
+      margin-bottom: 56px;
+    }
+
+    .divisions-section .section-header-flex .section-meta {
+      text-align: right;
+    }
+
+    .section-meta {
+      font-family: var(--font-accent);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      line-height: 1.8;
+    }
+
+    /* Top row: 2 large cards */
+    .divisions-top {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 24px;
+    }
+
+    /* Bottom row: 3 cards */
+    .divisions-bottom {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 24px;
+    }
+
+    /* Division card */
+    .division-card {
+      position: relative;
+      overflow: hidden;
+      background: var(--charcoal);
+      border: 1px solid var(--border);
+      transition: all 0.4s var(--ease);
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
+    }
+
+    .division-card:hover {
+      border-color: var(--border-bright);
+      transform: translateY(-6px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.5), 0 0 40px rgba(201,168,76,0.06);
+    }
+
+    /* Card image */
+    .division-card-image {
+      position: relative;
+      aspect-ratio: 16 / 10;
+      overflow: hidden;
+    }
+
+    .division-card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.7) saturate(0.85);
+      transition: all 0.6s var(--ease);
+    }
+
+    .division-card:hover .division-card-image img {
+      transform: scale(1.08);
+      filter: brightness(0.8) saturate(1);
+    }
+
+    /* Gradient overlay on image */
+    .division-card-image::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        180deg,
+        rgba(0,0,0,0.1) 0%,
+        rgba(0,0,0,0.15) 50%,
+        rgba(26,26,26,0.95) 100%
+      );
+      transition: opacity var(--transition);
+    }
+
+    /* Badge */
+    .division-card-badge {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      z-index: 2;
+      font-family: var(--font-accent);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      background: var(--gradient-signature);
+      color: var(--black);
+      padding: 6px 16px;
+    }
+
+    .division-card-badge.badge-soon {
+      background: var(--gray);
+      color: var(--text-secondary);
+      border: 1px solid var(--border-mid);
+    }
+
+    /* Stats overlay on image bottom */
+    .division-card-overlay-stats {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 2;
+      display: flex;
+      gap: 0;
+      padding: 0;
+    }
+
+    .overlay-stat {
+      flex: 1;
+      padding: 10px 14px;
+      text-align: center;
+      background: rgba(0,0,0,0.55);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-right: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .overlay-stat:last-child { border-right: none; }
+
+    .overlay-stat-value {
+      font-family: var(--font-heading);
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--gold);
+      display: block;
+      line-height: 1.2;
+    }
+
+    .overlay-stat-label {
+      font-family: var(--font-accent);
+      font-size: 9px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+    }
+
+    /* Card content */
+    .division-card-content {
+      padding: 28px 28px 32px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .division-card-eyebrow {
+      font-family: var(--font-accent);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 10px;
+    }
+
+    .division-card-content h3 {
+      font-family: var(--font-heading);
+      font-size: 24px;
+      font-weight: 400;
+      margin-bottom: 12px;
+      line-height: 1.2;
+      color: var(--text-primary);
+    }
+
+    .division-card-content p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.75;
+      margin-bottom: 20px;
+      flex: 1;
+    }
+
+    /* Services tags within card */
+    .division-card-tags {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    .division-card-tag {
+      font-family: var(--font-accent);
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      border: 1px solid var(--border);
+      padding: 4px 12px;
+      border-radius: 100px;
+      transition: all var(--transition);
+    }
+
+    .division-card:hover .division-card-tag {
+      border-color: var(--border-mid);
+      color: var(--text-muted);
+    }
+
+    /* Card CTA link */
+    .division-card-link {
+      font-family: var(--font-accent);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      background: var(--gradient-signature);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: opacity var(--transition);
+    }
+
+    .division-card-link::after {
+      content: '\2192';
+      transition: transform var(--transition);
+    }
+
+    .division-card:hover .division-card-link::after {
+      transform: translateX(4px);
+    }
+
+    @media (max-width: 1024px) {
+      .divisions-top { grid-template-columns: 1fr; }
+      .divisions-bottom { grid-template-columns: 1fr 1fr; }
+      .divisions-section { padding: 100px 0 80px; }
+    }
+
+    @media (max-width: 768px) {
+      .divisions-top,
+      .divisions-bottom { grid-template-columns: 1fr; }
+      .divisions-section { padding: 80px 0 60px; }
+      .division-card-content { padding: 22px 22px 26px; }
+      .section-header-flex { flex-direction: column; align-items: flex-start; gap: 12px; }
+      .divisions-section .section-header-flex .section-meta { text-align: left; }
+    }
+
+    /* ═══ PHASE 5: WHY EL-GLOBAL — BENTO GRID ═══ */
+
+    .why-section {
+      padding: 140px 0;
+      position: relative;
+    }
+
+    .why-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .why-header .eyebrow {
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .why-header .eyebrow::after {
+      content: '';
+      width: 40px;
+      height: 1px;
+      background: var(--gradient-signature);
+    }
+
+    .why-header h2 { margin-bottom: 16px; }
+
+    .why-header p {
+      font-size: 15px;
+      color: var(--text-muted);
+      max-width: 540px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
+
+    /* Bento Grid — 3 columns, asymmetric */
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: auto auto;
+      gap: 16px;
+      grid-template-areas:
+        "a a b"
+        "c d e";
+    }
+
+    .bento-item { position: relative; overflow: hidden; border: 1px solid var(--border); transition: all 0.4s var(--ease); }
+    .bento-item:hover { border-color: var(--border-mid); }
+
+    /* Gradient top line on hover */
+    .bento-item::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--gradient-signature);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.5s var(--ease);
+      z-index: 3;
+    }
+    .bento-item:hover::after { transform: scaleX(1); }
+
+    .bento-a { grid-area: a; }
+    .bento-b { grid-area: b; }
+    .bento-c { grid-area: c; }
+    .bento-d { grid-area: d; }
+    .bento-e { grid-area: e; }
+
+    /* ── Featured card (large, with image) ── */
+    .bento-featured {
+      min-height: 340px;
+      display: flex;
+      align-items: flex-end;
+    }
+
+    .bento-featured-bg {
+      position: absolute;
+      inset: 0;
+    }
+
+    .bento-featured-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.3) saturate(0.7);
+      transition: all 0.6s var(--ease);
+    }
+
+    .bento-featured:hover .bento-featured-bg img {
+      filter: brightness(0.4) saturate(0.85);
+      transform: scale(1.04);
+    }
+
+    .bento-featured-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.85) 100%);
+    }
+
+    .bento-featured-content {
+      position: relative;
+      z-index: 2;
+      padding: 40px;
+    }
+
+    .bento-featured-number {
+      font-family: var(--font-heading);
+      font-size: 64px;
+      font-weight: 300;
+      background: var(--gradient-signature);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      opacity: 0.25;
+      position: absolute;
+      top: 28px;
+      right: 36px;
+      line-height: 1;
+      z-index: 2;
+    }
+
+    .bento-featured h3 {
+      font-family: var(--font-heading);
+      font-size: 28px;
+      font-weight: 300;
+      margin-bottom: 12px;
+    }
+
+    .bento-featured p {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      max-width: 460px;
+    }
+
+    /* ── Standard bento cards ── */
+    .bento-card {
+      background: var(--charcoal);
+      padding: 36px 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 220px;
+      transition: all 0.4s var(--ease);
+    }
+
+    .bento-card:hover {
+      background: var(--surface-hover);
+    }
+
+    .bento-card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .bento-card-icon {
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border-mid);
+      transition: all var(--transition);
+    }
+
+    .bento-card:hover .bento-card-icon {
+      border-color: var(--gold);
+      box-shadow: 0 0 16px rgba(201,168,76,0.08);
+    }
+
+    .bento-card-icon span {
+      font-size: 18px;
+      line-height: 1;
+    }
+
+    .bento-card-number {
+      font-family: var(--font-heading);
+      font-size: 40px;
+      font-weight: 300;
+      background: var(--gradient-signature);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      opacity: 0.1;
+      line-height: 1;
+    }
+
+    .bento-card:hover .bento-card-number {
+      opacity: 0.18;
+    }
+
+    .bento-card-body h4 {
+      font-family: var(--font-heading);
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+    }
+
+    .bento-card-body p {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.75;
+    }
+
+    /* Gradient dash */
+    .bento-dash {
+      width: 28px;
+      height: 2px;
+      background: var(--gradient-signature);
+      margin-bottom: 14px;
+      transition: width 0.4s var(--ease);
+    }
+
+    .bento-card:hover .bento-dash,
+    .bento-featured:hover .bento-dash {
+      width: 48px;
+    }
+
+    @media (max-width: 1024px) {
+      .bento-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+          "a a"
+          "b c"
+          "d e";
+      }
+      .why-section { padding: 100px 0; }
+    }
+
+    @media (max-width: 768px) {
+      .bento-grid {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+          "a"
+          "b"
+          "c"
+          "d"
+          "e";
+      }
+      .bento-featured { min-height: 280px; }
+      .bento-featured-content { padding: 28px; }
+      .bento-card { padding: 28px 24px; min-height: 180px; }
+      .why-section { padding: 80px 0; }
+      .why-header { margin-bottom: 40px; }
+    }
+
+    /* ═══ PHASE 6: COMPANY VALUES ═══ */
+
+    .values-section {
+      padding: 140px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Subtle background texture */
+    .values-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 40% 50% at 80% 20%, rgba(201,168,76,0.03) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 50% at 10% 80%, rgba(201,168,76,0.025) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .values-header {
+      text-align: center;
+      margin-bottom: 80px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .values-header .eyebrow {
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .values-header .eyebrow::after {
+      content: '';
+      width: 40px;
+      height: 1px;
+      background: var(--gradient-signature);
+    }
+
+    .values-header h2 {
+      margin-bottom: 16px;
+    }
+
+    .values-header p {
+      font-size: 16px;
+      color: var(--text-muted);
+      max-width: 520px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
+
+    /* Values layout: 4 columns with large numbers */
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .value-card {
+      padding: 48px 36px;
+      border-right: 1px solid var(--border);
+      position: relative;
+      transition: all 0.4s var(--ease);
+    }
+
+    .value-card:last-child { border-right: none; }
+
+    .value-card:hover {
+      background: var(--gradient-subtle);
+    }
+
+    /* Large decorative number */
+    .value-number {
+      font-family: var(--font-heading);
+      font-size: 100px;
+      font-weight: 400;
+      line-height: 1;
+      background: var(--gradient-signature);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      opacity: 0.07;
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      pointer-events: none;
+      transition: opacity 0.4s var(--ease);
+    }
+
+    .value-card:hover .value-number {
+      opacity: 0.12;
+    }
+
+    /* Icon with gradient border on hover */
+    .value-icon {
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 28px;
+      position: relative;
+    }
+
+    .value-icon-inner {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border-mid);
+      background: var(--black);
+      transition: all var(--transition);
+    }
+
+    .value-card:hover .value-icon-inner {
+      border-color: var(--orange);
+      box-shadow: 0 0 20px rgba(201,168,76,0.1);
+    }
+
+    .value-icon-inner span {
+      font-size: 20px;
+      line-height: 1;
+    }
+
+    /* Gradient dash above title */
+    .value-dash {
+      width: 32px;
+      height: 2px;
+      background: var(--gradient-signature);
+      margin-bottom: 16px;
+      transition: width 0.4s var(--ease);
+    }
+
+    .value-card:hover .value-dash {
+      width: 52px;
+    }
+
+    .value-card h3 {
+      font-family: var(--font-heading);
+      font-size: 24px;
+      font-weight: 400;
+      color: var(--text-primary);
+      margin-bottom: 14px;
+      line-height: 1.2;
+    }
+
+    .value-card p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+
+    @media (max-width: 1024px) {
+      .values-grid { grid-template-columns: repeat(2, 1fr); }
+      .value-card:nth-child(2) { border-right: none; }
+      .value-card:nth-child(1),
+      .value-card:nth-child(2) { border-bottom: 1px solid var(--border); }
+      .values-section { padding: 100px 0; }
+    }
+
+    @media (max-width: 768px) {
+      .values-grid { grid-template-columns: 1fr; }
+      .value-card { border-right: none; border-bottom: 1px solid var(--border); padding: 40px 28px; }
+      .value-card:last-child { border-bottom: none; }
+      .value-number { font-size: 72px; }
+      .values-section { padding: 80px 0; }
+      .values-header { margin-bottom: 48px; }
+    }
+
+    /* ═══ PHASE 7: GLOBAL PRESENCE ═══ */
+
+    .presence-section {
+      padding: 0;
+      border-top: 1px solid var(--border);
+    }
+
+    /* Top header band */
+    .presence-header-band {
+      padding: 80px 0 60px;
+      text-align: center;
+      background: var(--charcoal);
+    }
+
+    .presence-header-band .eyebrow {
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .presence-header-band .eyebrow::after {
+      content: '';
+      width: 40px;
+      height: 1px;
+      background: var(--gradient-signature);
+    }
+
+    .presence-header-band p {
+      font-size: 16px;
+      color: var(--text-muted);
+      max-width: 520px;
+      margin: 16px auto 0;
+      line-height: 1.8;
+    }
+
+    /* Three city cards side by side */
+    .presence-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+    }
+
+    .city-card {
+      position: relative;
+      overflow: hidden;
+      min-height: 520px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      border-right: 1px solid var(--border);
+      transition: all 0.5s var(--ease);
+    }
+
+    .city-card:last-child { border-right: none; }
+
+    /* City background image */
+    .city-card-bg {
+      position: absolute;
+      inset: 0;
+    }
+
+    .city-card-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.35) saturate(0.75);
+      transition: all 0.7s var(--ease);
+    }
+
+    .city-card:hover .city-card-bg img {
+      filter: brightness(0.45) saturate(0.9);
+      transform: scale(1.06);
+    }
+
+    .city-card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        180deg,
+        rgba(0,0,0,0.1) 0%,
+        rgba(0,0,0,0.3) 40%,
+        rgba(0,0,0,0.85) 100%
+      );
+    }
+
+    /* City content at bottom */
+    .city-card-content {
+      position: relative;
+      z-index: 2;
+      padding: 40px 36px;
+    }
+
+    .city-card-flag {
+      font-size: 28px;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .city-card-name {
+      font-family: var(--font-heading);
+      font-size: clamp(32px, 3.5vw, 44px);
+      font-weight: 400;
+      color: var(--text-primary);
+      margin-bottom: 6px;
+      line-height: 1.1;
+    }
+
+    .city-card-country {
+      font-family: var(--font-accent);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      background: var(--gradient-signature);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .city-card-address {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    /* Decorative line that expands on hover */
+    .city-card-line {
+      width: 40px;
+      height: 2px;
+      background: var(--gradient-signature);
+      transition: width 0.5s var(--ease);
+      margin-bottom: 20px;
+    }
+
+    .city-card:hover .city-card-line {
+      width: 80px;
+    }
+
+    /* Hover: reveal a subtle CTA */
+    .city-card-cta {
+      font-family: var(--font-accent);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--orange);
+      opacity: 0;
+      transform: translateY(8px);
+      transition: all 0.4s var(--ease);
+    }
+
+    .city-card-cta::after {
+      content: ' \2192';
+      transition: transform var(--transition);
+    }
+
+    .city-card:hover .city-card-cta {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Top-edge glow on hover */
+    .city-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--gradient-signature);
+      z-index: 3;
+      transform: scaleX(0);
+      transition: transform 0.5s var(--ease);
+    }
+
+    .city-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    @media (max-width: 1024px) {
+      .presence-grid { grid-template-columns: 1fr; }
+      .city-card { min-height: 420px; border-right: none; border-bottom: 1px solid var(--border); }
+      .city-card:last-child { border-bottom: none; }
+    }
+
+    @media (max-width: 768px) {
+      .city-card { min-height: 360px; }
+      .city-card-content { padding: 32px 24px; }
+      .presence-header-band { padding: 60px 0 48px; }
+      .city-card-cta { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ═══ PHASE 8: CTA SECTION ═══ */
+
+    .final-cta {
+      position: relative;
+      padding: 160px 0;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    /* Background image */
+    .final-cta-bg {
+      position: absolute;
+      inset: 0;
+    }
+
+    .final-cta-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 60%;
+      filter: brightness(0.15) saturate(0.6);
+    }
+
+    .final-cta-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, var(--black) 0%, rgba(0,0,0,0.4) 30%, rgba(0,0,0,0.4) 70%, var(--black) 100%),
+        radial-gradient(ellipse 50% 60% at 50% 50%, rgba(201,168,76,0.06) 0%, transparent 70%);
+    }
+
+    /* Decorative grid */
+    .final-cta-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(201,168,76,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(201,168,76,0.02) 1px, transparent 1px);
+      background-size: 100px 100px;
+      mask-image: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(0,0,0,0.5) 20%, transparent 80%);
+      -webkit-mask-image: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(0,0,0,0.5) 20%, transparent 80%);
+      pointer-events: none;
+    }
+
+    .final-cta-content {
+      position: relative;
+      z-index: 2;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .final-cta .eyebrow {
+      justify-content: center;
+      margin-bottom: 24px;
+    }
+
+    .final-cta .eyebrow::after {
+      content: '';
+      width: 40px;
+      height: 1px;
+      background: var(--gradient-signature);
+    }
+
+    .final-cta h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(36px, 5vw, 64px);
+      font-weight: 400;
+      line-height: 1.1;
+      margin-bottom: 24px;
+    }
+
+    .final-cta .cta-subtitle {
+      font-family: var(--font-subheading);
+      font-size: clamp(16px, 2vw, 20px);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--text-secondary);
+      max-width: 540px;
+      margin: 0 auto 48px;
+      line-height: 1.7;
+    }
+
+    .final-cta .btn-row {
+      justify-content: center;
+      margin-bottom: 48px;
+    }
+
+    /* Trust indicators row */
+    .trust-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-accent);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+    }
+
+    .trust-item-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--gradient-signature);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 768px) {
+      .final-cta { padding: 100px 20px; }
+      .trust-row { gap: 20px; }
+      .trust-item { font-size: 10px; }
+    }
+
+    /* ── Bespoke Difference Section ── */
+    .bespoke-section {
+      padding: 120px 0;
+      position: relative;
+      overflow: hidden;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .bespoke-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 50% 50% at 50% 50%, rgba(201,168,76,0.04) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .bespoke-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .bespoke-text .eyebrow { margin-bottom: 20px; }
+    .bespoke-text h2 {
+      font-size: clamp(30px, 3.5vw, 48px);
+      font-weight: 300;
+      margin-bottom: 24px;
+      line-height: 1.15;
+    }
+    .bespoke-text p {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.85;
+      margin-bottom: 20px;
+    }
+    .bespoke-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 8px;
+      font-family: var(--font-accent);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      transition: color var(--transition);
+    }
+    .bespoke-brand:hover { color: var(--orange); }
+    .bespoke-brand-line {
+      width: 40px; height: 1px;
+      background: var(--gradient-signature);
+    }
+    .bespoke-visual {
+      position: relative;
+      aspect-ratio: 4/5;
+      overflow: hidden;
+    }
+    .bespoke-visual img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      filter: brightness(0.8) saturate(0.9);
+      transition: transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+    .bespoke-visual:hover img { transform: scale(1.04); }
+    .bespoke-visual::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--gradient-signature);
+    }
+    @media (max-width: 1024px) {
+      .bespoke-inner { grid-template-columns: 1fr; gap: 48px; }
+      .bespoke-visual { max-width: 480px; aspect-ratio: 16/10; }
+      .bespoke-section { padding: 88px 0; }
+    }
+    @media (max-width: 768px) { .bespoke-section { padding: 64px 0; } }
+
+    /* ═══ PARTNERS & GLOWING CONTINENTS ═══ */
+
+    .partners-section {
+      padding: 120px 0 100px;
+      position: relative;
+      overflow: hidden;
+      background: var(--black);
+    }
+
+    .partners-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 50% 0%, rgba(201,168,76,0.04) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 50% at 80% 80%, rgba(212,118,44,0.03) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .partners-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .partners-header h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 400;
+      line-height: 1.12;
+      margin-bottom: 16px;
+    }
+
+    .partners-header h2 em {
+      font-style: italic;
+      background: var(--gradient-signature);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .partners-header p {
+      font-size: 15px;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.85;
+    }
+
+    /* --- Glowing Continents Map --- */
+
+    .continents-map-wrapper {
+      position: relative;
+      max-width: 960px;
+      margin: 0 auto 80px;
+    }
+
+    .continents-map-wrapper svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Pulsing glow dots */
+    .map-dot-glow {
+      animation: dotPulse 2.5s ease-in-out infinite;
+    }
+
+    .map-dot-glow:nth-child(2) { animation-delay: 0.4s; }
+    .map-dot-glow:nth-child(3) { animation-delay: 0.8s; }
+    .map-dot-glow:nth-child(4) { animation-delay: 1.2s; }
+    .map-dot-glow:nth-child(5) { animation-delay: 1.6s; }
+    .map-dot-glow:nth-child(6) { animation-delay: 2.0s; }
+    .map-dot-glow:nth-child(7) { animation-delay: 0.2s; }
+
+    @keyframes dotPulse {
+      0%, 100% { opacity: 0.6; r: 4; }
+      50% { opacity: 1; r: 6; }
+    }
+
+    .map-dot-core {
+      fill: var(--gold);
+    }
+
+    .map-line {
+      stroke: var(--gold);
+      stroke-width: 0.5;
+      opacity: 0.18;
+      stroke-dasharray: 4 3;
+      animation: lineDash 20s linear infinite;
+    }
+
+    @keyframes lineDash {
+      to { stroke-dashoffset: -100; }
+    }
+
+    .map-label {
+      font-family: var(--font-accent);
+      font-size: 8px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      fill: var(--text-muted);
+      opacity: 0.7;
+    }
+
+    /* Outer glow filter */
+    .map-glow-filter feGaussianBlur {
+      stdDeviation: 6;
+    }
+
+    /* --- Partner Cards Grid --- */
+
+    .partners-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+
+    .partner-card {
+      position: relative;
+      border: 1px solid var(--border);
+      background: rgba(13, 13, 13, 0.8);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: 36px 28px 32px;
+      transition: all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .partner-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--gradient-signature);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .partner-card:hover {
+      border-color: var(--border-mid);
+      background: rgba(201, 168, 76, 0.03);
+      transform: translateY(-4px);
+    }
+
+    .partner-card:hover::before {
+      opacity: 1;
+    }
+
+    .partner-card-brand {
+      font-family: var(--font-heading);
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--white);
+      line-height: 1.2;
+    }
+
+    .partner-card-type {
+      font-family: var(--font-accent);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      background: var(--gradient-signature);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .partner-card-desc {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.7;
+      flex: 1;
+    }
+
+    .partner-card-link {
+      font-family: var(--font-accent);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      color: var(--gold);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: color 0.3s ease, gap 0.3s ease;
+    }
+
+    .partner-card-link:hover {
+      color: var(--orange);
+      gap: 12px;
+    }
+
+    .partner-card-link::after {
+      content: '\2192';
+      font-size: 14px;
+      transition: transform 0.3s ease;
+    }
+
+    .partner-card-link:hover::after {
+      transform: translateX(2px);
+    }
+
+    .partner-card-divider {
+      width: 32px;
+      height: 1px;
+      background: var(--border-mid);
+    }
+
+    /* Placeholder partner styling */
+    .partner-card.partner-placeholder {
+      border-style: dashed;
+      opacity: 0.65;
+    }
+
+    .partner-card.partner-placeholder:hover {
+      opacity: 1;
+    }
+
+    @media (max-width: 1024px) {
+      .partners-section { padding: 88px 0 72px; }
+      .partners-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 768px) {
+      .partners-section { padding: 64px 0 56px; }
+      .partners-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
+      .continents-map-wrapper { margin-bottom: 56px; }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- ═══ Header & Footer injected by components.js ═══ -->
+
+  <!-- ═══ HOMEPAGE SECTIONS (Phase 2–8) ═══ -->
+  <main id="main">
+
+    <!-- ═══ PHASE 2: HERO SECTION ═══ -->
+    <section class="hero-home">
+
+      <!-- Background Video -->
+      <div class="hero-bg">
+        <!--
+          ╔══════════════════════════════════════════════════════════════╗
+          ║  HERO VIDEO: Replace the src below with your video file.   ║
+          ║  Recommended: MP4 format, 1920x1080, under 15MB.          ║
+          ║  Place your video in the /img/ folder, e.g. img/hero.mp4  ║
+          ╚══════════════════════════════════════════════════════════════╝
+        -->
+        <video
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="auto"
+          poster="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&amp;q=80&amp;auto=format&amp;fit=crop"
+          id="heroVideo">
+          <source src="img/hero.mp4.html" type="video/mp4">
+          <!-- Add WebM version for broader support: -->
+          <!-- <source src="img/hero.webm" type="video/webm"> -->
+        </video>
+        <!-- Fallback image shown while video loads or if video fails -->
+        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&amp;q=80&amp;auto=format&amp;fit=crop"
+             alt="Modern glass skyscrapers reaching into the sky"
+             loading="eager">
+      </div>
+
+      <!-- Overlays -->
+      <div class="hero-overlay"></div>
+      <div class="hero-gradient-accent"></div>
+      <div class="hero-grid-pattern"></div>
+      <div class="hero-bottom-fade"></div>
+
+      <!-- Content -->
+      <div class="hero-content">
+        <div class="hero-tagline fade-up">
+          Portfolio Management &middot; Investment Advisory
+        </div>
+
+        <h1 class="fade-up fade-up-d1">
+          Welcome to
+          <span class="line-2">the <em>1%</em></span>
+        </h1>
+
+        <p class="hero-subtitle fade-up fade-up-d2">
+          Bridging innovation and impact,transforming capital into
+          sustainable global assets that generate growth, stability,
+          and measurable returns.
+        </p>
+
+        <div class="hero-divisions fade-up fade-up-d3">
+          <a href="jet-el/index.html" class="hero-division-pill">Jet-El</a>
+          <a href="hl/index.html" class="hero-division-pill">H&L</a>
+          <a href="one-percent/index.html" class="hero-division-pill">The 1%</a>
+          <a href="el-rock/index.html" class="hero-division-pill">El&Rock</a>
+          <a href="token-el/index.html" class="hero-division-pill">Token-El</a>
+        </div>
+
+        <div class="btn-row btn-row-center fade-up fade-up-d4">
+          <a href="#divisions" class="btn btn-primary btn-lg">Explore Our Divisions</a>
+          <a href="contact.html" class="btn btn-outline btn-lg">Book a Consultation</a>
+        </div>
+      </div>
+
+      <!-- Floating Stats Bar -->
+      <div class="hero-stats">
+        <div class="hero-stats-inner">
+          <div class="hero-stat">
+            <span class="hero-stat-number" data-count="5">0</span>
+            <span class="hero-stat-label">Investment Divisions</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-number">$3B+</span>
+            <span class="hero-stat-label">In Deal Access</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-number">360&deg;</span>
+            <span class="hero-stat-label">Advisory Coverage</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-number">UHNWI</span>
+            <span class="hero-stat-label">Client Focus</span>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ═══ PHASE 3: ABOUT / INTRODUCTION ═══ -->
+    <section class="intro-section">
+      <div class="container">
+        <div class="intro-grid">
+
+          <!-- Text Side -->
+          <div class="intro-text reveal">
+            <div class="eyebrow">Who We Are</div>
+            <h2>A Unified Ecosystem for <em>Strategic</em> Growth</h2>
+            <p class="lead">
+              El-Global Business is a multidisciplinary portfolio management
+              and investment advisory firm operating across five integrated divisions.
+            </p>
+            <p>
+              We specialize in strategic asset acquisition advisory, optimization,
+              and digital transformation within real estate, private aviation,
+              and alternative investment sectors. Our firm manages investment
+              portfolios for individuals, institutional clients, and corporate
+              partners,delivering integrated advisory services that enhance
+              asset performance and long-term value.
+            </p>
+            <p>
+              With operations in South Africa and the United States, and strategic
+              partnerships spanning the United Kingdom, Switzerland, Dubai, Spain,
+              Portugal, and other major global markets, we connect sophisticated
+              capital to the world's most compelling opportunities through data-driven
+              strategy, international networks, and absolute discretion.
+            </p>
+            <a href="about.html" class="btn btn-ghost">Learn More About Us</a>
+          </div>
+
+          <!-- Image Side -->
+          <div class="intro-image reveal reveal-delay-2">
+            <div class="intro-image-main">
+              <img src="https://images.unsplash.com/photo-1540962351504-03099e0a754b?w=800&amp;q=80&amp;auto=format&amp;fit=crop"
+                   alt="Private jet on tarmac at sunset"
+                   loading="lazy">
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Mission Statement Band -->
+      <div class="mission-band">
+        <div class="container">
+          <div class="mission-inner reveal">
+            <div class="eyebrow">Our Mission</div>
+            <blockquote class="mission-quote">
+              &ldquo;To bridge <span>innovation</span> and <span>impact</span>,
+              by transforming capital into sustainable global assets that generate
+              growth, stability, and measurable returns.&rdquo;
+            </blockquote>
+            <div class="mission-attribution">El-Global Business</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Core Activities Row -->
+      <div class="activities-row">
+        <div class="activity-item reveal">
+          <span class="activity-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3v18M3 9l9-6 9 6M3 9l3 8h6l3-8M15 9l3 8h-6"/></svg></span>
+          <h4>Portfolio Structuring</h4>
+          <p>Designing, managing, and optimizing investment portfolios across real estate, aviation assets, and alternative financial instruments.</p>
+        </div>
+        <div class="activity-item reveal reveal-delay-1">
+          <span class="activity-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span>
+          <h4>Capital Advisory</h4>
+          <p>Providing data-driven investment strategies that align with client risk profiles and emerging market opportunities worldwide.</p>
+        </div>
+        <div class="activity-item reveal reveal-delay-2">
+          <span class="activity-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></span>
+          <h4>Digital Transformation</h4>
+          <p>Incorporating AI-driven tools and analytics for performance forecasting, valuation modeling, and market trend evaluation.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ PHASE 4: THE 5 DIVISIONS ═══ -->
+    <section class="divisions-section" id="divisions">
+      <div class="container">
+
+        <!-- Section Header -->
+        <div class="section-header-flex reveal">
+          <div>
+            <div class="eyebrow">Our Divisions</div>
+            <h2>Five Pillars of <em>Strategic</em> Investment</h2>
+          </div>
+          <div class="section-meta">
+            5 Divisions<br>One Ecosystem
+          </div>
+        </div>
+
+        <!-- Top Row: 2 Large Cards (Jet-El + H&L) -->
+        <div class="divisions-top">
+
+          <!-- JET-EL -->
+          <a href="jet-el/index.html" class="division-card reveal">
+            <div class="division-card-image">
+              <img src="https://images.unsplash.com/photo-1540962351504-03099e0a754b?w=900&amp;q=80&amp;auto=format&amp;fit=crop"
+                   alt="Private jet on tarmac at sunset with golden light"
+                   loading="lazy">
+              <span class="division-card-badge">Jet Brokerage and Charter</span>
+              <div class="division-card-overlay-stats">
+                <div class="overlay-stat">
+                  <span class="overlay-stat-value">Charter</span>
+                  <span class="overlay-stat-label">On-Demand</span>
+                </div>
+                <div class="overlay-stat">
+                  <span class="overlay-stat-value">Sales</span>
+                  <span class="overlay-stat-label">Acquisition</span>
+                </div>
+                <div class="overlay-stat">
+                  <span class="overlay-stat-value">Fractional</span>
+                  <span class="overlay-stat-label">Ownership</span>
+                </div>
+              </div>
+            </div>
+            <div class="division-card-content">
+              <div class="division-card-eyebrow">Jet-El</div>
+              <h3>Private Aviation Portfolio</h3>
+              <p>Strategic aviation asset advisory,from charter services and aircraft sales to fractional ownership, leasing programs, and membership structures for discerning investors.</p>
+              <div class="division-card-tags">
+                <span class="division-card-tag">Charter</span>
+                <span class="division-card-tag">Sales</span>
+                <span class="division-card-tag">Fractional</span>
+                <span class="division-card-tag">Lease</span>
+                <span class="division-card-tag">Membership</span>
+              </div>
+              <span class="division-card-link">Explore Jet-El</span>
+            </div>
+          </a>
+
+          <!-- H&L -->
+          <a href="hl/index.html" class="division-card reveal reveal-delay-1">
+            <div class="division-card-image">
+              <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=900&amp;q=80&amp;auto=format&amp;fit=crop"
+                   alt="Luxury five-star resort entrance with palm trees at golden hour"
+                   loading="lazy">
+              <span class="division-card-badge">Off-Market Hotels and Lux Real Estate</span>
+              <div class="division-card-overlay-stats">
+                <div class="overlay-stat">
+                  <span class="overlay-stat-value">Hotels</span>
+                  <span class="overlay-stat-label">Acquisitions</span>
+                </div>
+                <div class="overlay-stat">
+                  <span class="overlay-stat-value">Luxury</span>
+                  <span class="overlay-stat-label">Residential</span>
+                </div>
+                <div class="overlay-stat">
+                  <span class="overlay-stat-value">Global</span>
+                  <span class="overlay-stat-label">Markets</span>
+                </div>
+              </div>
+            </div>
+            <div class="division-card-content">
+              <div class="division-card-eyebrow">H&L</div>
+              <h3>Hotels &amp; Luxury Real Estate</h3>
+              <p>Portfolio-grade hotel acquisitions and ultra-premium real estate investment advisory across the USA, Europe, Dubai, and emerging luxury markets worldwide.</p>
+              <div class="division-card-tags">
+                <span class="division-card-tag">Hotel Investment</span>
+                <span class="division-card-tag">Residential</span>
+                <span class="division-card-tag">Commercial</span>
+              </div>
+              <span class="division-card-link">Explore H&L</span>
+            </div>
+          </a>
+
+        </div>
+
+        <!-- Bottom Row: 3 Cards (The 1% + El&Rock + Token-El) -->
+        <div class="divisions-bottom">
+
+          <!-- THE 1% -->
+          <a href="one-percent/index.html" class="division-card reveal">
+            <div class="division-card-image">
+              <img src="https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?w=900&amp;q=80&amp;auto=format&amp;fit=crop"
+                   alt="Luxury superyacht cruising through calm blue waters"
+                   loading="lazy">
+              <span class="division-card-badge">The 1% Exclusive</span>
+              <div class="division-card-overlay-stats">
+                <div class="overlay-stat">
+                  <span class="overlay-stat-value">Yachts</span>
+                  <span class="overlay-stat-label">Acquisition</span>
+                </div>
+                <div class="overlay-stat">
+                  <span class="overlay-stat-value">Marinas</span>
+                  <span class="overlay-stat-label">Portfolio</span>
+                </div>
+                <div class="overlay-stat">
+                  <span class="overlay-stat-value">CBI</span>
+                  <span class="overlay-stat-label">Citizenship</span>
+                </div>
+              </div>
+            </div>
+            <div class="division-card-content">
+              <div class="division-card-eyebrow">The 1%</div>
+              <h3>Exclusive Investments</h3>
+              <p>Ultra-premium alternative investment advisory,marinas, superyachts, golf resorts, and citizenship by investment programs for the world's elite.</p>
+              <div class="division-card-tags">
+                <span class="division-card-tag">Marina</span>
+                <span class="division-card-tag">Yacht</span>
+                <span class="division-card-tag">Golf</span>
+                <span class="division-card-tag">CBI</span>
+              </div>
+              <span class="division-card-link">Explore The 1%</span>
+            </div>
+          </a>
+
+          <!-- EL&ROCK -->
+          <a href="el-rock/index.html" class="division-card reveal reveal-delay-1">
+            <div class="division-card-image">
+              <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=900&amp;q=80&amp;auto=format&amp;fit=crop"
+                   alt="Executive in premium suit walking through a modern glass corridor"
+                   loading="lazy">
+              <span class="division-card-badge">M&amp;A Advisory</span>
+              <div class="division-card-overlay-stats">
+                <div class="overlay-stat">
+                  <span class="overlay-stat-value">Sell-Side</span>
+                  <span class="overlay-stat-label">Advisory</span>
+                </div>
+                <div class="overlay-stat">
+                  <span class="overlay-stat-value">Buy-Side</span>
+                  <span class="overlay-stat-label">Advisory</span>
+                </div>
+              </div>
+            </div>
+            <div class="division-card-content">
+              <div class="division-card-eyebrow">El&amp;Rock</div>
+              <h3>M&amp;A Advisory</h3>
+              <p>End-to-end mergers and acquisitions advisory,sell-side, buy-side, due diligence, deal structuring, and post-merger integration for high-value transactions.</p>
+              <div class="division-card-tags">
+                <span class="division-card-tag">Sell-Side</span>
+                <span class="division-card-tag">Buy-Side</span>
+                <span class="division-card-tag">Due Diligence</span>
+              </div>
+              <span class="division-card-link">Explore El&amp;Rock</span>
+            </div>
+          </a>
+
+          <!-- TOKEN-EL -->
+          <a href="token-el/index.html" class="division-card reveal reveal-delay-2">
+            <div class="division-card-image">
+              <img src="https://images.unsplash.com/photo-1518546305927-5a555bb7020d?w=900&amp;q=80&amp;auto=format&amp;fit=crop"
+                   alt="Gold bars and bullion representing premium asset tokenization"
+                   loading="lazy">
+              <span class="division-card-badge badge-soon">Coming Soon - RWA Tokenization</span>
+              <div class="division-card-overlay-stats">
+                <div class="overlay-stat">
+                  <span class="overlay-stat-value">From $1K</span>
+                  <span class="overlay-stat-label">Min. Investment</span>
+                </div>
+                <div class="overlay-stat">
+                  <span class="overlay-stat-value">Blockchain</span>
+                  <span class="overlay-stat-label">Secured</span>
+                </div>
+              </div>
+            </div>
+            <div class="division-card-content">
+              <div class="division-card-eyebrow">Token-El</div>
+              <h3>Asset Tokenization</h3>
+              <p>Fractional ownership via blockchain,democratizing access to private jets, superyachts, luxury real estate, and blue-chip art from as little as $1,000.</p>
+              <div class="division-card-tags">
+                <span class="division-card-tag">Fractional</span>
+                <span class="division-card-tag">Blockchain</span>
+                <span class="division-card-tag">Liquidity</span>
+              </div>
+              <span class="division-card-link">Register Interest</span>
+            </div>
+          </a>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══ PHASE 5: WHY EL-GLOBAL — BENTO ═══ -->
+    <section class="why-section">
+      <div class="container">
+
+        <div class="why-header reveal">
+          <div class="eyebrow">Why El-Global</div>
+          <h2>What Sets Us <em>Apart</em></h2>
+          <p>A unified investment ecosystem built on expertise, discretion, and technology,delivering measurable results for the world's most discerning investors.</p>
+        </div>
+
+        <div class="bento-grid">
+
+          <!-- A: Featured — Unified Ecosystem (large, spanning 2 cols) -->
+          <div class="bento-item bento-a bento-featured reveal">
+            <div class="bento-featured-bg">
+              <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&amp;q=80&amp;auto=format&amp;fit=crop"
+                   alt="Panoramic aerial view of a sprawling global city at blue hour"
+                   loading="lazy">
+            </div>
+            <div class="bento-featured-overlay"></div>
+            <span class="bento-featured-number">01</span>
+            <div class="bento-featured-content">
+              <div class="bento-dash"></div>
+              <h3>Unified Ecosystem</h3>
+              <p>Five integrated divisions working seamlessly together,aviation, real estate, exclusive investments, M&A, and tokenization. One firm, one ecosystem, every asset class covered. No fragmentation, no gaps.</p>
+            </div>
+          </div>
+
+          <!-- B: Relationship Manager -->
+          <div class="bento-item bento-b bento-card reveal reveal-delay-1">
+            <div class="bento-card-top">
+              <div class="bento-card-icon"><span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg></span></div>
+              <div class="bento-card-number">02</div>
+            </div>
+            <div class="bento-card-body">
+              <div class="bento-dash"></div>
+              <h4>Dedicated Relationship Manager</h4>
+              <p>One trusted point of contact across all services. Your advisor knows your portfolio, goals, and preferences intimately.</p>
+            </div>
+          </div>
+
+          <!-- C: Global Network -->
+          <div class="bento-item bento-c bento-card reveal reveal-delay-2">
+            <div class="bento-card-top">
+              <div class="bento-card-icon"><span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></span></div>
+              <div class="bento-card-number">03</div>
+            </div>
+            <div class="bento-card-body">
+              <div class="bento-dash"></div>
+              <h4>Global Network</h4>
+              <p>Strategic partnerships across the UK, Switzerland, Dubai, Spain, Portugal, and beyond — connecting capital to premium opportunities on every continent.</p>
+            </div>
+          </div>
+
+          <!-- D: AI Analytics -->
+          <div class="bento-item bento-d bento-card reveal reveal-delay-3">
+            <div class="bento-card-top">
+              <div class="bento-card-icon"><span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></span></div>
+              <div class="bento-card-number">04</div>
+            </div>
+            <div class="bento-card-body">
+              <div class="bento-dash"></div>
+              <h4>AI-Driven Analytics</h4>
+              <p>Performance forecasting, valuation modeling, and market trend evaluation powered by advanced digital intelligence.</p>
+            </div>
+          </div>
+
+          <!-- E: 360° Advisory -->
+          <div class="bento-item bento-e bento-card reveal reveal-delay-4">
+            <div class="bento-card-top">
+              <div class="bento-card-icon"><span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></span></div>
+              <div class="bento-card-number">05</div>
+            </div>
+            <div class="bento-card-body">
+              <div class="bento-dash"></div>
+              <h4>360&deg; Advisory</h4>
+              <p>End-to-end investment management,from sourcing and structuring to optimization and exit. Every angle covered.</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══ PHASE 6: COMPANY VALUES ═══ -->
+    <section class="values-section">
+      <div class="container">
+
+        <div class="values-header reveal">
+          <div class="eyebrow">Our Values</div>
+          <h2>The Principles That <em>Guide</em> Us</h2>
+          <p>Every decision, every deal, every relationship is built on four unshakeable pillars that define who we are.</p>
+        </div>
+
+        <div class="values-grid">
+
+          <!-- Excellence -->
+          <div class="value-card reveal">
+            <div class="value-number">I</div>
+            <div class="value-icon">
+              <div class="value-icon-inner"><span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l10 10-10 10L2 12 12 2z"/></svg></span></div>
+            </div>
+            <div class="value-dash"></div>
+            <h3>Excellence</h3>
+            <p>Never settle. Every detail reflects our commitment to the exceptional,from the assets we select to the advisory we deliver. Mediocrity has no place in our portfolio.</p>
+          </div>
+
+          <!-- Discretion -->
+          <div class="value-card reveal reveal-delay-1">
+            <div class="value-number">II</div>
+            <div class="value-icon">
+              <div class="value-icon-inner"><span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></span></div>
+            </div>
+            <div class="value-dash"></div>
+            <h3>Discretion</h3>
+            <p>Complete confidentiality at every turn. Our clients' interests, identities, and strategies remain protected with the utmost care and professionalism.</p>
+          </div>
+
+          <!-- Integrity -->
+          <div class="value-card reveal reveal-delay-2">
+            <div class="value-number">III</div>
+            <div class="value-icon">
+              <div class="value-icon-inner"><span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3v18M3 9l9-6 9 6M3 9l3 8h6l3-8M15 9l3 8h-6"/></svg></span></div>
+            </div>
+            <div class="value-dash"></div>
+            <h3>Integrity</h3>
+            <p>Trust, transparency, and delivering on commitments. We build enduring relationships by doing what we say and saying what we mean,always.</p>
+          </div>
+
+          <!-- Innovation -->
+          <div class="value-card reveal reveal-delay-3">
+            <div class="value-number">IV</div>
+            <div class="value-icon">
+              <div class="value-icon-inner"><span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 18h6M10 22h4M12 2a7 7 0 00-4 12.7V17h8v-2.3A7 7 0 0012 2z"/></svg></span></div>
+            </div>
+            <div class="value-dash"></div>
+            <h3>Innovation</h3>
+            <p>Continuously evolving to bring the future of investment to our clients today. From AI-driven analytics to blockchain tokenization, we lead where others follow.</p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══ PHASE 7: GLOBAL PRESENCE ═══ -->
+    <section class="presence-section">
+
+      <!-- Header -->
+      <div class="presence-header-band">
+        <div class="container">
+          <div class="reveal">
+            <div class="eyebrow">Our Global Presence</div>
+            <h2>Where We <em>Operate</em></h2>
+            <p>Strategically positioned across major global markets, connecting capital with opportunity on every continent.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Primary Offices — USA left, SA right -->
+      <div class="presence-grid" style="grid-template-columns: 1fr 1fr;">
+
+        <!-- Casper, Wyoming — USA -->
+        <div class="city-card reveal">
+          <div class="city-card-bg">
+            <img src="https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=900&amp;q=80&amp;auto=format&amp;fit=crop"
+                 alt="New York City skyline at twilight representing US operations"
+                 loading="lazy">
+          </div>
+          <div class="city-card-overlay"></div>
+          <div class="city-card-content">
+            <span class="city-card-flag">US</span>
+            <div class="city-card-name">United States</div>
+            <span class="city-card-country">Casper, Wyoming</span>
+            <div class="city-card-line"></div>
+            <div class="city-card-address">
+              Casper, Wyoming 82609, USA
+            </div>
+          </div>
+        </div>
+
+        <!-- Johannesburg — SA -->
+        <div class="city-card reveal reveal-delay-1">
+          <div class="city-card-bg">
+            <img src="https://images.unsplash.com/photo-1580060839134-75a5edca2e99?w=900&amp;q=80&amp;auto=format&amp;fit=crop"
+                 alt="Johannesburg Sandton skyline at golden hour"
+                 loading="lazy">
+          </div>
+          <div class="city-card-overlay"></div>
+          <div class="city-card-content">
+            <span class="city-card-flag">SA</span>
+            <div class="city-card-name">Johannesburg</div>
+            <span class="city-card-country">South Africa</span>
+            <div class="city-card-line"></div>
+            <div class="city-card-address">
+              Gauteng, South Africa
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Global Partnerships -->
+      <div class="container" style="padding-top: 40px;">
+        <div class="reveal" style="text-align: center; margin-bottom: 32px;">
+          <div class="eyebrow">Strategic Partnerships</div>
+          <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto;">Established partnerships across the world's leading financial and investment markets.</p>
+        </div>
+        <div class="presence-grid" style="grid-template-columns: repeat(3, 1fr); gap: 20px;">
+
+          <!-- United Kingdom -->
+          <div class="city-card reveal" style="min-height: 220px;">
+            <div class="city-card-bg">
+              <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=900&amp;q=80&amp;auto=format&amp;fit=crop"
+                   alt="London skyline with Tower Bridge"
+                   loading="lazy">
+            </div>
+            <div class="city-card-overlay"></div>
+            <div class="city-card-content">
+              <span class="city-card-flag">UK</span>
+              <div class="city-card-name">London</div>
+              <span class="city-card-country">United Kingdom</span>
+            </div>
+          </div>
+
+          <!-- Switzerland -->
+          <div class="city-card reveal reveal-delay-1" style="min-height: 220px;">
+            <div class="city-card-bg">
+              <img src="https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?w=900&amp;q=80&amp;auto=format&amp;fit=crop"
+                   alt="Swiss Alps and Zurich skyline"
+                   loading="lazy">
+            </div>
+            <div class="city-card-overlay"></div>
+            <div class="city-card-content">
+              <span class="city-card-flag">CH</span>
+              <div class="city-card-name">Zurich</div>
+              <span class="city-card-country">Switzerland</span>
+            </div>
+          </div>
+
+          <!-- Dubai -->
+          <div class="city-card reveal reveal-delay-2" style="min-height: 220px;">
+            <div class="city-card-bg">
+              <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=900&amp;q=80&amp;auto=format&amp;fit=crop"
+                   alt="Dubai skyline with Burj Khalifa"
+                   loading="lazy">
+            </div>
+            <div class="city-card-overlay"></div>
+            <div class="city-card-content">
+              <span class="city-card-flag">AE</span>
+              <div class="city-card-name">Dubai</div>
+              <span class="city-card-country">United Arab Emirates</span>
+            </div>
+          </div>
+
+          <!-- Spain -->
+          <div class="city-card reveal" style="min-height: 220px;">
+            <div class="city-card-bg">
+              <img src="https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=900&amp;q=80&amp;auto=format&amp;fit=crop"
+                   alt="Madrid city skyline at golden hour"
+                   loading="lazy">
+            </div>
+            <div class="city-card-overlay"></div>
+            <div class="city-card-content">
+              <span class="city-card-flag">ES</span>
+              <div class="city-card-name">Madrid</div>
+              <span class="city-card-country">Spain</span>
+            </div>
+          </div>
+
+          <!-- Portugal -->
+          <div class="city-card reveal reveal-delay-1" style="min-height: 220px;">
+            <div class="city-card-bg">
+              <img src="https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=900&amp;q=80&amp;auto=format&amp;fit=crop"
+                   alt="Lisbon waterfront and skyline"
+                   loading="lazy">
+            </div>
+            <div class="city-card-overlay"></div>
+            <div class="city-card-content">
+              <span class="city-card-flag">PT</span>
+              <div class="city-card-name">Lisbon</div>
+              <span class="city-card-country">Portugal</span>
+            </div>
+          </div>
+
+          <!-- More Markets -->
+          <div class="city-card reveal reveal-delay-2" style="min-height: 220px;">
+            <div class="city-card-bg">
+              <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=900&amp;q=80&amp;auto=format&amp;fit=crop"
+                   alt="Global panoramic city view"
+                   loading="lazy">
+            </div>
+            <div class="city-card-overlay"></div>
+            <div class="city-card-content">
+              <span class="city-card-flag"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></span>
+              <div class="city-card-name">And Growing</div>
+              <span class="city-card-country">Expanding Across Major Global Markets</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ═══ PHASE 8: PARTNERS & GLOBAL NETWORK ═══ -->
+    <section class="partners-section">
+      <div class="container">
+
+        <!-- Header -->
+        <div class="partners-header reveal">
+          <div class="eyebrow">Partnership Reach</div>
+          <h2>Our Global <em>Partners</em></h2>
+          <p>Strategic alliances with world-class organisations, extending our capabilities and reach across every major market.</p>
+        </div>
+
+        <!-- Glowing Continents SVG Map -->
+        <div class="continents-map-wrapper reveal">
+          <svg viewBox="0 0 960 480" xmlns="http://www.w3.org/2000/svg" aria-label="Global network visualization showing El-Global partner locations">
+
+            <!-- Glow filter -->
+            <defs>
+              <filter id="glowFilter" x="-50%" y="-50%" width="200%" height="200%">
+                <feGaussianBlur class="map-glow-filter" in="SourceGraphic" stdDeviation="6" result="blur"/>
+                <feMerge>
+                  <feMergeNode in="blur"/>
+                  <feMergeNode in="SourceGraphic"/>
+                </feMerge>
+              </filter>
+              <radialGradient id="dotGrad" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#C9A84C" stop-opacity="1"/>
+                <stop offset="100%" stop-color="#D4762C" stop-opacity="0"/>
+              </radialGradient>
+            </defs>
+
+            <!-- Continent outlines — simplified paths, subtle gold -->
+            <g fill="none" stroke="rgba(201,168,76,0.08)" stroke-width="1">
+              <!-- North America -->
+              <path d="M80,100 Q120,60 200,70 Q260,50 280,80 L270,100 Q240,130 220,160 L200,200 Q180,230 160,210 L140,180 Q110,160 90,140 Z" fill="rgba(201,168,76,0.03)"/>
+              <!-- South America -->
+              <path d="M200,240 Q230,220 250,250 L260,300 Q270,340 250,380 L230,400 Q210,410 200,390 L190,350 Q180,300 190,270 Z" fill="rgba(201,168,76,0.03)"/>
+              <!-- Europe -->
+              <path d="M420,80 Q460,60 500,70 L520,90 Q530,110 510,130 L490,140 Q470,150 450,140 L430,120 Q410,100 420,80 Z" fill="rgba(201,168,76,0.03)"/>
+              <!-- Africa -->
+              <path d="M440,170 Q470,160 500,180 L520,220 Q530,270 520,320 L500,360 Q480,380 460,370 L440,330 Q420,280 430,230 Z" fill="rgba(201,168,76,0.03)"/>
+              <!-- Middle East -->
+              <path d="M560,140 Q590,120 620,140 L630,170 Q620,200 600,190 L570,180 Q550,160 560,140 Z" fill="rgba(201,168,76,0.03)"/>
+              <!-- Asia -->
+              <path d="M600,70 Q680,50 760,60 L800,80 Q830,110 820,150 L790,180 Q740,200 680,190 L640,170 Q600,140 590,100 Z" fill="rgba(201,168,76,0.03)"/>
+              <!-- Australia -->
+              <path d="M760,300 Q800,280 840,290 L860,320 Q860,350 840,360 L800,370 Q770,360 760,340 Z" fill="rgba(201,168,76,0.03)"/>
+            </g>
+
+            <!-- Connecting lines between locations -->
+            <g>
+              <!-- USA to UK -->
+              <line class="map-line" x1="185" y1="135" x2="460" y2="100"/>
+              <!-- USA to SA -->
+              <line class="map-line" x1="185" y1="135" x2="485" y2="310"/>
+              <!-- UK to Switzerland -->
+              <line class="map-line" x1="460" y1="100" x2="480" y2="115"/>
+              <!-- UK to Dubai -->
+              <line class="map-line" x1="460" y1="100" x2="610" y2="165"/>
+              <!-- UK to Spain -->
+              <line class="map-line" x1="460" y1="100" x2="445" y2="130"/>
+              <!-- UK to Portugal -->
+              <line class="map-line" x1="460" y1="100" x2="430" y2="130"/>
+              <!-- Switzerland to Dubai -->
+              <line class="map-line" x1="480" y1="115" x2="610" y2="165"/>
+              <!-- Dubai to SA -->
+              <line class="map-line" x1="610" y1="165" x2="485" y2="310"/>
+              <!-- Spain to Portugal -->
+              <line class="map-line" x1="445" y1="130" x2="430" y2="130"/>
+            </g>
+
+            <!-- Glowing dots at key locations -->
+            <g filter="url(#glowFilter)">
+
+              <!-- USA — Casper, Wyoming -->
+              <circle class="map-dot-glow" cx="185" cy="135" r="4" fill="url(#dotGrad)"/>
+              <circle class="map-dot-core" cx="185" cy="135" r="2"/>
+
+              <!-- South Africa — Johannesburg -->
+              <circle class="map-dot-glow" cx="485" cy="310" r="4" fill="url(#dotGrad)"/>
+              <circle class="map-dot-core" cx="485" cy="310" r="2"/>
+
+              <!-- UK — London -->
+              <circle class="map-dot-glow" cx="460" cy="100" r="4" fill="url(#dotGrad)"/>
+              <circle class="map-dot-core" cx="460" cy="100" r="2"/>
+
+              <!-- Switzerland — Zurich -->
+              <circle class="map-dot-glow" cx="480" cy="115" r="4" fill="url(#dotGrad)"/>
+              <circle class="map-dot-core" cx="480" cy="115" r="2"/>
+
+              <!-- Dubai -->
+              <circle class="map-dot-glow" cx="610" cy="165" r="4" fill="url(#dotGrad)"/>
+              <circle class="map-dot-core" cx="610" cy="165" r="2"/>
+
+              <!-- Spain — Madrid -->
+              <circle class="map-dot-glow" cx="445" cy="130" r="4" fill="url(#dotGrad)"/>
+              <circle class="map-dot-core" cx="445" cy="130" r="2"/>
+
+              <!-- Portugal — Lisbon -->
+              <circle class="map-dot-glow" cx="430" cy="130" r="4" fill="url(#dotGrad)"/>
+              <circle class="map-dot-core" cx="430" cy="130" r="2"/>
+
+            </g>
+
+            <!-- Location labels -->
+            <g class="map-label">
+              <text x="185" y="122">USA</text>
+              <text x="485" y="300">S. AFRICA</text>
+              <text x="460" y="90">LONDON</text>
+              <text x="490" y="112">ZURICH</text>
+              <text x="620" y="163">DUBAI</text>
+              <text x="445" y="145">MADRID</text>
+              <text x="410" y="125">LISBON</text>
+            </g>
+
+          </svg>
+        </div>
+
+      </div>
+    </section>
+
+
+  </main>
+
+  <!-- Scripts -->
+  <script src="js/components.js"></script>
+  <script src="js/main.js"></script>
+
+  <!-- Hero Video Handling -->
+  <script>
+    (function() {
+      var video = document.getElementById('heroVideo');
+      if (!video) return;
+
+      // Mark video as playing when it starts
+      video.addEventListener('playing', function() {
+        video.classList.add('is-playing');
+      });
+
+      // If video fails to load, hide it and show fallback image
+      video.addEventListener('error', function() {
+        video.style.display = 'none';
+      });
+
+      // Also handle source errors
+      var sources = video.querySelectorAll('source');
+      sources.forEach(function(source) {
+        source.addEventListener('error', function() {
+          video.style.display = 'none';
+        });
+      });
+    })();
+  </script>
+</body>
+
+<!-- Mirrored from https://el-globalbusiness.com/ by HTTrack Website Copier/3.x [XR&CO], Wed, 07 Oct 2026 11:06:13 GMT -->
+</html>

@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from https://el-globalbusiness.com/contact.html by HTTrack Website Copier/3.x [XR&CO], Wed, 07 Oct 2026 11:06:18 GMT -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enquire — El-Global Business</title>
+  <meta name="description" content="Get in touch with El-Global Business. Book a private consultation with our advisory team. Global presence across USA, SA, UK, Switzerland, Dubai, Spain, and Portugal.">
+
+  <meta property="og:title" content="Enquire — El-Global Business">
+  <meta property="og:description" content="Connect with our advisory team. El-Global Business — operating globally across major markets.">
+  <meta property="og:type" content="website">
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    /* ═══ PAGE HERO — 60vh ═══ */
+    .contact-hero {
+      position: relative;
+      height: 60vh;
+      max-height: 60vh;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+    }
+
+    .contact-hero-bg {
+      position: absolute;
+      inset: 0;
+    }
+
+    .contact-hero-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 50%;
+      filter: brightness(0.2) saturate(0.7);
+    }
+
+    .contact-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.25) 40%, rgba(0,0,0,0.92) 100%);
+    }
+
+    .contact-hero-content {
+      position: relative;
+      z-index: 2;
+      padding: calc(var(--nav-height) + 40px) 0 56px;
+      max-width: 680px;
+    }
+
+    .contact-hero .eyebrow { margin-bottom: 20px; }
+
+    .contact-hero h1 {
+      font-size: clamp(36px, 5vw, 64px);
+      font-weight: 300;
+      margin-bottom: 16px;
+      line-height: 1.1;
+    }
+
+    .contact-hero-desc {
+      font-family: var(--font-subheading);
+      font-size: clamp(16px, 2vw, 20px);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      max-width: 520px;
+    }
+
+    @media (max-width: 768px) {
+      .contact-hero { height: 50vh; }
+      .contact-hero-content { padding: calc(var(--nav-height) + 20px) 0 40px; }
+    }
+
+    /* ═══ CONTACT LAYOUT ═══ */
+    .contact-section { padding: 120px 0; }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    /* Form side */
+    .contact-form-wrap .eyebrow { margin-bottom: 20px; }
+
+    .contact-form-wrap h2 {
+      font-size: clamp(28px, 3vw, 40px);
+      font-weight: 300;
+      margin-bottom: 12px;
+      line-height: 1.15;
+    }
+
+    .contact-form-wrap > p {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.8;
+      margin-bottom: 40px;
+    }
+
+    .contact-form { display: flex; flex-direction: column; gap: 0; }
+
+    .contact-form .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .contact-form .form-group { margin-bottom: 20px; }
+
+    .contact-form .btn {
+      margin-top: 8px;
+      width: 100%;
+    }
+
+    /* Info side */
+    .contact-info { padding-top: 8px; }
+
+    .contact-info-block {
+      margin-bottom: 48px;
+    }
+
+    .contact-info-block:last-child { margin-bottom: 0; }
+
+    .contact-info-heading {
+      font-family: var(--font-accent);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 20px;
+    }
+
+    .contact-info-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .contact-info-item:last-child { margin-bottom: 0; }
+
+    .contact-info-icon {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border-mid);
+      flex-shrink: 0;
+      font-size: 16px;
+      transition: all var(--transition);
+    }
+
+    .contact-info-item:hover .contact-info-icon {
+      border-color: var(--gold);
+      box-shadow: 0 0 16px rgba(201,168,76,0.08);
+    }
+
+    .contact-info-label {
+      font-family: var(--font-accent);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 4px;
+    }
+
+    .contact-info-value {
+      font-size: 15px;
+      color: var(--text-primary);
+      line-height: 1.6;
+    }
+
+    .contact-info-value a {
+      color: var(--text-primary);
+      transition: color var(--transition);
+    }
+
+    .contact-info-value a:hover { color: var(--gold); }
+
+    @media (max-width: 1024px) {
+      .contact-grid { grid-template-columns: 1fr; gap: 64px; }
+      .contact-section { padding: 88px 0; }
+    }
+
+    @media (max-width: 768px) {
+      .contact-section { padding: 64px 0; }
+      .contact-form .form-row { grid-template-columns: 1fr; }
+    }
+
+    /* ═══ OFFICES ═══ */
+    .offices-section {
+      padding: 100px 0;
+      border-top: 1px solid var(--border);
+      background: var(--charcoal);
+    }
+
+    .offices-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .offices-header .eyebrow {
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .offices-header .eyebrow::after {
+      content: '';
+      width: 40px;
+      height: 1px;
+      background: var(--gradient-signature);
+    }
+
+    .offices-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .office-card-full {
+      position: relative;
+      overflow: hidden;
+      min-height: 380px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      border: 1px solid var(--border);
+      transition: all 0.4s var(--ease);
+    }
+
+    .office-card-full:hover { border-color: var(--border-mid); }
+
+    .office-card-full-bg {
+      position: absolute;
+      inset: 0;
+    }
+
+    .office-card-full-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.3) saturate(0.75);
+      transition: all 0.6s var(--ease);
+    }
+
+    .office-card-full:hover .office-card-full-bg img {
+      filter: brightness(0.4) saturate(0.85);
+      transform: scale(1.04);
+    }
+
+    .office-card-full-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 30%, rgba(0,0,0,0.85) 100%);
+    }
+
+    .office-card-full::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--gradient-signature);
+      z-index: 3;
+      transform: scaleX(0);
+      transition: transform 0.5s var(--ease);
+    }
+
+    .office-card-full:hover::before { transform: scaleX(1); }
+
+    .office-card-full-content {
+      position: relative;
+      z-index: 2;
+      padding: 36px;
+    }
+
+    .office-card-full-flag {
+      font-size: 24px;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .office-card-full h4 {
+      font-family: var(--font-heading);
+      font-size: 28px;
+      font-weight: 300;
+      margin-bottom: 4px;
+    }
+
+    .office-card-full-country {
+      font-family: var(--font-accent);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      background: var(--gradient-signature);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .office-card-full-dash {
+      width: 28px;
+      height: 2px;
+      background: var(--gradient-signature);
+      margin-bottom: 14px;
+      transition: width 0.4s var(--ease);
+    }
+
+    .office-card-full:hover .office-card-full-dash { width: 48px; }
+
+    .office-card-full-address {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    @media (max-width: 1024px) {
+      .offices-grid { grid-template-columns: 1fr; }
+      .office-card-full { min-height: 320px; }
+    }
+
+    @media (max-width: 768px) {
+      .offices-section { padding: 64px 0; }
+      .office-card-full { min-height: 280px; }
+      .office-card-full-content { padding: 28px; }
+    }
+  </style>
+</head>
+<body>
+
+  <main>
+
+    <!-- ═══ HERO ═══ -->
+    <section class="contact-hero">
+      <div class="contact-hero-bg">
+        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&amp;q=80&amp;auto=format&amp;fit=crop"
+             alt="Modern luxury office interior with panoramic windows and ambient lighting"
+             loading="eager">
+      </div>
+      <div class="contact-hero-overlay"></div>
+      <div class="contact-hero-content container">
+        <div class="eyebrow fade-up">Enquire</div>
+        <h1 class="fade-up fade-up-d1">Let's Start a <em>Conversation</em></h1>
+        <p class="contact-hero-desc fade-up fade-up-d2">
+          Connect with our advisory team to explore how El-Global
+          can serve your investment objectives.
+        </p>
+      </div>
+    </section>
+
+    <!-- ═══ CONTACT FORM + INFO ═══ -->
+    <section class="contact-section">
+      <div class="container">
+        <div class="contact-grid">
+
+          <!-- Form -->
+          <div class="contact-form-wrap reveal">
+            <div class="eyebrow">Get in Touch</div>
+            <h2>Send Us a <em>Message</em></h2>
+            <p>Fill in the form below and a senior advisor will respond within 24 hours.</p>
+
+            <form class="contact-form" data-ajax action="https://el-globalbusiness.com/contact-handler.php" method="POST">
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="name">Full Name *</label>
+                  <input class="form-input" type="text" id="name" name="name" placeholder="Your full name" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="email">Email Address *</label>
+                  <input class="form-input" type="email" id="email" name="email" placeholder="you@example.com" required>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="phone">Phone Number</label>
+                  <input class="form-input" type="tel" id="phone" name="phone" placeholder="+1 (555) 000-0000">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="division">Division of Interest</label>
+                  <select class="form-select" id="division" name="division">
+                    <option value="" disabled selected>Select a division</option>
+                    <option value="jet-el">Jet-El — Private Aviation</option>
+                    <option value="hl">H&L — Hotels & Luxury Real Estate</option>
+                    <option value="one-percent">The 1% — Exclusive Investments</option>
+                    <option value="el-rock">El&Rock — M&A Advisory</option>
+                    <option value="token-el">Token-El — Asset Tokenization</option>
+                    <option value="general">General Enquiry</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="message">Message *</label>
+                <textarea class="form-textarea" id="message" name="message" placeholder="Tell us about your investment objectives or how we can help..." required></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-lg">Send Message</button>
+            </form>
+          </div>
+
+          <!-- Info -->
+          <div class="contact-info reveal reveal-delay-2">
+
+            <div class="contact-info-block">
+              <div class="contact-info-heading">Email</div>
+              <div class="contact-info-item">
+                <div class="contact-info-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4l-10 8L2 4"/></svg></div>
+                <div>
+                  <div class="contact-info-label">General Enquiries</div>
+                  <div class="contact-info-value"><a href="mailto:info@el-globalbusiness.com">info@el-globalbusiness.com</a></div>
+                </div>
+              </div>
+              <div class="contact-info-item">
+                <div class="contact-info-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4l-10 8L2 4"/></svg></div>
+                <div>
+                  <div class="contact-info-label">Sales &amp; Investments</div>
+                  <div class="contact-info-value"><a href="mailto:sales@el-globalbusiness.com">sales@el-globalbusiness.com</a></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="contact-info-block">
+              <div class="contact-info-heading">Website</div>
+              <div class="contact-info-item">
+                <div class="contact-info-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div>
+                <div>
+                  <div class="contact-info-label">Official Website</div>
+                  <div class="contact-info-value"><a href="index.html" target="_blank">el-globalbusiness.com</a></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="contact-info-block">
+              <div class="contact-info-heading">Locations</div>
+
+              <div class="contact-info-item">
+                <div class="contact-info-icon">US</div>
+                <div>
+                  <div class="contact-info-label">Casper, Wyoming</div>
+                  <div class="contact-info-value">Casper, Wyoming 82609, USA</div>
+                </div>
+              </div>
+
+              <div class="contact-info-item">
+                <div class="contact-info-icon">SA</div>
+                <div>
+                  <div class="contact-info-label">Johannesburg</div>
+                  <div class="contact-info-value">Gauteng, South Africa</div>
+                </div>
+              </div>
+
+              <div class="contact-info-item">
+                <div class="contact-info-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div>
+                <div>
+                  <div class="contact-info-label">Global Partnerships</div>
+                  <div class="contact-info-value">UK &middot; Switzerland &middot; Dubai &middot; Spain &middot; Portugal</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ OFFICES WITH IMAGES ═══ -->
+    <section class="offices-section">
+      <div class="container">
+
+        <div class="offices-header reveal">
+          <div class="eyebrow">Our Locations</div>
+          <h2>Where We <em>Operate</em></h2>
+        </div>
+
+        <div class="offices-grid" style="grid-template-columns: 1fr 1fr;">
+
+          <div class="office-card-full reveal">
+            <div class="office-card-full-bg">
+              <img src="https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=800&amp;q=80&amp;auto=format&amp;fit=crop"
+                   alt="American landscape with dramatic sky representing Wyoming"
+                   loading="lazy">
+            </div>
+            <div class="office-card-full-overlay"></div>
+            <div class="office-card-full-content">
+              <span class="office-card-full-flag">US</span>
+              <h4>Casper, Wyoming</h4>
+              <span class="office-card-full-country">United States</span>
+              <div class="office-card-full-dash"></div>
+              <div class="office-card-full-address">Casper, Wyoming 82609, USA</div>
+            </div>
+          </div>
+
+          <div class="office-card-full reveal reveal-delay-1">
+            <div class="office-card-full-bg">
+              <img src="https://images.unsplash.com/photo-1580060839134-75a5edca2e99?w=800&amp;q=80&amp;auto=format&amp;fit=crop"
+                   alt="Johannesburg city skyline at sunset with golden light"
+                   loading="lazy">
+            </div>
+            <div class="office-card-full-overlay"></div>
+            <div class="office-card-full-content">
+              <span class="office-card-full-flag">SA</span>
+              <h4>Johannesburg</h4>
+              <span class="office-card-full-country">South Africa</span>
+              <div class="office-card-full-dash"></div>
+              <div class="office-card-full-address">Gauteng, South Africa</div>
+            </div>
+          </div>
+
+        </div>
+
+        <div style="text-align: center; margin-top: 32px; margin-bottom: 16px;">
+          <div class="eyebrow">Strategic Partnerships</div>
+        </div>
+        <div class="offices-grid" style="grid-template-columns: repeat(3, 1fr); gap: 16px;">
+          <div class="office-card-full reveal" style="min-height: 180px;">
+            <div class="office-card-full-bg">
+              <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=800&amp;q=80&amp;auto=format&amp;fit=crop" alt="London skyline" loading="lazy">
+            </div>
+            <div class="office-card-full-overlay"></div>
+            <div class="office-card-full-content">
+              <span class="office-card-full-flag">UK</span>
+              <h4>London</h4>
+              <span class="office-card-full-country">United Kingdom</span>
+            </div>
+          </div>
+          <div class="office-card-full reveal reveal-delay-1" style="min-height: 180px;">
+            <div class="office-card-full-bg">
+              <img src="https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?w=800&amp;q=80&amp;auto=format&amp;fit=crop" alt="Swiss Alps" loading="lazy">
+            </div>
+            <div class="office-card-full-overlay"></div>
+            <div class="office-card-full-content">
+              <span class="office-card-full-flag">CH</span>
+              <h4>Zurich</h4>
+              <span class="office-card-full-country">Switzerland</span>
+            </div>
+          </div>
+          <div class="office-card-full reveal reveal-delay-2" style="min-height: 180px;">
+            <div class="office-card-full-bg">
+              <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800&amp;q=80&amp;auto=format&amp;fit=crop" alt="Dubai skyline" loading="lazy">
+            </div>
+            <div class="office-card-full-overlay"></div>
+            <div class="office-card-full-content">
+              <span class="office-card-full-flag">AE</span>
+              <h4>Dubai</h4>
+              <span class="office-card-full-country">United Arab Emirates</span>
+            </div>
+          </div>
+          <div class="office-card-full reveal" style="min-height: 180px;">
+            <div class="office-card-full-bg">
+              <img src="https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=800&amp;q=80&amp;auto=format&amp;fit=crop" alt="Madrid skyline" loading="lazy">
+            </div>
+            <div class="office-card-full-overlay"></div>
+            <div class="office-card-full-content">
+              <span class="office-card-full-flag">ES</span>
+              <h4>Madrid</h4>
+              <span class="office-card-full-country">Spain</span>
+            </div>
+          </div>
+          <div class="office-card-full reveal reveal-delay-1" style="min-height: 180px;">
+            <div class="office-card-full-bg">
+              <img src="https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=800&amp;q=80&amp;auto=format&amp;fit=crop" alt="Lisbon waterfront" loading="lazy">
+            </div>
+            <div class="office-card-full-overlay"></div>
+            <div class="office-card-full-content">
+              <span class="office-card-full-flag">PT</span>
+              <h4>Lisbon</h4>
+              <span class="office-card-full-country">Portugal</span>
+            </div>
+          </div>
+          <div class="office-card-full reveal reveal-delay-2" style="min-height: 180px;">
+            <div class="office-card-full-bg">
+              <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&amp;q=80&amp;auto=format&amp;fit=crop" alt="Global markets" loading="lazy">
+            </div>
+            <div class="office-card-full-overlay"></div>
+            <div class="office-card-full-content">
+              <span class="office-card-full-flag">EM</span>
+              <h4>And Growing</h4>
+              <span class="office-card-full-country">Expanding Globally</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="js/components.js"></script>
+  <script src="js/main.js"></script>
+</body>
+
+<!-- Mirrored from https://el-globalbusiness.com/contact.html by HTTrack Website Copier/3.x [XR&CO], Wed, 07 Oct 2026 11:06:18 GMT -->
+</html>

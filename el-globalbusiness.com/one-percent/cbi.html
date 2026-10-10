@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from https://el-globalbusiness.com/one-percent/cbi.html by HTTrack Website Copier/3.x [XR&CO], Wed, 07 Oct 2026 11:06:22 GMT -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Citizenship by Investment — The 1% | El-Global Business</title>
+  <meta name="description" content="Citizenship by Investment advisory from The 1%. Global residency and citizenship programs across the Caribbean, Europe, and beyond. Strategic CBI advisory for UHNWI.">
+
+  <meta property="og:title" content="Citizenship by Investment — El-Global Business">
+  <meta property="og:type" content="website">
+
+  <link rel="stylesheet" href="../css/style.css">
+
+  <style>
+    /* ═══ HERO ═══ */
+    .cbi-hero {
+      position: relative; height: 60vh; max-height: 60vh;
+      display: flex; align-items: flex-end; overflow: hidden;
+    }
+
+    .cbi-hero-bg { position: absolute; inset: 0; }
+
+    .cbi-hero-bg img {
+      width: 100%; height: 100%; object-fit: cover;
+      object-position: center 40%;
+      filter: brightness(0.2) saturate(0.7);
+    }
+
+    .cbi-hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.25) 40%, rgba(0,0,0,0.92) 100%);
+    }
+
+    .cbi-hero-content {
+      position: relative; z-index: 2;
+      padding: calc(var(--nav-height) + 40px) 0 56px; max-width: 700px;
+    }
+
+    .cbi-hero .eyebrow { margin-bottom: 20px; }
+
+    .cbi-hero h1 {
+      font-size: clamp(36px, 5vw, 64px);
+      font-weight: 300; margin-bottom: 16px; line-height: 1.1;
+    }
+
+    .cbi-hero-desc {
+      font-family: var(--font-subheading);
+      font-size: clamp(16px, 2vw, 20px);
+      font-weight: 300; font-style: italic;
+      color: var(--text-secondary); line-height: 1.65; max-width: 540px;
+    }
+
+    @media (max-width: 768px) {
+      .cbi-hero { height: 50vh; }
+      .cbi-hero-content { padding: calc(var(--nav-height) + 20px) 0 40px; }
+    }
+
+    /* ═══ INTRO ═══ */
+    .cbi-intro { padding: 120px 0; }
+
+    .cbi-intro-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: center;
+    }
+
+    .cbi-intro-text .eyebrow { margin-bottom: 20px; }
+
+    .cbi-intro-text h2 {
+      font-size: clamp(30px, 3.5vw, 48px);
+      font-weight: 300; margin-bottom: 24px; line-height: 1.15;
+    }
+
+    .cbi-intro-text p {
+      font-size: 15px; color: var(--text-muted);
+      line-height: 1.85; margin-bottom: 20px;
+    }
+
+    .cbi-intro-image {
+      position: relative; overflow: hidden; aspect-ratio: 4 / 5;
+    }
+
+    .cbi-intro-image img {
+      width: 100%; height: 100%; object-fit: cover;
+      filter: brightness(0.85) saturate(0.9);
+      transition: transform 0.6s var(--ease);
+    }
+
+    .cbi-intro-image:hover img { transform: scale(1.04); }
+
+    .cbi-intro-image::after {
+      content: ''; position: absolute;
+      bottom: 0; left: 0; right: 0; height: 3px;
+      background: var(--gradient-signature);
+    }
+
+    @media (max-width: 1024px) {
+      .cbi-intro-grid { grid-template-columns: 1fr; gap: 48px; }
+      .cbi-intro-image { max-width: 480px; aspect-ratio: 16/10; }
+      .cbi-intro { padding: 88px 0; }
+    }
+
+    @media (max-width: 768px) { .cbi-intro { padding: 64px 0; } }
+
+    /* ═══ PROGRAMS ═══ */
+    .programs-section {
+      padding: 120px 0; border-top: 1px solid var(--border);
+    }
+
+    .programs-header {
+      text-align: center; margin-bottom: 64px;
+    }
+
+    .programs-header .eyebrow {
+      justify-content: center; margin-bottom: 20px;
+    }
+
+    .programs-header .eyebrow::after {
+      content: ''; width: 40px; height: 1px;
+      background: var(--gradient-signature);
+    }
+
+    .programs-header p {
+      font-size: 15px; color: var(--text-muted);
+      max-width: 540px; margin: 16px auto 0; line-height: 1.8;
+    }
+
+    .programs-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+    }
+
+    .program-card {
+      border: 1px solid var(--border); background: var(--charcoal);
+      padding: 36px; transition: all 0.4s var(--ease); position: relative;
+    }
+
+    .program-card::after {
+      content: ''; position: absolute;
+      top: 0; left: 0; right: 0; height: 2px;
+      background: var(--gradient-signature);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 0.5s var(--ease);
+    }
+
+    .program-card:hover { border-color: var(--border-mid); background: var(--surface-hover); }
+    .program-card:hover::after { transform: scaleX(1); }
+
+    .program-card-flag { font-size: 32px; margin-bottom: 20px; display: block; }
+
+    .program-card-region {
+      font-family: var(--font-accent); font-size: 10px; font-weight: 500;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      background: var(--gradient-signature);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text; margin-bottom: 8px; display: block;
+    }
+
+    .program-card h3 {
+      font-family: var(--font-heading); font-size: 22px;
+      font-weight: 400; margin-bottom: 12px; line-height: 1.2;
+    }
+
+    .program-card p {
+      font-size: 13px; color: var(--text-muted);
+      line-height: 1.8; margin-bottom: 16px;
+    }
+
+    .program-card-details { list-style: none; }
+
+    .program-card-details li {
+      display: flex; align-items: center; gap: 10px;
+      padding: 8px 0; border-top: 1px solid var(--border);
+      font-size: 13px; color: var(--text-primary);
+    }
+
+    .program-card-details .dot {
+      width: 5px; height: 5px;
+      background: var(--gradient-signature);
+      border-radius: 50%; flex-shrink: 0;
+    }
+
+    .program-card-details .detail-label {
+      color: var(--text-dim); min-width: 90px;
+      font-family: var(--font-accent); font-size: 10px;
+      letter-spacing: 0.08em; text-transform: uppercase;
+    }
+
+    @media (max-width: 1024px) {
+      .programs-grid { grid-template-columns: 1fr 1fr; }
+      .programs-section { padding: 88px 0; }
+    }
+
+    @media (max-width: 768px) {
+      .programs-grid { grid-template-columns: 1fr; }
+      .programs-section { padding: 64px 0; }
+    }
+
+    /* ═══ BENEFITS ═══ */
+    .benefits-section {
+      padding: 120px 0; border-top: 1px solid var(--border);
+      background: var(--charcoal);
+    }
+
+    .benefits-header {
+      text-align: center; margin-bottom: 64px;
+    }
+
+    .benefits-header .eyebrow {
+      justify-content: center; margin-bottom: 20px;
+    }
+
+    .benefits-header .eyebrow::after {
+      content: ''; width: 40px; height: 1px;
+      background: var(--gradient-signature);
+    }
+
+    .benefits-header p {
+      font-size: 15px; color: var(--text-muted);
+      max-width: 520px; margin: 16px auto 0; line-height: 1.8;
+    }
+
+    .benefits-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 0; border: 1px solid var(--border);
+    }
+
+    .benefit-card {
+      padding: 40px 32px; border-right: 1px solid var(--border);
+      background: var(--black); transition: all 0.4s var(--ease);
+    }
+
+    .benefit-card:last-child { border-right: none; }
+    .benefit-card:hover { background: var(--surface-hover); }
+
+    .benefit-num {
+      font-family: var(--font-heading); font-size: 40px; font-weight: 300;
+      background: var(--gradient-signature);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text; opacity: 0.12; line-height: 1; margin-bottom: 20px;
+    }
+
+    .benefit-card h4 {
+      font-family: var(--font-heading); font-size: 20px;
+      font-weight: 400; margin-bottom: 10px;
+    }
+
+    .benefit-card p { font-size: 13px; color: var(--text-muted); line-height: 1.75; }
+
+    @media (max-width: 768px) {
+      .benefits-grid { grid-template-columns: 1fr; }
+      .benefit-card { border-right: none; border-bottom: 1px solid var(--border); }
+      .benefit-card:last-child { border-bottom: none; }
+      .benefits-section { padding: 64px 0; }
+    }
+
+    /* ═══ PROCESS ═══ */
+    .cbi-process { padding: 120px 0; border-top: 1px solid var(--border); }
+
+    .cbi-process-header {
+      text-align: center; margin-bottom: 64px;
+    }
+
+    .cbi-process-header .eyebrow {
+      justify-content: center; margin-bottom: 20px;
+    }
+
+    .cbi-process-header .eyebrow::after {
+      content: ''; width: 40px; height: 1px;
+      background: var(--gradient-signature);
+    }
+
+    .cbi-process-header p {
+      font-size: 15px; color: var(--text-muted);
+      max-width: 480px; margin: 16px auto 0; line-height: 1.8;
+    }
+
+    .cbi-process-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 0; border: 1px solid var(--border); counter-reset: step;
+    }
+
+    .cbi-process-card {
+      padding: 40px 28px; border-right: 1px solid var(--border);
+      counter-increment: step; transition: all 0.4s var(--ease);
+    }
+
+    .cbi-process-card:last-child { border-right: none; }
+    .cbi-process-card:hover { background: var(--surface-hover); }
+
+    .cbi-process-card::before {
+      content: counter(step, decimal-leading-zero);
+      font-family: var(--font-heading); font-size: 52px; font-weight: 300;
+      background: var(--gradient-signature);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text; display: block; margin-bottom: 24px; line-height: 1;
+    }
+
+    .cbi-process-dash {
+      width: 28px; height: 2px;
+      background: var(--gradient-signature); margin-bottom: 16px;
+      transition: width 0.4s var(--ease);
+    }
+
+    .cbi-process-card:hover .cbi-process-dash { width: 48px; }
+
+    .cbi-process-card h4 {
+      font-family: var(--font-heading); font-size: 20px;
+      font-weight: 400; margin-bottom: 10px;
+    }
+
+    .cbi-process-card p { font-size: 13px; color: var(--text-muted); line-height: 1.75; }
+
+    @media (max-width: 1024px) {
+      .cbi-process-grid { grid-template-columns: repeat(2, 1fr); }
+      .cbi-process-card:nth-child(2) { border-right: none; }
+      .cbi-process-card:nth-child(3),
+      .cbi-process-card:nth-child(4) { border-top: 1px solid var(--border); }
+      .cbi-process { padding: 88px 0; }
+    }
+
+    @media (max-width: 768px) {
+      .cbi-process-grid { grid-template-columns: 1fr; }
+      .cbi-process-card { border-right: none; border-bottom: 1px solid var(--border); }
+      .cbi-process-card:last-child { border-bottom: none; }
+      .cbi-process { padding: 64px 0; }
+    }
+
+    /* ═══ CTA ═══ */
+    .cbi-cta {
+      padding: 100px 0; text-align: center; position: relative;
+      background: var(--charcoal);
+    }
+
+    .cbi-cta::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 50% 60% at 50% 50%, rgba(201,168,76,0.03) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .cbi-cta .eyebrow { justify-content: center; margin-bottom: 20px; }
+
+    .cbi-cta .eyebrow::after {
+      content: ''; width: 40px; height: 1px;
+      background: var(--gradient-signature);
+    }
+
+    .cbi-cta h2 { font-size: clamp(30px, 4vw, 48px); font-weight: 300; margin-bottom: 16px; }
+
+    .cbi-cta p {
+      font-size: 15px; color: var(--text-muted);
+      max-width: 480px; margin: 0 auto 40px; line-height: 1.8;
+    }
+
+    .cbi-cta .btn-row { justify-content: center; }
+
+    @media (max-width: 768px) { .cbi-cta { padding: 64px 0; } }
+  </style>
+</head>
+<body>
+
+  <main>
+
+    <!-- ═══ HERO ═══ -->
+    <section class="cbi-hero">
+      <div class="cbi-hero-bg">
+        <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=1200&amp;q=80&amp;auto=format&amp;fit=crop"
+             alt="Grand luxury waterfront villa representing premium citizenship by investment residences"
+             loading="eager">
+      </div>
+      <div class="cbi-hero-overlay"></div>
+      <div class="cbi-hero-content container">
+        <div class="eyebrow fade-up">The 1% &middot; CBI</div>
+        <h1 class="fade-up fade-up-d1">Citizenship by <em>Investment</em></h1>
+        <p class="cbi-hero-desc fade-up fade-up-d2">
+          Strategic advisory on global residency and citizenship programs,
+          unlocking borderless mobility, tax optimization, and legacy
+          planning for the world's elite.
+        </p>
+      </div>
+    </section>
+
+    <!-- ═══ INTRO ═══ -->
+    <section class="cbi-intro">
+      <div class="container">
+        <div class="cbi-intro-grid">
+
+          <div class="cbi-intro-text reveal">
+            <div class="eyebrow">What is CBI</div>
+            <h2>Global Citizenship, <em>Strategically</em> Acquired</h2>
+            <p>
+              Citizenship by Investment programs allow qualified individuals
+              to obtain residency or citizenship in a foreign country through
+              a qualifying investment. These programs are government-approved,
+              legally structured, and designed to attract global capital while
+              offering investors enhanced mobility, tax planning, and security.
+            </p>
+            <p>
+              El-Global's CBI advisory goes beyond application processing. We
+              evaluate each program against your specific objectives, whether
+              that's visa-free travel access, tax optimization, wealth
+              protection, or legacy planning for future generations. Every
+              recommendation is tailored, compliant, and strategic.
+            </p>
+            <a href="enquiry.html" class="btn btn-ghost">Enquire About CBI</a>
+          </div>
+
+          <div class="cbi-intro-image reveal reveal-delay-2">
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&amp;q=80&amp;auto=format&amp;fit=crop"
+                 alt="Premium luxury residence with grand architecture and private gardens for elite investors"
+                 loading="lazy">
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ PROGRAMS ═══ -->
+    <section class="programs-section">
+      <div class="container">
+
+        <div class="programs-header reveal">
+          <div class="eyebrow">Programs</div>
+          <h2>Available CBI <em>Pathways</em></h2>
+          <p>Government-approved citizenship and residency programs we advise on across key jurisdictions.</p>
+        </div>
+
+        <div class="programs-grid">
+
+          <!-- Caribbean -->
+          <div class="program-card reveal">
+            <span class="program-card-flag">CB</span>
+            <span class="program-card-region">Caribbean</span>
+            <h3>Caribbean CBI Programs</h3>
+            <p>Established programs offering fast-track citizenship with visa-free access to 140+ countries.</p>
+            <ul class="program-card-details">
+              <li><span class="dot"></span><span class="detail-label">Countries</span> St. Kitts, Dominica, Grenada, Antigua, St. Lucia</li>
+              <li><span class="dot"></span><span class="detail-label">Timeline</span> 3-6 months</li>
+              <li><span class="dot"></span><span class="detail-label">Investment</span> From $100,000</li>
+            </ul>
+          </div>
+
+          <!-- European -->
+          <div class="program-card reveal reveal-delay-1">
+            <span class="program-card-flag">EU</span>
+            <span class="program-card-region">Europe</span>
+            <h3>European Residency Programs</h3>
+            <p>Golden visa and residency pathways offering access to the EU, Schengen zone, and European markets.</p>
+            <ul class="program-card-details">
+              <li><span class="dot"></span><span class="detail-label">Countries</span> Portugal, Greece, Malta, Spain</li>
+              <li><span class="dot"></span><span class="detail-label">Timeline</span> 4-12 months</li>
+              <li><span class="dot"></span><span class="detail-label">Investment</span> From $250,000</li>
+            </ul>
+          </div>
+
+          <!-- Other -->
+          <div class="program-card reveal reveal-delay-2">
+            <span class="program-card-flag">GL</span>
+            <span class="program-card-region">Global</span>
+            <h3>Additional Jurisdictions</h3>
+            <p>Emerging CBI and residency programs across the Middle East, Asia Pacific, and beyond.</p>
+            <ul class="program-card-details">
+              <li><span class="dot"></span><span class="detail-label">Countries</span> Turkey, UAE, Vanuatu, Jordan</li>
+              <li><span class="dot"></span><span class="detail-label">Timeline</span> 2-8 months</li>
+              <li><span class="dot"></span><span class="detail-label">Investment</span> From $75,000</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ BENEFITS ═══ -->
+    <section class="benefits-section">
+      <div class="container">
+
+        <div class="benefits-header reveal">
+          <div class="eyebrow">Benefits</div>
+          <h2>Why Pursue <em>CBI</em></h2>
+          <p>Strategic advantages that extend far beyond a second passport.</p>
+        </div>
+
+        <div class="benefits-grid">
+          <div class="benefit-card reveal">
+            <div class="benefit-num">01</div>
+            <h4>Global Mobility</h4>
+            <p>Visa-free or visa-on-arrival access to 140+ countries. Travel without restrictions, reside where opportunity calls, and move freely across borders.</p>
+          </div>
+          <div class="benefit-card reveal reveal-delay-1">
+            <div class="benefit-num">02</div>
+            <h4>Tax Optimization</h4>
+            <p>Legal tax planning through favorable jurisdictions. Many CBI countries offer zero capital gains, inheritance, or wealth taxes for residents.</p>
+          </div>
+          <div class="benefit-card reveal reveal-delay-2">
+            <div class="benefit-num">03</div>
+            <h4>Wealth Protection</h4>
+            <p>Diversify your residency across stable jurisdictions. Protect assets, ensure business continuity, and create a Plan B for geopolitical uncertainty.</p>
+          </div>
+          <div class="benefit-card reveal">
+            <div class="benefit-num">04</div>
+            <h4>Legacy Planning</h4>
+            <p>Pass citizenship to future generations. Your children and grandchildren inherit the freedom of global mobility and multi-jurisdictional options.</p>
+          </div>
+          <div class="benefit-card reveal reveal-delay-1">
+            <div class="benefit-num">05</div>
+            <h4>Business Expansion</h4>
+            <p>Access new markets, banking systems, and business environments. CBI opens doors to trade zones, financial centers, and emerging economies.</p>
+          </div>
+          <div class="benefit-card reveal reveal-delay-2">
+            <div class="benefit-num">06</div>
+            <h4>Quality of Life</h4>
+            <p>Access world-class healthcare, education, and lifestyle in your chosen jurisdiction. Live where life meets your highest standards.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══ PROCESS ═══ -->
+    <section class="cbi-process">
+      <div class="container">
+
+        <div class="cbi-process-header reveal">
+          <div class="eyebrow">How It Works</div>
+          <h2>Our CBI <em>Process</em></h2>
+          <p>A structured, compliant approach from initial consultation to citizenship approval.</p>
+        </div>
+
+        <div class="cbi-process-grid">
+          <div class="cbi-process-card reveal">
+            <div class="cbi-process-dash"></div>
+            <h4>Assessment</h4>
+            <p>We evaluate your objectives, family situation, and investment capacity to recommend the optimal CBI program and jurisdiction.</p>
+          </div>
+          <div class="cbi-process-card reveal reveal-delay-1">
+            <div class="cbi-process-dash"></div>
+            <h4>Documentation</h4>
+            <p>Our team prepares and reviews all application documents, ensuring full compliance with program requirements and government standards.</p>
+          </div>
+          <div class="cbi-process-card reveal reveal-delay-2">
+            <div class="cbi-process-dash"></div>
+            <h4>Submission</h4>
+            <p>Applications are submitted through authorized government channels. We manage all communication and provide regular status updates throughout.</p>
+          </div>
+          <div class="cbi-process-card reveal reveal-delay-3">
+            <div class="cbi-process-dash"></div>
+            <h4>Approval</h4>
+            <p>Upon approval, we facilitate the investment completion, oath of allegiance where required, and passport issuance for you and qualifying dependents.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══ CTA ═══ -->
+    <section class="cbi-cta">
+      <div class="container reveal">
+        <div class="eyebrow">Get Started</div>
+        <h2>Ready to Expand Your <em>Horizons</em>?</h2>
+        <p>Connect with our CBI advisory team to explore the right citizenship pathway for your objectives.</p>
+        <div class="btn-row">
+          <a href="enquiry.html" class="btn btn-primary btn-lg">CBI Enquiry</a>
+          <a href="../contact.html" class="btn btn-outline btn-lg">Book a Consultation</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="../js/components.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+
+<!-- Mirrored from https://el-globalbusiness.com/one-percent/cbi.html by HTTrack Website Copier/3.x [XR&CO], Wed, 07 Oct 2026 11:06:22 GMT -->
+</html>
