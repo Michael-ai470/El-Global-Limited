@@ -4,6 +4,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Motion gate (docs/web-motion-engine.md 5.2): hides intro elements until GSAP has them,
+       and shows them anyway after 2.5 seconds if motion never arrives. -->
+  <script>
+    (function (d, w) {
+      d.classList.add('motion-pending');
+      w.__motionFailsafe = setTimeout(function () {
+        w.__motionShown = new WeakSet(document.querySelectorAll('[data-motion-hide]'));
+        d.classList.remove('motion-pending');
+      }, 2500);
+    })(document.documentElement, window);
+  </script>
   <title>El-Global Business — Welcome to the 1%</title>
   <meta name="description" content="El-Global Business is a multidisciplinary portfolio management and investment advisory firm. Strategic asset acquisition, optimization, and digital transformation across aviation, real estate, and alternative investments.">
   <meta name="keywords" content="portfolio management, investment advisory, private aviation, luxury real estate, M&A advisory, asset tokenization, UHNWI">
@@ -16,95 +28,88 @@
 
   <!-- Stylesheet -->
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="js/vendor/lenis.css">
+
+  <!-- Motion: gsap and lenis from js/vendor/, then the homepage module. All deferred. -->
+  <script defer src="js/vendor/gsap.min.js"></script>
+  <script defer src="js/vendor/ScrollTrigger.min.js"></script>
+  <script defer src="js/vendor/CustomEase.min.js"></script>
+  <script defer src="js/vendor/lenis.min.js"></script>
+  <script type="module" src="js/home.js"></script>
 
   <style>
-    /* ═══ HERO — Homepage Specific ═══ */
-    .hero-home {
-      min-height: auto;
-      height: 95vh;
-      max-height: 95vh;
+    /* ═══ HERO — Jet scroll sequence (recipe 6.9, docs/web-motion-engine.md) ═══
+       One screen tall here, and a still hero with scripts off or reduced motion.
+       js/recipes/scroll-sequence.js makes it taller while the sequence runs.
+       Elements GSAP animates carry no CSS transition. */
+    .seq-hero {
       position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 0;
+      height: 100svh;
+      width: 100%;
+      background: var(--black);
+    }
+
+    /* CSS sticky does the pinning. No pin spacer, nothing to clean up. */
+    .seq-stage {
+      position: sticky;
+      top: 0;
+      height: 100svh;
+      width: 100%;
       overflow: hidden;
     }
 
-    .hero-home .hero-bg {
+    .seq-poster,
+    .seq-canvas,
+    .seq-scrim,
+    .seq-shade {
       position: absolute;
       inset: 0;
-      z-index: 0;
-    }
-
-    .hero-home .hero-bg img,
-    .hero-home .hero-bg video {
       width: 100%;
       height: 100%;
+    }
+
+    /* Same value as focus[0] in js/home.js, so the swap to the canvas is invisible. */
+    .seq-poster {
       object-fit: cover;
-      object-position: center 30%;
-      filter: brightness(0.35) saturate(0.8);
-      transform: scale(1.05);
-      animation: heroZoom 20s ease-in-out infinite alternate;
+      object-position: 43% 50%;
     }
 
-    .hero-home .hero-bg video {
-      position: absolute;
-      inset: 0;
+    /* Decorative, so it may start hidden: the poster is the content. */
+    .seq-canvas { visibility: hidden; }
+
+    .seq-scrim {
+      background: #000;
+      opacity: 0.3;
     }
 
-    /* Hide fallback image when video is playing */
-    .hero-home .hero-bg video.is-playing + img {
-      display: none;
-    }
-
-    @keyframes heroZoom {
-      0% { transform: scale(1.05); }
-      100% { transform: scale(1.12); }
-    }
-
-    .hero-home .hero-overlay {
-      position: absolute;
-      inset: 0;
-      z-index: 1;
-      background:
-        linear-gradient(180deg,
-          rgba(0,0,0,0.65) 0%,
-          rgba(0,0,0,0.3) 30%,
-          rgba(0,0,0,0.3) 60%,
-          rgba(0,0,0,0.85) 100%
-        );
-    }
-
-    .hero-home .hero-gradient-accent {
-      position: absolute;
-      inset: 0;
-      z-index: 1;
-      background:
-        radial-gradient(ellipse 50% 40% at 15% 85%, rgba(201,168,76,0.08) 0%, transparent 70%),
-        radial-gradient(ellipse 40% 40% at 85% 20%, rgba(201,168,76,0.05) 0%, transparent 70%);
+    /* Keeps the navbar and the opening line legible, and meets the next section. */
+    .seq-shade {
+      background: linear-gradient(180deg,
+        rgba(0,0,0,0.55) 0%,
+        rgba(0,0,0,0) 22%,
+        rgba(0,0,0,0) 62%,
+        rgba(10,10,10,0.9) 100%);
       pointer-events: none;
     }
 
-    .hero-home .hero-grid-pattern {
-      position: absolute;
-      inset: 0;
-      z-index: 1;
-      background-image:
-        linear-gradient(rgba(201,168,76,0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(201,168,76,0.03) 1px, transparent 1px);
-      background-size: 80px 80px;
-      mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, rgba(0,0,0,0.6) 20%, transparent 80%);
-      -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, rgba(0,0,0,0.6) 20%, transparent 80%);
-      pointer-events: none;
-    }
-
-    .hero-home .hero-content {
+    .seq-copy {
       position: relative;
-      z-index: 3;
-      max-width: 940px;
-      padding: calc(var(--nav-height) + 60px) 48px 100px;
+      z-index: 2;
+      display: grid;
+      grid-template-rows: 1fr auto;
+      place-items: center;
+      height: 100%;
+      padding: calc(var(--nav-height) + 24px) 24px 0;
+      text-align: center;
+    }
+
+    /* Low in the frame, so the opening line does not sit on the open door.
+       Still hero: the line takes the bottom row, under the headline. While the
+       sequence runs both blocks share the first cell and that row is empty. */
+    .seq-out {
+      order: 2;
+      align-self: end;
+      padding-bottom: 12svh;
     }
 
     /* Tagline decorative line */
@@ -115,7 +120,7 @@
       letter-spacing: 0.35em;
       text-transform: uppercase;
       color: var(--orange);
-      margin-bottom: 32px;
+      margin: 0;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -130,20 +135,28 @@
       background: var(--gradient-signature);
     }
 
-    .hero-home h1 {
+    .seq-title {
       font-family: var(--font-heading);
-      font-size: clamp(48px, 7vw, 96px);
+      font-size: clamp(48px, 8vw, 112px);
       font-weight: 300;
       line-height: 1.05;
-      margin-bottom: 28px;
       letter-spacing: -0.01em;
+      margin: 0;
     }
 
-    .hero-home h1 .line-2 {
+    .seq-title .line-2 {
       display: block;
     }
 
-    .hero-home .hero-subtitle {
+    /* ═══ After the hero: the copy, divisions and stats that used to sit on the video ═══ */
+    .hero-after {
+      position: relative;
+      padding: 96px 0 0;
+      text-align: center;
+      background: var(--black);
+    }
+
+    .hero-after .hero-subtitle {
       font-family: var(--font-subheading);
       font-size: clamp(17px, 2vw, 22px);
       font-weight: 300;
@@ -174,7 +187,7 @@
       border: 1px solid var(--border-mid);
       padding: 9px 22px;
       border-radius: 100px;
-      transition: all var(--transition);
+      transition: color var(--transition), border-color var(--transition), background var(--transition), transform var(--transition);
       text-decoration: none;
       cursor: pointer;
     }
@@ -186,27 +199,11 @@
       transform: translateY(-2px);
     }
 
-    /* Bottom edge gradient */
-    .hero-home .hero-bottom-fade {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 200px;
-      z-index: 2;
-      background: linear-gradient(transparent, var(--black));
-      pointer-events: none;
-    }
-
-    /* Floating stats bar overlaying hero bottom */
+    /* Stats bar */
     .hero-stats {
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 4;
       width: 100%;
       max-width: var(--container-width);
+      margin: 72px auto 0;
       padding: 0 48px;
     }
 
@@ -214,10 +211,7 @@
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       background: rgba(0, 0, 0, 0.92);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
       border: 1px solid var(--border);
-      border-bottom: none;
     }
 
     .hero-stat {
@@ -258,19 +252,19 @@
     @media (max-width: 1024px) {
       .hero-stats-inner { grid-template-columns: repeat(2, 1fr); }
       .hero-stat:nth-child(2) { border-right: none; }
+      .hero-stat:nth-child(-n+2) { border-bottom: 1px solid var(--border); }
     }
 
     @media (max-width: 768px) {
-      .hero-home .hero-content { padding: calc(var(--nav-height) + 40px) 20px 160px; }
-      .hero-tagline { font-size: 11px; letter-spacing: 0.25em; }
+      .seq-copy { padding: calc(var(--nav-height) + 16px) 20px 0; }
+      .hero-tagline { font-size: 11px; letter-spacing: 0.25em; gap: 14px; }
       .hero-tagline::before,
       .hero-tagline::after { width: 30px; }
+      .hero-after { padding-top: 72px; }
       .hero-divisions { gap: 8px; }
       .hero-division-pill { font-size: 9px; padding: 7px 16px; }
-      .hero-stats { padding: 0 20px; }
-      .hero-stats-inner { grid-template-columns: repeat(2, 1fr); }
+      .hero-stats { padding: 0 20px; margin-top: 56px; }
       .hero-stat { padding: 20px 16px; }
-      .hero-stat:nth-child(2) { border-right: none; }
       .hero-stat-number { font-size: 24px; }
     }
 
@@ -1839,60 +1833,41 @@
   <!-- ═══ HOMEPAGE SECTIONS (Phase 2–8) ═══ -->
   <main id="main">
 
-    <!-- ═══ PHASE 2: HERO SECTION ═══ -->
-    <section class="hero-home">
-
-      <!-- Background Video -->
-      <div class="hero-bg">
-        <!--
-          ╔══════════════════════════════════════════════════════════════╗
-          ║  HERO VIDEO: Replace the src below with your video file.   ║
-          ║  Recommended: MP4 format, 1920x1080, under 15MB.          ║
-          ║  Place your video in the /img/ folder, e.g. img/hero.mp4  ║
-          ╚══════════════════════════════════════════════════════════════╝
-        -->
-        <video
-          autoplay
-          muted
-          loop
-          playsinline
-          preload="auto"
-          poster="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&amp;q=80&amp;auto=format&amp;fit=crop"
-          id="heroVideo">
-          <source src="img/hero.mp4" type="video/mp4">
-          <!-- Add WebM version for broader support: -->
-          <!-- <source src="img/hero.webm" type="video/webm"> -->
-        </video>
-        <!-- Fallback image shown while video loads or if video fails -->
-        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&amp;q=80&amp;auto=format&amp;fit=crop"
-             alt="Modern glass skyscrapers reaching into the sky"
-             loading="eager">
-      </div>
-
-      <!-- Overlays -->
-      <div class="hero-overlay"></div>
-      <div class="hero-gradient-accent"></div>
-      <div class="hero-grid-pattern"></div>
-      <div class="hero-bottom-fade"></div>
-
-      <!-- Content -->
-      <div class="hero-content">
-        <div class="hero-tagline fade-up">
-          Portfolio Management &middot; Investment Advisory
+    <!-- ═══ PHASE 2: HERO — jet scroll sequence (recipe 6.9) ═══ -->
+    <section data-seq class="seq-hero">
+      <div data-seq-stage class="seq-stage">
+        <picture>
+          <source media="(max-width: 767px)" srcset="img/hero/poster-phone.jpg" width="1280" height="720">
+          <img data-seq-poster class="seq-poster" src="img/hero/poster-desktop.jpg" width="1600" height="900" fetchpriority="high"
+               alt="A private jet on the apron at dusk, cabin door open and steps lit">
+        </picture>
+        <canvas data-seq-canvas class="seq-canvas" aria-hidden="true"></canvas>
+        <div data-seq-scrim class="seq-scrim"></div>
+        <div class="seq-shade"></div>
+        <div class="seq-copy">
+          <div data-seq-out class="seq-out">
+            <p data-seq-intro data-motion-hide class="hero-tagline">
+              Portfolio Management &middot; Investment Advisory
+            </p>
+          </div>
+          <h1 data-seq-in data-motion-hide class="seq-title">
+            Welcome to
+            <span class="line-2">the <em>1%</em></span>
+          </h1>
         </div>
+      </div>
+    </section>
 
-        <h1 class="fade-up fade-up-d1">
-          Welcome to
-          <span class="line-2">the <em>1%</em></span>
-        </h1>
-
-        <p class="hero-subtitle fade-up fade-up-d2">
-          Bridging innovation and impact,transforming capital into
+    <!-- After the hero: copy, divisions and stats -->
+    <section class="hero-after">
+      <div class="container">
+        <p class="hero-subtitle">
+          Bridging innovation and impact, transforming capital into
           sustainable global assets that generate growth, stability,
           and measurable returns.
         </p>
 
-        <div class="hero-divisions fade-up fade-up-d3">
+        <div class="hero-divisions">
           <a href="jet-el/index.html" class="hero-division-pill">Jet-El</a>
           <a href="hl/index.html" class="hero-division-pill">H&L</a>
           <a href="one-percent/index.html" class="hero-division-pill">The 1%</a>
@@ -1900,13 +1875,13 @@
           <a href="token-el/index.html" class="hero-division-pill">Token-El</a>
         </div>
 
-        <div class="btn-row btn-row-center fade-up fade-up-d4">
+        <div class="btn-row btn-row-center">
           <a href="#divisions" class="btn btn-primary btn-lg">Explore Our Divisions</a>
           <a href="contact.html" class="btn btn-outline btn-lg">Book a Consultation</a>
         </div>
       </div>
 
-      <!-- Floating Stats Bar -->
+      <!-- Stats Bar -->
       <div class="hero-stats">
         <div class="hero-stats-inner">
           <div class="hero-stat">
@@ -1927,7 +1902,6 @@
           </div>
         </div>
       </div>
-
     </section>
 
     <!-- ═══ PHASE 3: ABOUT / INTRODUCTION ═══ -->
@@ -2639,31 +2613,6 @@
   <script src="js/components.js"></script>
   <script src="js/main.js"></script>
 
-  <!-- Hero Video Handling -->
-  <script>
-    (function() {
-      var video = document.getElementById('heroVideo');
-      if (!video) return;
-
-      // Mark video as playing when it starts
-      video.addEventListener('playing', function() {
-        video.classList.add('is-playing');
-      });
-
-      // If video fails to load, hide it and show fallback image
-      video.addEventListener('error', function() {
-        video.style.display = 'none';
-      });
-
-      // Also handle source errors
-      var sources = video.querySelectorAll('source');
-      sources.forEach(function(source) {
-        source.addEventListener('error', function() {
-          video.style.display = 'none';
-        });
-      });
-    })();
-  </script>
 </body>
 
 </html>

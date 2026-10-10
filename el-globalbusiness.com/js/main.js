@@ -178,6 +178,8 @@ document.addEventListener('DOMContentLoaded', () => {
      ───────────────────────────────────────────── */
   document.querySelectorAll('a[href*="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
+      // Pages with smooth scroll (js/home.js) let Lenis handle anchors.
+      if (document.documentElement.classList.contains('lenis')) return;
       const href = this.getAttribute('href');
       if (href.startsWith('#') || (href.includes('#') && href.split('#')[0] === '')) {
         const targetId = href.split('#')[1];

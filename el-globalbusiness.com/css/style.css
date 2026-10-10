@@ -1981,6 +1981,17 @@ h1 em, h2 em, h3 em, h4 em {
 
 
 /* ═══════════════════════════════════════════════════════════════
+   MOTION GATE (docs/web-motion-engine.md 5.2)
+   Intro elements stay hidden until GSAP has set their start state.
+   ═══════════════════════════════════════════════════════════════ */
+
+.motion-pending [data-motion-hide] { visibility: hidden; }
+@media (prefers-reduced-motion: reduce) {
+  .motion-pending [data-motion-hide] { visibility: visible; }
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
    PRELOADER
    ═══════════════════════════════════════════════════════════════ */
 
