@@ -17,7 +17,7 @@
   const headerHTML = `
   <!-- Preloader -->
   <div class="preloader" id="preloader">
-    <img src="${BASE}img/logo.jpeg" alt="El-Global Business" class="preloader-logo-img">
+    <img src="${BASE}img/logo.webp" alt="El-Global Business" class="preloader-logo-img">
     <div class="preloader-bar"></div>
   </div>
 
@@ -25,7 +25,7 @@
   <nav class="navbar" id="navbar">
     <div class="navbar-inner">
       <a href="${BASE}index.html" class="nav-logo">
-        <img src="${BASE}img/logo.jpeg" alt="El-Global Business" class="nav-logo-img">
+        <img src="${BASE}img/logo.webp" alt="El-Global Business" class="nav-logo-img">
         <span class="nav-logo-text">El-Global <span>Business</span></span>
       </a>
 
@@ -99,7 +99,7 @@
         <!-- Brand -->
         <div class="footer-brand">
           <a href="${BASE}index.html" class="nav-logo">
-            <img src="${BASE}img/logo.jpeg" alt="El-Global Business" class="nav-logo-img">
+            <img src="${BASE}img/logo.webp" alt="El-Global Business" class="nav-logo-img">
             <span class="nav-logo-text">El-Global <span>Business</span></span>
           </a>
           <p class="footer-desc">A multidisciplinary portfolio management and investment advisory firm. Strategic asset acquisition, optimization, and digital transformation across global markets.</p>
