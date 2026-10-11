@@ -8,20 +8,14 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ─────────────────────────────────────────────
      PRELOADER
      ───────────────────────────────────────────── */
+  // Lifts 800ms after DOMContentLoaded. It never waits for window load, so images,
+  // video and hero frames still downloading cannot hold it up.
   const preloader = document.getElementById('preloader');
   if (preloader) {
-    window.addEventListener('load', () => {
-      setTimeout(() => {
-        preloader.classList.add('loaded');
-        document.body.style.overflow = '';
-      }, 800);
-    });
     setTimeout(() => {
-      if (preloader && !preloader.classList.contains('loaded')) {
-        preloader.classList.add('loaded');
-        document.body.style.overflow = '';
-      }
-    }, 3500);
+      preloader.classList.add('loaded');
+      document.body.style.overflow = '';
+    }, 800);
   }
 
 
