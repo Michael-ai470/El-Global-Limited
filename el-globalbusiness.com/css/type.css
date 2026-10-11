@@ -1,0 +1,320 @@
+/* ═══════════════════════════════════════════════════════════════
+   EL-GLOBAL BUSINESS — Typography
+   One family, Manrope (variable, 200 to 800, SIL Open Font License),
+   self-hosted from /fonts. Link this file LAST in <head>, after
+   css/style.css and after any inline <style> on the page, so its
+   rules win over the old ones.
+
+   The look comes from a few decisions, not from the font alone:
+   - Headings are very light (200) and tightly tracked. Size carries
+     the hierarchy, not weight or decoration.
+   - Emphasis inside a heading is the same family at 600, upright and
+     the same colour. No italics, no gradient text.
+   - Sentence case everywhere. Uppercase survives in one small label
+     style (eyebrows), with modest tracking.
+   - Body text is regular (400), never 300, with generous line height.
+     Quieter text gets a quieter grey, not a different typeface.
+
+   The rules are grouped by role. Each role lists the shared classes
+   from style.css and the homepage's own section classes. When another
+   page gets the same treatment, add its classes to the matching role.
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ─── Font files ─────────────────────────────────────────────── */
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 200 800;
+  src: url('../fonts/manrope-latin-wght-normal.woff2') format('woff2-variations');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 200 800;
+  src: url('../fonts/manrope-latin-ext-wght-normal.woff2') format('woff2-variations');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* ─── Tokens ─────────────────────────────────────────────────── */
+:root {
+  --font-sans: 'Manrope', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  /* The old variables all point at the one family now. */
+  --font-heading: var(--font-sans);
+  --font-subheading: var(--font-sans);
+  --font-body: var(--font-sans);
+  --font-accent: var(--font-sans);
+
+  /* Scale */
+  --t-display: clamp(3rem, 8.5vw, 8rem);
+  --t-h1: clamp(2.25rem, 5.2vw, 4.25rem);
+  --t-h2: clamp(1.75rem, 3.4vw, 3rem);
+  --t-h3: clamp(1.125rem, 1.5vw, 1.375rem);
+  --t-card: clamp(1.2rem, 1.55vw, 1.6rem);
+  --t-lead: clamp(1.125rem, 1.4vw, 1.375rem);
+  --t-body: clamp(1rem, 1.05vw, 1.0625rem);
+  --t-small: clamp(0.9rem, 0.95vw, 1rem);
+  --t-label: 0.8125rem;
+  --t-micro: 0.75rem;
+
+  /* Weights */
+  --w-light: 200;
+  --w-regular: 400;
+  --w-medium: 500;
+  --w-semi: 600;
+
+  /* Line height */
+  --lh-display: 0.95;
+  --lh-tight: 1.08;
+  --lh-snug: 1.32;
+  --lh-body: 1.65;
+
+  /* Tracking */
+  --ls-display: -0.045em;
+  --ls-h1: -0.04em;
+  --ls-h2: -0.03em;
+  --ls-h3: -0.015em;
+  --ls-num: -0.04em;
+  --ls-ui: -0.01em;
+  --ls-label: 0.08em;
+
+  --measure: 68ch;
+}
+
+/* ─── Base ───────────────────────────────────────────────────── */
+body {
+  font-family: var(--font-sans);
+  font-size: var(--t-body);
+  font-weight: var(--w-regular);
+  line-height: var(--lh-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+h1, h2, h3, h4, h5, h6 { font-family: var(--font-sans); text-wrap: balance; }
+p { text-wrap: pretty; }
+
+/* ─── Role: display (the hero line) ──────────────────────────── */
+.seq-title {
+  font-size: var(--t-display);
+  font-weight: var(--w-light);
+  line-height: var(--lh-display);
+  letter-spacing: var(--ls-display);
+}
+
+/* ─── Role: page and section headings ────────────────────────── */
+h1 {
+  font-size: var(--t-h1);
+  font-weight: var(--w-light);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-h1);
+}
+h2,
+.section-header h2,
+.intro-text h2,
+.final-cta h2,
+.bespoke-text h2,
+.partners-header h2 {
+  font-size: var(--t-h2);
+  font-weight: var(--w-light);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-h2);
+}
+
+/* Emphasis: same family, heavier, upright, same colour. */
+h1 em, h2 em, h3 em, h4 em,
+.seq-title em,
+.partners-header h2 em {
+  font-style: normal;
+  font-weight: var(--w-semi);
+  background: none;
+  -webkit-background-clip: border-box;
+  background-clip: border-box;
+  -webkit-text-fill-color: currentColor;
+  color: inherit;
+}
+
+/* ─── Role: card and item titles ─────────────────────────────── */
+h3, h4,
+.card-content h3,
+.card-minimal h4,
+.process-step h4,
+.mega-dropdown-title,
+.activity-item h4,
+.division-card-content h3,
+.bento-featured h3,
+.bento-card-body h4,
+.value-card h3,
+.partner-card-brand {
+  font-size: var(--t-card);
+  font-weight: var(--w-medium);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-h3);
+}
+.city-card-name {
+  font-weight: var(--w-light);
+  letter-spacing: var(--ls-h2);
+  line-height: var(--lh-tight);
+}
+
+/* ─── Role: lead text (was italic Cormorant) ─────────────────── */
+.subheading,
+.hero-subtitle,
+.hero-after .hero-subtitle,
+.intro-text .lead,
+.final-cta .cta-subtitle,
+.lead {
+  font-size: var(--t-lead);
+  font-weight: var(--w-regular);
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: var(--ls-ui);
+}
+.mission-quote {
+  font-size: var(--t-h2);
+  font-weight: var(--w-light);
+  font-style: normal;
+  line-height: 1.2;
+  letter-spacing: var(--ls-h2);
+}
+
+/* ─── Role: body copy ────────────────────────────────────────── */
+.section-header p,
+.cta-section p,
+.page-hero-desc,
+.why-header p,
+.values-header p,
+.presence-header-band p,
+.partners-header p,
+.bespoke-text p,
+.intro-text p {
+  font-size: var(--t-body);
+  line-height: var(--lh-body);
+  max-width: var(--measure);
+}
+.card-content p,
+.card-minimal p,
+.process-step p,
+.footer-desc,
+.mega-dropdown-desc,
+.activity-item p,
+.division-card-content p,
+.bento-featured p,
+.bento-card-body p,
+.value-card p,
+.partner-card-desc,
+.city-card-address {
+  font-size: var(--t-small);
+  line-height: var(--lh-snug);
+}
+
+/* ─── Role: numbers ──────────────────────────────────────────── */
+/* Sizes stay as the layout set them; only the voice changes. */
+.stat-number,
+.hero-stat-number,
+.accent-number,
+.intro-image-accent .accent-number,
+.bento-featured-number,
+.bento-card-number,
+.value-number,
+.overlay-stat-value,
+.process-step::before {
+  font-weight: var(--w-light);
+  letter-spacing: var(--ls-num);
+  line-height: 0.95;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ─── Role: eyebrow (the one uppercase style) ────────────────── */
+.eyebrow,
+.hero-tagline,
+.division-card-eyebrow {
+  font-size: var(--t-label);
+  font-weight: var(--w-regular);
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+}
+.card-content .eyebrow,
+.division-card-eyebrow { font-size: var(--t-micro); }
+
+/* ─── Role: labels and links (sentence case) ─────────────────── */
+.nav-link,
+.mobile-nav-trigger,
+.pill,
+.stat-label,
+.form-label,
+.footer-heading,
+.card-link,
+.mega-dropdown-cta,
+.hero-division-pill,
+.hero-stat-label,
+.accent-label,
+.intro-image-accent .accent-label,
+.mission-attribution,
+.section-meta,
+.overlay-stat-label,
+.division-card-link,
+.city-card-country,
+.city-card-cta,
+.trust-item,
+.bespoke-brand,
+.partner-card-type,
+.partner-card-link {
+  font-size: var(--t-label);
+  font-weight: var(--w-regular);
+  letter-spacing: var(--ls-ui);
+  text-transform: none;
+}
+.nav-link,
+.mobile-nav-trigger,
+.footer-heading,
+.card-link,
+.mega-dropdown-cta,
+.division-card-link,
+.city-card-cta,
+.partner-card-link { font-size: 0.875rem; font-weight: var(--w-medium); }
+
+/* Tiny tags on cards and the map. */
+.card-image-badge,
+.badge-coming-soon,
+.division-card-badge,
+.division-card-tag,
+.map-label {
+  font-size: var(--t-micro);
+  font-weight: var(--w-medium);
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+/* ─── Buttons ────────────────────────────────────────────────── */
+.btn,
+.nav-cta,
+.mobile-nav-cta {
+  font-size: 0.875rem;
+  font-weight: var(--w-medium);
+  letter-spacing: var(--ls-ui);
+  text-transform: none;
+}
+.btn-lg { font-size: 0.9375rem; }
+.btn-sm { font-size: var(--t-label); }
+.btn-ghost { letter-spacing: var(--ls-ui); }
+
+/* ─── Brand ──────────────────────────────────────────────────── */
+.nav-logo-text { font-size: 1.05rem; font-weight: var(--w-medium); letter-spacing: -0.02em; line-height: 1; }
+.nav-logo-text span { font-size: 0.72em; font-weight: var(--w-regular); letter-spacing: var(--ls-label); text-transform: uppercase; }
+
+/* ─── Forms, footer, toast ───────────────────────────────────── */
+.form-input,
+.form-select,
+.form-textarea { font-weight: var(--w-regular); font-size: 1rem; }
+.footer-office-city { font-weight: var(--w-medium); letter-spacing: var(--ls-h3); }
+.footer-bottom span { letter-spacing: 0; }
+.toast { font-weight: var(--w-medium); }
+
+/* ─── Small screens ──────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .nav-logo-text { font-size: 1rem; }
+}
