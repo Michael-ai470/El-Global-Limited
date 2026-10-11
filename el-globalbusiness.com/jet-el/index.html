@@ -12,6 +12,7 @@
   <meta property="og:type" content="website">
 
   <link rel="stylesheet" href="../css/style.css">
+  <link rel="preload" href="../fonts/manrope-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 
   <style>
     /* ═══ PAGE HERO — 60vh ═══ */
@@ -71,10 +72,8 @@
     }
 
     .jetel-hero-desc {
-      font-family: var(--font-subheading);
       font-size: clamp(16px, 2vw, 20px);
       font-weight: 300;
-      font-style: italic;
       color: var(--text-secondary);
       line-height: 1.65;
       max-width: 540px;
@@ -88,10 +87,8 @@
     }
 
     .jetel-hero-pill {
-      font-family: var(--font-accent);
       font-size: 10px;
       font-weight: 500;
-      letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--text-muted);
       border: 1px solid var(--border-mid);
@@ -257,7 +254,6 @@
       top: 14px;
       right: 16px;
       z-index: 2;
-      font-family: var(--font-heading);
       font-size: 32px;
       font-weight: 300;
       background: var(--gradient-signature);
@@ -282,7 +278,6 @@
     .service-card:hover .service-card-dash { width: 48px; }
 
     .service-card-content h3 {
-      font-family: var(--font-heading);
       font-size: 22px;
       font-weight: 400;
       margin-bottom: 10px;
@@ -297,10 +292,8 @@
     }
 
     .service-card-link {
-      font-family: var(--font-accent);
       font-size: 11px;
       font-weight: 600;
-      letter-spacing: 0.1em;
       text-transform: uppercase;
       background: var(--gradient-signature);
       -webkit-background-clip: text;
@@ -402,7 +395,6 @@
     .why-jetel-card:hover::after { transform: scaleX(1); }
 
     .why-jetel-num {
-      font-family: var(--font-heading);
       font-size: 40px;
       font-weight: 300;
       background: var(--gradient-signature);
@@ -415,7 +407,6 @@
     }
 
     .why-jetel-card h4 {
-      font-family: var(--font-heading);
       font-size: 20px;
       font-weight: 400;
       margin-bottom: 10px;
@@ -496,7 +487,6 @@
 
     .process-card::before {
       content: counter(step, decimal-leading-zero);
-      font-family: var(--font-heading);
       font-size: 52px;
       font-weight: 300;
       background: var(--gradient-signature);
@@ -519,7 +509,6 @@
     .process-card:hover .process-card-dash { width: 48px; }
 
     .process-card h4 {
-      font-family: var(--font-heading);
       font-size: 20px;
       font-weight: 400;
       margin-bottom: 10px;
@@ -593,6 +582,8 @@
       .jetel-cta { padding: 64px 0; }
     }
   </style>
+  <!-- Typography: last in <head> so its roles win -->
+  <link rel="stylesheet" href="../css/type.css">
 </head>
 <body>
 

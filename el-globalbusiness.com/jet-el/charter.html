@@ -12,6 +12,7 @@
   <meta property="og:type" content="website">
 
   <link rel="stylesheet" href="../css/style.css">
+  <link rel="preload" href="../fonts/manrope-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 
   <style>
     /* ═══ CHARTER HERO ═══ */
@@ -60,10 +61,8 @@
     }
 
     .charter-hero-desc {
-      font-family: var(--font-subheading);
       font-size: clamp(16px, 2vw, 20px);
       font-weight: 300;
-      font-style: italic;
       color: var(--text-secondary);
       line-height: 1.65;
       max-width: 540px;
@@ -212,7 +211,6 @@
     .charter-feature-card:hover::after { transform: scaleX(1); }
 
     .charter-feature-num {
-      font-family: var(--font-heading);
       font-size: 40px;
       font-weight: 300;
       background: var(--gradient-signature);
@@ -235,7 +233,6 @@
     .charter-feature-card:hover .charter-feature-dash { width: 48px; }
 
     .charter-feature-card h4 {
-      font-family: var(--font-heading);
       font-size: 20px;
       font-weight: 400;
       margin-bottom: 10px;
@@ -316,7 +313,6 @@
 
     .charter-process-card::before {
       content: counter(step, decimal-leading-zero);
-      font-family: var(--font-heading);
       font-size: 52px;
       font-weight: 300;
       background: var(--gradient-signature);
@@ -339,7 +335,6 @@
     .charter-process-card:hover .charter-process-dash { width: 48px; }
 
     .charter-process-card h4 {
-      font-family: var(--font-heading);
       font-size: 20px;
       font-weight: 400;
       margin-bottom: 10px;
@@ -442,8 +437,8 @@
     }
     .booking-trip-type {
       display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px;
-      font-family: var(--font-accent); font-size: 11px; font-weight: 600;
-      letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-dim);
+font-size: 11px; font-weight: 600;
+text-transform: uppercase; color: var(--text-dim);
       border: 1px solid var(--border); cursor: pointer; transition: all 0.3s ease;
       background: transparent;
     }
@@ -461,8 +456,7 @@
       margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--border);
     }
     .booking-form-note {
-      font-size: 12px; color: var(--text-dim); font-style: italic;
-    }
+      font-size: 12px; color: var(--text-dim);    }
     @media (max-width: 768px) {
       .booking-form-container { padding: 28px 20px; }
       .booking-form-grid { grid-template-columns: 1fr; }
@@ -472,6 +466,8 @@
       .charter-booking { padding: 64px 0; }
     }
   </style>
+  <!-- Typography: last in <head> so its roles win -->
+  <link rel="stylesheet" href="../css/type.css">
 </head>
 <body>
 

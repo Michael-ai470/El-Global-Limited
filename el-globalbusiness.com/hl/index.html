@@ -12,6 +12,7 @@
   <meta property="og:type" content="website">
 
   <link rel="stylesheet" href="../css/style.css">
+  <link rel="preload" href="../fonts/manrope-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 
   <style>
     /* ═══ HERO ═══ */
@@ -51,10 +52,8 @@
     }
 
     .hl-hero-desc {
-      font-family: var(--font-subheading);
       font-size: clamp(16px, 2vw, 20px);
-      font-weight: 300; font-style: italic;
-      color: var(--text-secondary); line-height: 1.65;
+      font-weight: 300;      color: var(--text-secondary); line-height: 1.65;
       max-width: 540px;
     }
 
@@ -63,9 +62,8 @@
     }
 
     .hl-hero-pill {
-      font-family: var(--font-accent);
       font-size: 10px; font-weight: 500;
-      letter-spacing: 0.12em; text-transform: uppercase;
+text-transform: uppercase;
       color: var(--text-muted);
       border: 1px solid var(--border-mid);
       padding: 7px 18px; border-radius: 100px;
@@ -197,7 +195,6 @@
     }
 
     .hl-service-card-num {
-      font-family: var(--font-heading);
       font-size: 56px; font-weight: 300;
       background: var(--gradient-signature);
       -webkit-background-clip: text;
@@ -216,7 +213,6 @@
     .hl-service-card:hover .hl-service-card-dash { width: 56px; }
 
     .hl-service-card-content h3 {
-      font-family: var(--font-heading);
       font-size: 28px; font-weight: 300;
       margin-bottom: 14px; line-height: 1.2;
     }
@@ -231,9 +227,8 @@
     }
 
     .hl-service-tag {
-      font-family: var(--font-accent);
       font-size: 9px; font-weight: 500;
-      letter-spacing: 0.08em; text-transform: uppercase;
+text-transform: uppercase;
       color: var(--text-dim);
       border: 1px solid var(--border);
       padding: 5px 14px; border-radius: 100px;
@@ -245,9 +240,8 @@
     }
 
     .hl-service-card-link {
-      font-family: var(--font-accent);
       font-size: 11px; font-weight: 600;
-      letter-spacing: 0.12em; text-transform: uppercase;
+text-transform: uppercase;
       background: var(--gradient-signature);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -312,7 +306,6 @@
     }
 
     .market-card h4 {
-      font-family: var(--font-heading);
       font-size: 20px; font-weight: 300; margin-bottom: 8px;
     }
 
@@ -389,7 +382,6 @@
     .why-hl-card:hover::after { transform: scaleX(1); }
 
     .why-hl-num {
-      font-family: var(--font-heading);
       font-size: 40px; font-weight: 300;
       background: var(--gradient-signature);
       -webkit-background-clip: text;
@@ -399,7 +391,6 @@
     }
 
     .why-hl-card h4 {
-      font-family: var(--font-heading);
       font-size: 20px; font-weight: 400; margin-bottom: 10px;
     }
 
@@ -463,7 +454,6 @@
 
     .hl-process-card::before {
       content: counter(step, decimal-leading-zero);
-      font-family: var(--font-heading);
       font-size: 52px; font-weight: 300;
       background: var(--gradient-signature);
       -webkit-background-clip: text;
@@ -482,7 +472,6 @@
     .hl-process-card:hover .hl-process-dash { width: 48px; }
 
     .hl-process-card h4 {
-      font-family: var(--font-heading);
       font-size: 20px; font-weight: 400; margin-bottom: 10px;
     }
 
@@ -539,6 +528,8 @@
 
     @media (max-width: 768px) { .hl-cta { padding: 64px 0; } }
   </style>
+  <!-- Typography: last in <head> so its roles win -->
+  <link rel="stylesheet" href="../css/type.css">
 </head>
 <body>
 
@@ -801,10 +792,10 @@
       <div style="position: absolute; inset: 0; background: radial-gradient(ellipse 50% 60% at 50% 30%, rgba(201,168,76,0.03) 0%, transparent 70%); pointer-events: none;"></div>
       <div class="container" style="position: relative; z-index: 1;">
 
-        <div style="text-align: center; margin-bottom: 64px;" class="reveal">
+        <div style="text-align: center; margin-bottom: 64px;" class="offmarket-header reveal">
           <div class="eyebrow" style="justify-content: center; margin-bottom: 20px;">Exclusive Opportunities</div>
-          <h2 style="font-size: clamp(30px, 4vw, 48px); font-weight: 300; margin-bottom: 16px; line-height: 1.15;">Off-Market Hotel <em>Acquisitions</em></h2>
-          <p style="font-size: 15px; color: var(--text-muted); max-width: 580px; margin: 16px auto 0; line-height: 1.8;">
+          <h2 style="margin-bottom: 16px;">Off-Market Hotel <em>Acquisitions</em></h2>
+          <p style="color: var(--text-muted); max-width: 580px; margin: 16px auto 0;">
             We source exclusive, off-market hotel properties across the globe through our established network of private sellers, family offices, and institutional partners -- delivering acquisition opportunities that never reach public listings.
           </p>
         </div>
@@ -818,7 +809,7 @@
           <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.6) 100%);"></div>
           <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: var(--gradient-signature);"></div>
           <div style="position: absolute; bottom: 32px; left: 40px; z-index: 2;">
-            <span style="font-family: var(--font-accent); font-size: 10px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold);">Private & Confidential Transactions</span>
+            <span class="offmarket-band-label" style="color: var(--gold);">Private & Confidential Transactions</span>
           </div>
         </div>
 
@@ -826,50 +817,50 @@
         <div class="offmarket-grid-responsive" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border: 1px solid var(--border);">
 
           <!-- Card 1: Discreet Sourcing -->
-          <div class="reveal" style="padding: 44px 32px; border-right: 1px solid var(--border); transition: all 0.4s ease; position: relative; background: var(--black);">
+          <div class="offmarket-card reveal" style="padding: 44px 32px; border-right: 1px solid var(--border); transition: all 0.4s ease; position: relative; background: var(--black);">
             <div style="position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--gradient-signature); transform: scaleX(0); transition: transform 0.5s ease;"></div>
-            <div style="font-family: var(--font-heading); font-size: 40px; font-weight: 300; background: var(--gradient-signature); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; opacity: 0.15; line-height: 1; margin-bottom: 20px;">01</div>
+            <div class="offmarket-num" style="font-size: 40px; background: var(--gradient-signature); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; opacity: 0.15; margin-bottom: 20px;">01</div>
             <div style="width: 32px; height: 2px; background: var(--gradient-signature); margin-bottom: 16px;"></div>
-            <h4 style="font-family: var(--font-heading); font-size: 22px; font-weight: 400; margin-bottom: 12px;">Discreet Sourcing</h4>
-            <p style="font-size: 14px; color: var(--text-muted); line-height: 1.85; margin-bottom: 20px;">
+            <h4 style="margin-bottom: 12px;">Discreet Sourcing</h4>
+            <p style="color: var(--text-muted); margin-bottom: 20px;">
               We identify and secure premium hotel properties before they reach the open market. Through trusted relationships with owners, developers, and private equity groups, our clients gain first-mover advantage on the world's most sought-after hospitality assets.
             </p>
             <div style="display: flex; gap: 6px; flex-wrap: wrap;">
-              <span style="font-family: var(--font-accent); font-size: 9px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-dim); border: 1px solid var(--border); padding: 5px 14px; border-radius: 100px;">Pre-Market</span>
-              <span style="font-family: var(--font-accent); font-size: 9px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-dim); border: 1px solid var(--border); padding: 5px 14px; border-radius: 100px;">Private Sellers</span>
-              <span style="font-family: var(--font-accent); font-size: 9px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-dim); border: 1px solid var(--border); padding: 5px 14px; border-radius: 100px;">Confidential</span>
+              <span class="offmarket-tag" style="color: var(--text-dim); border: 1px solid var(--border); padding: 5px 14px; border-radius: 100px;">Pre-Market</span>
+              <span class="offmarket-tag" style="color: var(--text-dim); border: 1px solid var(--border); padding: 5px 14px; border-radius: 100px;">Private Sellers</span>
+              <span class="offmarket-tag" style="color: var(--text-dim); border: 1px solid var(--border); padding: 5px 14px; border-radius: 100px;">Confidential</span>
             </div>
           </div>
 
           <!-- Card 2: Hotel M&A Advisory -->
-          <div class="reveal reveal-delay-1" style="padding: 44px 32px; border-right: 1px solid var(--border); transition: all 0.4s ease; position: relative; background: var(--black);">
+          <div class="offmarket-card reveal reveal-delay-1" style="padding: 44px 32px; border-right: 1px solid var(--border); transition: all 0.4s ease; position: relative; background: var(--black);">
             <div style="position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--gradient-signature); transform: scaleX(0); transition: transform 0.5s ease;"></div>
-            <div style="font-family: var(--font-heading); font-size: 40px; font-weight: 300; background: var(--gradient-signature); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; opacity: 0.15; line-height: 1; margin-bottom: 20px;">02</div>
+            <div class="offmarket-num" style="font-size: 40px; background: var(--gradient-signature); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; opacity: 0.15; margin-bottom: 20px;">02</div>
             <div style="width: 32px; height: 2px; background: var(--gradient-signature); margin-bottom: 16px;"></div>
-            <h4 style="font-family: var(--font-heading); font-size: 22px; font-weight: 400; margin-bottom: 12px;">Hotel M&amp;A Advisory</h4>
-            <p style="font-size: 14px; color: var(--text-muted); line-height: 1.85; margin-bottom: 20px;">
+            <h4 style="margin-bottom: 12px;">Hotel M&amp;A Advisory</h4>
+            <p style="color: var(--text-muted); margin-bottom: 20px;">
               Full-service mergers and acquisitions advisory for hospitality assets. From target identification and financial modeling through deal negotiation, regulatory compliance, and post-merger integration, we manage every phase of complex hotel M&amp;A transactions.
             </p>
             <div style="display: flex; gap: 6px; flex-wrap: wrap;">
-              <span style="font-family: var(--font-accent); font-size: 9px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-dim); border: 1px solid var(--border); padding: 5px 14px; border-radius: 100px;">Mergers</span>
-              <span style="font-family: var(--font-accent); font-size: 9px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-dim); border: 1px solid var(--border); padding: 5px 14px; border-radius: 100px;">Acquisitions</span>
-              <span style="font-family: var(--font-accent); font-size: 9px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-dim); border: 1px solid var(--border); padding: 5px 14px; border-radius: 100px;">Due Diligence</span>
+              <span class="offmarket-tag" style="color: var(--text-dim); border: 1px solid var(--border); padding: 5px 14px; border-radius: 100px;">Mergers</span>
+              <span class="offmarket-tag" style="color: var(--text-dim); border: 1px solid var(--border); padding: 5px 14px; border-radius: 100px;">Acquisitions</span>
+              <span class="offmarket-tag" style="color: var(--text-dim); border: 1px solid var(--border); padding: 5px 14px; border-radius: 100px;">Due Diligence</span>
             </div>
           </div>
 
           <!-- Card 3: Portfolio Optimization -->
-          <div class="reveal reveal-delay-2" style="padding: 44px 32px; transition: all 0.4s ease; position: relative; background: var(--black);">
+          <div class="offmarket-card reveal reveal-delay-2" style="padding: 44px 32px; transition: all 0.4s ease; position: relative; background: var(--black);">
             <div style="position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--gradient-signature); transform: scaleX(0); transition: transform 0.5s ease;"></div>
-            <div style="font-family: var(--font-heading); font-size: 40px; font-weight: 300; background: var(--gradient-signature); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; opacity: 0.15; line-height: 1; margin-bottom: 20px;">03</div>
+            <div class="offmarket-num" style="font-size: 40px; background: var(--gradient-signature); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; opacity: 0.15; margin-bottom: 20px;">03</div>
             <div style="width: 32px; height: 2px; background: var(--gradient-signature); margin-bottom: 16px;"></div>
-            <h4 style="font-family: var(--font-heading); font-size: 22px; font-weight: 400; margin-bottom: 12px;">Portfolio Optimization</h4>
-            <p style="font-size: 14px; color: var(--text-muted); line-height: 1.85; margin-bottom: 20px;">
+            <h4 style="margin-bottom: 12px;">Portfolio Optimization</h4>
+            <p style="color: var(--text-muted); margin-bottom: 20px;">
               Strategic hotel asset management and value maximization for existing portfolios. We advise on repositioning, brand affiliation, operational restructuring, capital expenditure planning, and strategic dispositions to unlock maximum value from hospitality holdings.
             </p>
             <div style="display: flex; gap: 6px; flex-wrap: wrap;">
-              <span style="font-family: var(--font-accent); font-size: 9px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-dim); border: 1px solid var(--border); padding: 5px 14px; border-radius: 100px;">Asset Management</span>
-              <span style="font-family: var(--font-accent); font-size: 9px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-dim); border: 1px solid var(--border); padding: 5px 14px; border-radius: 100px;">Value Creation</span>
-              <span style="font-family: var(--font-accent); font-size: 9px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-dim); border: 1px solid var(--border); padding: 5px 14px; border-radius: 100px;">Repositioning</span>
+              <span class="offmarket-tag" style="color: var(--text-dim); border: 1px solid var(--border); padding: 5px 14px; border-radius: 100px;">Asset Management</span>
+              <span class="offmarket-tag" style="color: var(--text-dim); border: 1px solid var(--border); padding: 5px 14px; border-radius: 100px;">Value Creation</span>
+              <span class="offmarket-tag" style="color: var(--text-dim); border: 1px solid var(--border); padding: 5px 14px; border-radius: 100px;">Repositioning</span>
             </div>
           </div>
 

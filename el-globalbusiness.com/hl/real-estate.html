@@ -12,6 +12,7 @@
   <meta property="og:type" content="website">
 
   <link rel="stylesheet" href="../css/style.css">
+  <link rel="preload" href="../fonts/manrope-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 
   <style>
     /* ═══ HERO ═══ */
@@ -46,10 +47,8 @@
     }
 
     .lre-hero-desc {
-      font-family: var(--font-subheading);
       font-size: clamp(16px, 2vw, 20px);
-      font-weight: 300; font-style: italic;
-      color: var(--text-secondary); line-height: 1.65; max-width: 540px;
+      font-weight: 300;      color: var(--text-secondary); line-height: 1.65; max-width: 540px;
     }
 
     @media (max-width: 768px) {
@@ -161,7 +160,7 @@
     .lre-features-card:hover::after { transform: scaleX(1); }
 
     .lre-features-num {
-      font-family: var(--font-heading); font-size: 40px; font-weight: 300;
+font-size: 40px; font-weight: 300;
       background: var(--gradient-signature);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
       background-clip: text; opacity: 0.12; line-height: 1; margin-bottom: 20px;
@@ -176,7 +175,7 @@
     .lre-features-card:hover .lre-features-dash { width: 48px; }
 
     .lre-features-card h4 {
-      font-family: var(--font-heading); font-size: 20px;
+font-size: 20px;
       font-weight: 400; margin-bottom: 10px;
     }
 
@@ -237,7 +236,7 @@
 
     .lre-process-card::before {
       content: counter(step, decimal-leading-zero);
-      font-family: var(--font-heading); font-size: 52px; font-weight: 300;
+font-size: 52px; font-weight: 300;
       background: var(--gradient-signature);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
       background-clip: text; display: block; margin-bottom: 24px; line-height: 1;
@@ -252,7 +251,7 @@
     .lre-process-card:hover .lre-process-dash { width: 48px; }
 
     .lre-process-card h4 {
-      font-family: var(--font-heading); font-size: 20px;
+font-size: 20px;
       font-weight: 400; margin-bottom: 10px;
     }
 
@@ -302,6 +301,8 @@
 
     @media (max-width: 768px) { .lre-cta { padding: 64px 0; } }
   </style>
+  <!-- Typography: last in <head> so its roles win -->
+  <link rel="stylesheet" href="../css/type.css">
 </head>
 <body>
 

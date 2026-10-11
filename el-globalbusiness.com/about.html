@@ -14,6 +14,7 @@
 
   <!-- Stylesheet -->
   <link rel="stylesheet" href="css/style.css">
+  <link rel="preload" href="fonts/manrope-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 
   <style>
     /* ═══ PAGE HERO — 60vh ═══ */
@@ -62,10 +63,8 @@
     }
 
     .about-hero-desc {
-      font-family: var(--font-subheading);
       font-size: clamp(16px, 2vw, 20px);
       font-weight: 300;
-      font-style: italic;
       color: var(--text-secondary);
       line-height: 1.65;
       max-width: 520px;
@@ -96,10 +95,8 @@
     }
 
     .story-text .lead {
-      font-family: var(--font-subheading);
       font-size: 20px;
       font-weight: 300;
-      font-style: italic;
       color: var(--text-secondary);
       line-height: 1.7;
       margin-bottom: 24px;
@@ -154,7 +151,6 @@
     }
 
     .story-accent-number {
-      font-family: var(--font-heading);
       font-size: 44px;
       font-weight: 300;
       background: var(--gradient-signature);
@@ -166,10 +162,8 @@
     }
 
     .story-accent-label {
-      font-family: var(--font-accent);
       font-size: 11px;
       font-weight: 500;
-      letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--text-muted);
     }
@@ -218,10 +212,8 @@
     }
 
     .naics-label {
-      font-family: var(--font-accent);
       font-size: 12px;
       font-weight: 500;
-      letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--text-muted);
     }
@@ -307,7 +299,6 @@
     .activity-card-icon span { font-size: 18px; line-height: 1; }
 
     .activity-card-num {
-      font-family: var(--font-heading);
       font-size: 36px;
       font-weight: 300;
       background: var(--gradient-signature);
@@ -331,7 +322,6 @@
     .activity-card:hover .activity-card-dash { width: 48px; }
 
     .activity-card h4 {
-      font-family: var(--font-heading);
       font-size: 20px;
       font-weight: 400;
       margin-bottom: 10px;
@@ -444,17 +434,14 @@
     }
 
     .eco-card h4 {
-      font-family: var(--font-heading);
       font-size: 18px;
       font-weight: 400;
       margin-bottom: 8px;
     }
 
     .eco-card-sub {
-      font-family: var(--font-accent);
       font-size: 10px;
       font-weight: 500;
-      letter-spacing: 0.14em;
       text-transform: uppercase;
       background: var(--gradient-signature);
       -webkit-background-clip: text;
@@ -547,7 +534,6 @@
     }
 
     .value-deep-num {
-      font-family: var(--font-heading);
       font-size: 72px;
       font-weight: 300;
       background: var(--gradient-signature);
@@ -560,7 +546,6 @@
     }
 
     .value-deep-name {
-      font-family: var(--font-heading);
       font-size: 28px;
       font-weight: 300;
     }
@@ -625,17 +610,14 @@
     }
 
     .office-card h4 {
-      font-family: var(--font-heading);
       font-size: 24px;
       font-weight: 300;
       margin-bottom: 4px;
     }
 
     .office-card-country {
-      font-family: var(--font-accent);
       font-size: 11px;
       font-weight: 500;
-      letter-spacing: 0.16em;
       text-transform: uppercase;
       background: var(--gradient-signature);
       -webkit-background-clip: text;
@@ -791,7 +773,6 @@
     }
 
     .founder-name {
-      font-family: var(--font-heading);
       font-size: clamp(28px, 3vw, 40px);
       font-weight: 300;
       margin-bottom: 8px;
@@ -799,10 +780,8 @@
     }
 
     .founder-title {
-      font-family: var(--font-accent);
       font-size: 12px;
       font-weight: 500;
-      letter-spacing: 0.14em;
       text-transform: uppercase;
       background: var(--gradient-signature);
       -webkit-background-clip: text;
@@ -842,6 +821,8 @@
       .founder-header { margin-bottom: 48px; }
     }
   </style>
+  <!-- Typography: last in <head> so its roles win -->
+  <link rel="stylesheet" href="css/type.css">
 </head>
 <body>
 

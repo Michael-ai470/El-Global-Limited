@@ -12,6 +12,7 @@
   <meta property="og:type" content="website">
 
   <link rel="stylesheet" href="css/style.css">
+  <link rel="preload" href="fonts/manrope-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 
   <style>
     /* ═══ PAGE HERO — 60vh ═══ */
@@ -60,10 +61,8 @@
     }
 
     .contact-hero-desc {
-      font-family: var(--font-subheading);
       font-size: clamp(16px, 2vw, 20px);
       font-weight: 300;
-      font-style: italic;
       color: var(--text-secondary);
       line-height: 1.65;
       max-width: 520px;
@@ -126,10 +125,8 @@
     .contact-info-block:last-child { margin-bottom: 0; }
 
     .contact-info-heading {
-      font-family: var(--font-accent);
       font-size: 11px;
       font-weight: 600;
-      letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--orange);
       margin-bottom: 20px;
@@ -162,10 +159,8 @@
     }
 
     .contact-info-label {
-      font-family: var(--font-accent);
       font-size: 10px;
       font-weight: 500;
-      letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--text-dim);
       margin-bottom: 4px;
@@ -287,17 +282,14 @@
     }
 
     .office-card-full h4 {
-      font-family: var(--font-heading);
       font-size: 28px;
       font-weight: 300;
       margin-bottom: 4px;
     }
 
     .office-card-full-country {
-      font-family: var(--font-accent);
       font-size: 11px;
       font-weight: 500;
-      letter-spacing: 0.16em;
       text-transform: uppercase;
       background: var(--gradient-signature);
       -webkit-background-clip: text;
@@ -334,6 +326,8 @@
       .office-card-full-content { padding: 28px; }
     }
   </style>
+  <!-- Typography: last in <head> so its roles win -->
+  <link rel="stylesheet" href="css/type.css">
 </head>
 <body>
 

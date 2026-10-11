@@ -12,6 +12,7 @@
   <meta property="og:type" content="website">
 
   <link rel="stylesheet" href="../css/style.css">
+  <link rel="preload" href="../fonts/manrope-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 
   <style>
     /* ═══ HERO ═══ */
@@ -46,10 +47,8 @@
     }
 
     .op-hero-desc {
-      font-family: var(--font-subheading);
       font-size: clamp(16px, 2vw, 20px);
-      font-weight: 300; font-style: italic;
-      color: var(--text-secondary); line-height: 1.65; max-width: 540px;
+      font-weight: 300;      color: var(--text-secondary); line-height: 1.65; max-width: 540px;
     }
 
     .op-hero-pills {
@@ -57,8 +56,8 @@
     }
 
     .op-hero-pill {
-      font-family: var(--font-accent); font-size: 10px; font-weight: 500;
-      letter-spacing: 0.12em; text-transform: uppercase;
+font-size: 10px; font-weight: 500;
+text-transform: uppercase;
       color: var(--text-muted); border: 1px solid var(--border-mid);
       padding: 7px 18px; border-radius: 100px;
       text-decoration: none; transition: all var(--transition);
@@ -186,7 +185,7 @@
 
     .op-service-card-num {
       position: absolute; top: 14px; right: 16px; z-index: 2;
-      font-family: var(--font-heading); font-size: 32px; font-weight: 300;
+font-size: 32px; font-weight: 300;
       background: var(--gradient-signature);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
       background-clip: text; opacity: 0.3;
@@ -203,7 +202,7 @@
     .op-service-card:hover .op-service-card-dash { width: 48px; }
 
     .op-service-card-content h3 {
-      font-family: var(--font-heading); font-size: 22px;
+font-size: 22px;
       font-weight: 400; margin-bottom: 10px; line-height: 1.2;
     }
 
@@ -213,8 +212,8 @@
     }
 
     .op-service-card-link {
-      font-family: var(--font-accent); font-size: 11px; font-weight: 600;
-      letter-spacing: 0.1em; text-transform: uppercase;
+font-size: 11px; font-weight: 600;
+text-transform: uppercase;
       background: var(--gradient-signature);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -293,14 +292,14 @@
     .why-op-card:hover::after { transform: scaleX(1); }
 
     .why-op-num {
-      font-family: var(--font-heading); font-size: 40px; font-weight: 300;
+font-size: 40px; font-weight: 300;
       background: var(--gradient-signature);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
       background-clip: text; opacity: 0.12; line-height: 1; margin-bottom: 20px;
     }
 
     .why-op-card h4 {
-      font-family: var(--font-heading); font-size: 20px;
+font-size: 20px;
       font-weight: 400; margin-bottom: 10px;
     }
 
@@ -361,7 +360,7 @@
 
     .op-process-card::before {
       content: counter(step, decimal-leading-zero);
-      font-family: var(--font-heading); font-size: 52px; font-weight: 300;
+font-size: 52px; font-weight: 300;
       background: var(--gradient-signature);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
       background-clip: text; display: block; margin-bottom: 24px; line-height: 1;
@@ -376,7 +375,7 @@
     .op-process-card:hover .op-process-dash { width: 48px; }
 
     .op-process-card h4 {
-      font-family: var(--font-heading); font-size: 20px;
+font-size: 20px;
       font-weight: 400; margin-bottom: 10px;
     }
 
@@ -428,14 +427,14 @@
       font-size: 18px; color: var(--gold); flex-shrink: 0; margin-top: 2px;
     }
     .op-sovereignty-feature h5 {
-      font-family: var(--font-heading); font-size: 16px; font-weight: 400;
+font-size: 16px; font-weight: 400;
       margin-bottom: 4px;
     }
     .op-sovereignty-feature p { font-size: 13px; margin-bottom: 0; }
     .op-sovereignty-brand {
       display: inline-flex; align-items: center; gap: 12px; margin-top: 20px;
-      font-family: var(--font-accent); font-size: 11px; font-weight: 600;
-      letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold);
+font-size: 11px; font-weight: 600;
+text-transform: uppercase; color: var(--gold);
       transition: color var(--transition);
     }
     .op-sovereignty-brand:hover { color: var(--orange); }
@@ -487,6 +486,8 @@
 
     @media (max-width: 768px) { .op-cta { padding: 64px 0; } }
   </style>
+  <!-- Typography: last in <head> so its roles win -->
+  <link rel="stylesheet" href="../css/type.css">
 </head>
 <body>
 

@@ -12,6 +12,7 @@
   <meta property="og:type" content="website">
 
   <link rel="stylesheet" href="../css/style.css">
+  <link rel="preload" href="../fonts/manrope-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 
   <style>
     /* ═══ INVESTMENTS HERO ═══ */
@@ -60,10 +61,8 @@
     }
 
     .investments-hero-desc {
-      font-family: var(--font-subheading);
       font-size: clamp(16px, 2vw, 20px);
       font-weight: 300;
-      font-style: italic;
       color: var(--text-secondary);
       line-height: 1.65;
       max-width: 540px;
@@ -212,7 +211,6 @@
     .investments-feature-card:hover::after { transform: scaleX(1); }
 
     .investments-feature-num {
-      font-family: var(--font-heading);
       font-size: 40px;
       font-weight: 300;
       background: var(--gradient-signature);
@@ -235,7 +233,6 @@
     .investments-feature-card:hover .investments-feature-dash { width: 48px; }
 
     .investments-feature-card h4 {
-      font-family: var(--font-heading);
       font-size: 20px;
       font-weight: 400;
       margin-bottom: 10px;
@@ -316,7 +313,6 @@
 
     .investments-process-card::before {
       content: counter(step, decimal-leading-zero);
-      font-family: var(--font-heading);
       font-size: 52px;
       font-weight: 300;
       background: var(--gradient-signature);
@@ -339,7 +335,6 @@
     .investments-process-card:hover .investments-process-dash { width: 48px; }
 
     .investments-process-card h4 {
-      font-family: var(--font-heading);
       font-size: 20px;
       font-weight: 400;
       margin-bottom: 10px;
@@ -413,6 +408,8 @@
       .investments-cta { padding: 64px 0; }
     }
   </style>
+  <!-- Typography: last in <head> so its roles win -->
+  <link rel="stylesheet" href="../css/type.css">
 </head>
 <body>
 

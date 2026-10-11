@@ -9,6 +9,7 @@
   <meta property="og:title" content="Token-El — Asset Tokenization | El-Global Business">
   <meta property="og:type" content="website">
   <link rel="stylesheet" href="../css/style.css">
+  <link rel="preload" href="../fonts/manrope-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
   <style>
     /* ═══ TOKEN-EL — FUTURISTIC BLOCKCHAIN AESTHETIC ═══ */
 
@@ -113,14 +114,14 @@
       animation: textShimmer 4s ease-in-out infinite;
     }
     .te-hero-desc {
-      font-family: var(--font-subheading); font-size: clamp(16px, 2vw, 20px);
-      font-weight: 300; font-style: italic; color: var(--text-muted);
+font-size: clamp(16px, 2vw, 20px);
+      font-weight: 300;color: var(--text-muted);
       line-height: 1.65; max-width: 580px; margin: 0 auto 32px;
     }
     .te-badge {
       display: inline-flex; align-items: center; gap: 8px;
-      font-family: var(--font-accent); font-size: 12px; font-weight: 600;
-      letter-spacing: 0.14em; text-transform: uppercase;
+font-size: 12px; font-weight: 600;
+text-transform: uppercase;
       border: 1px solid var(--gold); color: var(--gold);
       padding: 12px 28px; position: relative; overflow: hidden;
     }
@@ -148,12 +149,12 @@
     }
     .te-hero-stat { text-align: center; }
     .te-hero-stat-value {
-      font-family: var(--font-heading); font-size: 28px; font-weight: 300;
+font-size: 28px; font-weight: 300;
       color: var(--gold); display: block; margin-bottom: 4px;
     }
     .te-hero-stat-label {
-      font-family: var(--font-accent); font-size: 10px; font-weight: 500;
-      letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-dim);
+font-size: 10px; font-weight: 500;
+text-transform: uppercase; color: var(--text-dim);
     }
     @media (max-width: 768px) {
       .te-hero { min-height: 90vh; }
@@ -247,10 +248,10 @@
     .te-asset-card:hover { background: rgba(15,20,35,0.9); border-color: rgba(201,168,76,0.15); transform: translateY(-4px); box-shadow: 0 12px 40px rgba(201,168,76,0.06); }
     .te-asset-card:hover::after { transform: scaleX(1); }
     .te-asset-icon { font-size: 36px; margin-bottom: 20px; display: block; position: relative; z-index: 1; }
-    .te-asset-card h4 { font-family: var(--font-heading); font-size: 18px; font-weight: 400; margin-bottom: 8px; position: relative; z-index: 1; }
-    .te-asset-card-sub { font-family: var(--font-accent); font-size: 10px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; background: var(--gradient-signature); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 12px; display: block; position: relative; z-index: 1; }
+    .te-asset-card h4 {font-size: 18px; font-weight: 400; margin-bottom: 8px; position: relative; z-index: 1; }
+    .te-asset-card-sub {font-size: 10px; font-weight: 500;text-transform: uppercase; background: var(--gradient-signature); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 12px; display: block; position: relative; z-index: 1; }
     .te-asset-card p { font-size: 13px; color: var(--text-muted); line-height: 1.7; margin-bottom: 16px; position: relative; z-index: 1; }
-    .te-asset-meta { font-family: var(--font-accent); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); opacity: 0.7; position: relative; z-index: 1; }
+    .te-asset-meta {font-size: 10px;text-transform: uppercase; color: var(--gold); opacity: 0.7; position: relative; z-index: 1; }
     @media (max-width: 1024px) { .te-assets-grid { grid-template-columns: repeat(2, 1fr); } .te-assets { padding: 88px 0; } }
     @media (max-width: 768px) { .te-assets-grid { grid-template-columns: 1fr; } .te-assets { padding: 64px 0; } }
 
@@ -288,13 +289,13 @@
       100% { transform: rotate(360deg); }
     }
     .te-feature-num {
-      font-family: var(--font-heading); font-size: 56px; font-weight: 300;
+font-size: 56px; font-weight: 300;
       background: var(--gradient-signature); -webkit-background-clip: text;
       -webkit-text-fill-color: transparent; background-clip: text;
       opacity: 0.1; line-height: 1; margin-bottom: 20px; position: relative; z-index: 1;
     }
     .te-feature-card:hover .te-feature-num { opacity: 0.25; }
-    .te-feature-card h4 { font-family: var(--font-heading); font-size: 22px; font-weight: 400; margin-bottom: 12px; position: relative; z-index: 1; }
+    .te-feature-card h4 {font-size: 22px; font-weight: 400; margin-bottom: 12px; position: relative; z-index: 1; }
     .te-feature-card p { font-size: 14px; color: var(--text-muted); line-height: 1.8; position: relative; z-index: 1; }
     @media (max-width: 768px) { .te-features-grid { grid-template-columns: 1fr; } .te-features { padding: 64px 0; } }
 
@@ -305,8 +306,7 @@
     }
     .te-blockchain-inner {
       display: flex; align-items: center; justify-content: center; gap: 20px;
-      font-family: var(--font-accent); font-size: 11px; letter-spacing: 0.2em;
-      text-transform: uppercase; color: var(--text-dim); flex-wrap: wrap;
+font-size: 11px;      text-transform: uppercase; color: var(--text-dim); flex-wrap: wrap;
     }
     .te-blockchain-block {
       display: flex; align-items: center; gap: 12px; padding: 16px 24px;
@@ -351,6 +351,8 @@
     @media (max-width: 1024px) { .te-register-grid { grid-template-columns: 1fr; gap: 48px; } .te-register { padding: 88px 0; } }
     @media (max-width: 768px) { .te-register { padding: 64px 0; } .te-register-form .form-row { grid-template-columns: 1fr; } }
   </style>
+  <!-- Typography: last in <head> so its roles win -->
+  <link rel="stylesheet" href="../css/type.css">
 </head>
 <body>
   <main>

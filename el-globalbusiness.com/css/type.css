@@ -96,6 +96,8 @@ body {
 }
 h1, h2, h3, h4, h5, h6 { font-family: var(--font-sans); text-wrap: balance; }
 p { text-wrap: pretty; }
+/* Form controls do not inherit the font by default. */
+button, input, select, textarea { font-family: inherit; }
 
 /* ─── Role: display (the hero line) ──────────────────────────── */
 .seq-title {
@@ -106,7 +108,27 @@ p { text-wrap: pretty; }
 }
 
 /* ─── Role: page and section headings ────────────────────────── */
-h1 {
+h1,
+/* section heroes on other pages */
+.about-hero h1,
+.contact-hero h1,
+.enquiry-hero h1,
+.er-hero h1,
+.htl-hero h1,
+.hl-hero h1,
+.lre-hero h1,
+.charter-hero h1,
+.jetel-hero h1,
+.investments-hero h1,
+.membership-hero h1,
+.sales-hero h1,
+.elite-hero h1,
+.cbi-hero h1,
+.glf-hero h1,
+.op-hero h1,
+.inv-hero h1,
+.ymd-hero h1,
+.te-hero h1 {
   font-size: var(--t-h1);
   font-weight: var(--w-light);
   line-height: var(--lh-tight);
@@ -117,7 +139,54 @@ h2,
 .intro-text h2,
 .final-cta h2,
 .bespoke-text h2,
-.partners-header h2 {
+.partners-header h2,
+/* about */
+.story-text h2,
+.founder-header h2,
+.about-cta h2,
+/* contact, enquiry pages */
+.contact-form-wrap h2,
+.enquiry-form-wrap h2,
+/* el-rock */
+.er-intro-text h2,
+.er-valuation-header h2,
+.er-cta h2,
+/* hl */
+.hl-intro-text h2,
+.offmarket-header h2,
+.hl-cta h2,
+.htl-overview-text h2,
+.htl-cta h2,
+.lre-overview-text h2,
+.lre-cta h2,
+/* jet-el */
+.jetel-intro-text h2,
+.jetel-cta h2,
+.charter-intro-text h2,
+.charter-cta h2,
+.investments-intro-text h2,
+.investments-cta h2,
+.membership-intro-text h2,
+.membership-cta h2,
+.sales-intro-text h2,
+.sales-cta h2,
+/* jetel-elite */
+.elite-enquiry-form-wrap h2,
+/* one-percent */
+.op-intro-text h2,
+.op-sovereignty-text h2,
+.op-cta h2,
+.cbi-intro-text h2,
+.cbi-cta h2,
+.glf-overview-text h2,
+.glf-cta h2,
+.inv-overview-text h2,
+.inv-cta h2,
+.ymd-marina-text h2,
+.ymd-cta h2,
+/* token-el */
+.te-intro-text h2,
+.te-register-text h2 {
   font-size: var(--t-h2);
   font-weight: var(--w-light);
   line-height: var(--lh-tight);
@@ -127,7 +196,10 @@ h2,
 /* Emphasis: same family, heavier, upright, same colour. */
 h1 em, h2 em, h3 em, h4 em,
 .seq-title em,
-.partners-header h2 em {
+.partners-header h2 em,
+/* homepage, token-el */
+.mission-quote span,
+.te-hero h1 em {
   font-style: normal;
   font-weight: var(--w-semi);
   background: none;
@@ -148,13 +220,72 @@ h3, h4,
 .bento-featured h3,
 .bento-card-body h4,
 .value-card h3,
-.partner-card-brand {
+.partner-card-brand,
+/* about */
+.activity-card h4,
+.eco-card h4,
+/* el-rock */
+.er-service-card h4,
+.er-process-card h4,
+.er-val-form-title,
+/* hl */
+.hl-service-card-content h3,
+.market-card h4,
+.why-hl-card h4,
+.hl-process-card h4,
+.offmarket-card h4,
+.htl-features-card h4,
+.htl-process-card h4,
+.lre-features-card h4,
+.lre-process-card h4,
+/* jet-el */
+.service-card-content h3,
+.why-jetel-card h4,
+.process-card h4,
+.charter-feature-card h4,
+.charter-process-card h4,
+.investments-feature-card h4,
+.investments-process-card h4,
+.membership-feature-card h4,
+.membership-process-card h4,
+.sales-feature-card h4,
+.sales-process-card h4,
+/* jetel-elite */
+.elite-tier-name,
+.elite-fleet-name,
+.elite-calculator-form h3,
+.elite-calculator-results h3,
+.elite-lease-benefits-col h3,
+.elite-why-card h4,
+/* one-percent */
+.op-service-card-content h3,
+.why-op-card h4,
+.op-process-card h4,
+.op-sovereignty-feature h5,
+.program-card h3,
+.benefit-card h4,
+.cbi-process-card h4,
+.glf-features-card h4,
+.glf-process-card h4,
+.inv-features-card h4,
+.inv-process-card h4,
+.ymd-deal-card h3,
+.ymd-marina-service h5,
+.ymd-service-card h4,
+/* token-el */
+.te-asset-card h4,
+.te-feature-card h4 {
   font-size: var(--t-card);
   font-weight: var(--w-medium);
   line-height: var(--lh-tight);
   letter-spacing: var(--ls-h3);
 }
-.city-card-name {
+.city-card-name,
+/* about, contact: names that keep their size */
+.founder-name,
+.value-deep-name,
+.office-card h4,
+.office-card-full h4 {
   font-weight: var(--w-light);
   letter-spacing: var(--ls-h2);
   line-height: var(--lh-tight);
@@ -166,7 +297,29 @@ h3, h4,
 .hero-after .hero-subtitle,
 .intro-text .lead,
 .final-cta .cta-subtitle,
-.lead {
+.lead,
+/* section heroes on other pages */
+.about-hero-desc,
+.contact-hero-desc,
+.enquiry-hero-desc,
+.er-hero-desc,
+.htl-hero-desc,
+.hl-hero-desc,
+.lre-hero-desc,
+.charter-hero-desc,
+.jetel-hero-desc,
+.investments-hero-desc,
+.membership-hero-desc,
+.sales-hero-desc,
+.elite-hero-subtitle,
+.cbi-hero-desc,
+.glf-hero-desc,
+.op-hero-desc,
+.inv-hero-desc,
+.ymd-hero-desc,
+.te-hero-desc,
+/* about */
+.story-text .lead {
   font-size: var(--t-lead);
   font-weight: var(--w-regular);
   font-style: normal;
@@ -190,7 +343,98 @@ h3, h4,
 .presence-header-band p,
 .partners-header p,
 .bespoke-text p,
-.intro-text p {
+.intro-text p,
+/* about */
+.story-text p,
+.activities-header p,
+.ecosystem-header p,
+.values-deep-header p,
+.value-deep-right p,
+.founder-bio p,
+.about-cta p,
+/* contact, enquiry pages */
+.contact-form-wrap > p,
+.enquiry-form-wrap > p,
+/* el-rock */
+.er-intro-text p,
+.er-services-header p,
+.er-process-header p,
+.er-valuation-header p,
+.er-cta p,
+/* hl */
+.hl-intro-text p,
+.hl-services-header p,
+.markets-header p,
+.why-hl-header p,
+.hl-process-header p,
+.offmarket-header p,
+.hl-cta p,
+.htl-overview-text p,
+.htl-features-header p,
+.htl-process-header p,
+.htl-cta p,
+.lre-overview-text p,
+.lre-features-header p,
+.lre-process-header p,
+.lre-cta p,
+/* jet-el */
+.jetel-intro-text p,
+.services-header p,
+.why-jetel-header p,
+.process-header p,
+.jetel-cta p,
+.charter-intro-text p,
+.charter-features-header p,
+.charter-process-header p,
+.charter-booking-header p,
+.charter-cta p,
+.investments-intro-text p,
+.investments-features-header p,
+.investments-process-header p,
+.investments-cta p,
+.membership-intro-text p,
+.membership-features-header p,
+.membership-process-header p,
+.membership-cta p,
+.sales-intro-text p,
+.sales-features-header p,
+.sales-process-header p,
+.sales-cta p,
+/* jetel-elite */
+.elite-hero-desc,
+.elite-tiers-header p,
+.elite-fleet-header p,
+.elite-calculator-header p,
+.elite-lease-header p,
+.elite-why-header p,
+.elite-enquiry-form-wrap > p,
+/* one-percent */
+.op-intro-text p,
+.op-services-header p,
+.why-op-header p,
+.op-process-header p,
+.op-sovereignty-text p,
+.op-cta p,
+.cbi-intro-text p,
+.programs-header p,
+.benefits-header p,
+.cbi-process-header p,
+.cbi-cta p,
+.glf-overview-text p,
+.glf-features-header p,
+.glf-process-header p,
+.glf-cta p,
+.inv-overview-text p,
+.inv-features-header p,
+.inv-process-header p,
+.inv-cta p,
+.ymd-deals-header p,
+.ymd-marina-text p,
+.ymd-cta p,
+/* token-el */
+.te-intro-text p,
+.te-assets-header p,
+.te-register-text p {
   font-size: var(--t-body);
   line-height: var(--lh-body);
   max-width: var(--measure);
@@ -206,7 +450,73 @@ h3, h4,
 .bento-card-body p,
 .value-card p,
 .partner-card-desc,
-.city-card-address {
+.city-card-address,
+/* about */
+.activity-card p,
+.eco-card p,
+.office-card-address,
+/* contact, enquiry pages */
+.contact-info-value,
+.office-card-full-address,
+.sidebar-card p,
+.sidebar-card-list li,
+/* el-rock */
+.er-service-card p,
+.er-process-card p,
+.er-val-result-sub,
+/* hl */
+.hl-service-card-content p,
+.market-card p,
+.why-hl-card p,
+.hl-process-card p,
+.offmarket-card p,
+.htl-features-card p,
+.htl-process-card p,
+.lre-features-card p,
+.lre-process-card p,
+/* jet-el */
+.service-card-content p,
+.why-jetel-card p,
+.process-card p,
+.charter-feature-card p,
+.charter-process-card p,
+.booking-form-note,
+.investments-feature-card p,
+.investments-process-card p,
+.membership-feature-card p,
+.membership-process-card p,
+.sales-feature-card p,
+.sales-process-card p,
+/* jetel-elite */
+.elite-tier-features li,
+.elite-fleet-spec span,
+.elite-calculator-form > p,
+.elite-calculator-results > p,
+.calc-result-note,
+.elite-lease-term-desc,
+.elite-lease-benefits-list li,
+.elite-why-card p,
+.elite-sidebar-card p,
+.elite-sidebar-list li,
+/* one-percent */
+.op-service-card-content p,
+.why-op-card p,
+.op-process-card p,
+.op-sovereignty-feature p,
+.program-card p,
+.program-card-details li,
+.benefit-card p,
+.cbi-process-card p,
+.glf-features-card p,
+.glf-process-card p,
+.inv-features-card p,
+.inv-process-card p,
+.ymd-deal-card p,
+.ymd-marina-service p,
+.ymd-service-card p,
+/* token-el */
+.te-asset-card p,
+.te-feature-card p {
   font-size: var(--t-small);
   line-height: var(--lh-snug);
 }
@@ -221,7 +531,57 @@ h3, h4,
 .bento-card-number,
 .value-number,
 .overlay-stat-value,
-.process-step::before {
+.process-step::before,
+/* about */
+.story-accent-number,
+.activity-card-num,
+.value-deep-num,
+/* el-rock */
+.er-service-card-num,
+.er-process-card::before,
+.er-val-result-value,
+.er-val-confidence-pct,
+/* hl */
+.hl-service-card-num,
+.why-hl-num,
+.hl-process-card::before,
+.offmarket-num,
+.htl-features-num,
+.htl-process-card::before,
+.lre-features-num,
+.lre-process-card::before,
+/* jet-el */
+.service-card-num,
+.why-jetel-num,
+.process-card::before,
+.charter-feature-num,
+.charter-process-card::before,
+.investments-feature-num,
+.investments-process-card::before,
+.membership-feature-num,
+.membership-process-card::before,
+.sales-feature-num,
+.sales-process-card::before,
+/* jetel-elite */
+.elite-tier-share,
+.elite-tier-amount,
+.calc-result-value,
+.calc-savings-value,
+.elite-lease-term-duration,
+/* one-percent */
+.op-service-card-num,
+.why-op-num,
+.op-process-card::before,
+.benefit-num,
+.cbi-process-card::before,
+.glf-features-num,
+.glf-process-card::before,
+.inv-features-num,
+.inv-process-card::before,
+.ymd-service-num,
+/* token-el */
+.te-hero-stat-value,
+.te-feature-num {
   font-weight: var(--w-light);
   letter-spacing: var(--ls-num);
   line-height: 0.95;
@@ -231,7 +591,16 @@ h3, h4,
 /* ─── Role: eyebrow (the one uppercase style) ────────────────── */
 .eyebrow,
 .hero-tagline,
-.division-card-eyebrow {
+.division-card-eyebrow,
+/* contact, enquiry pages, jetel-elite: sidebar headings */
+.contact-info-heading,
+.sidebar-card-heading,
+.elite-sidebar-heading,
+/* hl, jetel-elite, one-percent: labels above a title */
+.offmarket-band-label,
+.elite-fleet-category,
+.program-card-region,
+.ymd-deal-card-tag {
   font-size: var(--t-label);
   font-weight: var(--w-regular);
   letter-spacing: var(--ls-label);
@@ -262,7 +631,44 @@ h3, h4,
 .trust-item,
 .bespoke-brand,
 .partner-card-type,
-.partner-card-link {
+.partner-card-link,
+/* footer (components.js) */
+.footer-contact-label,
+/* about, contact */
+.story-accent-label,
+.eco-card-sub,
+.office-card-country,
+.founder-title,
+.contact-info-label,
+.office-card-full-country,
+/* el-rock */
+.er-val-form-subtitle,
+.er-val-field label,
+.er-val-result-label,
+.er-val-powered,
+/* hero pills */
+.hl-hero-pill,
+.jetel-hero-pill,
+.op-hero-pill,
+/* jet-el, jetel-elite */
+.booking-trip-type,
+.elite-tier-price,
+.elite-fleet-options,
+.calc-result-label,
+.calc-savings-label,
+.elite-lease-term-unit,
+/* one-percent, token-el */
+.program-card-details .detail-label,
+.op-sovereignty-brand,
+.ymd-deal-card-meta,
+.te-hero-stat-label,
+.te-asset-card-sub,
+.te-asset-meta,
+.te-blockchain-inner,
+/* card links */
+.hl-service-card-link,
+.service-card-link,
+.op-service-card-link {
   font-size: var(--t-label);
   font-weight: var(--w-regular);
   letter-spacing: var(--ls-ui);
@@ -275,14 +681,24 @@ h3, h4,
 .mega-dropdown-cta,
 .division-card-link,
 .city-card-cta,
-.partner-card-link { font-size: 0.875rem; font-weight: var(--w-medium); }
+.partner-card-link,
+/* card links */
+.hl-service-card-link,
+.service-card-link,
+.op-service-card-link { font-size: 0.875rem; font-weight: var(--w-medium); }
 
 /* Tiny tags on cards and the map. */
 .card-image-badge,
 .badge-coming-soon,
 .division-card-badge,
 .division-card-tag,
-.map-label {
+.map-label,
+/* hl, el-rock, jetel-elite, token-el */
+.hl-service-tag,
+.offmarket-tag,
+.er-val-badge,
+.elite-tier-badge,
+.te-badge {
   font-size: var(--t-micro);
   font-weight: var(--w-medium);
   letter-spacing: 0;
@@ -292,7 +708,9 @@ h3, h4,
 /* ─── Buttons ────────────────────────────────────────────────── */
 .btn,
 .nav-cta,
-.mobile-nav-cta {
+.mobile-nav-cta,
+/* el-rock */
+.er-val-cta-btn {
   font-size: 0.875rem;
   font-weight: var(--w-medium);
   letter-spacing: var(--ls-ui);

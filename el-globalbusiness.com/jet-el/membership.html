@@ -12,6 +12,7 @@
   <meta property="og:type" content="website">
 
   <link rel="stylesheet" href="../css/style.css">
+  <link rel="preload" href="../fonts/manrope-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 
   <style>
     /* ═══ MEMBERSHIP HERO ═══ */
@@ -60,10 +61,8 @@
     }
 
     .membership-hero-desc {
-      font-family: var(--font-subheading);
       font-size: clamp(16px, 2vw, 20px);
       font-weight: 300;
-      font-style: italic;
       color: var(--text-secondary);
       line-height: 1.65;
       max-width: 540px;
@@ -212,7 +211,6 @@
     .membership-feature-card:hover::after { transform: scaleX(1); }
 
     .membership-feature-num {
-      font-family: var(--font-heading);
       font-size: 40px;
       font-weight: 300;
       background: var(--gradient-signature);
@@ -235,7 +233,6 @@
     .membership-feature-card:hover .membership-feature-dash { width: 48px; }
 
     .membership-feature-card h4 {
-      font-family: var(--font-heading);
       font-size: 20px;
       font-weight: 400;
       margin-bottom: 10px;
@@ -316,7 +313,6 @@
 
     .membership-process-card::before {
       content: counter(step, decimal-leading-zero);
-      font-family: var(--font-heading);
       font-size: 52px;
       font-weight: 300;
       background: var(--gradient-signature);
@@ -339,7 +335,6 @@
     .membership-process-card:hover .membership-process-dash { width: 48px; }
 
     .membership-process-card h4 {
-      font-family: var(--font-heading);
       font-size: 20px;
       font-weight: 400;
       margin-bottom: 10px;
@@ -413,6 +408,8 @@
       .membership-cta { padding: 64px 0; }
     }
   </style>
+  <!-- Typography: last in <head> so its roles win -->
+  <link rel="stylesheet" href="../css/type.css">
 </head>
 <body>
 

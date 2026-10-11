@@ -12,6 +12,7 @@
   <meta property="og:type" content="website">
 
   <link rel="stylesheet" href="../css/style.css">
+  <link rel="preload" href="../fonts/manrope-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 
   <style>
     /* ═══════════════════════════════════════════════════════════════
@@ -78,10 +79,8 @@
     }
 
     .elite-hero-subtitle {
-      font-family: var(--font-subheading);
       font-size: clamp(18px, 2.5vw, 26px);
       font-weight: 300;
-      font-style: italic;
       color: var(--text-muted);
       line-height: 1.5;
       margin-bottom: 16px;
@@ -200,10 +199,8 @@
     .elite-tier-card.featured::after { transform: scaleX(1); }
 
     .elite-tier-badge {
-      font-family: var(--font-accent);
       font-size: 10px;
       font-weight: 600;
-      letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--black);
       background: var(--gradient-signature);
@@ -213,7 +210,6 @@
     }
 
     .elite-tier-share {
-      font-family: var(--font-heading);
       font-size: 48px;
       font-weight: 300;
       background: var(--gradient-signature);
@@ -225,7 +221,6 @@
     }
 
     .elite-tier-name {
-      font-family: var(--font-heading);
       font-size: 24px;
       font-weight: 400;
       margin-bottom: 24px;
@@ -262,16 +257,13 @@
     }
 
     .elite-tier-price {
-      font-family: var(--font-heading);
       font-size: 14px;
       font-weight: 400;
-      letter-spacing: 0.05em;
       color: var(--text-dim);
       margin-bottom: 4px;
     }
 
     .elite-tier-amount {
-      font-family: var(--font-heading);
       font-size: 32px;
       font-weight: 300;
       color: var(--text-primary);
@@ -385,10 +377,8 @@
       position: absolute;
       top: 14px;
       left: 14px;
-      font-family: var(--font-accent);
       font-size: 9px;
       font-weight: 600;
-      letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--black);
       background: var(--gradient-signature);
@@ -401,7 +391,6 @@
     }
 
     .elite-fleet-name {
-      font-family: var(--font-heading);
       font-size: 22px;
       font-weight: 400;
       margin-bottom: 16px;
@@ -428,7 +417,6 @@
     .elite-fleet-spec span {
       font-size: 12px;
       color: var(--text-dim);
-      font-family: var(--font-accent);
       font-weight: 400;
     }
 
@@ -442,9 +430,7 @@
     .elite-fleet-options {
       font-size: 12px;
       color: var(--text-dim);
-      font-family: var(--font-accent);
       font-weight: 400;
-      letter-spacing: 0.05em;
     }
 
     .elite-fleet-options strong {
@@ -588,17 +574,14 @@
     .calc-result-item:hover { background: var(--surface-hover); }
 
     .calc-result-label {
-      font-family: var(--font-accent);
       font-size: 10px;
       font-weight: 500;
-      letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--text-dim);
       margin-bottom: 8px;
     }
 
     .calc-result-value {
-      font-family: var(--font-heading);
       font-size: 28px;
       font-weight: 300;
       background: var(--gradient-signature);
@@ -626,16 +609,13 @@
     }
 
     .calc-savings-label {
-      font-family: var(--font-accent);
       font-size: 11px;
       font-weight: 500;
-      letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--text-muted);
     }
 
     .calc-savings-value {
-      font-family: var(--font-heading);
       font-size: 22px;
       font-weight: 300;
       color: #4CAF50;
@@ -733,7 +713,6 @@
     }
 
     .elite-lease-term-duration {
-      font-family: var(--font-heading);
       font-size: 36px;
       font-weight: 300;
       background: var(--gradient-signature);
@@ -745,10 +724,8 @@
     }
 
     .elite-lease-term-unit {
-      font-family: var(--font-accent);
       font-size: 10px;
       font-weight: 500;
-      letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--text-dim);
       margin-bottom: 16px;
@@ -918,7 +895,6 @@
     .elite-why-card:hover .elite-why-dash { width: 48px; }
 
     .elite-why-card h4 {
-      font-family: var(--font-heading);
       font-size: 20px;
       font-weight: 400;
       margin-bottom: 10px;
@@ -996,10 +972,8 @@
     }
 
     .elite-sidebar-heading {
-      font-family: var(--font-accent);
       font-size: 11px;
       font-weight: 600;
-      letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--orange);
       margin-bottom: 16px;
@@ -1047,6 +1021,8 @@
     }
 
   </style>
+  <!-- Typography: last in <head> so its roles win -->
+  <link rel="stylesheet" href="../css/type.css">
 </head>
 <body>
 

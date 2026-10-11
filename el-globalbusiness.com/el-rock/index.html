@@ -9,6 +9,7 @@
   <meta property="og:title" content="El&Rock — M&A Advisory | El-Global Business">
   <meta property="og:type" content="website">
   <link rel="stylesheet" href="../css/style.css">
+  <link rel="preload" href="../fonts/manrope-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
   <style>
     .er-hero {
       position: relative; height: 60vh; max-height: 60vh;
@@ -20,7 +21,7 @@
     .er-hero-content { position: relative; z-index: 2; padding: calc(var(--nav-height) + 40px) 0 56px; max-width: 700px; }
     .er-hero .eyebrow { margin-bottom: 20px; }
     .er-hero h1 { font-size: clamp(36px, 5vw, 64px); font-weight: 300; margin-bottom: 16px; line-height: 1.1; }
-    .er-hero-desc { font-family: var(--font-subheading); font-size: clamp(16px, 2vw, 20px); font-weight: 300; font-style: italic; color: var(--text-secondary); line-height: 1.65; max-width: 540px; }
+    .er-hero-desc {font-size: clamp(16px, 2vw, 20px); font-weight: 300;color: var(--text-secondary); line-height: 1.65; max-width: 540px; }
     @media (max-width: 768px) { .er-hero { height: 50vh; } .er-hero-content { padding: calc(var(--nav-height) + 20px) 0 40px; } }
 
     .er-intro { padding: 120px 0; }
@@ -49,11 +50,11 @@
     .er-service-card-icon { width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--border-mid); transition: all var(--transition); }
     .er-service-card:hover .er-service-card-icon { border-color: var(--gold); box-shadow: 0 0 16px rgba(201,168,76,0.08); }
     .er-service-card-icon span { font-size: 18px; line-height: 1; }
-    .er-service-card-num { font-family: var(--font-heading); font-size: 36px; font-weight: 300; background: var(--gradient-signature); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; opacity: 0.1; line-height: 1; }
+    .er-service-card-num {font-size: 36px; font-weight: 300; background: var(--gradient-signature); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; opacity: 0.1; line-height: 1; }
     .er-service-card:hover .er-service-card-num { opacity: 0.18; }
     .er-service-card-dash { width: 28px; height: 2px; background: var(--gradient-signature); margin-bottom: 14px; transition: width 0.4s var(--ease); }
     .er-service-card:hover .er-service-card-dash { width: 48px; }
-    .er-service-card h4 { font-family: var(--font-heading); font-size: 20px; font-weight: 400; margin-bottom: 10px; }
+    .er-service-card h4 {font-size: 20px; font-weight: 400; margin-bottom: 10px; }
     .er-service-card p { font-size: 13px; color: var(--text-muted); line-height: 1.8; }
     @media (max-width: 1024px) { .er-services-grid { grid-template-columns: 1fr 1fr; } .er-services { padding: 88px 0; } }
     @media (max-width: 768px) { .er-services-grid { grid-template-columns: 1fr; } .er-services { padding: 64px 0; } .er-service-card { padding: 32px 24px; } }
@@ -67,10 +68,10 @@
     .er-process-card { padding: 40px 28px; border-right: 1px solid var(--border); counter-increment: step; background: var(--black); transition: all 0.4s var(--ease); }
     .er-process-card:last-child { border-right: none; }
     .er-process-card:hover { background: var(--surface-hover); }
-    .er-process-card::before { content: counter(step, decimal-leading-zero); font-family: var(--font-heading); font-size: 52px; font-weight: 300; background: var(--gradient-signature); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; display: block; margin-bottom: 24px; line-height: 1; }
+    .er-process-card::before { content: counter(step, decimal-leading-zero);font-size: 52px; font-weight: 300; background: var(--gradient-signature); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; display: block; margin-bottom: 24px; line-height: 1; }
     .er-process-dash { width: 28px; height: 2px; background: var(--gradient-signature); margin-bottom: 16px; transition: width 0.4s var(--ease); }
     .er-process-card:hover .er-process-dash { width: 48px; }
-    .er-process-card h4 { font-family: var(--font-heading); font-size: 20px; font-weight: 400; margin-bottom: 10px; }
+    .er-process-card h4 {font-size: 20px; font-weight: 400; margin-bottom: 10px; }
     .er-process-card p { font-size: 13px; color: var(--text-muted); line-height: 1.75; }
     @media (max-width: 1024px) { .er-process-grid { grid-template-columns: repeat(2, 1fr); } .er-process-card:nth-child(2) { border-right: none; } .er-process-card:nth-child(3), .er-process-card:nth-child(4) { border-top: 1px solid var(--border); } .er-process { padding: 88px 0; } }
     @media (max-width: 768px) { .er-process-grid { grid-template-columns: 1fr; } .er-process-card { border-right: none; border-bottom: 1px solid var(--border); } .er-process-card:last-child { border-bottom: none; } .er-process { padding: 64px 0; } }
@@ -161,7 +162,6 @@
       background: var(--gradient-signature);
     }
     .er-val-form-title {
-      font-family: var(--font-heading);
       font-size: 18px;
       font-weight: 400;
       margin-bottom: 8px;
@@ -170,7 +170,6 @@
       font-size: 12px;
       color: var(--text-muted);
       text-transform: uppercase;
-      letter-spacing: 0.12em;
       margin-bottom: 32px;
     }
     .er-val-form-grid {
@@ -190,16 +189,13 @@
     .er-val-field label {
       font-size: 11px;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
       color: var(--text-secondary);
-      font-family: var(--font-body);
     }
     .er-val-field input,
     .er-val-field select {
       background: var(--black);
       border: 1px solid var(--border);
       color: var(--text-primary);
-      font-family: var(--font-body);
       font-size: 14px;
       padding: 12px 16px;
       outline: none;
@@ -228,11 +224,9 @@
       padding: 14px 24px;
       background: var(--gradient-signature);
       color: var(--black);
-      font-family: var(--font-heading);
       font-size: 13px;
       font-weight: 600;
       text-transform: uppercase;
-      letter-spacing: 0.14em;
       border: none;
       cursor: pointer;
       text-align: center;
@@ -277,7 +271,6 @@
     .er-val-result-label {
       font-size: 11px;
       text-transform: uppercase;
-      letter-spacing: 0.12em;
       color: var(--text-muted);
       margin-bottom: 10px;
       display: flex;
@@ -293,7 +286,6 @@
       animation: er-val-pulse 2s ease-in-out infinite;
     }
     .er-val-result-value {
-      font-family: var(--font-heading);
       font-size: 32px;
       font-weight: 300;
       background: var(--gradient-signature);
@@ -325,12 +317,10 @@
       transition: width 1s ease;
     }
     .er-val-confidence-pct {
-      font-family: var(--font-heading);
       font-size: 11px;
       color: var(--gold);
       margin-top: 6px;
       text-align: right;
-      letter-spacing: 0.05em;
     }
 
     /* Decorative AI badge */
@@ -343,7 +333,6 @@
       padding: 8px 16px;
       font-size: 11px;
       text-transform: uppercase;
-      letter-spacing: 0.12em;
       color: var(--gold);
       margin-top: 12px;
     }
@@ -358,7 +347,6 @@
       margin-top: 48px;
       font-size: 12px;
       color: var(--text-muted);
-      letter-spacing: 0.08em;
       text-transform: uppercase;
     }
     .er-val-powered span {
@@ -382,6 +370,8 @@
       .er-val-result-value { font-size: 26px; }
     }
   </style>
+  <!-- Typography: last in <head> so its roles win -->
+  <link rel="stylesheet" href="../css/type.css">
 </head>
 <body>
   <main>

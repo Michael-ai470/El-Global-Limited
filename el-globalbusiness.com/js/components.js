@@ -138,14 +138,14 @@
             <div class="footer-contact-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4l-10 8L2 4"/></svg></div>
             <div>
               <a href="mailto:info@el-globalbusiness.com">info@el-globalbusiness.com</a>
-              <div style="font-size:10px;color:var(--text-dim);margin-top:2px;font-family:var(--font-accent);letter-spacing:0.08em;text-transform:uppercase;">General Enquiries</div>
+              <div class="footer-contact-label" style="color:var(--text-dim);margin-top:2px;">General Enquiries</div>
             </div>
           </div>
           <div class="footer-contact-item">
             <div class="footer-contact-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4l-10 8L2 4"/></svg></div>
             <div>
               <a href="mailto:sales@el-globalbusiness.com">sales@el-globalbusiness.com</a>
-              <div style="font-size:10px;color:var(--text-dim);margin-top:2px;font-family:var(--font-accent);letter-spacing:0.08em;text-transform:uppercase;">Sales &amp; Investments</div>
+              <div class="footer-contact-label" style="color:var(--text-dim);margin-top:2px;">Sales &amp; Investments</div>
             </div>
           </div>
           <div class="footer-contact-item">

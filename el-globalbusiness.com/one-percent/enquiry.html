@@ -9,6 +9,7 @@
   <meta property="og:title" content="The 1% Enquiry — El-Global Business">
   <meta property="og:type" content="website">
   <link rel="stylesheet" href="../css/style.css">
+  <link rel="preload" href="../fonts/manrope-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
   <style>
     .enquiry-hero {
       position: relative; height: 60vh; max-height: 60vh;
@@ -30,8 +31,8 @@
     .enquiry-hero .eyebrow { margin-bottom: 20px; }
     .enquiry-hero h1 { font-size: clamp(36px, 5vw, 64px); font-weight: 300; margin-bottom: 16px; line-height: 1.1; }
     .enquiry-hero-desc {
-      font-family: var(--font-subheading); font-size: clamp(16px, 2vw, 20px);
-      font-weight: 300; font-style: italic; color: var(--text-secondary);
+font-size: clamp(16px, 2vw, 20px);
+      font-weight: 300;color: var(--text-secondary);
       line-height: 1.65; max-width: 520px;
     }
     @media (max-width: 768px) {
@@ -49,8 +50,8 @@
     .enquiry-sidebar { padding-top: 80px; }
     .sidebar-card { border: 1px solid var(--border); background: #0A0A0A; padding: 36px; margin-bottom: 16px; }
     .sidebar-card-heading {
-      font-family: var(--font-accent); font-size: 11px; font-weight: 600;
-      letter-spacing: 0.2em; text-transform: uppercase; color: var(--orange); margin-bottom: 16px;
+font-size: 11px; font-weight: 600;
+text-transform: uppercase; color: var(--orange); margin-bottom: 16px;
     }
     .sidebar-card p { font-size: 14px; color: var(--text-muted); line-height: 1.8; }
     .sidebar-card-list { list-style: none; }
@@ -71,6 +72,8 @@
       .enquiry-form .form-row { grid-template-columns: 1fr; }
     }
   </style>
+  <!-- Typography: last in <head> so its roles win -->
+  <link rel="stylesheet" href="../css/type.css">
 </head>
 <body>
   <main>

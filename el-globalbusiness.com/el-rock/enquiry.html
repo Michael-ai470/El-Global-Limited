@@ -9,6 +9,7 @@
   <meta property="og:title" content="El&Rock Enquiry — El-Global Business">
   <meta property="og:type" content="website">
   <link rel="stylesheet" href="../css/style.css">
+  <link rel="preload" href="../fonts/manrope-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
   <style>
     .enquiry-hero { position: relative; height: 60vh; max-height: 60vh; display: flex; align-items: flex-end; overflow: hidden; }
     .enquiry-hero-bg { position: absolute; inset: 0; }
@@ -17,7 +18,7 @@
     .enquiry-hero-content { position: relative; z-index: 2; padding: calc(var(--nav-height) + 40px) 0 56px; max-width: 680px; }
     .enquiry-hero .eyebrow { margin-bottom: 20px; }
     .enquiry-hero h1 { font-size: clamp(36px, 5vw, 64px); font-weight: 300; margin-bottom: 16px; line-height: 1.1; }
-    .enquiry-hero-desc { font-family: var(--font-subheading); font-size: clamp(16px, 2vw, 20px); font-weight: 300; font-style: italic; color: var(--text-secondary); line-height: 1.65; max-width: 520px; }
+    .enquiry-hero-desc {font-size: clamp(16px, 2vw, 20px); font-weight: 300;color: var(--text-secondary); line-height: 1.65; max-width: 520px; }
     @media (max-width: 768px) { .enquiry-hero { height: 50vh; } .enquiry-hero-content { padding: calc(var(--nav-height) + 20px) 0 40px; } }
     .enquiry-section { padding: 120px 0; }
     .enquiry-grid { display: grid; grid-template-columns: 1fr 380px; gap: 80px; align-items: start; }
@@ -29,7 +30,7 @@
     .enquiry-form .btn { margin-top: 8px; width: 100%; }
     .enquiry-sidebar { padding-top: 80px; }
     .sidebar-card { border: 1px solid var(--border); background: #0A0A0A; padding: 36px; margin-bottom: 16px; }
-    .sidebar-card-heading { font-family: var(--font-accent); font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--orange); margin-bottom: 16px; }
+    .sidebar-card-heading {font-size: 11px; font-weight: 600;text-transform: uppercase; color: var(--orange); margin-bottom: 16px; }
     .sidebar-card p { font-size: 14px; color: var(--text-muted); line-height: 1.8; }
     .sidebar-card-list { list-style: none; }
     .sidebar-card-list li { display: flex; align-items: center; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 14px; color: var(--text-primary); }
@@ -38,6 +39,8 @@
     @media (max-width: 1024px) { .enquiry-grid { grid-template-columns: 1fr; gap: 48px; } .enquiry-sidebar { padding-top: 0; } .enquiry-section { padding: 88px 0; } }
     @media (max-width: 768px) { .enquiry-section { padding: 64px 0; } .enquiry-form .form-row { grid-template-columns: 1fr; } }
   </style>
+  <!-- Typography: last in <head> so its roles win -->
+  <link rel="stylesheet" href="../css/type.css">
 </head>
 <body>
   <main>

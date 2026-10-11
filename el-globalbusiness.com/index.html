@@ -28,6 +28,7 @@
 
   <!-- Stylesheet -->
   <link rel="stylesheet" href="css/style.css">
+  <link rel="preload" href="fonts/manrope-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="js/vendor/lenis.css">
 
   <!-- Motion: gsap and lenis from js/vendor/, then the homepage module. All deferred. -->
@@ -114,10 +115,8 @@
 
     /* Tagline decorative line */
     .hero-tagline {
-      font-family: var(--font-accent);
       font-size: 13px;
       font-weight: 500;
-      letter-spacing: 0.35em;
       text-transform: uppercase;
       color: var(--orange);
       margin: 0;
@@ -136,11 +135,9 @@
     }
 
     .seq-title {
-      font-family: var(--font-heading);
       font-size: clamp(48px, 8vw, 112px);
       font-weight: 300;
       line-height: 1.05;
-      letter-spacing: -0.01em;
       margin: 0;
     }
 
@@ -157,15 +154,12 @@
     }
 
     .hero-after .hero-subtitle {
-      font-family: var(--font-subheading);
       font-size: clamp(17px, 2vw, 22px);
       font-weight: 300;
-      font-style: italic;
       color: var(--text-secondary);
       max-width: 620px;
       margin: 0 auto 44px;
       line-height: 1.65;
-      letter-spacing: 0.01em;
     }
 
     /* Division pills row */
@@ -178,10 +172,8 @@
     }
 
     .hero-division-pill {
-      font-family: var(--font-accent);
       font-size: 11px;
       font-weight: 500;
-      letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--text-muted);
       border: 1px solid var(--border-mid);
@@ -228,7 +220,6 @@
     }
 
     .hero-stat-number {
-      font-family: var(--font-heading);
       font-size: clamp(28px, 3vw, 40px);
       font-weight: 300;
       background: var(--gradient-signature);
@@ -241,10 +232,8 @@
     }
 
     .hero-stat-label {
-      font-family: var(--font-accent);
       font-size: 10px;
       font-weight: 500;
-      letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--text-dim);
     }
@@ -257,7 +246,7 @@
 
     @media (max-width: 768px) {
       .seq-copy { padding: calc(var(--nav-height) + 16px) 20px 0; }
-      .hero-tagline { font-size: 11px; letter-spacing: 0.25em; gap: 14px; }
+      .hero-tagline { font-size: 11px;gap: 14px; }
       .hero-tagline::before,
       .hero-tagline::after { width: 30px; }
       .hero-after { padding-top: 72px; }
@@ -291,7 +280,6 @@
     }
 
     .intro-text h2 {
-      font-family: var(--font-heading);
       font-size: clamp(32px, 4vw, 52px);
       font-weight: 400;
       line-height: 1.12;
@@ -299,10 +287,8 @@
     }
 
     .intro-text .lead {
-      font-family: var(--font-subheading);
       font-size: 20px;
       font-weight: 300;
-      font-style: italic;
       color: var(--text-secondary);
       line-height: 1.7;
       margin-bottom: 24px;
@@ -358,7 +344,6 @@
     }
 
     .intro-image-accent .accent-number {
-      font-family: var(--font-heading);
       font-size: 48px;
       font-weight: 300;
       background: var(--gradient-signature);
@@ -370,10 +355,8 @@
     }
 
     .intro-image-accent .accent-label {
-      font-family: var(--font-accent);
       font-size: 11px;
       font-weight: 500;
-      letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--text-muted);
       line-height: 1.4;
@@ -432,10 +415,8 @@
     }
 
     .mission-quote {
-      font-family: var(--font-subheading);
       font-size: clamp(22px, 3vw, 34px);
       font-weight: 300;
-      font-style: italic;
       color: var(--text-primary);
       line-height: 1.5;
       margin-bottom: 28px;
@@ -449,10 +430,8 @@
     }
 
     .mission-attribution {
-      font-family: var(--font-accent);
       font-size: 12px;
       font-weight: 500;
-      letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--text-dim);
     }
@@ -484,7 +463,6 @@
     }
 
     .activity-item h4 {
-      font-family: var(--font-heading);
       font-size: 20px;
       font-weight: 400;
       margin-bottom: 10px;
@@ -531,10 +509,8 @@
     }
 
     .section-meta {
-      font-family: var(--font-accent);
       font-size: 11px;
       font-weight: 500;
-      letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--text-dim);
       line-height: 1.8;
@@ -615,10 +591,8 @@
       top: 16px;
       left: 16px;
       z-index: 2;
-      font-family: var(--font-accent);
       font-size: 10px;
       font-weight: 600;
-      letter-spacing: 0.14em;
       text-transform: uppercase;
       background: var(--gradient-signature);
       color: var(--black);
@@ -656,7 +630,6 @@
     .overlay-stat:last-child { border-right: none; }
 
     .overlay-stat-value {
-      font-family: var(--font-heading);
       font-size: 16px;
       font-weight: 400;
       color: var(--gold);
@@ -665,9 +638,7 @@
     }
 
     .overlay-stat-label {
-      font-family: var(--font-accent);
       font-size: 9px;
-      letter-spacing: 0.08em;
       text-transform: uppercase;
       color: rgba(255,255,255,0.45);
     }
@@ -681,17 +652,14 @@
     }
 
     .division-card-eyebrow {
-      font-family: var(--font-accent);
       font-size: 10px;
       font-weight: 600;
-      letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--orange);
       margin-bottom: 10px;
     }
 
     .division-card-content h3 {
-      font-family: var(--font-heading);
       font-size: 24px;
       font-weight: 400;
       margin-bottom: 12px;
@@ -716,10 +684,8 @@
     }
 
     .division-card-tag {
-      font-family: var(--font-accent);
       font-size: 9px;
       font-weight: 500;
-      letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--text-dim);
       border: 1px solid var(--border);
@@ -735,10 +701,8 @@
 
     /* Card CTA link */
     .division-card-link {
-      font-family: var(--font-accent);
       font-size: 11px;
       font-weight: 600;
-      letter-spacing: 0.12em;
       text-transform: uppercase;
       background: var(--gradient-signature);
       -webkit-background-clip: text;
@@ -880,7 +844,6 @@
     }
 
     .bento-featured-number {
-      font-family: var(--font-heading);
       font-size: 64px;
       font-weight: 300;
       background: var(--gradient-signature);
@@ -896,7 +859,6 @@
     }
 
     .bento-featured h3 {
-      font-family: var(--font-heading);
       font-size: 28px;
       font-weight: 300;
       margin-bottom: 12px;
@@ -952,7 +914,6 @@
     }
 
     .bento-card-number {
-      font-family: var(--font-heading);
       font-size: 40px;
       font-weight: 300;
       background: var(--gradient-signature);
@@ -968,7 +929,6 @@
     }
 
     .bento-card-body h4 {
-      font-family: var(--font-heading);
       font-size: 20px;
       font-weight: 400;
       color: var(--text-primary);
@@ -1097,7 +1057,6 @@
 
     /* Large decorative number */
     .value-number {
-      font-family: var(--font-heading);
       font-size: 100px;
       font-weight: 400;
       line-height: 1;
@@ -1163,7 +1122,6 @@
     }
 
     .value-card h3 {
-      font-family: var(--font-heading);
       font-size: 24px;
       font-weight: 400;
       color: var(--text-primary);
@@ -1292,7 +1250,6 @@
     }
 
     .city-card-name {
-      font-family: var(--font-heading);
       font-size: clamp(32px, 3.5vw, 44px);
       font-weight: 400;
       color: var(--text-primary);
@@ -1301,10 +1258,8 @@
     }
 
     .city-card-country {
-      font-family: var(--font-accent);
       font-size: 12px;
       font-weight: 500;
-      letter-spacing: 0.2em;
       text-transform: uppercase;
       background: var(--gradient-signature);
       -webkit-background-clip: text;
@@ -1336,10 +1291,8 @@
 
     /* Hover: reveal a subtle CTA */
     .city-card-cta {
-      font-family: var(--font-accent);
       font-size: 11px;
       font-weight: 600;
-      letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--orange);
       opacity: 0;
@@ -1452,7 +1405,6 @@
     }
 
     .final-cta h2 {
-      font-family: var(--font-heading);
       font-size: clamp(36px, 5vw, 64px);
       font-weight: 400;
       line-height: 1.1;
@@ -1460,10 +1412,8 @@
     }
 
     .final-cta .cta-subtitle {
-      font-family: var(--font-subheading);
       font-size: clamp(16px, 2vw, 20px);
       font-weight: 300;
-      font-style: italic;
       color: var(--text-secondary);
       max-width: 540px;
       margin: 0 auto 48px;
@@ -1488,10 +1438,8 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      font-family: var(--font-accent);
       font-size: 11px;
       font-weight: 500;
-      letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--text-dim);
     }
@@ -1550,10 +1498,8 @@
       align-items: center;
       gap: 12px;
       margin-top: 8px;
-      font-family: var(--font-accent);
       font-size: 11px;
       font-weight: 600;
-      letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--gold);
       transition: color var(--transition);
@@ -1614,7 +1560,6 @@
     }
 
     .partners-header h2 {
-      font-family: var(--font-heading);
       font-size: clamp(32px, 4vw, 52px);
       font-weight: 400;
       line-height: 1.12;
@@ -1622,7 +1567,6 @@
     }
 
     .partners-header h2 em {
-      font-style: italic;
       background: var(--gradient-signature);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -1685,10 +1629,8 @@
     }
 
     .map-label {
-      font-family: var(--font-accent);
       font-size: 8px;
       font-weight: 500;
-      letter-spacing: 0.12em;
       text-transform: uppercase;
       fill: var(--text-muted);
       opacity: 0.7;
@@ -1743,7 +1685,6 @@
     }
 
     .partner-card-brand {
-      font-family: var(--font-heading);
       font-size: 22px;
       font-weight: 400;
       color: var(--white);
@@ -1751,10 +1692,8 @@
     }
 
     .partner-card-type {
-      font-family: var(--font-accent);
       font-size: 10px;
       font-weight: 500;
-      letter-spacing: 0.16em;
       text-transform: uppercase;
       background: var(--gradient-signature);
       -webkit-background-clip: text;
@@ -1770,10 +1709,8 @@
     }
 
     .partner-card-link {
-      font-family: var(--font-accent);
       font-size: 12px;
       font-weight: 500;
-      letter-spacing: 0.08em;
       color: var(--gold);
       text-decoration: none;
       display: inline-flex;
@@ -1825,6 +1762,8 @@
     }
 
   </style>
+  <!-- Typography: last in <head> so its roles win -->
+  <link rel="stylesheet" href="css/type.css">
 </head>
 <body>
 
