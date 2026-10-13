@@ -1,0 +1,5 @@
+/* ═══════════════════════════════════════════════════════════════
+   Support styles for js/site.js on the inner pages.
+   The page hero's background drifts as you scroll, so the hero clips it.
+   ═══════════════════════════════════════════════════════════════ */
+main > section[class$="-hero"] { overflow: hidden; }

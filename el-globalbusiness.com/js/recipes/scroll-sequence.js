@@ -2,7 +2,7 @@
 // Recipe 6.9: a camera move played by the scroll. Plain-JS port of
 // docs/web-motion-engine.md 6.9, with two additions for this site, marked "Site:".
 
-import { gsap, MOTION } from '../motion/core.js';
+import { gsap, MOTION } from '../motion/core.js?v=c81884f095';
 
 /**
  * @typedef {object} SequenceSet

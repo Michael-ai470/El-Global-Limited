@@ -2,7 +2,7 @@
 // One Lenis instance for the page, driven by GSAP's ticker.
 // Plain-JS port of docs/web-motion-engine.md 5.4. Lenis is js/vendor/lenis.min.js,
 // a deferred classic script, and its stylesheet is js/vendor/lenis.css.
-import { gsap, ScrollTrigger, MOTION, registerMotion } from './core.js';
+import { gsap, ScrollTrigger, MOTION, registerMotion } from './core.js?v=c81884f095';
 
 let lenis = null;
 let media = null;

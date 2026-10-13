@@ -1,0 +1,157 @@
+/* ═══════════════════════════════════════════════════════════════
+   Our Values (homepage): a pinned pipeline. The four principles sit
+   in a list; a field of dots beside them draws each one's symbol
+   (js/recipes/dot-pipe.js). The script adds .is-piping. Without it,
+   a plain list with every principle open and no dots.
+   The dot colour is .values-viz's `color`.
+   ═══════════════════════════════════════════════════════════════ */
+
+.values {
+  position: relative;
+  background: var(--charcoal);
+  border-top: 1px solid var(--border);
+}
+.values-stage { padding: 120px 0; }
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: 40px;
+  row-gap: 48px;
+}
+.values-head { grid-column: 1 / span 7; }
+.values-head h2 { margin: 16px 0; }
+.values-head p { max-width: 46ch; margin: 0; color: var(--text-muted); }
+
+.values-track { grid-column: 1 / span 7; position: relative; }
+.values-list { margin: 0; padding: 0; list-style: none; }
+.values-step {
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr);
+  column-gap: 16px;
+  padding: 24px 0;
+  border-top: 1px solid var(--border);
+}
+.values-num {
+  padding-top: 0.35em;
+  font-size: var(--t-small);
+  color: var(--text-dim);
+  letter-spacing: 0.04em;
+}
+.values-body h3 {
+  margin: 0;
+  font-size: clamp(1.4rem, 2vw, 2rem);
+  font-weight: var(--w-light);
+  letter-spacing: var(--ls-h3);
+}
+.values-desc { display: grid; grid-template-rows: 1fr; }
+.values-desc > p {
+  min-height: 0;
+  max-width: 48ch;
+  margin: 0;
+  padding-top: 10px;
+  overflow: hidden;
+  color: var(--text-muted);
+}
+.values-viz,
+.values-bar { display: none; }
+
+/* ─── Running ───────────────────────────────────────────────────── */
+.values.is-piping .values-stage {
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+  height: 100svh;
+  padding: calc(var(--nav-height-scrolled) + 16px) 0 24px;
+  overflow: hidden;
+}
+.is-piping .values-grid { width: 100%; align-items: center; row-gap: 36px; }
+.is-piping .values-head { grid-column: 1 / span 6; grid-row: 1; }
+.is-piping .values-track { grid-column: 1 / span 6; grid-row: 2; }
+.is-piping .values-list { padding-left: 28px; }
+.is-piping .values-step {
+  padding: 14px 0;
+  border-top: 0;
+  opacity: 0.36;
+  transition: opacity 0.5s var(--ease);
+}
+.is-piping .values-step.is-past { opacity: 0.55; }
+.is-piping .values-step.is-active { opacity: 1; }
+.is-piping .values-desc { grid-template-rows: 0fr; transition: grid-template-rows 0.6s var(--ease); }
+.is-piping .values-step.is-active .values-desc { grid-template-rows: 1fr; }
+
+.is-piping .values-bar {
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 14px;
+  bottom: 14px;
+  width: 1px;
+  background: var(--border-mid);
+}
+.values-bar > i {
+  position: absolute;
+  inset: 0;
+  background: var(--text-primary);
+  transform: scaleY(0);
+  transform-origin: 50% 0;
+}
+
+.is-piping .values-viz {
+  display: block;
+  grid-column: 7 / -1;
+  grid-row: 1 / span 2;
+  position: relative;
+  justify-self: center;
+  width: min(100%, 72svh);
+  aspect-ratio: 1;
+  color: var(--gold);
+}
+.values-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  color: inherit;
+}
+.values-big {
+  position: absolute;
+  right: 2%;
+  bottom: 2%;
+  font-size: clamp(3rem, 6vw, 6.5rem);
+  font-weight: var(--w-light);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
+  user-select: none;
+}
+
+/* Short laptop screens: drop the intro line so the list fits. */
+@media (min-width: 900px) and (max-height: 760px) {
+  .is-piping .values-head p { display: none; }
+  .is-piping .values-head h2 { margin-bottom: 0; }
+  .is-piping .values-grid { row-gap: 24px; }
+}
+
+/* Narrow screens: the dots above, the list below. */
+@media (max-width: 899px) {
+  .values-stage { padding: 88px 0; }
+  .values-grid { grid-template-columns: minmax(0, 1fr); column-gap: 0; }
+  .values-head,
+  .values-track { grid-column: 1 / -1; }
+  .values-step { grid-template-columns: 40px minmax(0, 1fr); column-gap: 10px; }
+
+  .is-piping .values-grid { grid-template-columns: minmax(0, 1fr); row-gap: 12px; }
+  .is-piping .values-head { grid-column: 1; grid-row: 1; }
+  .is-piping .values-head p { display: none; }
+  .is-piping .values-head h2 { margin: 10px 0 0; font-size: clamp(1.6rem, 7vw, 2.2rem); }
+  .is-piping .values-viz { grid-column: 1; grid-row: 2; width: min(100%, 34svh); }
+  .is-piping .values-track { grid-column: 1; grid-row: 3; }
+  .is-piping .values-list { padding-left: 20px; }
+  .is-piping .values-step { padding: 9px 0; }
+  .is-piping .values-body h3 { font-size: 1.25rem; }
+  .is-piping .values-desc > p { padding-top: 6px; font-size: var(--t-small); }
+  .values-big { font-size: 2.6rem; }
+}

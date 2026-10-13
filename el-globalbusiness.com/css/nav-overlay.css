@@ -1,0 +1,26 @@
+/* ═══════════════════════════════════════════════════════════════
+   Navbar over a full-bleed hero. Used on pages whose <body> has
+   .has-overlay-nav (the homepage). The bar is transparent while the
+   hero is under it, so the jet sequence fills the whole screen, and
+   becomes the usual glass bar once the hero has scrolled past.
+   js/home.js adds .is-solid at that point.
+   ═══════════════════════════════════════════════════════════════ */
+
+.has-overlay-nav .navbar:not(.is-solid) {
+  background: transparent;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  border-bottom-color: transparent;
+}
+
+/* A soft shade behind the links, so they stay readable over bright frames. */
+.has-overlay-nav .navbar::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 -64px 0;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+  transition: opacity 0.4s ease;
+}
+.has-overlay-nav .navbar.is-solid::before { opacity: 0; }

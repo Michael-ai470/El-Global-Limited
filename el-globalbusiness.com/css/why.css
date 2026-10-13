@@ -1,0 +1,259 @@
+/* ═══════════════════════════════════════════════════════════════
+   Why El-Global (homepage).
+   1. The opener: "What Sets Us Apart" parts around a picture that
+      opens between its words (js/recipes/part-open.js). The script
+      adds .is-parting; without it, a heading, a lead and a picture.
+   2. The index: five reasons beside a picture that changes with them
+      (js/recipes/index-list.js). The script adds .is-indexing on wide
+      screens; narrow screens show each row's own picture.
+   Elements GSAP animates carry no CSS transition.
+   ═══════════════════════════════════════════════════════════════ */
+
+.why {
+  --part-win: clamp(150px, 13vw, 230px);   /* closed window width, matches the script */
+  --part-space: 28px;
+  position: relative;
+  background: var(--black);
+  border-top: 1px solid var(--border);
+}
+
+/* ─── 1. Opener, static ─────────────────────────────────────────── */
+.why-open { position: relative; }
+
+.why-open-stage {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 120px 24px 0;
+  text-align: center;
+}
+.why-open-eyebrow { order: 0; justify-content: center; margin-bottom: 20px; }
+.why-open-title { order: 1; margin: 0; }
+.why-open-title span { display: inline-block; }
+.why-open-lead {
+  order: 2;
+  max-width: 620px;
+  margin: 20px auto 0;
+  color: var(--text-muted);
+}
+.why-open-media {
+  order: 3;
+  position: relative;
+  width: 100%;
+  margin: 56px 0 0;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 14px;
+  background: #111;
+}
+.why-open-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.why-open-shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.6) 100%);
+  pointer-events: none;
+}
+
+/* ─── 1. Opener, running ────────────────────────────────────────── */
+.why-open.is-parting .why-open-stage {
+  position: sticky;
+  top: 0;
+  display: block;
+  height: 100svh;
+  max-width: none;
+  padding: 0;
+  overflow: hidden;
+}
+.is-parting .why-open-media {
+  position: absolute;
+  inset: 0;
+  width: auto;
+  margin: 0;
+  aspect-ratio: auto;
+  border-radius: 0;
+}
+.is-parting .why-open-media img { filter: brightness(0.78); }
+.is-parting .why-open-shade {
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.2) 35%, rgba(0, 0, 0, 0.2) 55%, rgba(0, 0, 0, 0.8) 100%);
+}
+.is-parting .why-open-title {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: calc(var(--part-win) + 2 * var(--part-space));
+  font-size: clamp(2.4rem, 5.6vw, 6rem);
+  line-height: 1;
+  white-space: nowrap;
+  pointer-events: none;
+}
+.is-parting .why-open-eyebrow {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(50% - var(--part-win) * 0.64 - 64px);
+  z-index: 2;
+  margin: 0;
+}
+.is-parting .why-open-lead {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 11svh;
+  z-index: 2;
+  width: min(640px, calc(100% - 48px));
+  margin: 0 auto;
+  font-size: var(--t-lead);
+  color: var(--text-primary);
+}
+
+/* Narrow screens: the halves stack and part up and down. */
+@media (max-width: 767px) {
+  .why { --part-space: 20px; }
+  .why-open-stage { padding: 88px 20px 0; }
+  .why-open-media { margin-top: 40px; aspect-ratio: 4 / 5; }
+  .is-parting .why-open-title {
+    flex-direction: column;
+    row-gap: calc(min(42vw, 190px) * 0.62 + 2 * var(--part-space));
+    font-size: clamp(2.2rem, 10.5vw, 3.4rem);
+  }
+  .is-parting .why-open-eyebrow { top: 18svh; }
+  .is-parting .why-open-lead { bottom: 8svh; font-size: var(--t-body); }
+}
+
+/* ─── 2. Index, static and narrow ───────────────────────────────── */
+.why-index {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: 40px;
+  padding-top: 120px;
+  padding-bottom: 120px;
+}
+.why-index-media { display: none; }
+.why-index-list {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.why-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr);
+  column-gap: 16px;
+  padding: 32px 0;
+  border-top: 1px solid var(--border);
+}
+.why-row:last-child { border-bottom: 1px solid var(--border); }
+.why-row-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -1px;
+  height: 1px;
+  background: var(--text-primary);
+  opacity: 0;
+}
+.why-row-num {
+  padding-top: 0.55em;
+  font-size: var(--t-small);
+  color: var(--text-dim);
+  font-variant-numeric: tabular-nums;
+}
+.why-row-title {
+  margin: 0 0 14px;
+  font-size: clamp(1.6rem, 2.6vw, 2.6rem);
+  font-weight: var(--w-light);
+  line-height: 1.1;
+  letter-spacing: var(--ls-h2);
+}
+.why-row-body p {
+  max-width: 46ch;
+  margin: 0;
+  color: var(--text-muted);
+}
+.why-row-fig {
+  grid-column: 2;
+  margin: 24px 0 0;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  border-radius: 14px;
+  background: #111;
+}
+.why-row-fig img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 899px) {
+  .why-index { grid-template-columns: minmax(0, 1fr); column-gap: 0; }
+}
+@media (max-width: 767px) {
+  .why-index { padding-top: 88px; padding-bottom: 88px; }
+  .why-row { grid-template-columns: 36px minmax(0, 1fr); column-gap: 10px; padding: 28px 0; }
+}
+
+/* ─── 2. Index, wide screens ───────────────────────────────────── */
+@media (min-width: 900px) {
+  .why-index-media {
+    display: block;
+    grid-column: 1 / span 5;
+    grid-row: 1;
+    align-self: start;
+    position: sticky;
+    top: 16svh;
+  }
+  .why-index-frame {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    max-height: 64svh;
+    overflow: hidden;
+    border-radius: 14px;
+    background: #111;
+  }
+  .why-index-frame img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  /* Static: only the first picture. The script stacks and clips them. */
+  .why-index-frame img + img { visibility: hidden; }
+  .is-indexing .why-index-frame img + img { visibility: visible; }
+  .why-index-meta {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 16px;
+    font-size: var(--t-small);
+    color: var(--text-dim);
+    font-variant-numeric: tabular-nums;
+  }
+  .why-index-meta b { color: var(--text-primary); font-weight: var(--w-medium); }
+
+  .why-index-list { grid-column: 7 / -1; grid-row: 1; }
+  .why-row {
+    min-height: 44svh;
+    align-content: center;
+    padding: 40px 0;
+  }
+  .why-row-fig { display: none; }
+
+  .is-indexing .why-row { opacity: 0.32; transition: opacity 0.6s var(--ease); }
+  .is-indexing .why-row.is-active { opacity: 1; }
+  .is-indexing .why-row-line { opacity: 1; }
+}

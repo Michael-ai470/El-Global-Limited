@@ -4,13 +4,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>document.documentElement.classList.add('js');</script>
   <title>Citizenship by Investment — The 1% | El-Global Business</title>
   <meta name="description" content="Citizenship by Investment advisory from The 1%. Global residency and citizenship programs across the Caribbean, Europe, and beyond. Strategic CBI advisory for UHNWI.">
 
   <meta property="og:title" content="Citizenship by Investment — El-Global Business">
   <meta property="og:type" content="website">
 
-  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/style.css?v=269e500d2c">
   <link rel="preload" href="../fonts/manrope-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 
   <style>
@@ -355,7 +356,17 @@ font-size: 20px;
     @media (max-width: 768px) { .cbi-cta { padding: 64px 0; } }
   </style>
   <!-- Typography: last in <head> so its roles win -->
-  <link rel="stylesheet" href="../css/type.css">
+  <link rel="stylesheet" href="../css/type.css?v=9e12097c94">
+  <!-- Motion: gsap and lenis from js/vendor/, then js/site.js. All deferred. -->
+  <link rel="stylesheet" href="../js/vendor/lenis.css?v=2f668ae84a">
+  <link rel="stylesheet" href="../css/motion-text.css?v=23df00290c">
+  <link rel="stylesheet" href="../css/site-motion.css?v=4cd428eb65">
+  <script defer src="../js/vendor/gsap.min.js?v=92bb9a9647"></script>
+  <script defer src="../js/vendor/ScrollTrigger.min.js?v=b0b14d67b5"></script>
+  <script defer src="../js/vendor/CustomEase.min.js?v=466e426a5c"></script>
+  <script defer src="../js/vendor/SplitText.min.js?v=419f7027a5"></script>
+  <script defer src="../js/vendor/lenis.min.js?v=53195c9797"></script>
+  <script type="module" src="../js/site.js?v=2795404393"></script>
 </head>
 <body>
 
@@ -567,8 +578,8 @@ font-size: 20px;
 
   </main>
 
-  <script src="../js/components.js"></script>
-  <script src="../js/main.js"></script>
+  <script src="../js/components.js?v=bfa3e7c8c9"></script>
+  <script src="../js/main.js?v=0b9dcde418"></script>
 </body>
 
 </html>

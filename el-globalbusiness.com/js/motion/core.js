@@ -5,8 +5,11 @@
 // gsap, ScrollTrigger and CustomEase are the prebuilt files in js/vendor/, loaded as
 // deferred classic scripts before any module, so here they are globals. If one failed
 // to load, registerMotion() returns false and the page stays static.
-// SplitText is not loaded: no recipe on this site uses it (rule 11).
+// SplitText (js/vendor/SplitText.min.js) is optional: pages that use the text recipes
+// load it, and registerMotion() registers it when it is there (rule 11).
 export const { gsap, ScrollTrigger, CustomEase } = window;
+/** SplitText, or undefined on pages that do not load it. Read at call time. */
+export const getSplitText = () => window.SplitText;
 
 export const MOTION = {
   ease: { reveal: 'luxe', inOut: 'luxeInOut', soft: 'expo.out', scrub: 'none' },
@@ -27,6 +30,7 @@ export function registerMotion() {
   try {
     if (!gsap || !ScrollTrigger || !CustomEase) throw new Error('gsap did not load from js/vendor/');
     gsap.registerPlugin(ScrollTrigger, CustomEase);
+    if (window.SplitText) gsap.registerPlugin(window.SplitText);
     // Cubic-bezier values. x1 and x2 must stay inside 0..1 or time runs backwards.
     CustomEase.create('luxe', '0.16, 1, 0.3, 1');
     CustomEase.create('luxeInOut', '0.76, 0, 0.24, 1');

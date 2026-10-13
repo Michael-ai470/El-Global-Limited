@@ -100,7 +100,10 @@ p { text-wrap: pretty; }
 button, input, select, textarea { font-family: inherit; }
 
 /* ─── Role: display (the hero line) ──────────────────────────── */
-.seq-title {
+.seq-title,
+/* full-screen page heroes */
+.jetel-hero h1,
+.hl-hero h1 {
   font-size: var(--t-display);
   font-weight: var(--w-light);
   line-height: var(--lh-display);
@@ -115,10 +118,8 @@ h1,
 .enquiry-hero h1,
 .er-hero h1,
 .htl-hero h1,
-.hl-hero h1,
 .lre-hero h1,
 .charter-hero h1,
-.jetel-hero h1,
 .investments-hero h1,
 .membership-hero h1,
 .sales-hero h1,
@@ -186,7 +187,11 @@ h2,
 .ymd-cta h2,
 /* token-el */
 .te-intro-text h2,
-.te-register-text h2 {
+.te-register-text h2,
+/* jet-el: spotlight statements */
+.is-spot .why-jetel-card h4,
+/* hl: destination board */
+.market-row h4 {
   font-size: var(--t-h2);
   font-weight: var(--w-light);
   line-height: var(--lh-tight);
@@ -516,7 +521,9 @@ h3, h4,
 .ymd-service-card p,
 /* token-el */
 .te-asset-card p,
-.te-feature-card p {
+.te-feature-card p,
+/* hl */
+.market-row p {
   font-size: var(--t-small);
   line-height: var(--lh-snug);
 }
@@ -581,7 +588,9 @@ h3, h4,
 .ymd-service-num,
 /* token-el */
 .te-hero-stat-value,
-.te-feature-num {
+.te-feature-num,
+/* hl */
+.door-num {
   font-weight: var(--w-light);
   letter-spacing: var(--ls-num);
   line-height: 0.95;
@@ -668,7 +677,14 @@ h3, h4,
 /* card links */
 .hl-service-card-link,
 .service-card-link,
-.op-service-card-link {
+.op-service-card-link,
+/* jet-el */
+.deck-index a,
+.services-swipe,
+/* hl */
+.market-code,
+.door-label,
+.diptych-count {
   font-size: var(--t-label);
   font-weight: var(--w-regular);
   letter-spacing: var(--ls-ui);
@@ -685,7 +701,8 @@ h3, h4,
 /* card links */
 .hl-service-card-link,
 .service-card-link,
-.op-service-card-link { font-size: 0.875rem; font-weight: var(--w-medium); }
+.op-service-card-link,
+.deck-index a { font-size: 0.875rem; font-weight: var(--w-medium); }
 
 /* Tiny tags on cards and the map. */
 .card-image-badge,

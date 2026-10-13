@@ -1,0 +1,38 @@
+/* ═══════════════════════════════════════════════════════════════
+   Support styles for js/recipes/text.js.
+   Rolling digits: each digit is a column of numbers that slides up.
+   ═══════════════════════════════════════════════════════════════ */
+
+.roll {
+  display: inline-flex;
+  align-items: flex-start;
+  line-height: 1;
+  white-space: nowrap;
+}
+.roll-col {
+  display: inline-block;
+  height: 1em;
+  overflow: hidden;
+}
+.roll-strip {
+  display: flex;
+  flex-direction: column;
+}
+.roll-strip > span,
+.roll-mark {
+  display: block;
+  height: 1em;
+  line-height: 1;
+}
+.roll-mark { display: inline-block; }
+
+/* Gradient text (background-clip: text) cannot reach moving digit columns, so the
+   homepage stats use a flat colour; all four match, rolled or not. */
+.hero-stats .hero-stat-number {
+  background: none;
+  -webkit-text-fill-color: currentColor;
+  color: var(--gold);
+}
+
+/* Words that gather start pushed outwards; keep them from widening the page. */
+.hero-after { overflow-x: clip; }

@@ -1959,6 +1959,14 @@ h1 em, h2 em, h3 em, h4 em {
   visibility: hidden;
 }
 
+/* Failsafe: main.js lifts the preloader 800ms after DOMContentLoaded. If a slow or failed
+   script ever holds that back, the preloader still clears itself after 4 seconds, so the
+   page can never stay covered. */
+.preloader { animation: preloaderFailsafe 0.8s cubic-bezier(0.25, 0.1, 0.25, 1) 4s forwards; }
+@keyframes preloaderFailsafe {
+  to { opacity: 0; visibility: hidden; }
+}
+
 .preloader-logo-img {
   animation: preloaderFadeIn 0.6s ease forwards;
 }
@@ -2176,3 +2184,37 @@ h1 em, h2 em, h3 em, h4 em {
 
 /* Footer contact labels (components.js) */
 .footer-contact-label { font-size: 10px; }
+
+
+/* ═══════════════════════════════════════════════════════════════
+   SCROLL REVEALS: never hide content that only a script can bring back.
+   Each page's <head> adds .js to <html> as its first script. Without it
+   (scripts off, or blocked), and for people who asked for less motion,
+   the reveal classes above leave everything visible and still.
+   ═══════════════════════════════════════════════════════════════ */
+html:not(.js) .reveal,
+html:not(.js) .reveal-left,
+html:not(.js) .reveal-right,
+html:not(.js) .reveal-scale,
+html:not(.js) .stagger-children > * {
+  opacity: 1;
+  transform: none;
+}
+html:not(.js) .img-reveal::before { transform: scaleX(0); }
+html:not(.js) .line-draw { width: 80px; }
+html:not(.js) .split-text .word-inner { transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal-left,
+  .reveal-right,
+  .reveal-scale,
+  .stagger-children > * {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .img-reveal::before { transform: scaleX(0); transition: none; }
+  .line-draw { width: 80px; transition: none; }
+  .split-text .word-inner { transform: none; transition: none; }
+}
