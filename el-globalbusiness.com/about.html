@@ -5,6 +5,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script>document.documentElement.classList.add('js');</script>
+  <!-- Motion gate (docs/web-motion-engine.md 5.2): hides intro elements until GSAP has them,
+       and shows them anyway after 2.5 seconds if motion never arrives. -->
+  <script>
+    (function (d, w) {
+      d.classList.add('motion-pending');
+      w.__motionFailsafe = setTimeout(function () {
+        w.__motionShown = new WeakSet(document.querySelectorAll('[data-motion-hide]'));
+        d.classList.remove('motion-pending');
+      }, 2500);
+    })(document.documentElement, window);
+  </script>
   <title>About — El-Global Business</title>
   <meta name="description" content="El-Global Business is a multidisciplinary portfolio management and investment advisory firm operating across five integrated divisions with a global presence spanning South Africa, USA, UK, Switzerland, Dubai, Spain, Portugal, and beyond.">
 
@@ -18,63 +29,7 @@
   <link rel="preload" href="fonts/manrope-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 
   <style>
-    /* ═══ PAGE HERO — 60vh ═══ */
-    .about-hero {
-      position: relative;
-      height: 60vh;
-      max-height: 60vh;
-      display: flex;
-      align-items: flex-end;
-      overflow: hidden;
-    }
-
-    .about-hero-bg {
-      position: absolute;
-      inset: 0;
-    }
-
-    .about-hero-bg img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center 30%;
-      filter: brightness(0.25) saturate(0.7);
-    }
-
-    .about-hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.3) 40%, rgba(0,0,0,0.9) 100%);
-    }
-
-    .about-hero-content {
-      position: relative;
-      z-index: 2;
-      padding: calc(var(--nav-height) + 40px) 0 56px;
-      max-width: 680px;
-    }
-
-    .about-hero .eyebrow { margin-bottom: 20px; }
-
-    .about-hero h1 {
-      font-size: clamp(36px, 5vw, 64px);
-      font-weight: 300;
-      margin-bottom: 16px;
-      line-height: 1.1;
-    }
-
-    .about-hero-desc {
-      font-size: clamp(16px, 2vw, 20px);
-      font-weight: 300;
-      color: var(--text-secondary);
-      line-height: 1.65;
-      max-width: 520px;
-    }
-
-    @media (max-width: 768px) {
-      .about-hero { height: 50vh; }
-      .about-hero-content { padding: calc(var(--nav-height) + 20px) 0 40px; }
-    }
+    /* Hero: css/about.css */
 
     /* ═══ OUR STORY ═══ */
     .story-section { padding: 120px 0; }
@@ -822,10 +777,13 @@
       .founder-header { margin-bottom: 48px; }
     }
   </style>
+  <link rel="stylesheet" href="css/clocks.css?v=adb5d93155">
+  <link rel="stylesheet" href="css/about.css?v=5570e390f5">
   <!-- Typography: last in <head> so its roles win -->
-  <link rel="stylesheet" href="css/type.css?v=9e12097c94">
+  <link rel="stylesheet" href="css/type.css?v=e9db95c20c">
   <!-- Motion: gsap and lenis from js/vendor/, then js/site.js. All deferred. -->
   <link rel="stylesheet" href="js/vendor/lenis.css?v=2f668ae84a">
+  <link rel="stylesheet" href="css/nav-overlay.css?v=52ce44256f">
   <link rel="stylesheet" href="css/motion-text.css?v=23df00290c">
   <link rel="stylesheet" href="css/site-motion.css?v=4cd428eb65">
   <script defer src="js/vendor/gsap.min.js?v=92bb9a9647"></script>
@@ -833,32 +791,53 @@
   <script defer src="js/vendor/CustomEase.min.js?v=466e426a5c"></script>
   <script defer src="js/vendor/SplitText.min.js?v=419f7027a5"></script>
   <script defer src="js/vendor/lenis.min.js?v=53195c9797"></script>
-  <script type="module" src="js/site.js?v=2795404393"></script>
+  <!-- Page motion: loads before site.js, whose scope opens the motion gate. -->
+  <script type="module" src="js/pages/about.js?v=25c5b7ca62"></script>
+  <script type="module" src="js/site.js?v=d48def59f5"></script>
 </head>
-<body>
+<body class="has-overlay-nav about-page">
 
   <main>
 
-    <!-- ═══ PAGE HERO ═══ -->
+    <!-- ═══ HERO ═══
+         Full screen. The camera flies through a giant "1%" cut out of black, the photo
+         showing through the numerals; then the heading lands (mask-zoom.js). The chapter
+         row along the bottom says what the page holds. -->
     <section class="about-hero">
       <div class="about-hero-bg">
-        <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=1920&amp;q=80&amp;auto=format&amp;fit=crop"
+        <img data-mask-photo src="img/photos/boardroom-city-view-1920.webp"
              alt="Modern boardroom with panoramic city views through floor-to-ceiling windows"
-             loading="eager">
+             width="1920" height="1280" fetchpriority="high">
       </div>
       <div class="about-hero-overlay"></div>
-      <div class="about-hero-content container">
-        <div class="eyebrow fade-up">About Us</div>
-        <h1 class="fade-up fade-up-d1">The Firm Behind<br>the <em>1%</em></h1>
-        <p class="about-hero-desc fade-up fade-up-d2">
-          A multidisciplinary portfolio management and investment advisory firm
-          bridging innovation and impact across five integrated divisions.
-        </p>
+      <svg class="ab-mask" data-mask aria-hidden="true">
+        <defs>
+          <mask id="ab-hole" maskUnits="userSpaceOnUse" x="0" y="0" width="100%" height="100%">
+            <rect width="100%" height="100%" fill="#fff"/>
+            <g data-mask-type><text x="50%" y="52%" text-anchor="middle" dominant-baseline="central" fill="#000">1%</text></g>
+          </mask>
+        </defs>
+        <rect width="100%" height="100%" fill="#050505" mask="url(#ab-hole)"/>
+        <g class="ab-mask-outline" data-mask-line><text x="50%" y="52%" text-anchor="middle" dominant-baseline="central">1%</text></g>
+      </svg>
+
+      <div class="about-hero-content container" data-mask-copy>
+        <h1 data-motion-hide><span class="ab-line" data-mask-line-rise>The Firm Behind</span><span class="ab-line" data-mask-line-rise>the <em>1%</em></span></h1>
+        <p class="about-hero-desc" data-mask-part data-motion-hide>A portfolio management and investment advisory firm bridging innovation and impact across five integrated divisions.</p>
       </div>
+
+      <nav class="ab-index container" data-mask-index aria-label="On this page">
+        <ol class="ab-index-list" data-motion-hide>
+          <li><a class="ab-index-link" href="#story"><span>01</span>Our story</a></li>
+          <li><a class="ab-index-link" href="#divisions"><span>02</span>Divisions</a></li>
+          <li><a class="ab-index-link" href="#founder"><span>03</span>The founder</a></li>
+          <li><a class="ab-index-link" href="#presence"><span>04</span>Presence</a></li>
+        </ol>
+      </nav>
     </section>
 
     <!-- ═══ OUR STORY ═══ -->
-    <section class="story-section">
+    <section class="story-section" id="story">
       <div class="container">
         <div class="story-grid">
 
@@ -886,14 +865,14 @@
             </p>
           </div>
 
-          <div class="story-image reveal reveal-delay-2">
-            <div class="story-image-main">
-              <img src="https://images.unsplash.com/photo-1577412647305-991150c7d163?w=800&amp;q=80&amp;auto=format&amp;fit=crop"
+          <div class="story-image">
+            <div class="story-image-main" data-stand>
+              <img src="img/photos/open-plan-office-800.webp"
                    alt="Premium glass corporate tower illuminated against the night sky"
                    loading="lazy">
             </div>
             <div class="story-accent">
-              <div class="story-accent-number">5</div>
+              <div class="story-accent-number" data-flip>5</div>
               <div class="story-accent-label">Integrated Divisions</div>
             </div>
           </div>
@@ -912,9 +891,10 @@
           <p>Integrated services across the full investment lifecycle, from sourcing and structuring to optimization and exit.</p>
         </div>
 
-        <div class="activities-grid">
+        <div class="ab-rail-view" data-rail-view>
+        <div class="activities-grid" data-rail>
 
-          <div class="activity-card reveal">
+          <div class="activity-card" tabindex="0">
             <div class="activity-card-top">
               <div class="activity-card-icon"><span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3v18M3 9l9-6 9 6M3 9l3 8h6l3-8M15 9l3 8h-6"/></svg></span></div>
               <div class="activity-card-num">01</div>
@@ -924,7 +904,7 @@
             <p>Designing, managing, and optimizing investment portfolios across real estate, aviation assets, and alternative financial instruments for maximum performance.</p>
           </div>
 
-          <div class="activity-card reveal reveal-delay-1">
+          <div class="activity-card" tabindex="0">
             <div class="activity-card-top">
               <div class="activity-card-icon"><span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span></div>
               <div class="activity-card-num">02</div>
@@ -934,7 +914,7 @@
             <p>Providing data-driven investment strategies that align with client risk profiles and market opportunities across established and emerging markets.</p>
           </div>
 
-          <div class="activity-card reveal reveal-delay-2">
+          <div class="activity-card" tabindex="0">
             <div class="activity-card-top">
               <div class="activity-card-icon"><span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l10 10-10 10L2 12 12 2z"/></svg></span></div>
               <div class="activity-card-num">03</div>
@@ -944,7 +924,7 @@
             <p>Acting as an intermediary in equity placements, joint ventures, and high-value acquisitions, connecting buyers and sellers across borders.</p>
           </div>
 
-          <div class="activity-card reveal reveal-delay-1">
+          <div class="activity-card" tabindex="0">
             <div class="activity-card-top">
               <div class="activity-card-icon"><span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></span></div>
               <div class="activity-card-num">04</div>
@@ -954,7 +934,7 @@
             <p>Incorporating AI-driven tools and analytics for performance forecasting, valuation modeling, and market trend evaluation across all divisions.</p>
           </div>
 
-          <div class="activity-card reveal reveal-delay-2">
+          <div class="activity-card" tabindex="0">
             <div class="activity-card-top">
               <div class="activity-card-icon"><span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></span></div>
               <div class="activity-card-num">05</div>
@@ -964,7 +944,7 @@
             <p>Building strategic alliances across markets to expand investment reach, diversify risk, and unlock opportunities invisible to conventional investors.</p>
           </div>
 
-          <div class="activity-card reveal reveal-delay-3">
+          <div class="activity-card" tabindex="0">
             <div class="activity-card-top">
               <div class="activity-card-icon"><span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 01-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg></span></div>
               <div class="activity-card-num">06</div>
@@ -975,11 +955,18 @@
           </div>
 
         </div>
+        </div>
+        <div class="ab-rail-bar">
+          <button type="button" class="ab-rail-btn" data-rail-prev aria-label="Previous"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M10 3 5 8l5 5"/></svg></button>
+          <div class="ab-rail-track"><div class="ab-rail-fill" data-rail-fill></div></div>
+          <button type="button" class="ab-rail-btn" data-rail-next aria-label="Next"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m6 3 5 5-5 5"/></svg></button>
+          <span class="ab-rail-hint">Drag to explore</span>
+        </div>
       </div>
     </section>
 
     <!-- ═══ DIVISIONS ECOSYSTEM ═══ -->
-    <section class="ecosystem-section">
+    <section class="ecosystem-section" id="divisions">
       <div class="container">
 
         <div class="ecosystem-header reveal">
@@ -988,47 +975,53 @@
           <p>Each division is a specialized arm of a unified firm. Your investment strategy spans every asset class without fragmentation.</p>
         </div>
 
-        <div class="ecosystem-grid">
+        <div class="ecosystem-grid" data-orbit>
+          <div class="ab-orbit-core" aria-hidden="true">
+            <img src="img/logo.webp" alt="" width="56" height="56">
+            <span class="ab-orbit-name" data-orbit-name>El-Global</span>
+            <span class="ab-orbit-sub" data-orbit-sub>Five divisions</span>
+            <span class="ab-orbit-desc" data-orbit-desc>Point at a division to see what it does.</span>
+          </div>
 
-          <a href="jet-el/index.html" class="eco-card reveal">
+          <a href="jet-el/index.html" class="eco-card" data-reveal>
             <div class="eco-card-image">
-              <img src="https://images.unsplash.com/photo-1540962351504-03099e0a754b?w=200&amp;q=80&amp;auto=format&amp;fit=crop" alt="Private jet" loading="lazy">
+              <img src="img/photos/private-jet-airstair-200.webp" alt="Private jet" loading="lazy">
             </div>
             <h4>Jet-El</h4>
             <span class="eco-card-sub">Private Aviation</span>
             <p>Charter, sales, fractional ownership, leasing, membership, and aviation investment advisory.</p>
           </a>
 
-          <a href="hl/index.html" class="eco-card reveal reveal-delay-1">
+          <a href="hl/index.html" class="eco-card" data-reveal>
             <div class="eco-card-image">
-              <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?w=200&amp;q=80&amp;auto=format&amp;fit=crop" alt="Luxury hotel" loading="lazy">
+              <img src="img/photos/overwater-bungalow-resort-200.webp" alt="Luxury hotel" loading="lazy">
             </div>
             <h4>H&amp;L</h4>
             <span class="eco-card-sub">Hotels &amp; Luxury Real Estate</span>
             <p>Hotel acquisitions and ultra-premium real estate investment across global markets.</p>
           </a>
 
-          <a href="one-percent/index.html" class="eco-card reveal reveal-delay-2">
+          <a href="one-percent/index.html" class="eco-card" data-reveal>
             <div class="eco-card-image">
-              <img src="https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?w=200&amp;q=80&amp;auto=format&amp;fit=crop" alt="Luxury yacht" loading="lazy">
+              <img src="img/photos/superyacht-green-bay-200.webp" alt="Luxury yacht" loading="lazy">
             </div>
             <h4>The 1%</h4>
             <span class="eco-card-sub">Exclusive Investments</span>
             <p>Marinas, superyachts, golf resorts, and citizenship by investment programs.</p>
           </a>
 
-          <a href="el-rock/index.html" class="eco-card reveal reveal-delay-3">
+          <a href="el-rock/index.html" class="eco-card" data-reveal>
             <div class="eco-card-image">
-              <img src="https://images.unsplash.com/photo-1560520653-9e0e4c89eb11?w=200&amp;q=80&amp;auto=format&amp;fit=crop" alt="Dubai cityscape illuminated at night reflecting on water" loading="lazy">
+              <img src="img/photos/model-house-magnifier-200.webp" alt="Dubai cityscape illuminated at night reflecting on water" loading="lazy">
             </div>
             <h4>El&amp;Rock</h4>
             <span class="eco-card-sub">M&amp;A Advisory</span>
             <p>Sell-side, buy-side, due diligence, deal structuring, and post-merger integration.</p>
           </a>
 
-          <a href="token-el/index.html" class="eco-card reveal reveal-delay-4">
+          <a href="token-el/index.html" class="eco-card" data-reveal>
             <div class="eco-card-image">
-              <img src="https://images.unsplash.com/photo-1518546305927-5a555bb7020d?w=200&amp;q=80&amp;auto=format&amp;fit=crop" alt="Gold bars and bullion representing premium asset tokenization" loading="lazy">
+              <img src="img/photos/bitcoin-coin-chart-200.webp" alt="Gold bars and bullion representing premium asset tokenization" loading="lazy">
             </div>
             <h4>Token-El</h4>
             <span class="eco-card-sub">Coming Soon</span>
@@ -1051,43 +1044,43 @@
 
         <div class="values-deep-list">
 
-          <div class="value-deep-row reveal">
+          <div class="value-deep-row" data-slide-row>
             <div class="value-deep-left">
-              <div class="value-deep-num">I</div>
-              <h3 class="value-deep-name">Excellence</h3>
+              <div class="value-deep-num" data-slide-num>I</div>
+              <h3 class="value-deep-name" data-slide-name>Excellence</h3>
             </div>
             <div class="value-deep-right">
-              <p>Never settle. Every detail reflects our commitment to the exceptional, from the assets we select to the advisory we deliver. We hold ourselves to a standard that leaves no room for mediocrity. Our clients expect the best, and we deliver beyond that expectation consistently.</p>
+              <p data-slide-text>Never settle. Every detail reflects our commitment to the exceptional, from the assets we select to the advisory we deliver. We hold ourselves to a standard that leaves no room for mediocrity. Our clients expect the best, and we deliver beyond that expectation consistently.</p>
             </div>
           </div>
 
-          <div class="value-deep-row reveal">
+          <div class="value-deep-row" data-slide-row>
             <div class="value-deep-left">
-              <div class="value-deep-num">II</div>
-              <h3 class="value-deep-name">Discretion</h3>
+              <div class="value-deep-num" data-slide-num>II</div>
+              <h3 class="value-deep-name" data-slide-name>Discretion</h3>
             </div>
             <div class="value-deep-right">
-              <p>Complete confidentiality at every turn. Our clients' interests, identities, and strategies remain protected with absolute care. In a world where information is currency, we treat our clients' privacy as sacred. Every engagement begins with trust and ends with discretion.</p>
+              <p data-slide-text>Complete confidentiality at every turn. Our clients' interests, identities, and strategies remain protected with absolute care. In a world where information is currency, we treat our clients' privacy as sacred. Every engagement begins with trust and ends with discretion.</p>
             </div>
           </div>
 
-          <div class="value-deep-row reveal">
+          <div class="value-deep-row" data-slide-row>
             <div class="value-deep-left">
-              <div class="value-deep-num">III</div>
-              <h3 class="value-deep-name">Integrity</h3>
+              <div class="value-deep-num" data-slide-num>III</div>
+              <h3 class="value-deep-name" data-slide-name>Integrity</h3>
             </div>
             <div class="value-deep-right">
-              <p>Trust, transparency, and delivering on commitments. We build enduring relationships by doing what we say and saying what we mean. Our reputation is our greatest asset, and we protect it by ensuring that every promise made is a promise kept, without exception.</p>
+              <p data-slide-text>Trust, transparency, and delivering on commitments. We build enduring relationships by doing what we say and saying what we mean. Our reputation is our greatest asset, and we protect it by ensuring that every promise made is a promise kept, without exception.</p>
             </div>
           </div>
 
-          <div class="value-deep-row reveal">
+          <div class="value-deep-row" data-slide-row>
             <div class="value-deep-left">
-              <div class="value-deep-num">IV</div>
-              <h3 class="value-deep-name">Innovation</h3>
+              <div class="value-deep-num" data-slide-num>IV</div>
+              <h3 class="value-deep-name" data-slide-name>Innovation</h3>
             </div>
             <div class="value-deep-right">
-              <p>Continuously evolving to bring the future of investment to our clients today. From AI-driven analytics to blockchain-powered tokenization, we integrate the most advanced tools and strategies to stay ahead. Where others follow trends, we create them.</p>
+              <p data-slide-text>Continuously evolving to bring the future of investment to our clients today. From AI-driven analytics to blockchain-powered tokenization, we integrate the most advanced tools and strategies to stay ahead. Where others follow trends, we create them.</p>
             </div>
           </div>
 
@@ -1096,7 +1089,7 @@
     </section>
 
     <!-- ═══ FOUNDER / LEADERSHIP ═══ -->
-    <section class="founder-section">
+    <section class="founder-section" id="founder">
       <div class="container">
 
         <div class="founder-header reveal">
@@ -1106,8 +1099,8 @@
 
         <div class="founder-grid">
 
-          <div class="founder-image-wrapper reveal">
-            <div class="founder-image">
+          <div class="founder-image-wrapper">
+            <div class="founder-image" data-develop>
               <img src="img/founder.png"
                    alt="Joshua Silvanus, Founder &amp; President of El-Global Business"
                    loading="lazy">
@@ -1117,7 +1110,7 @@
           <div class="founder-bio reveal reveal-delay-2">
             <h3 class="founder-name">Joshua Silvanus</h3>
             <span class="founder-title">Founder &amp; President, El-Global Business</span>
-            <div class="founder-divider"></div>
+            <div class="founder-divider" data-develop-rule></div>
             <p>
               With a visionary approach to portfolio management and global investment advisory,
               the founder of El-Global Business has built the firm from the ground up into a
@@ -1149,7 +1142,7 @@
     </section>
 
     <!-- ═══ GLOBAL PRESENCE — COMPACT ═══ -->
-    <section class="presence-compact">
+    <section class="presence-compact" id="presence">
       <div class="container">
 
         <div class="presence-compact-header reveal">
@@ -1157,56 +1150,53 @@
           <h2>Strategically <em>Positioned</em></h2>
         </div>
 
-        <div class="presence-compact-grid" style="grid-template-columns: 1fr 1fr;">
-
-          <div class="office-card reveal">
+        <div class="ab-hq-grid">
+          <div class="office-card" data-reveal data-clock="America/Denver">
             <span class="office-card-flag">US</span>
             <h4>Casper, Wyoming</h4>
             <span class="office-card-country">United States</span>
             <div class="office-card-dash"></div>
             <div class="office-card-address">Casper, Wyoming 82609, USA</div>
           </div>
-
-          <div class="office-card reveal reveal-delay-1">
+          <div class="office-card" data-reveal data-clock="Africa/Johannesburg">
             <span class="office-card-flag">SA</span>
             <h4>Johannesburg</h4>
             <span class="office-card-country">South Africa</span>
             <div class="office-card-dash"></div>
             <div class="office-card-address">Gauteng, South Africa</div>
           </div>
-
         </div>
 
-        <div style="text-align: center; margin-top: 24px; margin-bottom: 8px;">
+        <div class="ab-partners-label">
           <div class="eyebrow">Strategic Partnerships</div>
         </div>
-        <div class="presence-compact-grid" style="grid-template-columns: repeat(3, 1fr); gap: 16px;">
-          <div class="office-card reveal">
+        <div class="ab-partner-grid">
+          <div class="office-card" data-reveal data-clock="Europe/London">
             <span class="office-card-flag">UK</span>
             <h4>London</h4>
             <span class="office-card-country">United Kingdom</span>
           </div>
-          <div class="office-card reveal reveal-delay-1">
+          <div class="office-card" data-reveal data-clock="Europe/Zurich">
             <span class="office-card-flag">CH</span>
             <h4>Zurich</h4>
             <span class="office-card-country">Switzerland</span>
           </div>
-          <div class="office-card reveal reveal-delay-2">
+          <div class="office-card" data-reveal data-clock="Asia/Dubai">
             <span class="office-card-flag">AE</span>
             <h4>Dubai</h4>
             <span class="office-card-country">United Arab Emirates</span>
           </div>
-          <div class="office-card reveal">
+          <div class="office-card" data-reveal data-clock="Europe/Madrid">
             <span class="office-card-flag">ES</span>
             <h4>Madrid</h4>
             <span class="office-card-country">Spain</span>
           </div>
-          <div class="office-card reveal reveal-delay-1">
+          <div class="office-card" data-reveal data-clock="Europe/Lisbon">
             <span class="office-card-flag">PT</span>
             <h4>Lisbon</h4>
             <span class="office-card-country">Portugal</span>
           </div>
-          <div class="office-card reveal reveal-delay-2">
+          <div class="office-card" data-reveal>
             <span class="office-card-flag">EM</span>
             <h4>And Growing</h4>
             <span class="office-card-country">Expanding Globally</span>

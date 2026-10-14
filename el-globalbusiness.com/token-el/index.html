@@ -5,6 +5,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script>document.documentElement.classList.add('js');</script>
+  <!-- Motion gate (docs/web-motion-engine.md 5.2): hides intro elements until GSAP has them,
+       and shows them anyway after 2.5 seconds if motion never arrives. -->
+  <script>
+    (function (d, w) {
+      d.classList.add('motion-pending');
+      w.__motionFailsafe = setTimeout(function () {
+        w.__motionShown = new WeakSet(document.querySelectorAll('[data-motion-hide]'));
+        d.classList.remove('motion-pending');
+      }, 2500);
+    })(document.documentElement, window);
+  </script>
   <title>Token-El — Asset Tokenization | El-Global Business</title>
   <meta name="description" content="Token-El is El-Global's asset tokenization division. Fractional ownership via blockchain for private jets, superyachts, luxury real estate, and blue-chip art. The future of ownership.">
   <meta property="og:title" content="Token-El — Asset Tokenization | El-Global Business">
@@ -14,153 +25,7 @@
   <style>
     /* ═══ TOKEN-EL — FUTURISTIC BLOCKCHAIN AESTHETIC ═══ */
 
-    /* ── Hero ── */
-    .te-hero {
-      position: relative; min-height: 100vh;
-      display: flex; align-items: center; justify-content: center;
-      overflow: hidden; text-align: center;
-    }
-    .te-hero-bg {
-      position: absolute; inset: 0; z-index: 0;
-      background: radial-gradient(ellipse 80% 80% at 50% 40%, #0a0e1a 0%, #000000 100%);
-    }
-
-    /* Animated grid lines */
-    .te-hero-grid {
-      position: absolute; inset: 0; z-index: 1;
-      background-image:
-        linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
-      background-size: 60px 60px;
-      animation: gridPulse 4s ease-in-out infinite alternate;
-    }
-    @keyframes gridPulse {
-      0% { opacity: 0.3; }
-      100% { opacity: 0.8; }
-    }
-
-    /* Floating blockchain nodes */
-    .te-hero-particles {
-      position: absolute; inset: 0; z-index: 1; overflow: hidden;
-    }
-    .te-particle {
-      position: absolute; width: 4px; height: 4px; background: var(--gold);
-      border-radius: 50%; opacity: 0;
-      animation: particleFloat 6s ease-in-out infinite;
-    }
-    .te-particle:nth-child(1) { left: 10%; top: 20%; animation-delay: 0s; }
-    .te-particle:nth-child(2) { left: 25%; top: 60%; animation-delay: 1s; }
-    .te-particle:nth-child(3) { left: 45%; top: 30%; animation-delay: 2s; }
-    .te-particle:nth-child(4) { left: 65%; top: 70%; animation-delay: 0.5s; }
-    .te-particle:nth-child(5) { left: 80%; top: 25%; animation-delay: 1.5s; }
-    .te-particle:nth-child(6) { left: 90%; top: 55%; animation-delay: 3s; }
-    .te-particle:nth-child(7) { left: 35%; top: 80%; animation-delay: 2.5s; }
-    .te-particle:nth-child(8) { left: 55%; top: 15%; animation-delay: 3.5s; }
-    .te-particle::after {
-      content: ''; position: absolute; top: 50%; left: 50%;
-      width: 40px; height: 40px; transform: translate(-50%, -50%);
-      border: 1px solid rgba(201,168,76,0.08); border-radius: 50%;
-      animation: nodeRing 4s ease-in-out infinite;
-    }
-    @keyframes particleFloat {
-      0%, 100% { opacity: 0; transform: translateY(0) scale(0.5); }
-      20% { opacity: 0.8; transform: translateY(-20px) scale(1); }
-      80% { opacity: 0.6; transform: translateY(-60px) scale(0.8); }
-    }
-    @keyframes nodeRing {
-      0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.3; }
-      50% { transform: translate(-50%, -50%) scale(2); opacity: 0; }
-    }
-
-    /* Connecting lines */
-    .te-hero-lines {
-      position: absolute; inset: 0; z-index: 1; overflow: hidden;
-    }
-    .te-line {
-      position: absolute; height: 1px; background: linear-gradient(90deg, transparent, rgba(201,168,76,0.15), transparent);
-      animation: lineSlide 8s linear infinite;
-    }
-    .te-line:nth-child(1) { top: 30%; width: 300px; left: -300px; animation-delay: 0s; }
-    .te-line:nth-child(2) { top: 50%; width: 200px; left: -200px; animation-delay: 2s; }
-    .te-line:nth-child(3) { top: 70%; width: 250px; left: -250px; animation-delay: 4s; }
-    @keyframes lineSlide {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(calc(100vw + 400px)); }
-    }
-
-    .te-hero-glow {
-      position: absolute; inset: 0; z-index: 1;
-      background:
-        radial-gradient(circle 400px at 50% 50%, rgba(201,168,76,0.06) 0%, transparent 70%),
-        radial-gradient(circle 200px at 30% 60%, rgba(212,118,44,0.04) 0%, transparent 60%),
-        radial-gradient(circle 200px at 70% 40%, rgba(201,168,76,0.04) 0%, transparent 60%);
-      animation: heroGlowPulse 6s ease-in-out infinite alternate;
-    }
-    @keyframes heroGlowPulse {
-      0% { opacity: 0.5; }
-      100% { opacity: 1; }
-    }
-
-    .te-hero-content {
-      position: relative; z-index: 3; max-width: 800px; padding: calc(var(--nav-height) + 60px) 32px 100px;
-    }
-    .te-hero .eyebrow { justify-content: center; margin-bottom: 24px; }
-    .te-hero h1 {
-      font-size: clamp(40px, 6vw, 80px); font-weight: 300; margin-bottom: 20px; line-height: 1.05;
-    }
-    .te-hero h1 em {
-      background: linear-gradient(135deg, var(--gold) 0%, var(--orange) 50%, var(--gold) 100%);
-      background-size: 200% 100%;
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-      animation: textShimmer 4s ease-in-out infinite;
-    }
-    .te-hero-desc {
-font-size: clamp(16px, 2vw, 20px);
-      font-weight: 300;color: var(--text-muted);
-      line-height: 1.65; max-width: 580px; margin: 0 auto 32px;
-    }
-    .te-badge {
-      display: inline-flex; align-items: center; gap: 8px;
-font-size: 12px; font-weight: 600;
-text-transform: uppercase;
-      border: 1px solid var(--gold); color: var(--gold);
-      padding: 12px 28px; position: relative; overflow: hidden;
-    }
-    .te-badge::before {
-      content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(201,168,76,0.12), transparent);
-      animation: badgeShine 3s ease-in-out infinite;
-    }
-    @keyframes badgeShine {
-      0% { left: -100%; }
-      100% { left: 200%; }
-    }
-    .te-badge-dot {
-      width: 6px; height: 6px; border-radius: 50%; background: var(--gold);
-      animation: dotPulse 2s ease-in-out infinite;
-    }
-    @keyframes dotPulse {
-      0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(201,168,76,0.5); }
-      50% { opacity: 0.7; box-shadow: 0 0 8px 4px rgba(201,168,76,0.2); }
-    }
-    .te-hero-stats {
-      display: flex; justify-content: center; gap: 48px;
-      margin-top: 56px; padding-top: 32px;
-      border-top: 1px solid rgba(201,168,76,0.1);
-    }
-    .te-hero-stat { text-align: center; }
-    .te-hero-stat-value {
-font-size: 28px; font-weight: 300;
-      color: var(--gold); display: block; margin-bottom: 4px;
-    }
-    .te-hero-stat-label {
-font-size: 10px; font-weight: 500;
-text-transform: uppercase; color: var(--text-dim);
-    }
-    @media (max-width: 768px) {
-      .te-hero { min-height: 90vh; }
-      .te-hero-stats { flex-wrap: wrap; gap: 24px; }
-    }
+    /* Hero: css/token.css */
 
     /* ── Intro Section ── */
     .te-intro { padding: 120px 0; position: relative; }
@@ -173,52 +38,7 @@ text-transform: uppercase; color: var(--text-dim);
     .te-intro-text h2 { font-size: clamp(30px, 3.5vw, 48px); font-weight: 300; margin-bottom: 24px; line-height: 1.15; }
     .te-intro-text p { font-size: 15px; color: var(--text-muted); line-height: 1.85; margin-bottom: 20px; }
     .te-intro-visual { position: relative; }
-    .te-intro-visual-inner {
-      position: relative; aspect-ratio: 1; border: 1px solid rgba(201,168,76,0.12);
-      display: flex; align-items: center; justify-content: center; overflow: hidden;
-      background: radial-gradient(circle at center, rgba(201,168,76,0.03) 0%, transparent 70%);
-    }
-    .te-intro-visual-inner::before {
-      content: ''; position: absolute; inset: 20px;
-      border: 1px solid rgba(201,168,76,0.06); animation: spinSlow 30s linear infinite;
-    }
-    .te-intro-visual-inner::after {
-      content: ''; position: absolute; inset: 40px;
-      border: 1px solid rgba(201,168,76,0.04); animation: spinSlow 30s linear infinite reverse;
-    }
-    @keyframes spinSlow {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-    .te-token-icon {
-      font-size: 80px; position: relative; z-index: 2;
-      filter: drop-shadow(0 0 30px rgba(201,168,76,0.2));
-      animation: tokenFloat 4s ease-in-out infinite;
-    }
-    @keyframes tokenFloat {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-12px); }
-    }
-    .te-chain-nodes {
-      position: absolute; inset: 0;
-    }
-    .te-node {
-      position: absolute; width: 8px; height: 8px; border-radius: 50%;
-      background: var(--gold); opacity: 0.3;
-    }
-    .te-node::after {
-      content: ''; position: absolute; top: 50%; left: 50%;
-      width: 24px; height: 24px; border-radius: 50%;
-      border: 1px solid rgba(201,168,76,0.15);
-      transform: translate(-50%, -50%);
-    }
-    .te-node:nth-child(1) { top: 10%; left: 50%; }
-    .te-node:nth-child(2) { top: 30%; right: 10%; }
-    .te-node:nth-child(3) { bottom: 30%; right: 10%; }
-    .te-node:nth-child(4) { bottom: 10%; left: 50%; }
-    .te-node:nth-child(5) { bottom: 30%; left: 10%; }
-    .te-node:nth-child(6) { top: 30%; left: 10%; }
-    @media (max-width: 1024px) { .te-intro-grid { grid-template-columns: 1fr; gap: 48px; } .te-intro-visual-inner { max-width: 400px; margin: 0 auto; } .te-intro { padding: 88px 0; } }
+    @media (max-width: 1024px) { .te-intro-grid { grid-template-columns: 1fr; gap: 48px; } .te-intro-visual { max-width: 560px; } .te-intro { padding: 88px 0; } }
     @media (max-width: 768px) { .te-intro { padding: 64px 0; } }
 
     /* ── Asset Classes ── */
@@ -352,10 +172,12 @@ font-size: 11px;      text-transform: uppercase; color: var(--text-dim); flex-wr
     @media (max-width: 1024px) { .te-register-grid { grid-template-columns: 1fr; gap: 48px; } .te-register { padding: 88px 0; } }
     @media (max-width: 768px) { .te-register { padding: 64px 0; } .te-register-form .form-row { grid-template-columns: 1fr; } }
   </style>
+  <link rel="stylesheet" href="../css/token.css?v=4b6f7cd829">
   <!-- Typography: last in <head> so its roles win -->
-  <link rel="stylesheet" href="../css/type.css?v=9e12097c94">
+  <link rel="stylesheet" href="../css/type.css?v=e9db95c20c">
   <!-- Motion: gsap and lenis from js/vendor/, then js/site.js. All deferred. -->
   <link rel="stylesheet" href="../js/vendor/lenis.css?v=2f668ae84a">
+  <link rel="stylesheet" href="../css/nav-overlay.css?v=52ce44256f">
   <link rel="stylesheet" href="../css/motion-text.css?v=23df00290c">
   <link rel="stylesheet" href="../css/site-motion.css?v=4cd428eb65">
   <script defer src="../js/vendor/gsap.min.js?v=92bb9a9647"></script>
@@ -363,62 +185,221 @@ font-size: 11px;      text-transform: uppercase; color: var(--text-dim); flex-wr
   <script defer src="../js/vendor/CustomEase.min.js?v=466e426a5c"></script>
   <script defer src="../js/vendor/SplitText.min.js?v=419f7027a5"></script>
   <script defer src="../js/vendor/lenis.min.js?v=53195c9797"></script>
-  <script type="module" src="../js/site.js?v=2795404393"></script>
+  <!-- Page motion: loads before site.js, whose scope opens the motion gate. -->
+  <script type="module" src="../js/pages/token-el.js?v=2d950bb8b5"></script>
+  <script type="module" src="../js/site.js?v=d48def59f5"></script>
 </head>
-<body>
+<body class="has-overlay-nav te-page">
   <main>
 
-    <!-- ═══ HERO — Futuristic Blockchain ═══ -->
+    <!-- ═══ HERO ═══
+         The asset mosaic: the photo is a grid of tiles that flip, wave by wave, through
+         the four assets you can tokenise; the row along the bottom names them and links
+         to their cards (mosaic-hero.js). Scripts off: the first photo, still. -->
     <section class="te-hero">
-      <div class="te-hero-bg"></div>
-      <div class="te-hero-grid"></div>
-      <div class="te-hero-particles">
-        <div class="te-particle"></div>
-        <div class="te-particle"></div>
-        <div class="te-particle"></div>
-        <div class="te-particle"></div>
-        <div class="te-particle"></div>
-        <div class="te-particle"></div>
-        <div class="te-particle"></div>
-        <div class="te-particle"></div>
+      <div class="te-hero-bg">
+        <img class="te-hero-poster" data-mosaic-poster data-motion-hide crossorigin="anonymous"
+             src="../img/photos/private-jet-airstair-1920.webp"
+             alt="A private jet on the apron with its stairs down" width="1920" height="1280" fetchpriority="high">
+        <canvas class="te-hero-canvas" data-mosaic-canvas aria-hidden="true"></canvas>
       </div>
-      <div class="te-hero-lines">
-        <div class="te-line"></div>
-        <div class="te-line"></div>
-        <div class="te-line"></div>
-      </div>
-      <div class="te-hero-glow"></div>
+      <div class="te-hero-overlay"></div>
 
-      <div class="te-hero-content">
-        <div class="eyebrow fade-up">Token-El</div>
-        <h1 class="fade-up fade-up-d1">The Future of<br><em>Asset Tokenization</em></h1>
-        <p class="te-hero-desc fade-up fade-up-d2">Fractional ownership powered by blockchain. Democratizing access to private jets, superyachts, luxury real estate, and blue-chip art.</p>
-        <div class="te-badge fade-up fade-up-d3">
-          <span class="te-badge-dot"></span>
-          Coming Soon
-        </div>
-        <div class="te-hero-stats fade-up fade-up-d4">
-          <div class="te-hero-stat">
-            <span class="te-hero-stat-value">$1K</span>
-            <span class="te-hero-stat-label">Minimum Entry</span>
+      <div class="te-hero-copy container" data-mosaic-copy>
+        <h1 data-mosaic-title data-motion-hide>
+          <span class="te-line">The Future of</span>
+          <span class="te-line"><em>Asset Tokenization</em></span>
+        </h1>
+        <p class="te-hero-desc" data-mosaic-part data-motion-hide>Fractional ownership of private jets, superyachts, luxury real estate and fine art, secured on the blockchain.</p>
+        <div class="te-badge" data-mosaic-part data-motion-hide><span class="te-badge-dot"></span>Coming soon</div>
+      </div>
+
+      <nav class="te-tabs container" data-mosaic-index aria-label="Assets you can tokenise">
+        <ol class="te-tabs-list" data-motion-hide>
+          <li>
+            <a class="te-tab" href="#asset-jets" data-mosaic-tab data-focus="50 62"
+               data-src="../img/photos/private-jet-airstair-1920.webp">
+              <span class="te-tab-bar" data-mosaic-bar></span>
+              <span class="te-tab-num">01</span><span class="te-tab-name">Private Jets</span><span class="te-tab-from">from $10,000</span>
+            </a>
+          </li>
+          <li>
+            <a class="te-tab" href="#asset-yachts" data-mosaic-tab data-focus="50 55"
+               data-src="../img/photos/superyacht-green-bay-1920.webp">
+              <span class="te-tab-bar" data-mosaic-bar></span>
+              <span class="te-tab-num">02</span><span class="te-tab-name">Superyachts</span><span class="te-tab-from">from $25,000</span>
+            </a>
+          </li>
+          <li>
+            <a class="te-tab" href="#asset-real-estate" data-mosaic-tab data-focus="50 45"
+               data-src="../img/photos/modern-villa-pool-1920.webp">
+              <span class="te-tab-bar" data-mosaic-bar></span>
+              <span class="te-tab-num">03</span><span class="te-tab-name">Luxury Real Estate</span><span class="te-tab-from">from $5,000</span>
+            </a>
+          </li>
+          <li>
+            <a class="te-tab" href="#asset-art" data-mosaic-tab data-focus="50 40"
+               data-src="../img/photos/art-gallery-old-masters-1920.webp">
+              <span class="te-tab-bar" data-mosaic-bar></span>
+              <span class="te-tab-num">04</span><span class="te-tab-name">Blue-Chip Art</span><span class="te-tab-from">from $1,000</span>
+            </a>
+          </li>
+        </ol>
+      </nav>
+    </section>
+
+    <!-- ═══ STATS ═══ The figures roll in ([data-roll], site.js). -->
+    <section class="te-stats" aria-label="Token-El at a glance">
+      <div class="container te-stats-grid">
+        <div class="te-hero-stat"><span class="te-hero-stat-value" data-roll>$1K</span><span class="te-hero-stat-label">Minimum entry</span></div>
+        <div class="te-hero-stat"><span class="te-hero-stat-value" data-roll>4</span><span class="te-hero-stat-label">Asset classes</span></div>
+        <div class="te-hero-stat"><span class="te-hero-stat-value" data-roll>24/7</span><span class="te-hero-stat-label">Tradeable</span></div>
+        <div class="te-hero-stat"><span class="te-hero-stat-value" data-roll>100%</span><span class="te-hero-stat-label">Blockchain secured</span></div>
+      </div>
+    </section>
+
+    <!-- ═══ ONE ASSET, A THOUSAND TOKENS ═══
+         A gold coin turns through eight faces: each asset's imprint, then the fraction one
+         token buys (its photo with one cell lit). Wide screens: the section holds and the
+         scroll turns it. Elsewhere: arrows, tap or swipe (mint-coin.js). -->
+    <section class="te-mint" id="tokens" data-mint>
+      <div class="te-mint-stage">
+        <div class="container te-mint-grid">
+          <div class="te-mint-copy">
+            <div class="eyebrow">How a Token Works</div>
+            <h2>One Asset. <em>A Thousand Tokens.</em></h2>
+            <p>Each asset is valued, divided into 1,000 tokens and recorded on the blockchain. Hold a token and you own that fraction of the asset: its share of the income and of the value.</p>
+            <ol class="te-mint-list">
+            <li><button type="button" class="te-mint-item is-active" data-mint-item="0">
+              <span class="te-mint-num">01</span><span class="te-mint-name">Private Jets</span>
+              <span class="te-mint-terms">1 token = 1/1,000 of a $10M jet · $10,000</span>
+            </button></li>
+            <li><button type="button" class="te-mint-item" data-mint-item="1">
+              <span class="te-mint-num">02</span><span class="te-mint-name">Superyachts</span>
+              <span class="te-mint-terms">1 token = 1/1,000 of a $25M yacht · $25,000</span>
+            </button></li>
+            <li><button type="button" class="te-mint-item" data-mint-item="2">
+              <span class="te-mint-num">03</span><span class="te-mint-name">Luxury Real Estate</span>
+              <span class="te-mint-terms">1 token = 1/1,000 of a $5M villa · $5,000</span>
+            </button></li>
+            <li><button type="button" class="te-mint-item" data-mint-item="3">
+              <span class="te-mint-num">04</span><span class="te-mint-name">Blue-Chip Art</span>
+              <span class="te-mint-terms">1 token = 1/1,000 of a $1M painting · $1,000</span>
+            </button></li>
+            </ol>
           </div>
-          <div class="te-hero-stat">
-            <span class="te-hero-stat-value">4</span>
-            <span class="te-hero-stat-label">Asset Classes</span>
-          </div>
-          <div class="te-hero-stat">
-            <span class="te-hero-stat-value">24/7</span>
-            <span class="te-hero-stat-label">Tradeable</span>
-          </div>
-          <div class="te-hero-stat">
-            <span class="te-hero-stat-value">100%</span>
-            <span class="te-hero-stat-label">Blockchain Secured</span>
+          <div class="te-mint-visual" data-mint-visual>
+            <div class="te-mint-tilt" data-mint-tilt>
+              <div class="te-token3d" data-mint-coin aria-hidden="true">
+                <div class="te-token-face te-token-face--front">
+            <div class="te-imprint is-on" data-mint-front="0">
+              <svg viewBox="0 0 200 200" aria-hidden="true">
+                <defs><path id="te-ring-0" d="M100,100 m-79,0 a79,79 0 1,1 158,0 a79,79 0 1,1 -158,0"/></defs>
+                <circle class="ring" cx="100" cy="100" r="88"/>
+                <circle class="ring" cx="100" cy="100" r="70"/>
+                <text class="lettering"><textPath href="#te-ring-0" startOffset="0" textLength="488" lengthAdjust="spacing">TOKEN-EL · PRIVATE JETS · 1 OF 1,000 ·</textPath></text>
+                <g class="art">
+            <path class="fill" d="M34 106c16-9 86-14 128-6 10 2 12 9 2 12-30 7-92 9-126 4-8-1-10-7-4-10z"/>
+            <path d="M34 106c16-9 86-14 128-6 10 2 12 9 2 12-30 7-92 9-126 4-8-1-10-7-4-10z"/>
+            <path d="M44 103 33 74h13l20 27"/>
+            <path d="M92 114l26 24h12l-14-26"/>
+            <path d="M54 95h24a5 5 0 0 1 0 10H54a5 5 0 0 1 0-10z"/>
+            <path d="M104 104h3M114 103.5h3M124 103h3M134 103h3M144 103.5h3"/>
+            <path d="M156 101c3 0 6 2 7 5"/>
+                </g>
+              </svg>
+            </div>
+            <div class="te-imprint" data-mint-front="1">
+              <svg viewBox="0 0 200 200" aria-hidden="true">
+                <defs><path id="te-ring-1" d="M100,100 m-79,0 a79,79 0 1,1 158,0 a79,79 0 1,1 -158,0"/></defs>
+                <circle class="ring" cx="100" cy="100" r="88"/>
+                <circle class="ring" cx="100" cy="100" r="70"/>
+                <text class="lettering"><textPath href="#te-ring-1" startOffset="0" textLength="488" lengthAdjust="spacing">TOKEN-EL · SUPERYACHTS · 1 OF 1,000 ·</textPath></text>
+                <g class="art">
+            <path class="fill" d="M28 122h146l-16 18H44z"/>
+            <path d="M28 122h146l-16 18H44z"/>
+            <path d="M50 122l9-16h86l12 16"/>
+            <path d="M74 106l8-13h48l6 13"/>
+            <path d="M104 93V73M96 79h16"/>
+            <path d="M66 114h4M80 114h4M94 114h4M108 114h4M122 114h4M136 114h4"/>
+            <path d="M32 152c8-5 16-5 24 0s16 5 24 0 16-5 24 0 16 5 24 0 16-5 24 0 16 5 20 1"/>
+                </g>
+              </svg>
+            </div>
+            <div class="te-imprint" data-mint-front="2">
+              <svg viewBox="0 0 200 200" aria-hidden="true">
+                <defs><path id="te-ring-2" d="M100,100 m-79,0 a79,79 0 1,1 158,0 a79,79 0 1,1 -158,0"/></defs>
+                <circle class="ring" cx="100" cy="100" r="88"/>
+                <circle class="ring" cx="100" cy="100" r="70"/>
+                <text class="lettering"><textPath href="#te-ring-2" startOffset="0" textLength="488" lengthAdjust="spacing">TOKEN-EL · LUXURY REAL ESTATE · 1 OF 1,000 ·</textPath></text>
+                <g class="art">
+            <path class="fill" d="M46 92h66v42H46z"/>
+            <path d="M40 92h78"/>
+            <path d="M46 92v42h66V92"/>
+            <path d="M100 70h62"/>
+            <path d="M106 70v64h50V70"/>
+            <path d="M56 102h20v14H56zM86 102h16v14H86zM116 80h14v18h-14zM138 80h12v18h-12zM118 108h30v26"/>
+            <path d="M30 134h142"/>
+            <path d="M36 146h56M110 146h56M50 156h100"/>
+                </g>
+              </svg>
+            </div>
+            <div class="te-imprint" data-mint-front="3">
+              <svg viewBox="0 0 200 200" aria-hidden="true">
+                <defs><path id="te-ring-3" d="M100,100 m-79,0 a79,79 0 1,1 158,0 a79,79 0 1,1 -158,0"/></defs>
+                <circle class="ring" cx="100" cy="100" r="88"/>
+                <circle class="ring" cx="100" cy="100" r="70"/>
+                <text class="lettering"><textPath href="#te-ring-3" startOffset="0" textLength="488" lengthAdjust="spacing">TOKEN-EL · BLUE-CHIP ART · 1 OF 1,000 ·</textPath></text>
+                <g class="art">
+            <path class="fill" d="M62 56h76v94H62z"/>
+            <path d="M54 48h92v110H54z"/>
+            <path d="M62 56h76v94H62z"/>
+            <path d="M66 132l18-24 14 14 12-12 22 22"/>
+            <circle cx="118" cy="80" r="7"/>
+            <path d="M84 168h32M100 158v10"/>
+                </g>
+              </svg>
+            </div>
+                </div>
+                <span class="te-token-edge"></span><span class="te-token-edge"></span><span class="te-token-edge"></span>
+                <span class="te-token-edge"></span><span class="te-token-edge"></span><span class="te-token-edge"></span>
+                <div class="te-token-face te-token-face--back">
+            <div class="te-fraction-face is-on" data-mint-back="0">
+              <img src="../img/photos/private-jet-airstair-1920.webp" alt="" style="object-position: 50% 60%" loading="lazy" crossorigin="anonymous">
+              <span class="te-fraction-cell" style="left: 55%; top: 40%"></span>
+              <span class="te-fraction-tag"><b>1 token</b> · 1/1,000 · $10,000</span>
+            </div>
+            <div class="te-fraction-face" data-mint-back="1">
+              <img src="../img/photos/superyacht-green-bay-1920.webp" alt="" style="object-position: 50% 55%" loading="lazy" crossorigin="anonymous">
+              <span class="te-fraction-cell" style="left: 40%; top: 55%"></span>
+              <span class="te-fraction-tag"><b>1 token</b> · 1/1,000 · $25,000</span>
+            </div>
+            <div class="te-fraction-face" data-mint-back="2">
+              <img src="../img/photos/modern-villa-pool-1920.webp" alt="" style="object-position: 50% 45%" loading="lazy" crossorigin="anonymous">
+              <span class="te-fraction-cell" style="left: 60%; top: 35%"></span>
+              <span class="te-fraction-tag"><b>1 token</b> · 1/1,000 · $5,000</span>
+            </div>
+            <div class="te-fraction-face" data-mint-back="3">
+              <img src="../img/photos/art-gallery-old-masters-1920.webp" alt="" style="object-position: 50% 40%" loading="lazy" crossorigin="anonymous">
+              <span class="te-fraction-cell" style="left: 45%; top: 45%"></span>
+              <span class="te-fraction-tag"><b>1 token</b> · 1/1,000 · $1,000</span>
+            </div>
+                </div>
+              </div>
+            </div>
+            <div class="te-mint-foot">
+              <button type="button" class="te-mint-arrow" data-mint-prev aria-label="Previous face"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M10 3 5 8l5 5"/></svg></button>
+              <button type="button" class="te-mint-arrow" data-mint-next aria-label="Next face"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m6 3 5 5-5 5"/></svg></button>
+              <span class="te-mint-side" data-mint-side aria-live="polite">The imprint · Private Jets · face 1 of 8</span>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ═══ INTRO — The Vision ═══ -->
+    <!-- ═══ THE VISION ═══
+         Own a fraction: a slider buys cells of a villa; tokens, share and yield follow
+         (fraction.js). Works without motion; scripts off shows the example figures. -->
     <section class="te-intro">
       <div class="container">
         <div class="te-intro-grid">
@@ -429,24 +410,35 @@ font-size: 11px;      text-transform: uppercase; color: var(--text-dim); flex-wr
             <p>Imagine owning a share of a private jet, a fraction of a Mediterranean superyacht, or a piece of a landmark luxury property &mdash; all secured by blockchain, all tradeable, all starting from $1,000.</p>
           </div>
           <div class="te-intro-visual reveal reveal-delay-2">
-            <div class="te-intro-visual-inner">
-              <div class="te-chain-nodes">
-                <div class="te-node"></div>
-                <div class="te-node"></div>
-                <div class="te-node"></div>
-                <div class="te-node"></div>
-                <div class="te-node"></div>
-                <div class="te-node"></div>
+            <div class="te-fraction" data-fraction data-price="1000000" data-token="1000" data-yield="6 10">
+              <div class="te-fraction-photo">
+                <img src="../img/photos/white-villa-pool-1000.webp"
+                     alt="A modern white villa with a swimming pool" width="1000" height="750" loading="lazy">
+                <div class="te-fraction-grid" data-fraction-grid aria-hidden="true"></div>
               </div>
-              <div class="te-token-icon"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M12 2l10 10-10 10L2 12 12 2z"/><path d="M12 6l6 6-6 6-6-6 6-6z"/></svg></div>
+              <div class="te-fraction-body">
+                <div class="te-fraction-head">
+                  <label for="te-stake">Your stake</label>
+                  <output class="te-fraction-amount" for="te-stake" data-fraction-amount>$50,000</output>
+                </div>
+                <input class="te-fraction-range" type="range" id="te-stake" min="1000" max="250000" step="1000" value="50000" data-fraction-input>
+                <dl class="te-fraction-read" aria-live="polite">
+                  <div><dt>Tokens</dt><dd data-fraction-tokens>50</dd></div>
+                  <div><dt>Share of the villa</dt><dd data-fraction-share>5.0%</dd></div>
+                  <div><dt>Target yield a year</dt><dd data-fraction-yield>$3,000 – $5,000</dd></div>
+                </dl>
+                <p class="te-fraction-note">Illustration: a $1M villa issued as 1,000 tokens of $1,000, at the 6–10% target yield for real estate.</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ═══ ASSET CLASSES ═══ -->
-    <section class="te-assets">
+    <!-- ═══ ASSET CLASSES ═══
+         Two-faced tokens: they spin in edge-on, and turn over to their terms on hover,
+         click or Enter (coins.js). Scripts off: the terms sit under each card. -->
+    <section class="te-assets" id="assets">
       <div class="container">
         <div class="te-assets-header reveal">
           <div class="eyebrow">Asset Classes</div>
@@ -454,66 +446,110 @@ font-size: 11px;      text-transform: uppercase; color: var(--text-dim); flex-wr
           <p>Premium asset classes available for fractional ownership through Token-El's blockchain-secured platform.</p>
         </div>
         <div class="te-assets-grid">
-          <div class="te-asset-card reveal">
-            <span class="te-asset-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg></span>
-            <h4>Private Jets</h4>
-            <span class="te-asset-card-sub">Jet-El Division</span>
-            <p>Fractional aviation asset ownership with charter revenue distribution.</p>
-            <div class="te-asset-meta">From $10,000 &middot; 8-12% Target Yield</div>
+          <div class="te-coin" id="asset-jets" data-coin tabindex="0">
+            <div class="te-coin-inner" data-coin-inner>
+              <div class="te-asset-card te-coin-front">
+                <span class="te-asset-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg></span>
+                <h4>Private Jets</h4>
+                <span class="te-asset-card-sub">Jet-El Division</span>
+                <p>Fractional aviation asset ownership with charter revenue distribution.</p>
+                <span class="te-coin-hint">Turn over for terms</span>
+              </div>
+              <div class="te-asset-card te-coin-back">
+                <span class="te-asset-card-sub">Private Jets</span>
+                <b class="te-coin-figure">$10,000</b><span class="te-coin-caption">minimum entry</span>
+                <b class="te-coin-figure">8–12%</b><span class="te-coin-caption">target yield</span>
+                <a class="te-coin-link" href="#register">Register interest</a>
+              </div>
+            </div>
           </div>
-          <div class="te-asset-card reveal reveal-delay-1">
-            <span class="te-asset-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 20c2-1 4-2 6-2s4 1 6 2 4 2 6 2"/><path d="M4 18l-1-5h18l-1 5M12 3v10M8 7h8"/></svg></span>
-            <h4>Superyachts</h4>
-            <span class="te-asset-card-sub">The 1% Division</span>
-            <p>Tokenized superyacht shares with charter income and appreciation potential.</p>
-            <div class="te-asset-meta">From $25,000 &middot; 10-15% Target Yield</div>
+          <div class="te-coin" id="asset-yachts" data-coin tabindex="0">
+            <div class="te-coin-inner" data-coin-inner>
+              <div class="te-asset-card te-coin-front">
+                <span class="te-asset-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 20c2-1 4-2 6-2s4 1 6 2 4 2 6 2"/><path d="M4 18l-1-5h18l-1 5M12 3v10M8 7h8"/></svg></span>
+                <h4>Superyachts</h4>
+                <span class="te-asset-card-sub">The 1% Division</span>
+                <p>Tokenized superyacht shares with charter income and appreciation potential.</p>
+                <span class="te-coin-hint">Turn over for terms</span>
+              </div>
+              <div class="te-asset-card te-coin-back">
+                <span class="te-asset-card-sub">Superyachts</span>
+                <b class="te-coin-figure">$25,000</b><span class="te-coin-caption">minimum entry</span>
+                <b class="te-coin-figure">10–15%</b><span class="te-coin-caption">target yield</span>
+                <a class="te-coin-link" href="#register">Register interest</a>
+              </div>
+            </div>
           </div>
-          <div class="te-asset-card reveal reveal-delay-2">
-            <span class="te-asset-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="2" width="16" height="20"/><path d="M9 22V12h6v10M8 6h2M14 6h2M8 10h2M14 10h2"/></svg></span>
-            <h4>Luxury Real Estate</h4>
-            <span class="te-asset-card-sub">H&amp;L Division</span>
-            <p>Fractional ownership of premium properties with rental yield distribution.</p>
-            <div class="te-asset-meta">From $5,000 &middot; 6-10% Target Yield</div>
+          <div class="te-coin" id="asset-real-estate" data-coin tabindex="0">
+            <div class="te-coin-inner" data-coin-inner>
+              <div class="te-asset-card te-coin-front">
+                <span class="te-asset-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="2" width="16" height="20"/><path d="M9 22V12h6v10M8 6h2M14 6h2M8 10h2M14 10h2"/></svg></span>
+                <h4>Luxury Real Estate</h4>
+                <span class="te-asset-card-sub">H&amp;L Division</span>
+                <p>Fractional ownership of premium properties with rental yield distribution.</p>
+                <span class="te-coin-hint">Turn over for terms</span>
+              </div>
+              <div class="te-asset-card te-coin-back">
+                <span class="te-asset-card-sub">Luxury Real Estate</span>
+                <b class="te-coin-figure">$5,000</b><span class="te-coin-caption">minimum entry</span>
+                <b class="te-coin-figure">6–10%</b><span class="te-coin-caption">target yield</span>
+                <a class="te-coin-link" href="#register">Register interest</a>
+              </div>
+            </div>
           </div>
-          <div class="te-asset-card reveal reveal-delay-3">
-            <span class="te-asset-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l10 10-10 10L2 12 12 2z"/></svg></span>
-            <h4>Blue-Chip Art</h4>
-            <span class="te-asset-card-sub">The 1% Division</span>
-            <p>Tokenized ownership of museum-quality art with appreciation-driven returns.</p>
-            <div class="te-asset-meta">From $1,000 &middot; Variable Yield</div>
+          <div class="te-coin" id="asset-art" data-coin tabindex="0">
+            <div class="te-coin-inner" data-coin-inner>
+              <div class="te-asset-card te-coin-front">
+                <span class="te-asset-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l10 10-10 10L2 12 12 2z"/></svg></span>
+                <h4>Blue-Chip Art</h4>
+                <span class="te-asset-card-sub">The 1% Division</span>
+                <p>Tokenized ownership of museum-quality art with appreciation-driven returns.</p>
+                <span class="te-coin-hint">Turn over for terms</span>
+              </div>
+              <div class="te-asset-card te-coin-back">
+                <span class="te-asset-card-sub">Blue-Chip Art</span>
+                <b class="te-coin-figure">$1,000</b><span class="te-coin-caption">minimum entry</span>
+                <b class="te-coin-figure">Variable</b><span class="te-coin-caption">yield</span>
+                <a class="te-coin-link" href="#register">Register interest</a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ═══ BLOCKCHAIN VISUAL ═══ -->
+    <!-- ═══ BLOCKCHAIN ═══
+         Blocks mined in turn: hashes churn and lock, links draw; then a light runs along
+         the chain (chain-mine.js). -->
     <section class="te-blockchain">
       <div class="container">
-        <div class="te-blockchain-inner reveal">
-          <div class="te-blockchain-block">
+        <div class="te-blockchain-inner" data-chain>
+          <div class="te-blockchain-block" data-block>
             <span>Block #001</span>
-            <div class="te-blockchain-block-hash">0x7a3f...e92c</div>
+            <div class="te-blockchain-block-hash" data-hash>0x7a3f...e92c</div>
           </div>
-          <div class="te-blockchain-connector"></div>
-          <div class="te-blockchain-block">
+          <div class="te-blockchain-connector" data-link></div>
+          <div class="te-blockchain-block" data-block>
             <span>Block #002</span>
-            <div class="te-blockchain-block-hash">0x4b1d...f83a</div>
+            <div class="te-blockchain-block-hash" data-hash>0x4b1d...f83a</div>
           </div>
-          <div class="te-blockchain-connector"></div>
-          <div class="te-blockchain-block">
+          <div class="te-blockchain-connector" data-link></div>
+          <div class="te-blockchain-block" data-block>
             <span>Block #003</span>
-            <div class="te-blockchain-block-hash">0x9c2e...a71b</div>
+            <div class="te-blockchain-block-hash" data-hash>0x9c2e...a71b</div>
           </div>
-          <div class="te-blockchain-connector"></div>
-          <div class="te-blockchain-block">
+          <div class="te-blockchain-connector" data-link></div>
+          <div class="te-blockchain-block" data-block>
             <span>Block #004</span>
-            <div class="te-blockchain-block-hash">0x5f8a...d46e</div>
+            <div class="te-blockchain-block-hash" data-hash>0x5f8a...d46e</div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ═══ PLATFORM FEATURES ═══ -->
+    <!-- ═══ PLATFORM FEATURES ═══
+         The cards rise; each card's ledger line types itself out and ticks
+         (ledger-type.js). -->
     <section class="te-features">
       <div class="container">
         <div class="te-features-header reveal">
@@ -521,20 +557,23 @@ font-size: 11px;      text-transform: uppercase; color: var(--text-dim); flex-wr
           <h2>Built for <em>Trust</em></h2>
         </div>
         <div class="te-features-grid">
-          <div class="te-feature-card reveal">
+          <div class="te-feature-card" data-reveal data-type-card>
             <div class="te-feature-num">01</div>
             <h4>Fractional Ownership</h4>
             <p>Own a fraction of premium assets starting from $1,000. Real ownership, real returns, real liquidity &mdash; without the barriers of traditional acquisition.</p>
+            <div class="te-ledger"><span class="te-ledger-line" data-type>minted · 1,000 tokens · from $1,000</span><svg class="te-ledger-check" data-type-check viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg></div>
           </div>
-          <div class="te-feature-card reveal reveal-delay-1">
+          <div class="te-feature-card" data-reveal data-type-card>
             <div class="te-feature-num">02</div>
             <h4>Blockchain Security</h4>
             <p>Every token is secured on blockchain, providing immutable proof of ownership, transparent transaction history, and tamper-proof asset records.</p>
+            <div class="te-ledger"><span class="te-ledger-line" data-type>verified on-chain · 0x4b1d...f83a</span><svg class="te-ledger-check" data-type-check viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg></div>
           </div>
-          <div class="te-feature-card reveal reveal-delay-2">
+          <div class="te-feature-card" data-reveal data-type-card>
             <div class="te-feature-num">03</div>
             <h4>Global Liquidity</h4>
             <p>Trade your tokens on secondary markets. Unlike traditional alternative investments, Token-El assets are designed for liquidity from day one.</p>
+            <div class="te-ledger"><span class="te-ledger-line" data-type>listed · secondary market · 24/7</span><svg class="te-ledger-check" data-type-check viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5"/></svg></div>
           </div>
         </div>
       </div>
@@ -551,7 +590,7 @@ font-size: 11px;      text-transform: uppercase; color: var(--text-dim); flex-wr
             <p>Early registrants will be offered priority allocation on launch assets and access to our founding investor program.</p>
           </div>
           <div class="reveal reveal-delay-2">
-            <form class="te-register-form" data-ajax action="https://el-globalbusiness.com/token-el-register-handler.php" method="POST">
+            <form class="te-register-form" data-ajax data-form-chain action="https://el-globalbusiness.com/token-el-register-handler.php" method="POST">
               <div class="form-row">
                 <div class="form-group">
                   <label class="form-label" for="name">Full Name *</label>
@@ -607,6 +646,7 @@ font-size: 11px;      text-transform: uppercase; color: var(--text-dim); flex-wr
                 <label class="form-label" for="interest-desc">Tell Us More</label>
                 <textarea class="form-textarea" id="interest-desc" name="interest_description" placeholder="What excites you about asset tokenization? Any specific questions or requirements..."></textarea>
               </div>
+              <div class="te-form-chain" aria-hidden="true"><span class="te-chain-nodes" data-chain-nodes></span><span class="te-chain-count" data-chain-count></span></div>
               <button type="submit" class="btn btn-primary btn-lg">Register Interest</button>
             </form>
           </div>

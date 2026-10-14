@@ -22,7 +22,7 @@ import { marketBoard, marketPeek } from '../recipes/market-board.js?v=960a3803a3
 import { assemble, spotlight } from '../recipes/assemble.js?v=5d03e30998';
 import { doors } from '../recipes/doors.js?v=408e465a53';
 import { keyhole, keyholeFollow } from '../recipes/keyhole.js?v=7cd6e9829e';
-import { batchReveal } from '../recipes/text.js?v=d3a73b24c3';
+import { batchReveal } from '../recipes/text.js?v=44c82cd1c2';
 import { overlayNav, preloaderLifted } from '../chrome.js?v=52793ad2ba';
 
 const $ = (sel) => document.querySelector(sel);

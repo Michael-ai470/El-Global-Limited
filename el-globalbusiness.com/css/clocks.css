@@ -1,0 +1,16 @@
+/* ═══════════════════════════════════════════════════════════════
+   Office clocks (js/recipes/clocks.js): local time, weekday and office
+   hours, appended to every [data-clock]. Shown only once the script has
+   added .is-live to the section; with scripts off there is no clock.
+   Used by about.html and contact.html.
+   ═══════════════════════════════════════════════════════════════ */
+.ab-clock { display: none; margin-top: 14px; align-items: baseline; gap: 10px; font-variant-numeric: tabular-nums; }
+.is-live .ab-clock { display: flex; }
+.ab-clock-time { font-size: 1.5rem; font-weight: var(--w-light); color: var(--text-primary); letter-spacing: -0.02em; }
+.ab-clock-time i { font-style: normal; animation: abBlink 1s steps(1) infinite; }
+@keyframes abBlink { 50% { opacity: 0.25; } }
+.ab-clock-day { color: var(--text-muted); font-size: var(--t-micro); }
+.ab-clock-state { display: inline-flex; align-items: center; gap: 6px; color: var(--text-muted); font-size: var(--t-micro); }
+.ab-clock-state::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: rgba(255, 255, 255, 0.25); }
+.ab-clock-state.is-open { color: var(--gold); }
+.ab-clock-state.is-open::before { background: var(--gold); box-shadow: 0 0 8px rgba(201, 168, 76, 0.7); }

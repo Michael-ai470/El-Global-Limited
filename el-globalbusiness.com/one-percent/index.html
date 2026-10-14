@@ -5,6 +5,33 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script>document.documentElement.classList.add('js');</script>
+  <!-- Motion gate (docs/web-motion-engine.md 5.2): hides intro elements until GSAP has them,
+       and shows them anyway after 2.5 seconds if motion never arrives. -->
+  <script>
+    (function (d, w) {
+      d.classList.add('motion-pending');
+      w.__motionFailsafe = setTimeout(function () {
+        w.__motionShown = new WeakSet(document.querySelectorAll('[data-motion-hide]'));
+        d.classList.remove('motion-pending');
+      }, 2500);
+    })(document.documentElement, window);
+  </script>
+  <!-- The hero mark (js/recipes/mark-intro.js), decided before the first paint: the full
+       drawing on a first visit and on a reload, a quick glide when the page is reached
+       again in the same visit, nothing on Back/Forward or with reduced motion. -->
+  <script>
+    (function (d) {
+      var mode = 'full';
+      try {
+        var nav = performance.getEntriesByType('navigation')[0];
+        var type = nav ? nav.type : 'navigate';
+        if (type === 'back_forward') mode = 'none';
+        else if (type !== 'reload' && sessionStorage.getItem('op-mark') === '1') mode = 'quick';
+      } catch (e) {}
+      if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) mode = 'none';
+      d.setAttribute('data-mark', mode);
+    })(document.documentElement);
+  </script>
   <title>The 1% — Exclusive Investments | El-Global Business</title>
   <meta name="description" content="The 1% is El-Global's exclusive investments division. Ultra-premium alternative investment advisory across marinas, superyachts, golf resorts, and citizenship by investment programs.">
 
@@ -16,448 +43,6 @@
   <link rel="preload" href="../fonts/manrope-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 
   <style>
-    /* ═══ HERO ═══ */
-    .op-hero {
-      position: relative; height: 60vh; max-height: 60vh;
-      display: flex; align-items: flex-end; overflow: hidden;
-    }
-
-    .op-hero-bg { position: absolute; inset: 0; }
-
-    .op-hero-bg img {
-      width: 100%; height: 100%; object-fit: cover;
-      object-position: center 50%;
-      filter: brightness(0.22) saturate(0.7);
-    }
-
-    .op-hero-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(180deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.25) 40%, rgba(0,0,0,0.92) 100%);
-    }
-
-    .op-hero-content {
-      position: relative; z-index: 2;
-      padding: calc(var(--nav-height) + 40px) 0 56px; max-width: 700px;
-    }
-
-    .op-hero .eyebrow { margin-bottom: 20px; }
-
-    .op-hero h1 {
-      font-size: clamp(36px, 5vw, 64px);
-      font-weight: 300; margin-bottom: 16px; line-height: 1.1;
-    }
-
-    .op-hero-desc {
-      font-size: clamp(16px, 2vw, 20px);
-      font-weight: 300;      color: var(--text-secondary); line-height: 1.65; max-width: 540px;
-    }
-
-    .op-hero-pills {
-      display: flex; gap: 8px; flex-wrap: wrap; margin-top: 28px;
-    }
-
-    .op-hero-pill {
-font-size: 10px; font-weight: 500;
-text-transform: uppercase;
-      color: var(--text-muted); border: 1px solid var(--border-mid);
-      padding: 7px 18px; border-radius: 100px;
-      text-decoration: none; transition: all var(--transition);
-    }
-
-    .op-hero-pill:hover {
-      color: var(--white); border-color: var(--gold);
-      background: rgba(201,168,76,0.05);
-    }
-
-    @media (max-width: 768px) {
-      .op-hero { height: 50vh; }
-      .op-hero-content { padding: calc(var(--nav-height) + 20px) 0 40px; }
-    }
-
-    /* ═══ INTRO ═══ */
-    .op-intro { padding: 120px 0; }
-
-    .op-intro-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 80px; align-items: center;
-    }
-
-    .op-intro-text .eyebrow { margin-bottom: 20px; }
-
-    .op-intro-text h2 {
-      font-size: clamp(30px, 3.5vw, 48px);
-      font-weight: 300; margin-bottom: 24px; line-height: 1.15;
-    }
-
-    .op-intro-text p {
-      font-size: 15px; color: var(--text-muted);
-      line-height: 1.85; margin-bottom: 20px;
-    }
-
-    .op-intro-image {
-      position: relative; overflow: hidden; aspect-ratio: 4 / 5;
-    }
-
-    .op-intro-image img {
-      width: 100%; height: 100%; object-fit: cover;
-      filter: brightness(0.85) saturate(0.9);
-      transition: transform 0.6s var(--ease);
-    }
-
-    .op-intro-image:hover img { transform: scale(1.04); }
-
-    .op-intro-image::after {
-      content: ''; position: absolute;
-      bottom: 0; left: 0; right: 0; height: 3px;
-      background: var(--gradient-signature);
-    }
-
-    @media (max-width: 1024px) {
-      .op-intro-grid { grid-template-columns: 1fr; gap: 48px; }
-      .op-intro-image { max-width: 480px; aspect-ratio: 16/10; }
-      .op-intro { padding: 88px 0; }
-    }
-
-    @media (max-width: 768px) { .op-intro { padding: 64px 0; } }
-
-    /* ═══ SERVICES ═══ */
-    .op-services {
-      padding: 120px 0; border-top: 1px solid var(--border);
-    }
-
-    .op-services-header {
-      text-align: center; margin-bottom: 64px;
-    }
-
-    .op-services-header .eyebrow {
-      justify-content: center; margin-bottom: 20px;
-    }
-
-    .op-services-header .eyebrow::after {
-      content: ''; width: 40px; height: 1px;
-      background: var(--gradient-signature);
-    }
-
-    .op-services-header p {
-      font-size: 15px; color: var(--text-muted);
-      max-width: 540px; margin: 16px auto 0; line-height: 1.8;
-    }
-
-    /* Top row: 2 large */
-    .op-services-top {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 16px; margin-bottom: 16px;
-    }
-
-    /* Bottom row: 3 */
-    .op-services-bottom {
-      display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px;
-    }
-
-    .op-service-card {
-      background: var(--charcoal); border: 1px solid var(--border);
-      overflow: hidden; transition: all 0.4s var(--ease);
-      display: block; text-decoration: none; color: inherit;
-    }
-
-    .op-service-card:hover {
-      border-color: var(--border-mid); transform: translateY(-4px);
-      box-shadow: 0 12px 40px rgba(0,0,0,0.5);
-    }
-
-    .op-service-card-image {
-      position: relative; aspect-ratio: 16 / 10; overflow: hidden;
-    }
-
-    .op-service-card-image img {
-      width: 100%; height: 100%; object-fit: cover;
-      filter: brightness(0.55) saturate(0.8);
-      transition: all 0.6s var(--ease);
-    }
-
-    .op-service-card:hover .op-service-card-image img {
-      filter: brightness(0.7) saturate(0.9); transform: scale(1.08);
-    }
-
-    .op-service-card-image::after {
-      content: ''; position: absolute; inset: 0;
-      background: linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.6) 100%);
-    }
-
-    .op-service-card-num {
-      position: absolute; top: 14px; right: 16px; z-index: 2;
-font-size: 32px; font-weight: 300;
-      background: var(--gradient-signature);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      background-clip: text; opacity: 0.3;
-    }
-
-    .op-service-card-content { padding: 28px; }
-
-    .op-service-card-dash {
-      width: 28px; height: 2px;
-      background: var(--gradient-signature); margin-bottom: 14px;
-      transition: width 0.4s var(--ease);
-    }
-
-    .op-service-card:hover .op-service-card-dash { width: 48px; }
-
-    .op-service-card-content h3 {
-font-size: 22px;
-      font-weight: 400; margin-bottom: 10px; line-height: 1.2;
-    }
-
-    .op-service-card-content p {
-      font-size: 13px; color: var(--text-muted);
-      line-height: 1.8; margin-bottom: 16px;
-    }
-
-    .op-service-card-link {
-font-size: 11px; font-weight: 600;
-text-transform: uppercase;
-      background: var(--gradient-signature);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .op-service-card-link::after { content: ' \2192'; }
-
-    @media (max-width: 1024px) {
-      .op-services-top { grid-template-columns: 1fr; }
-      .op-services-bottom { grid-template-columns: 1fr 1fr; }
-      .op-services { padding: 88px 0; }
-    }
-
-    @media (max-width: 768px) {
-      .op-services-top,
-      .op-services-bottom { grid-template-columns: 1fr; }
-      .op-services { padding: 64px 0; }
-      .op-service-card-content { padding: 22px; }
-    }
-
-    /* ═══ WHY THE 1% ═══ */
-    .why-op {
-      padding: 120px 0; border-top: 1px solid var(--border);
-      position: relative; overflow: hidden;
-    }
-
-    .why-op::before {
-      content: ''; position: absolute; inset: 0;
-      background:
-        radial-gradient(ellipse 40% 50% at 80% 20%, rgba(201,168,76,0.025) 0%, transparent 70%),
-        radial-gradient(ellipse 40% 50% at 10% 80%, rgba(201,168,76,0.02) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    .why-op-header {
-      text-align: center; margin-bottom: 64px;
-      position: relative; z-index: 1;
-    }
-
-    .why-op-header .eyebrow {
-      justify-content: center; margin-bottom: 20px;
-    }
-
-    .why-op-header .eyebrow::after {
-      content: ''; width: 40px; height: 1px;
-      background: var(--gradient-signature);
-    }
-
-    .why-op-header p {
-      font-size: 15px; color: var(--text-muted);
-      max-width: 520px; margin: 16px auto 0; line-height: 1.8;
-    }
-
-    .why-op-grid {
-      display: grid; grid-template-columns: repeat(4, 1fr);
-      gap: 0; border: 1px solid var(--border);
-      position: relative; z-index: 1;
-    }
-
-    .why-op-card {
-      padding: 40px 28px; border-right: 1px solid var(--border);
-      transition: all 0.4s var(--ease); position: relative;
-    }
-
-    .why-op-card:last-child { border-right: none; }
-
-    .why-op-card::after {
-      content: ''; position: absolute;
-      top: 0; left: 0; right: 0; height: 2px;
-      background: var(--gradient-signature);
-      transform: scaleX(0); transform-origin: left;
-      transition: transform 0.5s var(--ease);
-    }
-
-    .why-op-card:hover { background: var(--surface-hover); }
-    .why-op-card:hover::after { transform: scaleX(1); }
-
-    .why-op-num {
-font-size: 40px; font-weight: 300;
-      background: var(--gradient-signature);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      background-clip: text; opacity: 0.12; line-height: 1; margin-bottom: 20px;
-    }
-
-    .why-op-card h4 {
-font-size: 20px;
-      font-weight: 400; margin-bottom: 10px;
-    }
-
-    .why-op-card p { font-size: 13px; color: var(--text-muted); line-height: 1.75; }
-
-    @media (max-width: 1024px) {
-      .why-op-grid { grid-template-columns: repeat(2, 1fr); }
-      .why-op-card:nth-child(2) { border-right: none; }
-      .why-op-card:nth-child(3),
-      .why-op-card:nth-child(4) { border-top: 1px solid var(--border); }
-      .why-op { padding: 88px 0; }
-    }
-
-    @media (max-width: 768px) {
-      .why-op-grid { grid-template-columns: 1fr; }
-      .why-op-card { border-right: none; border-bottom: 1px solid var(--border); }
-      .why-op-card:last-child { border-bottom: none; }
-      .why-op { padding: 64px 0; }
-    }
-
-    /* ═══ PROCESS ═══ */
-    .op-process {
-      padding: 120px 0; border-top: 1px solid var(--border);
-      background: var(--charcoal);
-    }
-
-    .op-process-header {
-      text-align: center; margin-bottom: 64px;
-    }
-
-    .op-process-header .eyebrow {
-      justify-content: center; margin-bottom: 20px;
-    }
-
-    .op-process-header .eyebrow::after {
-      content: ''; width: 40px; height: 1px;
-      background: var(--gradient-signature);
-    }
-
-    .op-process-header p {
-      font-size: 15px; color: var(--text-muted);
-      max-width: 480px; margin: 16px auto 0; line-height: 1.8;
-    }
-
-    .op-process-grid {
-      display: grid; grid-template-columns: repeat(4, 1fr);
-      gap: 0; border: 1px solid var(--border); counter-reset: step;
-    }
-
-    .op-process-card {
-      padding: 40px 28px; border-right: 1px solid var(--border);
-      counter-increment: step; background: var(--black);
-      transition: all 0.4s var(--ease);
-    }
-
-    .op-process-card:last-child { border-right: none; }
-    .op-process-card:hover { background: var(--surface-hover); }
-
-    .op-process-card::before {
-      content: counter(step, decimal-leading-zero);
-font-size: 52px; font-weight: 300;
-      background: var(--gradient-signature);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      background-clip: text; display: block; margin-bottom: 24px; line-height: 1;
-    }
-
-    .op-process-dash {
-      width: 28px; height: 2px;
-      background: var(--gradient-signature); margin-bottom: 16px;
-      transition: width 0.4s var(--ease);
-    }
-
-    .op-process-card:hover .op-process-dash { width: 48px; }
-
-    .op-process-card h4 {
-font-size: 20px;
-      font-weight: 400; margin-bottom: 10px;
-    }
-
-    .op-process-card p { font-size: 13px; color: var(--text-muted); line-height: 1.75; }
-
-    @media (max-width: 1024px) {
-      .op-process-grid { grid-template-columns: repeat(2, 1fr); }
-      .op-process-card:nth-child(2) { border-right: none; }
-      .op-process-card:nth-child(3),
-      .op-process-card:nth-child(4) { border-top: 1px solid var(--border); }
-      .op-process { padding: 88px 0; }
-    }
-
-    @media (max-width: 768px) {
-      .op-process-grid { grid-template-columns: 1fr; }
-      .op-process-card { border-right: none; border-bottom: 1px solid var(--border); }
-      .op-process-card:last-child { border-bottom: none; }
-      .op-process { padding: 64px 0; }
-    }
-
-    /* ═══ SOVEREIGNTY / FIRST CLASS CITIZEN ═══ */
-    .op-sovereignty {
-      padding: 120px 0; border-top: 1px solid var(--border); position: relative; overflow: hidden;
-    }
-    .op-sovereignty::before {
-      content: ''; position: absolute; inset: 0;
-      background: radial-gradient(ellipse 60% 50% at 30% 50%, rgba(201,168,76,0.03) 0%, transparent 70%);
-      pointer-events: none;
-    }
-    .op-sovereignty-grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
-    }
-    .op-sovereignty-text .eyebrow { margin-bottom: 20px; }
-    .op-sovereignty-text h2 { font-size: clamp(28px, 3.5vw, 44px); font-weight: 300; margin-bottom: 20px; line-height: 1.15; }
-    .op-sovereignty-text p { font-size: 15px; color: var(--text-muted); line-height: 1.85; margin-bottom: 16px; }
-    .op-sovereignty-features {
-      display: flex; flex-direction: column; gap: 16px; margin: 24px 0;
-    }
-    .op-sovereignty-feature {
-      display: flex; align-items: flex-start; gap: 14px;
-      padding: 16px 20px; border: 1px solid var(--border);
-      transition: all 0.4s ease;
-    }
-    .op-sovereignty-feature:hover {
-      border-color: rgba(201,168,76,0.2);
-      background: rgba(201,168,76,0.02);
-    }
-    .op-sovereignty-feature-icon {
-      font-size: 18px; color: var(--gold); flex-shrink: 0; margin-top: 2px;
-    }
-    .op-sovereignty-feature h5 {
-font-size: 16px; font-weight: 400;
-      margin-bottom: 4px;
-    }
-    .op-sovereignty-feature p { font-size: 13px; margin-bottom: 0; }
-    .op-sovereignty-brand {
-      display: inline-flex; align-items: center; gap: 12px; margin-top: 20px;
-font-size: 11px; font-weight: 600;
-text-transform: uppercase; color: var(--gold);
-      transition: color var(--transition);
-    }
-    .op-sovereignty-brand:hover { color: var(--orange); }
-    .op-sovereignty-brand-line { width: 40px; height: 1px; background: var(--gradient-signature); }
-    .op-sovereignty-visual { position: relative; aspect-ratio: 3/4; overflow: hidden; }
-    .op-sovereignty-visual img {
-      width: 100%; height: 100%; object-fit: cover;
-      filter: brightness(0.8) saturate(0.9);
-      transition: transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
-    }
-    .op-sovereignty-visual:hover img { transform: scale(1.04); }
-    .op-sovereignty-visual::after {
-      content: ''; position: absolute; bottom: 0; left: 0; right: 0;
-      height: 3px; background: var(--gradient-signature);
-    }
-    @media (max-width: 1024px) {
-      .op-sovereignty-grid { grid-template-columns: 1fr; gap: 48px; }
-      .op-sovereignty-visual { max-width: 420px; aspect-ratio: 16/10; }
-      .op-sovereignty { padding: 88px 0; }
-    }
-    @media (max-width: 768px) { .op-sovereignty { padding: 64px 0; } }
-
     /* ═══ CTA ═══ */
     .op-cta {
       padding: 100px 0; text-align: center; position: relative;
@@ -487,61 +72,93 @@ text-transform: uppercase; color: var(--gold);
 
     @media (max-width: 768px) { .op-cta { padding: 64px 0; } }
   </style>
+  <link rel="stylesheet" href="../css/op.css?v=9b61b6ef75">
   <!-- Typography: last in <head> so its roles win -->
-  <link rel="stylesheet" href="../css/type.css?v=9e12097c94">
+  <link rel="stylesheet" href="../css/type.css?v=e9db95c20c">
   <!-- Motion: gsap and lenis from js/vendor/, then js/site.js. All deferred. -->
   <link rel="stylesheet" href="../js/vendor/lenis.css?v=2f668ae84a">
   <link rel="stylesheet" href="../css/motion-text.css?v=23df00290c">
+  <link rel="stylesheet" href="../css/nav-overlay.css?v=52ce44256f">
   <link rel="stylesheet" href="../css/site-motion.css?v=4cd428eb65">
   <script defer src="../js/vendor/gsap.min.js?v=92bb9a9647"></script>
   <script defer src="../js/vendor/ScrollTrigger.min.js?v=b0b14d67b5"></script>
   <script defer src="../js/vendor/CustomEase.min.js?v=466e426a5c"></script>
   <script defer src="../js/vendor/SplitText.min.js?v=419f7027a5"></script>
   <script defer src="../js/vendor/lenis.min.js?v=53195c9797"></script>
-  <script type="module" src="../js/site.js?v=2795404393"></script>
+  <!-- The page module runs before site.js, so its hero copy is set up before any
+       shared scope opens the motion gate. -->
+  <script type="module" src="../js/pages/one-percent.js?v=a739663ad4"></script>
+  <script type="module" src="../js/site.js?v=d48def59f5"></script>
 </head>
-<body>
+<body class="has-overlay-nav op-page">
 
   <main>
 
-    <!-- ═══ HERO ═══ -->
+    <!-- ═══ HERO ═══
+         "The 1%" is drawn as the page's loader and glides into the eyebrow; then the
+         heading's gold-leaf sweep, the description written on, the pills rising
+         (mark-intro.js). The inline script in <head> picks full / quick / none. -->
     <section class="op-hero">
+      <div class="op-mark" data-mark-overlay aria-hidden="true">
+        <div class="op-mark-curtain"></div>
+        <div class="op-mark-ink">
+          <svg class="mark-svg" viewBox="-20 -1510 6007 1580" aria-hidden="true" focusable="false">
+            <path class="mark-glyph" pathLength="1" d="M548.0 0V-1356H20.0V-1440H1160.0V-1356H632.0V0Z"/>
+            <path class="mark-glyph" pathLength="1" d="M2032.0 0V-572Q2032.0 -688 2008.5 -772.5Q1985.0 -857 1939.0 -912.5Q1893.0 -968 1827.5 -995.0Q1762.0 -1022 1678.0 -1022Q1579.0 -1022 1509.5 -987.5Q1440.0 -953 1397.0 -893.0Q1354.0 -833 1334.0 -755.0Q1314.0 -677 1314.0 -590L1236.0 -588Q1236.0 -773 1297.0 -886.5Q1358.0 -1000 1458.5 -1052.0Q1559.0 -1104 1678.0 -1104Q1760.0 -1104 1828.5 -1081.0Q1897.0 -1058 1950.5 -1014.5Q2004.0 -971 2041.0 -908.0Q2078.0 -845 2097.0 -764.5Q2116.0 -684 2116.0 -588V0ZM1230.0 0V-1440H1308.0V-590H1314.0V0Z"/>
+            <path class="mark-glyph" pathLength="1" d="M2720.0 30Q2567.0 30 2456.5 -39.0Q2346.0 -108 2286.0 -236.0Q2226.0 -364 2226.0 -540Q2226.0 -717 2285.5 -845.0Q2345.0 -973 2455.5 -1041.5Q2566.0 -1110 2720.0 -1110Q2875.0 -1110 2985.0 -1040.0Q3095.0 -970 3153.5 -837.0Q3212.0 -704 3212.0 -516H3122.0V-544Q3116.0 -777 3012.5 -901.5Q2909.0 -1026 2720.0 -1026Q2528.0 -1026 2422.0 -898.5Q2316.0 -771 2316.0 -540Q2316.0 -309 2422.0 -181.5Q2528.0 -54 2720.0 -54Q2854.0 -54 2955.0 -117.0Q3056.0 -180 3116.0 -298L3186.0 -258Q3120.0 -120 2999.0 -45.0Q2878.0 30 2720.0 30ZM2280.0 -516V-600H3160.0V-516Z"/>
+            <path class="mark-glyph is-strong" pathLength="1" d="M3902.6666259765625 0.0V-1209.9959716796875L3632.0 -1045.3292236328125V-1278L3902.6666259765625 -1440.0H4116.00390625V0.0Z"/>
+            <path class="mark-glyph is-strong" pathLength="1" d="M4586.00244140625 0.0 4446.0 -140.00244140625 5747.330810546875 -1440.0 5887.333251953125 -1299.330810546875ZM5587.333251953125 30.0Q5488.333251953125 30.0 5406.833251953125 -18.5Q5325.333251953125 -67.0 5276.333251953125 -148.5Q5227.333251953125 -230.0 5227.333251953125 -330.0Q5227.333251953125 -428.0 5277.333251953125 -510.0Q5327.333251953125 -592.0 5409.333251953125 -641.0Q5491.333251953125 -690.0 5587.333251953125 -690.0Q5686.333251953125 -690.0 5768.333251953125 -641.5Q5850.333251953125 -593.0 5898.833251953125 -511.5Q5947.333251953125 -430.0 5947.333251953125 -330.0Q5947.333251953125 -230.0 5898.833251953125 -148.5Q5850.333251953125 -67.0 5768.333251953125 -18.5Q5686.333251953125 30.0 5587.333251953125 30.0ZM5587.2120361328125 -151.3363037109375Q5635.665771484375 -151.3363037109375 5676.331756591797 -175.83590698242188Q5716.997741699219 -200.33551025390625 5741.497344970703 -240.9652623715608Q5765.9969482421875 -281.5950144892154 5765.9969482421875 -329.9637670102327Q5765.9969482421875 -378.33251953125 5741.497344970703 -418.9985046386719Q5716.997741699219 -459.66448974609375 5676.367989581564 -484.1640930175781Q5635.738237463909 -508.6636962890625 5587.369484942892 -508.6636962890625Q5539.000732421875 -508.6636962890625 5498.501403808594 -484.1640930175781Q5458.0020751953125 -459.66448974609375 5433.3358154296875 -419.0347376284392Q5408.6695556640625 -378.4049855107846 5408.6695556640625 -330.0362329897673Q5408.6695556640625 -281.66748046875 5433.3358154296875 -241.00149536132812Q5458.0020751953125 -200.33551025390625 5498.380187988281 -175.83590698242188Q5538.75830078125 -151.3363037109375 5587.2120361328125 -151.3363037109375ZM4746.0 -750Q4647.0 -750 4565.0 -798.5Q4483.0 -847 4434.5 -928.5Q4386.0 -1010 4386.0 -1110Q4386.0 -1208 4436.0 -1290.0Q4486.0 -1372 4568.0 -1421.0Q4650.0 -1470 4746.0 -1470Q4845.0 -1470 4926.5 -1421.5Q5008.0 -1373 5057.0 -1291.5Q5106.0 -1210 5106.0 -1110Q5106.0 -1010 5057.0 -928.5Q5008.0 -847 4926.5 -798.5Q4845.0 -750 4746.0 -750ZM4745.8787841796875 -931.3363037109375Q4794.33251953125 -931.3363037109375 4834.998504638672 -955.8359069824219Q4875.664489746094 -980.3355102539062 4900.164093017578 -1020.9652623715608Q4924.6636962890625 -1061.5950144892154 4924.6636962890625 -1109.9637670102327Q4924.6636962890625 -1158.33251953125 4900.164093017578 -1198.9985046386719Q4875.664489746094 -1239.6644897460938 4835.034737628439 -1264.1640930175781Q4794.404985510784 -1288.6636962890625 4746.036232989767 -1288.6636962890625Q4697.66748046875 -1288.6636962890625 4657.168151855469 -1264.1640930175781Q4616.6688232421875 -1239.6644897460938 4592.0025634765625 -1199.0347376284392Q4567.3363037109375 -1158.4049855107846 4567.3363037109375 -1110.0362329897673Q4567.3363037109375 -1061.66748046875 4592.0025634765625 -1021.0014953613281Q4616.6688232421875 -980.3355102539062 4657.046936035156 -955.8359069824219Q4697.425048828125 -931.3363037109375 4745.8787841796875 -931.3363037109375Z"/>
+          </svg>
+        </div>
+        <span class="op-mark-skip">Click or scroll to skip</span>
+      </div>
       <div class="op-hero-bg">
-        <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?w=1200&amp;q=80&amp;auto=format&amp;fit=crop"
-             alt="Ultra-luxury superyacht anchored in exclusive Monaco harbour at golden hour"
-             loading="eager">
+        <img data-hero-photo src="../img/photos/motor-yacht-coastline-1920.webp"
+             alt="A motor yacht at anchor on still water at golden hour"
+             width="1920" height="1280" fetchpriority="high">
       </div>
       <div class="op-hero-overlay"></div>
       <div class="op-hero-content container">
-        <div class="eyebrow fade-up">The 1%</div>
-        <h1 class="fade-up fade-up-d1">Exclusive <em>Investments</em></h1>
-        <p class="op-hero-desc fade-up fade-up-d2">
-          Ultra-premium alternative investment advisory across marinas,
+        <div class="op-hero-copy" data-hero-copy>
+          <div class="op-hero-mark" data-mark-target data-motion-hide>
+            <svg class="mark-svg" viewBox="-20 -1510 6007 1580" aria-hidden="true" focusable="false">
+              <path class="mark-glyph" pathLength="1" d="M548.0 0V-1356H20.0V-1440H1160.0V-1356H632.0V0Z"/>
+              <path class="mark-glyph" pathLength="1" d="M2032.0 0V-572Q2032.0 -688 2008.5 -772.5Q1985.0 -857 1939.0 -912.5Q1893.0 -968 1827.5 -995.0Q1762.0 -1022 1678.0 -1022Q1579.0 -1022 1509.5 -987.5Q1440.0 -953 1397.0 -893.0Q1354.0 -833 1334.0 -755.0Q1314.0 -677 1314.0 -590L1236.0 -588Q1236.0 -773 1297.0 -886.5Q1358.0 -1000 1458.5 -1052.0Q1559.0 -1104 1678.0 -1104Q1760.0 -1104 1828.5 -1081.0Q1897.0 -1058 1950.5 -1014.5Q2004.0 -971 2041.0 -908.0Q2078.0 -845 2097.0 -764.5Q2116.0 -684 2116.0 -588V0ZM1230.0 0V-1440H1308.0V-590H1314.0V0Z"/>
+              <path class="mark-glyph" pathLength="1" d="M2720.0 30Q2567.0 30 2456.5 -39.0Q2346.0 -108 2286.0 -236.0Q2226.0 -364 2226.0 -540Q2226.0 -717 2285.5 -845.0Q2345.0 -973 2455.5 -1041.5Q2566.0 -1110 2720.0 -1110Q2875.0 -1110 2985.0 -1040.0Q3095.0 -970 3153.5 -837.0Q3212.0 -704 3212.0 -516H3122.0V-544Q3116.0 -777 3012.5 -901.5Q2909.0 -1026 2720.0 -1026Q2528.0 -1026 2422.0 -898.5Q2316.0 -771 2316.0 -540Q2316.0 -309 2422.0 -181.5Q2528.0 -54 2720.0 -54Q2854.0 -54 2955.0 -117.0Q3056.0 -180 3116.0 -298L3186.0 -258Q3120.0 -120 2999.0 -45.0Q2878.0 30 2720.0 30ZM2280.0 -516V-600H3160.0V-516Z"/>
+              <path class="mark-glyph is-strong" pathLength="1" d="M3902.6666259765625 0.0V-1209.9959716796875L3632.0 -1045.3292236328125V-1278L3902.6666259765625 -1440.0H4116.00390625V0.0Z"/>
+              <path class="mark-glyph is-strong" pathLength="1" d="M4586.00244140625 0.0 4446.0 -140.00244140625 5747.330810546875 -1440.0 5887.333251953125 -1299.330810546875ZM5587.333251953125 30.0Q5488.333251953125 30.0 5406.833251953125 -18.5Q5325.333251953125 -67.0 5276.333251953125 -148.5Q5227.333251953125 -230.0 5227.333251953125 -330.0Q5227.333251953125 -428.0 5277.333251953125 -510.0Q5327.333251953125 -592.0 5409.333251953125 -641.0Q5491.333251953125 -690.0 5587.333251953125 -690.0Q5686.333251953125 -690.0 5768.333251953125 -641.5Q5850.333251953125 -593.0 5898.833251953125 -511.5Q5947.333251953125 -430.0 5947.333251953125 -330.0Q5947.333251953125 -230.0 5898.833251953125 -148.5Q5850.333251953125 -67.0 5768.333251953125 -18.5Q5686.333251953125 30.0 5587.333251953125 30.0ZM5587.2120361328125 -151.3363037109375Q5635.665771484375 -151.3363037109375 5676.331756591797 -175.83590698242188Q5716.997741699219 -200.33551025390625 5741.497344970703 -240.9652623715608Q5765.9969482421875 -281.5950144892154 5765.9969482421875 -329.9637670102327Q5765.9969482421875 -378.33251953125 5741.497344970703 -418.9985046386719Q5716.997741699219 -459.66448974609375 5676.367989581564 -484.1640930175781Q5635.738237463909 -508.6636962890625 5587.369484942892 -508.6636962890625Q5539.000732421875 -508.6636962890625 5498.501403808594 -484.1640930175781Q5458.0020751953125 -459.66448974609375 5433.3358154296875 -419.0347376284392Q5408.6695556640625 -378.4049855107846 5408.6695556640625 -330.0362329897673Q5408.6695556640625 -281.66748046875 5433.3358154296875 -241.00149536132812Q5458.0020751953125 -200.33551025390625 5498.380187988281 -175.83590698242188Q5538.75830078125 -151.3363037109375 5587.2120361328125 -151.3363037109375ZM4746.0 -750Q4647.0 -750 4565.0 -798.5Q4483.0 -847 4434.5 -928.5Q4386.0 -1010 4386.0 -1110Q4386.0 -1208 4436.0 -1290.0Q4486.0 -1372 4568.0 -1421.0Q4650.0 -1470 4746.0 -1470Q4845.0 -1470 4926.5 -1421.5Q5008.0 -1373 5057.0 -1291.5Q5106.0 -1210 5106.0 -1110Q5106.0 -1010 5057.0 -928.5Q5008.0 -847 4926.5 -798.5Q4845.0 -750 4746.0 -750ZM4745.8787841796875 -931.3363037109375Q4794.33251953125 -931.3363037109375 4834.998504638672 -955.8359069824219Q4875.664489746094 -980.3355102539062 4900.164093017578 -1020.9652623715608Q4924.6636962890625 -1061.5950144892154 4924.6636962890625 -1109.9637670102327Q4924.6636962890625 -1158.33251953125 4900.164093017578 -1198.9985046386719Q4875.664489746094 -1239.6644897460938 4835.034737628439 -1264.1640930175781Q4794.404985510784 -1288.6636962890625 4746.036232989767 -1288.6636962890625Q4697.66748046875 -1288.6636962890625 4657.168151855469 -1264.1640930175781Q4616.6688232421875 -1239.6644897460938 4592.0025634765625 -1199.0347376284392Q4567.3363037109375 -1158.4049855107846 4567.3363037109375 -1110.0362329897673Q4567.3363037109375 -1061.66748046875 4592.0025634765625 -1021.0014953613281Q4616.6688232421875 -980.3355102539062 4657.046936035156 -955.8359069824219Q4697.425048828125 -931.3363037109375 4745.8787841796875 -931.3363037109375Z"/>
+            </svg>
+            <span class="sr-only">The 1%</span>
+          </div>
+          <h1 data-sweep data-motion-hide>Exclusive <em>Investments</em></h1>
+          <p class="op-hero-desc" data-ink-lines data-motion-hide>
+            Ultra-premium alternative investment advisory across marinas,
           superyachts, golf resorts, and citizenship by investment programs
           for the world's most discerning investors.
-        </p>
-        <div class="op-hero-pills fade-up fade-up-d3">
-          <a href="#investments" class="op-hero-pill">Investments</a>
-          <a href="#marina" class="op-hero-pill">Marina</a>
-          <a href="#yachts" class="op-hero-pill">Yachts</a>
-          <a href="#golf" class="op-hero-pill">Golf</a>
-          <a href="cbi.html" class="op-hero-pill">CBI</a>
+          </p>
+          <div class="op-hero-pills" data-rise data-motion-hide>
+            <a href="#investments" class="op-hero-pill">Investments</a>
+            <a href="#marina" class="op-hero-pill">Marina</a>
+            <a href="#yachts" class="op-hero-pill">Yachts</a>
+            <a href="#golf" class="op-hero-pill">Golf</a>
+            <a href="cbi.html" class="op-hero-pill">CBI</a>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- ═══ INTRO ═══ -->
+    <!-- ═══ THE DIVISION ═══
+         The photo comes out of frosted glass; a gold highlighter marks a phrase (frost.js). -->
     <section class="op-intro">
       <div class="container">
         <div class="op-intro-grid">
 
-          <div class="op-intro-text reveal">
+          <div class="op-intro-text">
             <div class="eyebrow">The Division</div>
             <h2>Where Exclusivity Meets <em>Strategy</em></h2>
             <p>
               The 1% is El-Global's exclusive investments division, dedicated to
-              ultra-premium alternative asset classes that sit beyond traditional
-              portfolios. We advise clients on acquiring, structuring, and
+              ultra-premium alternative asset classes that sit <span class="op-hl" data-highlight>beyond traditional portfolios</span>. We advise clients on acquiring, structuring, and
               managing investments in assets that define the pinnacle of wealth.
             </p>
             <p>
@@ -554,37 +171,37 @@ text-transform: uppercase; color: var(--gold);
             <a href="enquiry.html" class="btn btn-ghost">Make an Enquiry</a>
           </div>
 
-          <div class="op-intro-image reveal reveal-delay-2">
-            <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?w=800&amp;q=80&amp;auto=format&amp;fit=crop"
-                 alt="Exclusive private members club with elegant interiors and ocean panorama"
-                 loading="lazy">
-          </div>
+          <figure class="op-intro-image" data-frost>
+            <img src="../img/photos/overwater-bungalow-resort-900.webp"
+                 alt="A private members' deck: loungers and parasols beside an infinity pool and the sea"
+                 width="900" height="1125" loading="lazy" decoding="async">
+          </figure>
 
         </div>
       </div>
     </section>
 
-    <!-- ═══ SERVICES ═══ -->
+    <!-- ═══ SERVICES ═══
+         Expanding strips on wide screens: the open strip shows its photo and copy, the
+         others their names; scroll, pointer and clicks choose (strips.js). -->
     <section class="op-services">
       <div class="container">
 
-        <div class="op-services-header reveal">
+        <div class="op-head op-services-header">
           <div class="eyebrow">Our Services</div>
           <h2>What The 1% <em>Offers</em></h2>
           <p>Five exclusive advisory verticals covering the most prestigious alternative asset classes in the world.</p>
         </div>
 
-        <!-- Top row: 2 large -->
-        <div class="op-services-top">
-
-          <!-- Exclusive Investments -->
-          <a href="investments.html" class="op-service-card reveal" id="investments">
+        <div class="op-strips" data-strips>
+          <a href="investments.html" class="op-service-card" id="investments" data-strip>
             <div class="op-service-card-image">
-              <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&amp;q=80&amp;auto=format&amp;fit=crop"
-                   alt="Ultra-luxury modern villa with infinity pool overlooking the sea"
-                   loading="lazy">
-              <span class="op-service-card-num">01</span>
+              <img src="../img/photos/modern-villa-pool-1100.webp"
+                   alt="A modern villa with a long infinity pool"
+                   width="1100" height="733" loading="lazy" decoding="async">
             </div>
+            <span class="op-service-card-num">01</span>
+            <span class="op-strip-title" aria-hidden="true">Exclusive Investments</span>
             <div class="op-service-card-content">
               <div class="op-service-card-dash"></div>
               <h3>Exclusive Investments</h3>
@@ -592,15 +209,14 @@ text-transform: uppercase; color: var(--gold);
               <span class="op-service-card-link">Learn More</span>
             </div>
           </a>
-
-          <!-- Marina Acquisitions -->
-          <a href="yacht-marina-deals.html" class="op-service-card reveal reveal-delay-1" id="marina">
+          <a href="yacht-marina-deals.html" class="op-service-card" id="marina" data-strip>
             <div class="op-service-card-image">
-              <img src="https://images.unsplash.com/photo-1544551763-77ef2d0cfc6c?w=800&amp;q=80&amp;auto=format&amp;fit=crop"
-                   alt="Exclusive marina with superyachts moored along pristine Mediterranean waterfront"
-                   loading="lazy">
-              <span class="op-service-card-num">02</span>
+              <img src="../img/photos/marina-dusk-1100.webp"
+                   alt="A marina at dusk, yachts moored beneath waterfront residences"
+                   width="1100" height="733" loading="lazy" decoding="async">
             </div>
+            <span class="op-service-card-num">02</span>
+            <span class="op-strip-title" aria-hidden="true">Marina Acquisitions</span>
             <div class="op-service-card-content">
               <div class="op-service-card-dash"></div>
               <h3>Marina Acquisitions</h3>
@@ -608,20 +224,14 @@ text-transform: uppercase; color: var(--gold);
               <span class="op-service-card-link">Learn More</span>
             </div>
           </a>
-
-        </div>
-
-        <!-- Bottom row: 3 -->
-        <div class="op-services-bottom">
-
-          <!-- Yacht Acquisition -->
-          <a href="yacht-marina-deals.html" class="op-service-card reveal" id="yachts">
+          <a href="yacht-marina-deals.html" class="op-service-card" id="yachts" data-strip>
             <div class="op-service-card-image">
-              <img src="https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?w=800&amp;q=80&amp;auto=format&amp;fit=crop"
-                   alt="Magnificent superyacht cruising through azure Mediterranean waters"
-                   loading="lazy">
-              <span class="op-service-card-num">03</span>
+              <img src="../img/photos/superyacht-green-bay-1100.webp"
+                   alt="A superyacht at anchor in a green bay"
+                   width="1100" height="733" loading="lazy" decoding="async">
             </div>
+            <span class="op-service-card-num">03</span>
+            <span class="op-strip-title" aria-hidden="true">Yacht Acquisition</span>
             <div class="op-service-card-content">
               <div class="op-service-card-dash"></div>
               <h3>Yacht Acquisition</h3>
@@ -629,15 +239,14 @@ text-transform: uppercase; color: var(--gold);
               <span class="op-service-card-link">Learn More</span>
             </div>
           </a>
-
-          <!-- Golf Resort -->
-          <a href="golf.html" class="op-service-card reveal reveal-delay-1" id="golf">
+          <a href="golf.html" class="op-service-card" id="golf" data-strip>
             <div class="op-service-card-image">
-              <img src="https://images.unsplash.com/photo-1535131749006-b7f58c99034b?w=800&amp;q=80&amp;auto=format&amp;fit=crop"
-                   alt="Championship golf course with pristine emerald greens and luxury clubhouse"
-                   loading="lazy">
-              <span class="op-service-card-num">04</span>
+              <img src="../img/photos/golfer-swing-1100.webp"
+                   alt="A golfer mid-swing on a tree-lined fairway"
+                   width="1100" height="733" loading="lazy" decoding="async">
             </div>
+            <span class="op-service-card-num">04</span>
+            <span class="op-strip-title" aria-hidden="true">Golf Resort Acquisition</span>
             <div class="op-service-card-content">
               <div class="op-service-card-dash"></div>
               <h3>Golf Resort Acquisition</h3>
@@ -645,15 +254,14 @@ text-transform: uppercase; color: var(--gold);
               <span class="op-service-card-link">Learn More</span>
             </div>
           </a>
-
-          <!-- CBI -->
-          <a href="cbi.html" class="op-service-card reveal reveal-delay-2">
+          <a href="cbi.html" class="op-service-card" data-strip>
             <div class="op-service-card-image">
-              <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&amp;q=80&amp;auto=format&amp;fit=crop"
-                   alt="Premium luxury residence with grand architecture representing elite citizenship investment"
-                   loading="lazy">
-              <span class="op-service-card-num">05</span>
+              <img src="../img/photos/luxury-living-room-1100.webp"
+                   alt="A bright modern living room in a luxury residence"
+                   width="1100" height="733" loading="lazy" decoding="async">
             </div>
+            <span class="op-service-card-num">05</span>
+            <span class="op-strip-title" aria-hidden="true">Citizenship by Investment</span>
             <div class="op-service-card-content">
               <div class="op-service-card-dash"></div>
               <h3>Citizenship by Investment</h3>
@@ -661,75 +269,99 @@ text-transform: uppercase; color: var(--gold);
               <span class="op-service-card-link">Explore CBI</span>
             </div>
           </a>
-
         </div>
       </div>
     </section>
 
-    <!-- ═══ WHY THE 1% ═══ -->
+    <!-- ═══ WHY THE 1% ═══
+         One in a hundred: a field of dots, then ninety-nine dim and one glows gold; the
+         reasons draw their rules and rise (one-in-hundred.js). -->
     <section class="why-op">
       <div class="container">
 
-        <div class="why-op-header reveal">
+        <div class="op-head why-op-header">
           <div class="eyebrow">Why The 1%</div>
           <h2>The 1% <em>Advantage</em></h2>
           <p>What makes our exclusive advisory different from anything else in the market.</p>
         </div>
 
-        <div class="why-op-grid">
-          <div class="why-op-card reveal">
-            <div class="why-op-num">01</div>
-            <h4>Access to the Inaccessible</h4>
-            <p>Our network unlocks opportunities that never reach the market. Off-market yachts, private marina deals, and invitation-only CBI programs.</p>
+        <div class="op-why-grid">
+          <div class="op-dots-col">
+            <div class="op-dots" data-dots aria-hidden="true"></div>
+            <p class="op-dots-caption"><b>1</b> in a hundred</p>
           </div>
-          <div class="why-op-card reveal reveal-delay-1">
-            <div class="why-op-num">02</div>
-            <h4>Asset-Class Expertise</h4>
-            <p>Deep specialization in each alternative asset class. Our advisors are specialists, not generalists, with decades of combined sector experience.</p>
-          </div>
-          <div class="why-op-card reveal reveal-delay-2">
-            <div class="why-op-num">03</div>
-            <h4>Integrated Portfolio View</h4>
-            <p>Every exclusive asset is evaluated in context of your total portfolio. We optimize for diversification, tax efficiency, and long-term wealth preservation.</p>
-          </div>
-          <div class="why-op-card reveal reveal-delay-3">
-            <div class="why-op-num">04</div>
-            <h4>White-Glove Service</h4>
-            <p>Complete concierge-level advisory from initial interest through acquisition, management, and eventual disposition. Nothing is left to chance.</p>
-          </div>
+          <ul class="why-op-list">
+            <li class="why-op-card" data-dots-item>
+              <span class="why-op-rule" aria-hidden="true"></span>
+              <div class="why-op-num">01</div>
+              <h4>Access to the Inaccessible</h4>
+              <p>Our network unlocks opportunities that never reach the market. Off-market yachts, private marina deals, and invitation-only CBI programs.</p>
+            </li>
+            <li class="why-op-card" data-dots-item>
+              <span class="why-op-rule" aria-hidden="true"></span>
+              <div class="why-op-num">02</div>
+              <h4>Asset-Class Expertise</h4>
+              <p>Deep specialization in each alternative asset class. Our advisors are specialists, not generalists, with decades of combined sector experience.</p>
+            </li>
+            <li class="why-op-card" data-dots-item>
+              <span class="why-op-rule" aria-hidden="true"></span>
+              <div class="why-op-num">03</div>
+              <h4>Integrated Portfolio View</h4>
+              <p>Every exclusive asset is evaluated in context of your total portfolio. We optimize for diversification, tax efficiency, and long-term wealth preservation.</p>
+            </li>
+            <li class="why-op-card" data-dots-item>
+              <span class="why-op-rule" aria-hidden="true"></span>
+              <div class="why-op-num">04</div>
+              <h4>White-Glove Service</h4>
+              <p>Complete concierge-level advisory from initial interest through acquisition, management, and eventual disposition. Nothing is left to chance.</p>
+            </li>
+          </ul>
         </div>
 
       </div>
     </section>
 
-    <!-- ═══ PROCESS ═══ -->
+    <!-- ═══ PROCESS ═══
+         A gold ring closes round each step's number as it scrolls in (rings.js). -->
     <section class="op-process">
       <div class="container">
 
-        <div class="op-process-header reveal">
+        <div class="op-head op-process-header">
           <div class="eyebrow">How It Works</div>
           <h2>Our <em>Process</em></h2>
           <p>From first conversation to asset management, a structured approach built for exclusivity.</p>
         </div>
 
-        <div class="op-process-grid">
-          <div class="op-process-card reveal">
-            <div class="op-process-dash"></div>
+        <div class="op-process-grid" data-rings>
+          <div class="op-process-card" data-ring-step>
+            <div class="op-ring" aria-hidden="true">
+              <svg viewBox="0 0 64 64"><circle class="op-ring-track" cx="32" cy="32" r="29"/><circle class="op-ring-fill" cx="32" cy="32" r="29" pathLength="1"/></svg>
+              <span>01</span>
+            </div>
             <h4>Private Briefing</h4>
             <p>A confidential conversation to understand your interests, investment capacity, and objectives across alternative asset classes.</p>
           </div>
-          <div class="op-process-card reveal reveal-delay-1">
-            <div class="op-process-dash"></div>
+          <div class="op-process-card" data-ring-step>
+            <div class="op-ring" aria-hidden="true">
+              <svg viewBox="0 0 64 64"><circle class="op-ring-track" cx="32" cy="32" r="29"/><circle class="op-ring-fill" cx="32" cy="32" r="29" pathLength="1"/></svg>
+              <span>02</span>
+            </div>
             <h4>Opportunity Curation</h4>
             <p>We curate a shortlist of exclusive opportunities tailored to your profile, including market analysis, valuation, and risk assessment.</p>
           </div>
-          <div class="op-process-card reveal reveal-delay-2">
-            <div class="op-process-dash"></div>
+          <div class="op-process-card" data-ring-step>
+            <div class="op-ring" aria-hidden="true">
+              <svg viewBox="0 0 64 64"><circle class="op-ring-track" cx="32" cy="32" r="29"/><circle class="op-ring-fill" cx="32" cy="32" r="29" pathLength="1"/></svg>
+              <span>03</span>
+            </div>
             <h4>Acquisition</h4>
             <p>Full transaction management including due diligence, legal structuring, negotiation, and closing with complete confidentiality.</p>
           </div>
-          <div class="op-process-card reveal reveal-delay-3">
-            <div class="op-process-dash"></div>
+          <div class="op-process-card" data-ring-step>
+            <div class="op-ring" aria-hidden="true">
+              <svg viewBox="0 0 64 64"><circle class="op-ring-track" cx="32" cy="32" r="29"/><circle class="op-ring-fill" cx="32" cy="32" r="29" pathLength="1"/></svg>
+              <span>04</span>
+            </div>
             <h4>Asset Stewardship</h4>
             <p>Ongoing management advisory, performance monitoring, charter revenue optimization, and strategic exit planning when the time is right.</p>
           </div>
@@ -742,11 +374,11 @@ text-transform: uppercase; color: var(--gold);
     <section class="op-cta">
       <div class="container reveal">
         <div class="eyebrow">Get Started</div>
-        <h2>Ready to Join <em>The 1%</em>?</h2>
+        <h2 data-sweep data-sweep-enter data-own-motion>Ready to Join <em>The 1%</em>?</h2>
         <p>Connect with our exclusive investments team to explore ultra-premium opportunities tailored to your portfolio.</p>
         <div class="btn-row">
-          <a href="enquiry.html" class="btn btn-primary btn-lg">Make an Enquiry</a>
-          <a href="../contact.html" class="btn btn-outline btn-lg">Book a Consultation</a>
+          <span class="magnet" data-magnetic><a href="enquiry.html" class="btn btn-primary btn-lg">Make an Enquiry</a></span>
+          <span class="magnet" data-magnetic><a href="../contact.html" class="btn btn-outline btn-lg">Book a Consultation</a></span>
         </div>
       </div>
     </section>

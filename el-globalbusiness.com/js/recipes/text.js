@@ -38,6 +38,10 @@ export function textReveal(scope, env) {
           stagger: MOTION.stagger.loose,
           paused: true,
           lazy: false,
+          // Once the lines have landed, put the heading back as plain text: the line masks
+          // clip descenders (g, y) at the headings' tight line height, and plain text
+          // reflows on resize.
+          onComplete: () => split.revert(),
         })),
     });
     ScrollTrigger.create({ trigger: el, start: 'top 88%', once: true, onEnter: () => tween?.play() });

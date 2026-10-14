@@ -5,6 +5,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script>document.documentElement.classList.add('js');</script>
+  <!-- Motion gate (docs/web-motion-engine.md 5.2): hides intro elements until GSAP has them,
+       and shows them anyway after 2.5 seconds if motion never arrives. -->
+  <script>
+    (function (d, w) {
+      d.classList.add('motion-pending');
+      w.__motionFailsafe = setTimeout(function () {
+        w.__motionShown = new WeakSet(document.querySelectorAll('[data-motion-hide]'));
+        d.classList.remove('motion-pending');
+      }, 2500);
+    })(document.documentElement, window);
+  </script>
   <title>El&Rock — M&A Advisory | El-Global Business</title>
   <meta name="description" content="El&Rock is El-Global's mergers and acquisitions advisory division. Sell-side, buy-side, due diligence, deal structuring, and post-merger integration.">
   <meta property="og:title" content="El&Rock — M&A Advisory | El-Global Business">
@@ -12,18 +23,7 @@
   <link rel="stylesheet" href="../css/style.css?v=269e500d2c">
   <link rel="preload" href="../fonts/manrope-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
   <style>
-    .er-hero {
-      position: relative; height: 60vh; max-height: 60vh;
-      display: flex; align-items: flex-end; overflow: hidden;
-    }
-    .er-hero-bg { position: absolute; inset: 0; }
-    .er-hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: center 40%; filter: brightness(0.22) saturate(0.7); }
-    .er-hero-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.25) 40%, rgba(0,0,0,0.92) 100%); }
-    .er-hero-content { position: relative; z-index: 2; padding: calc(var(--nav-height) + 40px) 0 56px; max-width: 700px; }
-    .er-hero .eyebrow { margin-bottom: 20px; }
-    .er-hero h1 { font-size: clamp(36px, 5vw, 64px); font-weight: 300; margin-bottom: 16px; line-height: 1.1; }
-    .er-hero-desc {font-size: clamp(16px, 2vw, 20px); font-weight: 300;color: var(--text-secondary); line-height: 1.65; max-width: 540px; }
-    @media (max-width: 768px) { .er-hero { height: 50vh; } .er-hero-content { padding: calc(var(--nav-height) + 20px) 0 40px; } }
+    /* Hero: css/elrock.css */
 
     .er-intro { padding: 120px 0; }
     .er-intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
@@ -43,7 +43,7 @@
     .er-services-header .eyebrow::after { content: ''; width: 40px; height: 1px; background: var(--gradient-signature); }
     .er-services-header p { font-size: 15px; color: var(--text-muted); max-width: 540px; margin: 16px auto 0; line-height: 1.8; }
     .er-services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-    .er-service-card { background: var(--charcoal); border: 1px solid var(--border); padding: 40px 32px; position: relative; transition: all 0.4s var(--ease); }
+    .er-service-card { background: var(--charcoal); border: 1px solid var(--border); padding: 40px 32px; position: relative; transition: border-color 0.4s var(--ease), background-color 0.4s var(--ease); }
     .er-service-card::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--gradient-signature); transform: scaleX(0); transform-origin: left; transition: transform 0.5s var(--ease); }
     .er-service-card:hover { border-color: var(--border-mid); background: var(--surface-hover); }
     .er-service-card:hover::after { transform: scaleX(1); }
@@ -66,7 +66,7 @@
     .er-process-header .eyebrow::after { content: ''; width: 40px; height: 1px; background: var(--gradient-signature); }
     .er-process-header p { font-size: 15px; color: var(--text-muted); max-width: 480px; margin: 16px auto 0; line-height: 1.8; }
     .er-process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border: 1px solid var(--border); counter-reset: step; }
-    .er-process-card { padding: 40px 28px; border-right: 1px solid var(--border); counter-increment: step; background: var(--black); transition: all 0.4s var(--ease); }
+    .er-process-card { padding: 40px 28px; border-right: 1px solid var(--border); counter-increment: step; background: var(--black); transition: background-color 0.4s var(--ease); }
     .er-process-card:last-child { border-right: none; }
     .er-process-card:hover { background: var(--surface-hover); }
     .er-process-card::before { content: counter(step, decimal-leading-zero);font-size: 52px; font-weight: 300; background: var(--gradient-signature); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; display: block; margin-bottom: 24px; line-height: 1; }
@@ -371,10 +371,12 @@
       .er-val-result-value { font-size: 26px; }
     }
   </style>
+  <link rel="stylesheet" href="../css/elrock.css?v=4983b44420">
   <!-- Typography: last in <head> so its roles win -->
-  <link rel="stylesheet" href="../css/type.css?v=9e12097c94">
+  <link rel="stylesheet" href="../css/type.css?v=e9db95c20c">
   <!-- Motion: gsap and lenis from js/vendor/, then js/site.js. All deferred. -->
   <link rel="stylesheet" href="../js/vendor/lenis.css?v=2f668ae84a">
+  <link rel="stylesheet" href="../css/nav-overlay.css?v=52ce44256f">
   <link rel="stylesheet" href="../css/motion-text.css?v=23df00290c">
   <link rel="stylesheet" href="../css/site-motion.css?v=4cd428eb65">
   <script defer src="../js/vendor/gsap.min.js?v=92bb9a9647"></script>
@@ -382,137 +384,247 @@
   <script defer src="../js/vendor/CustomEase.min.js?v=466e426a5c"></script>
   <script defer src="../js/vendor/SplitText.min.js?v=419f7027a5"></script>
   <script defer src="../js/vendor/lenis.min.js?v=53195c9797"></script>
-  <script type="module" src="../js/site.js?v=2795404393"></script>
+  <!-- Page motion: loads before site.js, whose scope opens the motion gate. -->
+  <script type="module" src="../js/pages/el-rock.js?v=3818a8de5f"></script>
+  <script type="module" src="../js/site.js?v=d48def59f5"></script>
 </head>
-<body>
+<body class="has-overlay-nav er-page">
   <main>
+
+    <!-- ═══ HERO ═══
+         Full screen. The photo arrives as two halves that merge on a gold seam; "Mergers &"
+         and "Acquisitions" meet from either side; a slim deal index along the bottom names
+         the page's chapters (merge-hero.js). -->
     <section class="er-hero">
       <div class="er-hero-bg">
-        <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=1920&amp;q=80&amp;auto=format&amp;fit=crop" alt="Senior executive in tailored business attire representing corporate leadership" loading="eager">
+        <div class="er-half er-half-l" data-merge-half="-1">
+          <img src="../img/photos/glass-towers-fog-1920.webp"
+               alt="Glass office towers meeting overhead in the fog, seen from the street"
+               width="1920" height="1280" fetchpriority="high">
+        </div>
+        <div class="er-half er-half-r" data-merge-half="1" aria-hidden="true">
+          <img src="../img/photos/glass-towers-fog-1920.webp"
+               alt="" width="1920" height="1280">
+        </div>
+        <div class="er-seam" data-merge-seam aria-hidden="true"></div>
       </div>
       <div class="er-hero-overlay"></div>
-      <div class="er-hero-content container">
-        <div class="eyebrow fade-up">El&amp;Rock</div>
-        <h1 class="fade-up fade-up-d1">Mergers &amp; Acquisitions <em>Advisory</em></h1>
-        <p class="er-hero-desc fade-up fade-up-d2">End-to-end M&A advisory for high-value transactions. Sell-side, buy-side, due diligence, deal structuring, and post-merger integration.</p>
+
+      <div class="er-hero-copy container" data-merge-copy>
+        <h1 data-merge-part="lines" data-motion-hide>
+          <span class="er-line" data-merge-from="-1">Mergers &amp;</span>
+          <span class="er-line" data-merge-from="1"><em>Acquisitions</em></span>
+        </h1>
+        <p class="er-hero-desc" data-merge-part="desc" data-motion-hide>M&amp;A advisory for high-value transactions, from the first mandate to post-merger integration.</p>
       </div>
+
+      <nav class="er-index container" data-merge-index aria-label="On this page">
+        <div class="er-index-rule" data-merge-rule data-motion-hide></div>
+        <ol class="er-index-list" data-motion-hide>
+          <li data-merge-item>
+            <a class="er-index-item" href="#services">
+              <span class="er-index-num">01</span>
+              <span class="er-index-title">Advisory <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M8 2v11M3 8.5 8 13.5l5-5"/></svg></span>
+            </a>
+          </li>
+          <li data-merge-item>
+            <a class="er-index-item" href="#process">
+              <span class="er-index-num">02</span>
+              <span class="er-index-title">Process <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M8 2v11M3 8.5 8 13.5l5-5"/></svg></span>
+            </a>
+          </li>
+          <li data-merge-item>
+            <a class="er-index-item" href="#ai-valuation">
+              <span class="er-index-num">03</span>
+              <span class="er-index-title">AI Valuation <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M8 2v11M3 8.5 8 13.5l5-5"/></svg></span>
+            </a>
+          </li>
+          <li data-merge-item>
+            <a class="er-index-item" href="#start">
+              <span class="er-index-num">04</span>
+              <span class="er-index-title">Enquire <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M8 2v11M3 8.5 8 13.5l5-5"/></svg></span>
+            </a>
+          </li>
+        </ol>
+      </nav>
     </section>
 
+    <!-- ═══ TICKER ═══
+         A quiet strip: the six services drift past slowly, a little faster while you
+         scroll (ticker.js, engine 6.5). Scripts off: the names wrap, centred. -->
+    <div class="er-ticker" data-marquee aria-hidden="true">
+      <div class="er-ticker-row">
+        <div class="er-ticker-track" data-marquee-track>
+          <span class="er-ticker-item">Sell-Side Advisory</span>
+          <span class="er-ticker-item">Buy-Side Advisory</span>
+          <span class="er-ticker-item">Due Diligence</span>
+          <span class="er-ticker-item">Deal Structuring</span>
+          <span class="er-ticker-item">Post-Merger Integration</span>
+          <span class="er-ticker-item">Strategic Partnerships</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ THE DIVISION ═══
+         The copy is declassified: redaction bars draw back line by line as it scrolls
+         up; the photo opens from its top edge (redact.js). -->
     <section class="er-intro">
       <div class="container">
         <div class="er-intro-grid">
-          <div class="er-intro-text reveal">
+          <div class="er-intro-text">
             <div class="eyebrow">The Division</div>
             <h2>Deals That Define <em>Legacies</em></h2>
-            <p>El&Rock is El-Global's mergers and acquisitions advisory division, acting as a strategic intermediary in equity placements, joint ventures, and high-value acquisitions across borders.</p>
-            <p>We don't just close deals. We architect transactions that create lasting value for all parties. From initial mandate through post-merger integration, El&Rock provides the expertise, discretion, and global network that complex transactions demand.</p>
+            <p data-redact>El&amp;Rock is El-Global's mergers and acquisitions advisory division, acting as a strategic intermediary in equity placements, joint ventures, and high-value acquisitions across borders.</p>
+            <p data-redact>We don't just close deals. We architect transactions that create lasting value for all parties. From initial mandate through post-merger integration, El&amp;Rock provides the expertise, discretion, and global network that complex transactions demand.</p>
             <a href="enquiry.html" class="btn btn-ghost">Make an Enquiry</a>
           </div>
-          <div class="er-intro-image reveal reveal-delay-2">
-            <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&amp;q=80&amp;auto=format&amp;fit=crop" alt="Corporate executives reviewing strategic documents at a polished boardroom table" loading="lazy">
+          <div class="er-intro-image" data-redact-photo>
+            <img src="../img/photos/laptop-paperwork-800.webp" alt="Corporate executives reviewing strategic documents at a polished boardroom table" width="800" height="1000" loading="lazy">
           </div>
         </div>
       </div>
     </section>
 
+    <!-- ═══ SERVICES ═══
+         Cards dealt onto the table, row by row; each title decodes as its card lands;
+         on hover screens the card tilts toward the cursor (deal-cards.js). -->
     <section class="er-services" id="services">
       <div class="container">
         <div class="er-services-header reveal">
           <div class="eyebrow">Our Services</div>
-          <h2>What El&Rock <em>Offers</em></h2>
-          <p>Six core M&A advisory capabilities covering the full transaction lifecycle.</p>
+          <h2>What El&amp;Rock <em>Offers</em></h2>
+          <p>Six core M&amp;A advisory capabilities covering the full transaction lifecycle.</p>
         </div>
         <div class="er-services-grid">
-          <div class="er-service-card reveal" id="sell-side">
-            <div class="er-service-card-top">
-              <div class="er-service-card-icon"><span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 3l6 9-6 9M21 12H3"/></svg></span></div>
-              <div class="er-service-card-num">01</div>
+          <div class="er-deal" data-deal>
+            <div class="er-service-card" id="sell-side">
+              <span class="er-glare" aria-hidden="true"></span>
+              <div class="er-service-card-top">
+                <div class="er-service-card-icon"><span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 3l6 9-6 9M21 12H3"/></svg></span></div>
+                <div class="er-service-card-num">01</div>
+              </div>
+              <div class="er-service-card-dash"></div>
+              <h4 data-decode>Sell-Side Advisory</h4>
+              <p>Maximizing value in every exit. We manage the entire sell-side process from valuation and market positioning to buyer sourcing, negotiation, and closing.</p>
             </div>
-            <div class="er-service-card-dash"></div>
-            <h4>Sell-Side Advisory</h4>
-            <p>Maximizing value in every exit. We manage the entire sell-side process from valuation and market positioning to buyer sourcing, negotiation, and closing.</p>
           </div>
-          <div class="er-service-card reveal reveal-delay-1" id="buy-side">
-            <div class="er-service-card-top">
-              <div class="er-service-card-icon"><span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 3L3 12l6 9M3 12h18"/></svg></span></div>
-              <div class="er-service-card-num">02</div>
+          <div class="er-deal" data-deal>
+            <div class="er-service-card" id="buy-side">
+              <span class="er-glare" aria-hidden="true"></span>
+              <div class="er-service-card-top">
+                <div class="er-service-card-icon"><span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 3L3 12l6 9M3 12h18"/></svg></span></div>
+                <div class="er-service-card-num">02</div>
+              </div>
+              <div class="er-service-card-dash"></div>
+              <h4 data-decode>Buy-Side Advisory</h4>
+              <p>Strategic acquisition sourcing and execution. We identify targets, conduct preliminary assessment, and manage the acquisition process to secure optimal terms.</p>
             </div>
-            <div class="er-service-card-dash"></div>
-            <h4>Buy-Side Advisory</h4>
-            <p>Strategic acquisition sourcing and execution. We identify targets, conduct preliminary assessment, and manage the acquisition process to secure optimal terms.</p>
           </div>
-          <div class="er-service-card reveal reveal-delay-2" id="due-diligence">
-            <div class="er-service-card-top">
-              <div class="er-service-card-icon"><span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></span></div>
-              <div class="er-service-card-num">03</div>
+          <div class="er-deal" data-deal>
+            <div class="er-service-card" id="due-diligence">
+              <span class="er-glare" aria-hidden="true"></span>
+              <div class="er-service-card-top">
+                <div class="er-service-card-icon"><span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></span></div>
+                <div class="er-service-card-num">03</div>
+              </div>
+              <div class="er-service-card-dash"></div>
+              <h4 data-decode>Due Diligence</h4>
+              <p>Comprehensive risk assessment covering financial, legal, operational, and market dimensions. We uncover what others miss to protect your investment.</p>
             </div>
-            <div class="er-service-card-dash"></div>
-            <h4>Due Diligence</h4>
-            <p>Comprehensive risk assessment covering financial, legal, operational, and market dimensions. We uncover what others miss to protect your investment.</p>
           </div>
-          <div class="er-service-card reveal" id="structuring">
-            <div class="er-service-card-top">
-              <div class="er-service-card-icon"><span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3v18M3 9l9-6 9 6M3 9l3 8h6l3-8M15 9l3 8h-6"/></svg></span></div>
-              <div class="er-service-card-num">04</div>
+          <div class="er-deal" data-deal>
+            <div class="er-service-card" id="structuring">
+              <span class="er-glare" aria-hidden="true"></span>
+              <div class="er-service-card-top">
+                <div class="er-service-card-icon"><span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3v18M3 9l9-6 9 6M3 9l3 8h6l3-8M15 9l3 8h-6"/></svg></span></div>
+                <div class="er-service-card-num">04</div>
+              </div>
+              <div class="er-service-card-dash"></div>
+              <h4 data-decode>Deal Structuring</h4>
+              <p>Optimal transaction architecture across jurisdictions, tax regimes, and regulatory frameworks. We design deal structures that maximize value and minimize risk.</p>
             </div>
-            <div class="er-service-card-dash"></div>
-            <h4>Deal Structuring</h4>
-            <p>Optimal transaction architecture across jurisdictions, tax regimes, and regulatory frameworks. We design deal structures that maximize value and minimize risk.</p>
           </div>
-          <div class="er-service-card reveal reveal-delay-1">
-            <div class="er-service-card-top">
-              <div class="er-service-card-icon"><span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l10 10-10 10L2 12 12 2z"/></svg></span></div>
-              <div class="er-service-card-num">05</div>
+          <div class="er-deal" data-deal>
+            <div class="er-service-card" id="integration">
+              <span class="er-glare" aria-hidden="true"></span>
+              <div class="er-service-card-top">
+                <div class="er-service-card-icon"><span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l10 10-10 10L2 12 12 2z"/></svg></span></div>
+                <div class="er-service-card-num">05</div>
+              </div>
+              <div class="er-service-card-dash"></div>
+              <h4 data-decode>Post-Merger Integration</h4>
+              <p>Ensuring value realization after close. We advise on integration strategy, operational alignment, culture management, and performance optimization.</p>
             </div>
-            <div class="er-service-card-dash"></div>
-            <h4>Post-Merger Integration</h4>
-            <p>Ensuring value realization after close. We advise on integration strategy, operational alignment, culture management, and performance optimization.</p>
           </div>
-          <div class="er-service-card reveal reveal-delay-2">
-            <div class="er-service-card-top">
-              <div class="er-service-card-icon"><span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></span></div>
-              <div class="er-service-card-num">06</div>
+          <div class="er-deal" data-deal>
+            <div class="er-service-card" id="partnerships">
+              <span class="er-glare" aria-hidden="true"></span>
+              <div class="er-service-card-top">
+                <div class="er-service-card-icon"><span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></span></div>
+                <div class="er-service-card-num">06</div>
+              </div>
+              <div class="er-service-card-dash"></div>
+              <h4 data-decode>Strategic Partnerships</h4>
+              <p>Facilitating joint ventures, strategic alliances, and partnership structures that create value beyond traditional M&amp;A transactions.</p>
             </div>
-            <div class="er-service-card-dash"></div>
-            <h4>Strategic Partnerships</h4>
-            <p>Facilitating joint ventures, strategic alliances, and partnership structures that create value beyond traditional M&A transactions.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="er-process">
+    <!-- ═══ PROCESS ═══
+         Wide screens: the steps stack like deal papers as you scroll, the header holds
+         beside them with a deal-progress meter, and a "Closed" stamp lands on the last
+         step (stack.js; CSS sticky, nothing pinned). Narrower screens: the steps rise. -->
+    <section class="er-process" id="process">
       <div class="container">
-        <div class="er-process-header reveal">
-          <div class="eyebrow">How It Works</div>
-          <h2>Our M&A <em>Process</em></h2>
-          <p>A disciplined approach from mandate to close, built on decades of transaction experience.</p>
-        </div>
-        <div class="er-process-grid">
-          <div class="er-process-card reveal">
-            <div class="er-process-dash"></div>
-            <h4>Mandate</h4>
-            <p>We begin with a confidential briefing to understand the transaction objectives, constraints, and ideal outcomes for all stakeholders.</p>
+        <div class="er-process-layout">
+          <div class="er-process-header">
+            <div class="eyebrow">How It Works</div>
+            <h2>Our M&amp;A <em>Process</em></h2>
+            <p>A disciplined approach from mandate to close, built on decades of transaction experience.</p>
+            <div class="er-process-meter" aria-hidden="true">
+              <div class="er-process-meter-head">
+                <span class="er-step-count">Step <b data-stack-count>01</b> / 04</span>
+                <span class="er-step-count">Deal progress</span>
+              </div>
+              <div class="er-process-meter-track"><div class="er-process-meter-fill" data-stack-fill></div></div>
+            </div>
           </div>
-          <div class="er-process-card reveal reveal-delay-1">
-            <div class="er-process-dash"></div>
-            <h4>Preparation</h4>
-            <p>Market analysis, valuation modeling, information memorandum preparation, and target or buyer identification as appropriate.</p>
-          </div>
-          <div class="er-process-card reveal reveal-delay-2">
-            <div class="er-process-dash"></div>
-            <h4>Execution</h4>
-            <p>Managing outreach, negotiations, due diligence coordination, and deal structuring through to definitive agreements and closing.</p>
-          </div>
-          <div class="er-process-card reveal reveal-delay-3">
-            <div class="er-process-dash"></div>
-            <h4>Integration</h4>
-            <p>Post-close advisory on integration planning, operational synergy capture, and performance monitoring to ensure value realization.</p>
+          <div class="er-process-grid" data-stack-grid>
+            <div class="er-process-card" data-stack-step>
+              <div class="er-process-dash"></div>
+              <h4>Mandate</h4>
+              <p>We begin with a confidential briefing to understand the transaction objectives, constraints, and ideal outcomes for all stakeholders.</p>
+              <span class="er-step-shade" aria-hidden="true"></span>
+            </div>
+            <div class="er-process-card" data-stack-step>
+              <div class="er-process-dash"></div>
+              <h4>Preparation</h4>
+              <p>Market analysis, valuation modeling, information memorandum preparation, and target or buyer identification as appropriate.</p>
+              <span class="er-step-shade" aria-hidden="true"></span>
+            </div>
+            <div class="er-process-card" data-stack-step>
+              <div class="er-process-dash"></div>
+              <h4>Execution</h4>
+              <p>Managing outreach, negotiations, due diligence coordination, and deal structuring through to definitive agreements and closing.</p>
+              <span class="er-step-shade" aria-hidden="true"></span>
+            </div>
+            <div class="er-process-card" data-stack-step>
+              <div class="er-process-dash"></div>
+              <h4>Integration</h4>
+              <p>Post-close advisory on integration planning, operational synergy capture, and performance monitoring to ensure value realization.</p>
+              <span class="er-stamp" data-stamp aria-hidden="true">Closed</span>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- ═══ AI VALUATION ═══
+         The tool works: the form turns the inputs into an indicative range (a multiples
+         model in valuation.js). With motion, a scan crosses the results and the figures
+         count up; the example figures count up the first time they come into view. -->
     <section class="er-valuation" id="ai-valuation">
       <div class="container">
         <div class="er-valuation-header reveal">
@@ -523,14 +635,14 @@
 
         <div class="er-val-layout">
           <!-- Input Panel -->
-          <div class="er-val-form-panel reveal">
+          <form class="er-val-form-panel reveal" data-val novalidate>
             <div class="er-val-form-title">Valuation Parameters</div>
             <div class="er-val-form-subtitle">Enter company financials for AI analysis</div>
 
             <div class="er-val-form-grid">
               <div class="er-val-field">
-                <label>Industry Sector</label>
-                <select>
+                <label for="val-sector">Industry Sector</label>
+                <select id="val-sector" name="sector">
                   <option value="" disabled selected>Select sector</option>
                   <option>Technology &amp; SaaS</option>
                   <option>Healthcare &amp; Pharma</option>
@@ -544,8 +656,8 @@
               </div>
 
               <div class="er-val-field">
-                <label>Company Stage</label>
-                <select>
+                <label for="val-stage">Company Stage</label>
+                <select id="val-stage" name="stage">
                   <option value="" disabled selected>Select stage</option>
                   <option>Early-Stage / Growth</option>
                   <option>Established / Mature</option>
@@ -555,28 +667,28 @@
               </div>
 
               <div class="er-val-field">
-                <label>Annual Revenue (USD)</label>
-                <input type="text" placeholder="e.g. 25,000,000">
+                <label for="val-revenue">Annual Revenue (USD)</label>
+                <input id="val-revenue" name="revenue" type="text" inputmode="decimal" placeholder="e.g. 25,000,000" data-val-money>
               </div>
 
               <div class="er-val-field">
-                <label>EBITDA (USD)</label>
-                <input type="text" placeholder="e.g. 6,200,000">
+                <label for="val-ebitda">EBITDA (USD)</label>
+                <input id="val-ebitda" name="ebitda" type="text" inputmode="decimal" placeholder="e.g. 6,200,000" data-val-money>
               </div>
 
               <div class="er-val-field">
-                <label>YoY Revenue Growth (%)</label>
-                <input type="text" placeholder="e.g. 18">
+                <label for="val-growth">YoY Revenue Growth (%)</label>
+                <input id="val-growth" name="growth" type="text" inputmode="decimal" placeholder="e.g. 18">
               </div>
 
               <div class="er-val-field">
-                <label>EBITDA Margin (%)</label>
-                <input type="text" placeholder="e.g. 24.8">
+                <label for="val-margin">EBITDA Margin (%)</label>
+                <input id="val-margin" name="margin" type="text" inputmode="decimal" placeholder="e.g. 24.8">
               </div>
 
               <div class="er-val-field full-width">
-                <label>Geographic Market</label>
-                <select>
+                <label for="val-region">Geographic Market</label>
+                <select id="val-region" name="region">
                   <option value="" disabled selected>Primary operating region</option>
                   <option>Middle East &amp; North Africa</option>
                   <option>Europe</option>
@@ -589,23 +701,25 @@
               </div>
             </div>
 
-            <button class="er-val-cta-btn" type="button">Generate AI Valuation</button>
+            <button class="er-val-cta-btn" type="submit">Generate AI Valuation</button>
+            <p class="er-val-status" data-val-status role="status"></p>
 
             <div class="er-val-badge" style="margin-top:20px;">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4 4 0 014 4v1a1 1 0 001 1h1a4 4 0 010 8h-1a1 1 0 00-1 1v1a4 4 0 01-8 0v-1a1 1 0 00-1-1H6a4 4 0 010-8h1a1 1 0 001-1V6a4 4 0 014-4z"/><circle cx="12" cy="12" r="3"/></svg>
               Powered by El-Business AI Engine v3.2
             </div>
-          </div>
+          </form>
 
           <!-- Results Panel -->
           <div class="er-val-results-panel reveal reveal-delay-2">
+            <div class="er-val-scan" data-val-scan aria-hidden="true"></div>
             <div class="er-val-result-card">
               <div class="er-val-result-label">
                 <span class="er-val-dot"></span>
                 Estimated Valuation Range
               </div>
-              <div class="er-val-result-value">$48.2M &mdash; $62.7M</div>
-              <div class="er-val-result-sub">Based on 2,340 comparable transactions and current market conditions in the Technology &amp; SaaS sector.</div>
+              <div class="er-val-result-value" data-val-out="range">$48.2M &mdash; $62.7M</div>
+              <div class="er-val-result-sub" data-val-note="range">Based on 2,340 comparable transactions and current market conditions in the Technology &amp; SaaS sector.</div>
             </div>
 
             <div class="er-val-result-card">
@@ -613,8 +727,8 @@
                 <span class="er-val-dot"></span>
                 Industry Multiple (EV / EBITDA)
               </div>
-              <div class="er-val-result-value">8.4x &mdash; 10.1x</div>
-              <div class="er-val-result-sub">Median peer multiple: 9.2x. Adjusted for growth premium (+0.6x) and margin quality (+0.3x).</div>
+              <div class="er-val-result-value" data-val-out="multiple">8.4x &mdash; 10.1x</div>
+              <div class="er-val-result-sub" data-val-note="multiple">Median peer multiple: 9.2x. Adjusted for growth premium (+0.6x) and margin quality (+0.3x).</div>
             </div>
 
             <div class="er-val-result-card">
@@ -622,14 +736,14 @@
                 <span class="er-val-dot"></span>
                 AI Confidence Score
               </div>
-              <div class="er-val-result-value">87%</div>
+              <div class="er-val-result-value" data-val-out="confidence">87%</div>
               <div class="er-val-confidence-bar-wrap">
                 <div class="er-val-confidence-bar-track">
-                  <div class="er-val-confidence-bar-fill" style="width:87%"></div>
+                  <div class="er-val-confidence-bar-fill" data-val-bar style="width:87%"></div>
                 </div>
-                <div class="er-val-confidence-pct">87 / 100</div>
+                <div class="er-val-confidence-pct" data-val-pct>87 / 100</div>
               </div>
-              <div class="er-val-result-sub" style="margin-top:10px;">High confidence. Sufficient comparable data points and stable sector multiples support this estimate.</div>
+              <div class="er-val-result-sub" data-val-note="confidence" style="margin-top:10px;">High confidence. Sufficient comparable data points and stable sector multiples support this estimate.</div>
             </div>
 
             <div class="er-val-badge">
@@ -645,13 +759,17 @@
       </div>
     </section>
 
-    <section class="er-cta">
+    <!-- ═══ CALL TO ACTION ═══
+         A chessboard sets itself behind "Your Next Move" in a diagonal wave; on hover
+         screens the tile under the cursor lights (checker.js). -->
+    <section class="er-cta" id="start">
+      <div class="er-board" data-board aria-hidden="true"></div>
       <div class="container reveal">
         <div class="eyebrow">Get Started</div>
         <h2>Ready to Make Your Next <em>Move</em>?</h2>
-        <p>Connect with our M&A advisory team to discuss your transaction objectives in complete confidence.</p>
+        <p>Connect with our M&amp;A advisory team to discuss your transaction objectives in complete confidence.</p>
         <div class="btn-row">
-          <a href="enquiry.html" class="btn btn-primary btn-lg">M&A Enquiry</a>
+          <a href="enquiry.html" class="btn btn-primary btn-lg">M&amp;A Enquiry</a>
           <a href="../contact.html" class="btn btn-outline btn-lg">Book a Consultation</a>
         </div>
       </div>

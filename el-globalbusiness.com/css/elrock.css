@@ -1,0 +1,373 @@
+/* ═══════════════════════════════════════════════════════════════
+   El&Rock: hero and sections (js/pages/el-rock.js).
+   Every section is a plain, readable layout first. Motion-only styling is keyed
+   to a class the recipe adds while it runs (.is-ticking, .is-stack) or to parts
+   the recipe makes (redaction lines, chessboard tiles), so with scripts off or
+   reduced motion nothing here is hidden. The process stack is the exception
+   (see there). No transition is set on any property a recipe animates.
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ─── Hero: full screen. The photo is two halves that merge ──────
+   js/recipes/merge-hero.js: the halves slide together and close on a gold
+   seam, "Mergers &" and "Acquisitions" meet from opposite sides, then the
+   deal index along the bottom draws in. Scripts off: one whole photo. */
+.er-hero {
+  position: relative;
+  height: 100svh;
+  min-height: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+  background: var(--black);
+}
+.er-hero-bg { position: absolute; inset: 0; }
+.er-half { position: absolute; inset: 0; }
+.er-half-l { clip-path: inset(0 50% 0 0); }
+.er-half-r { clip-path: inset(0 0 0 50%); }
+.er-half img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 45%;
+  filter: brightness(0.38) saturate(0.6) contrast(1.05);
+}
+.er-seam {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  margin-left: -1px;
+  background: linear-gradient(180deg, transparent 0%, var(--gold) 30%, var(--gold-light, #e0c97f) 50%, var(--gold) 70%, transparent 100%);
+  box-shadow: 0 0 24px 2px rgba(201, 168, 76, 0.55);
+  opacity: 0;
+  pointer-events: none;
+}
+.er-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 70% at 20% 70%, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0) 70%),
+    linear-gradient(180deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.1) 35%, rgba(0,0,0,0.9) 100%);
+  pointer-events: none;
+}
+.er-hero-copy {
+  position: relative;
+  z-index: 2;
+  padding-top: calc(var(--nav-height) + 40px);
+  padding-bottom: clamp(36px, 8svh, 88px);
+}
+.er-hero h1 { margin: 0 0 clamp(20px, 3.5svh, 32px); }
+.er-hero h1 .er-line { display: block; }
+.er-hero-desc {
+  color: var(--text-secondary);
+  max-width: 44ch;
+  margin: 0;
+}
+
+/* The deal index: the page's chapters, so the hero says what follows. Kept to
+   one quiet row so it never competes with the heading. */
+.er-index {
+  position: relative;
+  z-index: 2;
+  padding-bottom: clamp(14px, 2.5svh, 24px);
+}
+.er-index-rule {
+  height: 1px;
+  background: linear-gradient(90deg, rgba(201,168,76,0.6) 0%, rgba(201,168,76,0.18) 55%, rgba(255,255,255,0.06) 100%);
+  transform-origin: 0 50%;
+}
+.er-index-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+.er-index-list li { min-width: 0; }
+.er-index-item {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding: 14px 24px 4px 0;
+  color: inherit;
+  text-decoration: none;
+  position: relative;
+}
+.er-index-num {
+  color: var(--gold);
+  font-size: var(--t-micro);
+  font-variant-numeric: tabular-nums;
+  opacity: 0.8;
+}
+.er-index-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--t-label);
+  font-weight: var(--w-regular);
+  color: var(--text-secondary);
+  transition: color 0.35s var(--ease);
+}
+.er-index-title svg {
+  width: 12px;
+  height: 12px;
+  flex: none;
+  color: var(--gold);
+  opacity: 0.7;
+  transition: transform 0.35s var(--ease);
+}
+.er-index-item:hover .er-index-title,
+.er-index-item:focus-visible .er-index-title { color: var(--text-primary); }
+.er-index-item::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--gold-light, #e0c97f);
+  transition: width 0.45s var(--ease);
+}
+.er-index-item:hover::before,
+.er-index-item:focus-visible::before { width: calc(100% - 24px); }
+.er-index-item:hover .er-index-title svg,
+.er-index-item:focus-visible .er-index-title svg { transform: translateY(3px); }
+
+@media (max-width: 900px) {
+  .er-index-list { grid-template-columns: 1fr 1fr; }
+  .er-index-item { padding: 12px 16px 6px 0; }
+}
+@media (max-width: 768px) {
+  .er-hero-copy { padding-top: calc(var(--nav-height) + 24px); }
+  .er-half img { object-position: 50% 40%; }
+}
+
+
+/* ─── Services ticker under the hero (engine 6.5 marquee) ────────
+   A thin, quiet strip so it does not read as a second navbar. Scripts off or reduced motion: the six names wrap, centred. */
+.er-ticker {
+  border-bottom: 1px solid var(--border);
+  overflow: hidden;
+  padding: 11px 0;
+}
+.er-ticker-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.er-ticker.is-ticking .er-ticker-row { flex-wrap: nowrap; justify-content: flex-start; }
+.er-ticker-track {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.er-ticker.is-ticking .er-ticker-track { flex-wrap: nowrap; min-width: 100%; justify-content: space-around; }
+.er-ticker-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 32px;
+  padding-right: 32px;
+  white-space: nowrap;
+  font-size: var(--t-label);
+  font-weight: var(--w-regular);
+  color: var(--text-muted);
+}
+.er-ticker-item::after {
+  content: '';
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--gold);
+  opacity: 0.55;
+}
+
+
+/* ─── The Division: the copy is declassified ─────────────────────
+   js/recipes/redact.js splits the paragraphs into lines and lays a bar over
+   each; scrolling draws the bars back. The bars are pseudo-elements on the
+   split lines, so with scripts off there are none. */
+.er-redact-line {
+  position: relative;
+  width: fit-content;
+  max-width: 100%;
+}
+.er-redact-line::after {
+  content: '';
+  position: absolute;
+  left: -3px;
+  right: -3px;
+  top: 12%;
+  bottom: 8%;
+  background: #d8d2c3;
+  transform: scaleX(var(--redact, 1));
+  transform-origin: 100% 50%;
+  pointer-events: none;
+}
+.er-intro-image { clip-path: inset(0 0 0 0); }
+
+
+/* ─── Services: dealt cards, decoding titles, tilt ───────────────
+   js/recipes/deal-cards.js. The wrapper is dealt in; the card tilts. */
+.er-deal { perspective: 1200px; }
+.er-deal .er-service-card { height: 100%; transform-style: preserve-3d; }
+.er-glare {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(circle at var(--gx, 50%) var(--gy, 50%), rgba(224, 201, 127, 0.16) 0%, rgba(224, 201, 127, 0) 55%);
+  transition: opacity 0.4s ease;
+}
+.er-service-card:hover .er-glare { opacity: 1; }
+
+
+/* ─── Process: steps stack as you scroll; a deal-progress meter ──
+   Wide screens with motion allowed and scripts on: the header holds on the
+   left, the steps are sticky on the right, each new step sliding over the
+   last. The layout is CSS, not a class the script adds, so it is in place
+   before the browser restores a reload's scroll position (a late layout change
+   there makes scroll anchoring jump the page). js/recipes/stack.js adds the
+   motion (.is-stack): covered steps settle back, the meter fills and counts. */
+.er-process-meter { display: none; }
+.er-process.is-stack .er-process-meter { display: block; margin-top: 40px; max-width: 360px; }
+@media (min-width: 1025px) and (prefers-reduced-motion: no-preference) {
+  html.js .er-process-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+    gap: 72px;
+    align-items: start;
+  }
+  html.js .er-process-header {
+    position: sticky;
+    top: calc(var(--nav-height) + 64px);
+    text-align: left;
+    margin-bottom: 0;
+  }
+  html.js .er-process-header .eyebrow { justify-content: flex-start; }
+  html.js .er-process-header p { margin-left: 0; }
+  html.js .er-process-grid {
+    display: block;
+    border: none;
+    padding-bottom: 8svh;
+  }
+  html.js .er-process-card {
+    position: sticky;
+    top: calc(var(--nav-height) + 64px + var(--i, 0) * 22px);
+    min-height: 300px;
+    margin-bottom: 26svh;
+    border: 1px solid var(--border-mid);
+    background: var(--black);
+    box-shadow: 0 -24px 60px rgba(0, 0, 0, 0.55);
+    transform-origin: 50% 0;
+  }
+  html.js .er-process-card:nth-of-type(2) { --i: 1; }
+  html.js .er-process-card:nth-of-type(3) { --i: 2; }
+  html.js .er-process-card:nth-of-type(4) { --i: 3; }
+  html.js .er-process-card:last-of-type { margin-bottom: 0; }
+}
+.er-process-meter-head {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  color: var(--text-muted);
+}
+.er-step-count b { color: var(--gold); font-weight: var(--w-medium); font-variant-numeric: tabular-nums; }
+.er-process-meter-track { height: 2px; background: var(--border); overflow: hidden; }
+.er-process-meter-fill {
+  height: 100%;
+  background: var(--gradient-signature);
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+}
+.er-step-shade {
+  position: absolute;
+  inset: 0;
+  background: #000;
+  opacity: 0;
+  pointer-events: none;
+}
+.er-process-card { position: relative; overflow: hidden; }
+.er-stamp {
+  position: absolute;
+  right: 24px;
+  bottom: 24px;
+  padding: 8px 16px 7px;
+  border: 2px solid var(--gold);
+  color: var(--gold);
+  font-size: 0.875rem;
+  font-weight: var(--w-semi);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  transform: rotate(-8deg);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+.er-stamp::before {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  border: 1px solid rgba(201, 168, 76, 0.5);
+}
+
+
+/* ─── AI valuation: the tool works ───────────────────────────────
+   js/recipes/valuation.js: the form computes an indicative range; while it
+   "runs", a scan line crosses the results and the figures count up. */
+.er-val-results-panel { position: relative; }
+.er-val-scan {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 120px;
+  background: linear-gradient(180deg, rgba(201,168,76,0) 0%, rgba(201,168,76,0.12) 80%, rgba(224,201,127,0.6) 100%);
+  border-bottom: 1px solid var(--gold-light, #e0c97f);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  z-index: 3;
+}
+.er-val-status {
+  min-height: 1.4em;
+  margin-top: 14px;
+  color: var(--text-muted);
+}
+.er-val-status.is-error { color: #e0a96d; }
+.er-val-field input[aria-invalid="true"],
+.er-val-field select[aria-invalid="true"] { border-color: #c98a4c; }
+.er-val-results-panel.is-busy .er-val-result-value { opacity: 0.35; }
+.er-val-result-value { font-variant-numeric: tabular-nums; }
+.er-val-cta-btn:disabled { cursor: progress; opacity: 0.7; }
+
+
+/* ─── Call to action: a chessboard wave behind "Next Move" ───────
+   js/recipes/checker.js fills .er-board with tiles; they turn over in a
+   diagonal wave and light under the cursor. Decorative only. */
+.er-cta { overflow: hidden; }
+.er-cta > .container { position: relative; z-index: 1; }
+.er-board {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  pointer-events: none;
+  -webkit-mask-image: radial-gradient(ellipse 70% 80% at 50% 50%, #000 0%, rgba(0,0,0,0.6) 45%, transparent 85%);
+  mask-image: radial-gradient(ellipse 70% 80% at 50% 50%, #000 0%, rgba(0,0,0,0.6) 45%, transparent 85%);
+}
+.er-tile { background-color: transparent; transition: background-color 0.6s ease; }
+.er-tile.is-dark { background-color: rgba(201, 168, 76, 0.065); }
+.er-tile.is-lit { background-color: rgba(201, 168, 76, 0.2); transition-duration: 0.12s; }
+.er-stack-mark { display: block; height: 0; }
+
+/* Narrow phones: "Acquisitions" is the longest word; keep it inside the gutter. */
+@media (max-width: 480px) {
+  .er-page .er-hero h1 { font-size: min(3rem, 12vw); }
+}
+@media (max-width: 768px) {
+  .er-stamp { top: 28px; bottom: auto; }
+}

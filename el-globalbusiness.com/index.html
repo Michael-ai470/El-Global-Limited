@@ -37,7 +37,7 @@
   <script defer src="js/vendor/CustomEase.min.js?v=466e426a5c"></script>
   <script defer src="js/vendor/SplitText.min.js?v=419f7027a5"></script>
   <script defer src="js/vendor/lenis.min.js?v=53195c9797"></script>
-  <script type="module" src="js/home.js?v=15086c64ee"></script>
+  <script type="module" src="js/home.js?v=55d9d0373d"></script>
 
   <style>
     /* ═══ HERO — Jet scroll sequence (recipe 6.9, docs/web-motion-engine.md) ═══
@@ -111,7 +111,7 @@
     .seq-out {
       order: 2;
       align-self: end;
-      padding-bottom: 12svh;
+      padding-bottom: 8svh;
     }
 
     /* Tagline decorative line */
@@ -134,6 +134,54 @@
       height: 1px;
       background: var(--gradient-signature);
     }
+
+    /* The opening statement: large and light, the site's own line (About: "Five Divisions,
+       One Vision"), with the five divisions under it. */
+    .seq-statement {
+      margin: 0;
+      font-size: clamp(2.25rem, 5.6vw, 5.25rem);
+      font-weight: 200;
+      line-height: 1;
+      letter-spacing: -0.04em;
+      color: var(--text-primary);
+      text-shadow: 0 2px 30px rgba(0, 0, 0, 0.45);
+    }
+    .seq-statement em { font-style: normal; font-weight: 600; }
+    @media (max-width: 480px) {
+      /* The label keeps to one line: no side rules on a phone. */
+      .hero-tagline { gap: 0; font-size: 10.5px; white-space: nowrap; }
+      .hero-tagline::before,
+      .hero-tagline::after { display: none; }
+    }
+    .seq-value {
+      max-width: 52ch;
+      margin: clamp(12px, 2svh, 20px) auto 0;
+      font-size: clamp(1rem, 1.25vw, 1.1875rem);
+      line-height: 1.55;
+      color: var(--text-secondary);
+      text-shadow: 0 1px 18px rgba(0, 0, 0, 0.6);
+    }
+    .seq-cta-row { margin: clamp(18px, 3svh, 28px) 0 0; }
+    .seq-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 13px 26px;
+      border: 1px solid var(--gold);
+      color: var(--black);
+      background: var(--gradient-signature);
+      font-size: 0.875rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: box-shadow 0.35s var(--ease), filter 0.35s var(--ease);
+    }
+    .seq-cta span { transition: transform 0.35s var(--ease); }
+    .seq-cta:hover { box-shadow: 0 8px 30px rgba(201, 168, 76, 0.3); filter: brightness(1.06); }
+    .seq-cta:hover span { transform: translateX(4px); }
+    .seq-cta:focus-visible { outline: 1px solid var(--gold); outline-offset: 4px; }
+
+    /* The closing title, as on Token-El: light first line, the second set bold. */
+    .seq-title .line-2 em { font-weight: 600; }
 
     .seq-title {
       font-size: clamp(48px, 8vw, 112px);
@@ -250,6 +298,11 @@
       .hero-tagline { font-size: 11px;gap: 14px; }
       .hero-tagline::before,
       .hero-tagline::after { width: 30px; }
+      .seq-out { padding-bottom: 9svh; }
+      .seq-statement { font-size: min(2.75rem, 11vw); }
+      .seq-statement em { display: block; } /* one phrase a line */
+      .seq-value { font-size: 0.9375rem; max-width: 32ch; }
+      .seq-cta { padding: 12px 22px; }
       .hero-after { padding-top: 72px; }
       .hero-divisions { gap: 8px; }
       .hero-division-pill { font-size: 9px; padding: 7px 16px; }
@@ -1126,7 +1179,7 @@
   <link rel="stylesheet" href="css/values.css?v=cb409fcb47">
   <link rel="stylesheet" href="css/presence.css?v=12eb2d0823">
   <link rel="stylesheet" href="css/motion-text.css?v=23df00290c">
-  <link rel="stylesheet" href="css/type.css?v=9e12097c94">
+  <link rel="stylesheet" href="css/type.css?v=e9db95c20c">
 </head>
 <body class="has-overlay-nav">
 
@@ -1147,14 +1200,21 @@
         <div data-seq-scrim class="seq-scrim"></div>
         <div class="seq-shade"></div>
         <div class="seq-copy">
+          <!-- The opening: on screen as the visitor arrives, gone with the first scroll; the
+               camera move follows and "Welcome to the 1%" closes it (scroll-sequence.js). -->
           <div data-seq-out class="seq-out">
-            <p data-seq-intro data-motion-hide class="hero-tagline">
-              Portfolio Management &middot; Investment Advisory
+            <p data-seq-intro data-motion-hide class="seq-statement">Acquire the <em>Extraordinary.</em></p>
+            <p data-seq-intro data-motion-hide class="seq-value">
+              Private jets, superyachts, landmark estates and off-market opportunities &mdash;
+              sourced, structured and secured for you.
+            </p>
+            <p data-seq-intro data-motion-hide class="seq-cta-row">
+              <a class="seq-cta" href="contact.html">Begin an acquisition <span aria-hidden="true">&rarr;</span></a>
             </p>
           </div>
           <h1 data-seq-in data-motion-hide class="seq-title">
             Welcome to
-            <span class="line-2">the <em>1%</em></span>
+            <span class="line-2"><em>the 1%</em></span>
           </h1>
         </div>
       </div>
@@ -1248,7 +1308,7 @@
             <div class="fold-stack" data-fold-stack>
               <figure class="fold-item" data-fold-item>
                 <a class="fold-win" href="jet-el/index.html" tabindex="-1" aria-hidden="true">
-                  <img src="https://images.unsplash.com/photo-1540962351504-03099e0a754b?w=1200&amp;q=75&amp;auto=format&amp;fit=crop" alt="Private jet on the tarmac with its airstair down" width="1200" height="1500" crossorigin="anonymous" decoding="async">
+                  <img src="img/photos/private-jet-airstair-1200.webp" alt="Private jet on the tarmac with its airstair down" width="1200" height="1500" crossorigin="anonymous" decoding="async">
                 </a>
                 <figcaption class="fold-cap" data-fold-cap>
                   <span class="fold-name">Jet-El</span>
@@ -1258,7 +1318,7 @@
               </figure>
               <figure class="fold-item" data-fold-item>
                 <a class="fold-win" href="hl/index.html" tabindex="-1" aria-hidden="true">
-                  <img src="https://images.unsplash.com/photo-1787059717832-a8f7d527d9a5?w=1200&amp;q=75&amp;auto=format&amp;fit=crop" alt="A grand hotel lit at night, reflected in its pool" width="1200" height="1500" crossorigin="anonymous" decoding="async" loading="lazy">
+                  <img src="img/photos/grand-hotel-night-1200.webp" alt="A grand hotel lit at night, reflected in its pool" width="1200" height="1500" crossorigin="anonymous" decoding="async" loading="lazy">
                 </a>
                 <figcaption class="fold-cap" data-fold-cap>
                   <span class="fold-name">H&amp;L</span>
@@ -1268,7 +1328,7 @@
               </figure>
               <figure class="fold-item" data-fold-item>
                 <a class="fold-win" href="one-percent/index.html" tabindex="-1" aria-hidden="true">
-                  <img src="https://images.unsplash.com/photo-1786043536901-beb559bd4f10?w=1200&amp;q=75&amp;auto=format&amp;fit=crop" alt="Yachts lit at night in a calm bay" width="1200" height="1500" crossorigin="anonymous" decoding="async" loading="lazy">
+                  <img src="img/photos/yachts-bay-night-1200.webp" alt="Yachts lit at night in a calm bay" width="1200" height="1500" crossorigin="anonymous" decoding="async" loading="lazy">
                 </a>
                 <figcaption class="fold-cap" data-fold-cap>
                   <span class="fold-name">The 1%</span>
@@ -1278,7 +1338,7 @@
               </figure>
               <figure class="fold-item" data-fold-item>
                 <a class="fold-win" href="el-rock/index.html" tabindex="-1" aria-hidden="true">
-                  <img src="https://images.unsplash.com/photo-1779700210487-a01758a3c55a?w=1200&amp;q=75&amp;auto=format&amp;fit=crop" alt="A boardroom with a panoramic city view at dusk" width="1200" height="1500" crossorigin="anonymous" decoding="async" loading="lazy">
+                  <img src="img/photos/boardroom-dusk-1200.webp" alt="A boardroom with a panoramic city view at dusk" width="1200" height="1500" crossorigin="anonymous" decoding="async" loading="lazy">
                 </a>
                 <figcaption class="fold-cap" data-fold-cap>
                   <span class="fold-name">El&amp;Rock</span>
@@ -1288,7 +1348,7 @@
               </figure>
               <figure class="fold-item" data-fold-item>
                 <a class="fold-win" href="token-el/index.html" tabindex="-1" aria-hidden="true">
-                  <img src="https://images.unsplash.com/photo-1776052823208-b9d3df048e34?w=1200&amp;q=75&amp;auto=format&amp;fit=crop" alt="Blue light travelling through fibre-optic strands" width="1200" height="1500" crossorigin="anonymous" decoding="async" loading="lazy">
+                  <img src="img/photos/fibre-optic-light-1200.webp" alt="Blue light travelling through fibre-optic strands" width="1200" height="1500" crossorigin="anonymous" decoding="async" loading="lazy">
                 </a>
                 <figcaption class="fold-cap" data-fold-cap>
                   <span class="fold-name">Token-El</span>
@@ -1361,7 +1421,7 @@
             <span class="rail-num" aria-hidden="true">01</span>
             <div class="rail-inner">
               <a href="jet-el/index.html" class="rail-fig" tabindex="-1" aria-hidden="true">
-                <img src="https://images.unsplash.com/photo-1540962351504-03099e0a754b?w=1400&amp;q=78&amp;auto=format&amp;fit=crop"
+                <img src="img/photos/private-jet-airstair-1400.webp"
                      alt="" width="1400" height="875" loading="lazy" decoding="async">
                 <span class="rail-badge">Jet brokerage and charter</span>
               </a>
@@ -1384,7 +1444,7 @@
             <span class="rail-num" aria-hidden="true">02</span>
             <div class="rail-inner">
               <a href="hl/index.html" class="rail-fig" tabindex="-1" aria-hidden="true">
-                <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1400&amp;q=78&amp;auto=format&amp;fit=crop"
+                <img src="img/photos/lodge-pool-1400.webp"
                      alt="" width="1400" height="875" loading="lazy" decoding="async">
                 <span class="rail-badge">Off-market hotels and luxury real estate</span>
               </a>
@@ -1407,7 +1467,7 @@
             <span class="rail-num" aria-hidden="true">03</span>
             <div class="rail-inner">
               <a href="one-percent/index.html" class="rail-fig" tabindex="-1" aria-hidden="true">
-                <img src="https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?w=1400&amp;q=78&amp;auto=format&amp;fit=crop"
+                <img src="img/photos/superyacht-green-bay-1400.webp"
                      alt="" width="1400" height="875" loading="lazy" decoding="async">
                 <span class="rail-badge">The 1% exclusive</span>
               </a>
@@ -1430,7 +1490,7 @@
             <span class="rail-num" aria-hidden="true">04</span>
             <div class="rail-inner">
               <a href="el-rock/index.html" class="rail-fig" tabindex="-1" aria-hidden="true">
-                <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=1400&amp;q=78&amp;auto=format&amp;fit=crop"
+                <img src="img/photos/executive-in-suit-1400.webp"
                      alt="" width="1400" height="875" loading="lazy" decoding="async">
                 <span class="rail-badge">M&amp;A advisory</span>
               </a>
@@ -1453,7 +1513,7 @@
             <span class="rail-num" aria-hidden="true">05</span>
             <div class="rail-inner">
               <a href="token-el/index.html" class="rail-fig" tabindex="-1" aria-hidden="true">
-                <img src="https://images.unsplash.com/photo-1518546305927-5a555bb7020d?w=1400&amp;q=78&amp;auto=format&amp;fit=crop"
+                <img src="img/photos/bitcoin-coin-chart-1400.webp"
                      alt="" width="1400" height="875" loading="lazy" decoding="async">
                 <span class="rail-badge is-soon">Coming soon</span>
               </a>
@@ -1491,7 +1551,7 @@
       <div class="why-open" data-part>
         <div class="why-open-stage" data-part-stage>
           <figure class="why-open-media" data-part-media>
-            <img src="https://images.unsplash.com/photo-1490800869828-a00247402454?w=1800&amp;q=75&amp;auto=format&amp;fit=crop"
+            <img src="img/photos/glass-tower-in-cloud-1800.webp"
                  alt="A glass tower rising out of low cloud" width="1800" height="1200" loading="lazy" decoding="async">
             <span class="why-open-shade" data-part-shade aria-hidden="true"></span>
           </figure>
@@ -1510,11 +1570,11 @@
       <div class="why-index container" data-index>
         <div class="why-index-media" aria-hidden="true">
           <div class="why-index-frame">
-            <img data-index-img src="https://images.unsplash.com/photo-1700463108327-635ce9346d55?w=1200&amp;q=75&amp;auto=format&amp;fit=crop" alt="" width="1200" height="1500" loading="lazy" decoding="async">
-            <img data-index-img src="https://images.unsplash.com/photo-1638262052640-82e94d64664a?w=1200&amp;q=75&amp;auto=format&amp;fit=crop" alt="" width="1200" height="1500" loading="lazy" decoding="async">
-            <img data-index-img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200&amp;q=75&amp;auto=format&amp;fit=crop" alt="" width="1200" height="1500" loading="lazy" decoding="async">
-            <img data-index-img src="https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=1200&amp;q=75&amp;auto=format&amp;fit=crop" alt="" width="1200" height="1500" loading="lazy" decoding="async">
-            <img data-index-img src="https://images.unsplash.com/photo-1601629736795-3da639aa9f23?w=1200&amp;q=75&amp;auto=format&amp;fit=crop" alt="" width="1200" height="1500" loading="lazy" decoding="async">
+            <img data-index-img src="img/photos/motorway-interchange-night-1200.webp" alt="" width="1200" height="1500" loading="lazy" decoding="async">
+            <img data-index-img src="img/photos/handshake-1200.webp" alt="" width="1200" height="1500" loading="lazy" decoding="async">
+            <img data-index-img src="img/photos/earth-night-orbit-1200.webp" alt="" width="1200" height="1500" loading="lazy" decoding="async">
+            <img data-index-img src="img/photos/market-charts-1200.webp" alt="" width="1200" height="1500" loading="lazy" decoding="async">
+            <img data-index-img src="img/photos/spiral-staircase-1200.webp" alt="" width="1200" height="1500" loading="lazy" decoding="async">
           </div>
           <div class="why-index-meta">
             <span>Five reasons</span>
@@ -1531,7 +1591,7 @@
               <p>Five integrated divisions working seamlessly together: aviation, real estate, exclusive investments, M&amp;A, and tokenization. One firm, one ecosystem, every asset class covered. No fragmentation, no gaps.</p>
             </div>
             <figure class="why-row-fig" data-index-fig>
-              <img src="https://images.unsplash.com/photo-1700463108327-635ce9346d55?w=900&amp;q=70&amp;auto=format&amp;fit=crop" alt="Motorway interchanges looping together at night" width="900" height="600" loading="lazy" decoding="async">
+              <img src="img/photos/motorway-interchange-night-900.webp" alt="Motorway interchanges looping together at night" width="900" height="600" loading="lazy" decoding="async">
             </figure>
           </li>
           <li class="why-row" data-index-row>
@@ -1542,7 +1602,7 @@
               <p>One trusted point of contact across all services. Your advisor knows your portfolio, goals, and preferences intimately.</p>
             </div>
             <figure class="why-row-fig" data-index-fig>
-              <img src="https://images.unsplash.com/photo-1638262052640-82e94d64664a?w=900&amp;q=70&amp;auto=format&amp;fit=crop" alt="Two people in dark suits shaking hands" width="900" height="600" loading="lazy" decoding="async">
+              <img src="img/photos/handshake-900.webp" alt="Two people in dark suits shaking hands" width="900" height="600" loading="lazy" decoding="async">
             </figure>
           </li>
           <li class="why-row" data-index-row>
@@ -1553,7 +1613,7 @@
               <p>Strategic partnerships across the UK, Switzerland, Dubai, Spain, Portugal, and beyond, connecting capital to premium opportunities on every continent.</p>
             </div>
             <figure class="why-row-fig" data-index-fig>
-              <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=900&amp;q=70&amp;auto=format&amp;fit=crop" alt="The Earth from orbit at night, its cities lit" width="900" height="600" loading="lazy" decoding="async">
+              <img src="img/photos/earth-night-orbit-900.webp" alt="The Earth from orbit at night, its cities lit" width="900" height="600" loading="lazy" decoding="async">
             </figure>
           </li>
           <li class="why-row" data-index-row>
@@ -1564,7 +1624,7 @@
               <p>Performance forecasting, valuation modeling, and market trend evaluation powered by advanced digital intelligence.</p>
             </div>
             <figure class="why-row-fig" data-index-fig>
-              <img src="https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=900&amp;q=70&amp;auto=format&amp;fit=crop" alt="Market charts on a dark trading screen" width="900" height="600" loading="lazy" decoding="async">
+              <img src="img/photos/market-charts-900.webp" alt="Market charts on a dark trading screen" width="900" height="600" loading="lazy" decoding="async">
             </figure>
           </li>
           <li class="why-row" data-index-row>
@@ -1575,7 +1635,7 @@
               <p>End-to-end investment management, from sourcing and structuring to optimization and exit. Every angle covered.</p>
             </div>
             <figure class="why-row-fig" data-index-fig>
-              <img src="https://images.unsplash.com/photo-1601629736795-3da639aa9f23?w=900&amp;q=70&amp;auto=format&amp;fit=crop" alt="A spiral staircase seen from below" width="900" height="600" loading="lazy" decoding="async">
+              <img src="img/photos/spiral-staircase-900.webp" alt="A spiral staircase seen from below" width="900" height="600" loading="lazy" decoding="async">
             </figure>
           </li>
         </ol>
@@ -1643,7 +1703,7 @@
       <div class="portal" data-portal>
         <div class="portal-stage" data-portal-stage>
           <figure class="portal-media" data-portal-media>
-            <img src="https://images.unsplash.com/photo-1542382248-cc0aa645262c?w=1800&amp;q=75&amp;auto=format&amp;fit=crop"
+            <img src="img/photos/city-lights-aircraft-window-1800.webp"
                  alt="City lights spread out below an aircraft window at night" width="1800" height="1200" loading="lazy" decoding="async">
           </figure>
           <span class="portal-bezel" data-portal-bezel aria-hidden="true"></span>
@@ -1662,7 +1722,7 @@
         <!-- Casper, Wyoming — USA -->
         <div class="city-card" data-city>
           <div class="city-card-bg">
-            <img src="https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=900&amp;q=80&amp;auto=format&amp;fit=crop"
+            <img src="img/photos/new-york-skyline-twilight-900.webp"
                  alt="New York City skyline at twilight representing US operations"
                  loading="lazy">
           </div>
@@ -1681,7 +1741,7 @@
         <!-- Johannesburg — SA -->
         <div class="city-card" data-city>
           <div class="city-card-bg">
-            <img src="https://images.unsplash.com/photo-1580060839134-75a5edca2e99?w=900&amp;q=80&amp;auto=format&amp;fit=crop"
+            <img src="img/photos/cape-town-table-mountain-900.webp"
                  alt="Johannesburg Sandton skyline at golden hour"
                  loading="lazy">
           </div>
@@ -1710,7 +1770,7 @@
           <!-- United Kingdom -->
           <div class="city-card" data-city>
             <div class="city-card-bg">
-              <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=900&amp;q=80&amp;auto=format&amp;fit=crop"
+              <img src="img/photos/london-tower-bridge-900.webp"
                    alt="London skyline with Tower Bridge"
                    loading="lazy">
             </div>
@@ -1725,7 +1785,7 @@
           <!-- Switzerland -->
           <div class="city-card" data-city>
             <div class="city-card-bg">
-              <img src="https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?w=900&amp;q=80&amp;auto=format&amp;fit=crop"
+              <img src="img/photos/swiss-alps-900.webp"
                    alt="Swiss Alps and Zurich skyline"
                    loading="lazy">
             </div>
@@ -1740,7 +1800,7 @@
           <!-- Dubai -->
           <div class="city-card" data-city>
             <div class="city-card-bg">
-              <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=900&amp;q=80&amp;auto=format&amp;fit=crop"
+              <img src="img/photos/dubai-burj-khalifa-900.webp"
                    alt="Dubai skyline with Burj Khalifa"
                    loading="lazy">
             </div>
@@ -1755,7 +1815,7 @@
           <!-- Spain -->
           <div class="city-card" data-city>
             <div class="city-card-bg">
-              <img src="https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=900&amp;q=80&amp;auto=format&amp;fit=crop"
+              <img src="img/photos/madrid-skyline-900.webp"
                    alt="Madrid city skyline at golden hour"
                    loading="lazy">
             </div>
@@ -1770,7 +1830,7 @@
           <!-- Portugal -->
           <div class="city-card" data-city>
             <div class="city-card-bg">
-              <img src="https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=900&amp;q=80&amp;auto=format&amp;fit=crop"
+              <img src="img/photos/porto-riverside-900.webp"
                    alt="Lisbon waterfront and skyline"
                    loading="lazy">
             </div>
@@ -1785,7 +1845,7 @@
           <!-- More Markets -->
           <div class="city-card" data-city>
             <div class="city-card-bg">
-              <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=900&amp;q=80&amp;auto=format&amp;fit=crop"
+              <img src="img/photos/mountains-above-clouds-900.webp"
                    alt="Global panoramic city view"
                    loading="lazy">
             </div>

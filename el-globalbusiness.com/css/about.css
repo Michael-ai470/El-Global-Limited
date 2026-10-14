@@ -1,0 +1,289 @@
+/* ═══════════════════════════════════════════════════════════════
+   About: hero and sections (js/pages/about.js).
+   Every section is a plain, readable layout first. Motion-only styling is keyed
+   to a class a script adds (.is-rail, .is-live) or to parts a script makes. The
+   orbit is the exception: it changes the section's height, so its layout is CSS
+   (wide screens, motion allowed, scripts on) and is in place before a reload
+   restores the scroll position. No transition is set on any property GSAP animates.
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ─── Hero: full screen; the camera flies through the "1%" ───────
+   js/recipes/mask-zoom.js. The overlay is black with "1%" cut out of it, so the
+   photo shows through the numerals; it zooms through the "1" until the photo
+   fills the screen. Scripts off or reduced motion: no overlay. */
+.about-hero {
+  position: relative;
+  height: 100svh;
+  min-height: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+  background: #050505;
+}
+.about-hero-bg { position: absolute; inset: 0; }
+.about-hero-bg img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center 30%;
+  filter: brightness(0.42) saturate(0.75);
+}
+.about-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 65% 70% at 18% 72%, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0) 70%),
+    linear-gradient(180deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.08) 38%, rgba(0,0,0,0.88) 100%);
+}
+.about-hero-content {
+  position: relative;
+  z-index: 2;
+  padding-top: calc(var(--nav-height) + 40px);
+  padding-bottom: clamp(32px, 7svh, 80px);
+}
+.about-hero-desc {
+  color: var(--text-secondary);
+  max-width: 46ch;
+  margin: 0;
+}
+.about-hero h1 { margin: 0 0 clamp(20px, 3.5svh, 32px); }
+.about-hero h1 .ab-line { display: block; }
+
+.ab-mask {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  display: none;
+  pointer-events: none;
+}
+html.js .ab-mask { display: block; animation: abMaskFailsafe 0.4s ease 2.8s forwards; }
+@keyframes abMaskFailsafe { to { opacity: 0; visibility: hidden; } }
+@media (prefers-reduced-motion: reduce) { html.js .ab-mask { display: none; } }
+.ab-mask text {
+  font-size: min(78svh, 64vw);
+  font-weight: 800;
+  letter-spacing: -0.06em;
+}
+.ab-mask .ab-mask-outline text { fill: none; stroke: var(--gold); stroke-width: 1.5px; }
+
+/* The chapter row along the bottom of the hero. */
+.ab-index {
+  position: relative;
+  z-index: 2;
+  padding-bottom: clamp(14px, 2.5svh, 24px);
+}
+.ab-index-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+.ab-index-link {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding: 14px 24px 4px 0;
+  color: var(--text-secondary);
+  font-size: var(--t-label);
+  text-decoration: none;
+  transition: color 0.35s var(--ease);
+}
+.ab-index-link span { color: var(--gold); font-size: var(--t-micro); opacity: 0.8; }
+.ab-index-link:hover,
+.ab-index-link:focus-visible { color: var(--text-primary); }
+@media (max-width: 900px) {
+  .ab-index-list { grid-template-columns: 1fr 1fr; }
+  .ab-index-link { padding: 12px 16px 6px 0; }
+}
+@media (max-width: 768px) {
+  .about-hero-content { padding-top: calc(var(--nav-height) + 24px); }
+}
+
+
+/* ─── Our Story: the photo stands up; the "5" flips in ─────────── */
+.story-image-main { transform-origin: 50% 100%; }
+.ab-flap { display: inline-block; transform-origin: 50% 55%; }
+/* The flap turns in 3D, which a gradient clipped to the text cannot follow: flat gold. */
+.story-accent-number.has-flap { background: none; -webkit-text-fill-color: currentColor; color: var(--gold); }
+
+
+/* ─── Core Activities: a rail you can drag ───────────────────────
+   js/recipes/drag-rail.js adds .is-rail on wide screens: the cards sit in one
+   row the pointer drags and throws. Phones: the row scrolls natively (CSS). */
+.activity-card { transition: background-color 0.4s var(--ease), border-color 0.4s var(--ease), box-shadow 0.4s var(--ease); }
+.activity-card:hover { transform: none; }
+.ab-rail-bar { display: none; }
+.activities-grid.is-rail {
+  display: flex;
+  gap: 16px;
+  width: max-content;
+  cursor: grab;
+  touch-action: pan-y;
+  user-select: none;
+}
+.activities-grid.is-rail.is-dragging { cursor: grabbing; }
+.activities-grid.is-rail .activity-card { width: clamp(300px, 28vw, 380px); flex: none; }
+.is-rail-on .ab-rail-view { overflow: hidden; }
+.is-rail-on .ab-rail-bar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 32px;
+}
+.ab-rail-track { flex: 1; height: 1px; background: rgba(255, 255, 255, 0.1); position: relative; overflow: hidden; }
+.ab-rail-fill { position: absolute; inset: 0; background: var(--gold); transform-origin: 0 50%; transform: scaleX(0.2); }
+.ab-rail-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid rgba(201, 168, 76, 0.4);
+  background: none;
+  color: var(--gold);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease, opacity 0.3s ease;
+}
+.ab-rail-btn:hover:not(:disabled) { background-color: rgba(201, 168, 76, 0.1); border-color: var(--gold); }
+.ab-rail-btn:disabled { opacity: 0.3; cursor: default; }
+.ab-rail-btn svg { width: 16px; height: 16px; }
+.ab-rail-hint { color: var(--text-muted); font-size: var(--t-micro); }
+@media (max-width: 768px) {
+  .activities-section { --gutter: 20px; }
+  .activities-section .activities-grid {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    margin: 0 calc(var(--gutter, 20px) * -1);
+    padding: 0 var(--gutter, 20px) 8px;
+    scrollbar-width: none;
+  }
+  .activities-section .activities-grid::-webkit-scrollbar { display: none; }
+  .activities-section .activity-card { flex: 0 0 82%; scroll-snap-align: start; }
+}
+
+
+/* ─── The Ecosystem: the divisions orbit the firm ────────────────
+   Wide screens with motion and scripts: the five cards ride a ring round the
+   emblem (layout here); js/recipes/orbit.js turns the ring, keeps the cards
+   upright, pauses on hover and shows the division in the centre. */
+.eco-card { transition: background-color 0.4s var(--ease), border-color 0.4s var(--ease); }
+.eco-card-image { transition: border-color 0.4s var(--ease), box-shadow 0.4s var(--ease); }
+.eco-card:hover { transform: none; }
+.ab-orbit-core { display: none; }
+@media (min-width: 1025px) and (prefers-reduced-motion: no-preference) {
+  html.js .ecosystem-grid {
+    position: relative;
+    display: block;
+    --orbit: on;
+    --r: min(28svh, 250px);
+    /* The ring plus a card's height above and below it. */
+    height: calc(var(--r) * 2 + 250px);
+    border: none;
+  }
+  html.js .ecosystem-grid::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: calc(var(--r) * 2);
+    height: calc(var(--r) * 2);
+    margin: calc(var(--r) * -1) 0 0 calc(var(--r) * -1);
+    border-radius: 50%;
+    border: 1px dashed rgba(201, 168, 76, 0.22);
+  }
+  html.js .ab-orbit-core {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: calc(var(--r) * 1.2);
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+    pointer-events: none;
+  }
+  html.js .ab-orbit-core img { width: 56px; height: auto; opacity: 0.9; }
+  html.js .ab-orbit-name { font-size: var(--t-card); font-weight: var(--w-medium); }
+  html.js .ab-orbit-sub { color: var(--gold); font-size: var(--t-micro); }
+  html.js .ab-orbit-desc { color: var(--text-muted); font-size: var(--t-small); line-height: 1.6; }
+  html.js .eco-card {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 150px;
+    margin: -75px 0 0 -75px;
+    padding: 0;
+    border: none;
+    background: none;
+    text-align: center;
+    /* --spin (set on the grid by orbit.js) turns every card round the ring; they stay upright. */
+    transform: rotate(calc(var(--a, 0deg) + var(--spin, 0deg))) translateY(calc(var(--r) * -1)) rotate(calc((var(--a, 0deg) + var(--spin, 0deg)) * -1));
+  }
+  html.js .eco-card:nth-of-type(1) { --a: 0deg; }
+  html.js .eco-card:nth-of-type(2) { --a: 72deg; }
+  html.js .eco-card:nth-of-type(3) { --a: 144deg; }
+  html.js .eco-card:nth-of-type(4) { --a: 216deg; }
+  html.js .eco-card:nth-of-type(5) { --a: 288deg; }
+  html.js .eco-card .eco-card-image { width: 96px; height: 96px; margin: 0 auto 12px; }
+  html.js .eco-card p,
+  html.js .eco-card .eco-card-sub {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+  html.js .eco-card h4 { font-size: 1rem; }
+  html.js .eco-card.is-on .eco-card-image { box-shadow: 0 0 0 2px var(--gold), 0 0 30px rgba(201, 168, 76, 0.35); }
+}
+
+
+/* ─── What We Stand For: the names in big type, sliding in ─────── */
+.values-deep { overflow: hidden; }
+.value-deep-row { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; }
+.value-deep-name {
+  font-size: clamp(2.75rem, 7vw, 6.5rem);
+  font-weight: var(--w-light);
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+}
+.value-deep-num { font-size: clamp(1rem, 1.4vw, 1.25rem); opacity: 0.9; margin-bottom: 14px; }
+@media (max-width: 768px) {
+  .value-deep-row { grid-template-columns: 1fr; }
+}
+
+
+/* ─── The Founder: the portrait develops ─────────────────────────
+   js/recipes/develop.js scrubs a filter on the frame (not the photo, which
+   keeps its own filter and hover zoom). */
+.founder-divider { transform-origin: 0 50%; }
+
+
+/* ─── Presence: offices with their local time ────────────────────
+   js/recipes/clocks.js fills [data-clock]; its styles are css/clocks.css. */
+.ab-hq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.ab-partners-label { text-align: center; margin: 24px 0 8px; }
+.ab-partners-label .eyebrow { justify-content: center; }
+.ab-partner-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.office-card { transition: background-color 0.4s var(--ease), border-color 0.4s var(--ease); }
+@media (max-width: 768px) {
+  .ab-hq-grid,
+  .ab-partner-grid { grid-template-columns: 1fr; }
+}
+@media (min-width: 481px) and (max-width: 768px) {
+  .ab-partner-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 480px) {
+  .activities-section { --gutter: 16px; }
+}

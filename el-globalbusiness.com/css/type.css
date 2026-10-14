@@ -103,7 +103,12 @@ button, input, select, textarea { font-family: inherit; }
 .seq-title,
 /* full-screen page heroes */
 .jetel-hero h1,
-.hl-hero h1 {
+.hl-hero h1,
+.op-hero h1,
+.er-hero h1,
+.te-hero h1,
+.about-hero h1,
+.contact-hero h1 {
   font-size: var(--t-display);
   font-weight: var(--w-light);
   line-height: var(--lh-display);
@@ -113,10 +118,7 @@ button, input, select, textarea { font-family: inherit; }
 /* ─── Role: page and section headings ────────────────────────── */
 h1,
 /* section heroes on other pages */
-.about-hero h1,
-.contact-hero h1,
 .enquiry-hero h1,
-.er-hero h1,
 .htl-hero h1,
 .lre-hero h1,
 .charter-hero h1,
@@ -126,10 +128,8 @@ h1,
 .elite-hero h1,
 .cbi-hero h1,
 .glf-hero h1,
-.op-hero h1,
 .inv-hero h1,
-.ymd-hero h1,
-.te-hero h1 {
+.ymd-hero h1 {
   font-size: var(--t-h1);
   font-weight: var(--w-light);
   line-height: var(--lh-tight);
@@ -279,7 +279,9 @@ h3, h4,
 .ymd-service-card h4,
 /* token-el */
 .te-asset-card h4,
-.te-feature-card h4 {
+.te-feature-card h4,
+/* one-percent: strip names */
+.op-strip-title {
   font-size: var(--t-card);
   font-weight: var(--w-medium);
   line-height: var(--lh-tight);
@@ -590,7 +592,10 @@ h3, h4,
 .te-hero-stat-value,
 .te-feature-num,
 /* hl */
-.door-num {
+.door-num,
+/* one-percent */
+.op-dots-caption b,
+.op-ring span {
   font-weight: var(--w-light);
   letter-spacing: var(--ls-num);
   line-height: 0.95;
@@ -643,6 +648,9 @@ h3, h4,
 .partner-card-link,
 /* footer (components.js) */
 .footer-contact-label,
+/* el-rock */
+.er-step-count,
+.er-val-status,
 /* about, contact */
 .story-accent-label,
 .eco-card-sub,
@@ -684,7 +692,10 @@ h3, h4,
 /* hl */
 .market-code,
 .door-label,
-.diptych-count {
+.diptych-count,
+/* one-percent */
+.op-mark-skip,
+.op-dots-caption {
   font-size: var(--t-label);
   font-weight: var(--w-regular);
   letter-spacing: var(--ls-ui);

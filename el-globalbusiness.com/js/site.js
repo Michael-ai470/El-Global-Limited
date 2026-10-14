@@ -9,7 +9,7 @@
 // The older reveal classes (.reveal and friends, driven by main.js) stay as they are.
 import { createMotion, gsap, MOTION } from './motion/core.js?v=c81884f095';
 import { startSmoothScroll } from './motion/smooth-scroll.js?v=ec39c1450d';
-import { textReveal, wordLight, rollNumbers } from './recipes/text.js?v=d3a73b24c3';
+import { textReveal, wordLight, rollNumbers } from './recipes/text.js?v=44c82cd1c2';
 
 startSmoothScroll({ anchors: { offset: -84 } });
 
@@ -41,6 +41,8 @@ createMotion(main, (env) => {
   main.querySelectorAll('section h2').forEach((h2) => {
     if (hero && hero.contains(h2)) return;
     if (h2.closest('form, footer, .card, [class*="card"], .modal')) return;
+    if (h2.hasAttribute('data-own-motion')) return; // a page module animates this one
+
     h2.setAttribute('data-reveal-text', '');
   });
   textReveal(main, env);
