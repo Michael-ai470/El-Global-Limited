@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>document.documentElement.classList.add('js');</script>
+  <!-- Motion gate (docs/web-motion-engine.md 5.2): hides intro elements until GSAP has them,
+       and shows them anyway after 2.5 seconds if motion never arrives. -->
+  <script>
+    (function (d, w) {
+      d.classList.add('motion-pending');
+      w.__motionFailsafe = setTimeout(function () {
+        w.__motionShown = new WeakSet(document.querySelectorAll('[data-motion-hide]'));
+        d.classList.remove('motion-pending');
+      }, 2500);
+    })(document.documentElement, window);
+  </script>
+  <title>El-Business — M&amp;A Tools | El-Global Business</title>
+  <meta name="description" content="El-Business: free M&amp;A tools that work as you type. Value a business, draft a deal memo, and screen a target for red flags. Private: nothing leaves your browser.">
+  <meta property="og:title" content="El-Business — M&amp;A Tools | El-Global Business">
+  <meta property="og:type" content="website">
+  <link rel="stylesheet" href="../css/style.css?v=269e500d2c">
+  <link rel="preload" href="../fonts/manrope-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../css/eb.css?v=bc5d0822ec">
+  <!-- Typography: last of the page styles so its roles win -->
+  <link rel="stylesheet" href="../css/type.css?v=e9db95c20c">
+  <link rel="stylesheet" href="../js/vendor/lenis.css?v=2f668ae84a">
+  <link rel="stylesheet" href="../css/motion-text.css?v=23df00290c">
+  <link rel="stylesheet" href="../css/nav-overlay.css?v=52ce44256f">
+  <link rel="stylesheet" href="../css/site-motion.css?v=4cd428eb65">
+  <script defer src="../js/vendor/gsap.min.js?v=92bb9a9647"></script>
+  <script defer src="../js/vendor/ScrollTrigger.min.js?v=b0b14d67b5"></script>
+  <script defer src="../js/vendor/CustomEase.min.js?v=466e426a5c"></script>
+  <script defer src="../js/vendor/SplitText.min.js?v=419f7027a5"></script>
+  <script defer src="../js/vendor/lenis.min.js?v=53195c9797"></script>
+  <!-- Page motion first, then the shared site motion (see the note in el-business.js) -->
+  <script type="module" src="../js/pages/el-business.js?v=59d373e684"></script>
+  <script type="module" src="../js/site.js?v=d48def59f5"></script>
+</head>
+<body class="has-overlay-nav eb-page">
+
+  <main>
+
+    <!-- ═══ HERO ═══ -->
+    <section class="eb-hero">
+      <div class="eb-hero-bg" aria-hidden="true"></div>
+      <div class="eb-hero-content container" data-hero-copy>
+        <div>
+          <div class="eyebrow" data-hero-fade data-motion-hide>El-Business</div>
+          <h1 data-hero-lines data-motion-hide>M&amp;A Tools,<br><em>Instantly</em></h1>
+          <p class="eb-hero-desc" data-hero-lines data-motion-hide>Value a business, draft a deal memo and screen a target for red flags. Results as you type, and nothing leaves your browser.</p>
+          <div class="eb-hero-actions" data-hero-fade data-motion-hide>
+            <a href="valuation.html" class="btn btn-primary">Value a business</a>
+            <a href="#tools" class="btn btn-outline">See the tools</a>
+          </div>
+        </div>
+        <figure class="eb-preview" data-hero-fade data-motion-hide aria-label="An example result from the valuation tool">
+          <div class="eb-preview-head"><span>Business Valuation · example</span><span class="eb-badge is-live">Live</span></div>
+          <div class="eb-headline">
+            <small>Acme Holdings Ltd · Enterprise value, indicative</small>
+            <strong>£77.3m – £116m</strong>
+            <p>Midpoint £96.6m · Technology / SaaS · Growth stage</p>
+          </div>
+          <div class="eb-ranges">
+            <div class="eb-range-row"><span>Earnings (EV/EBITDA)</span><div class="eb-range-track"><span class="eb-range-bar" style="left:40.7%;width:20.4%"></span></div></div>
+            <div class="eb-range-row"><span>Revenue (EV/Revenue)</span><div class="eb-range-track"><span class="eb-range-bar is-alt" style="left:45.5%;width:45.5%"></span></div></div>
+          </div>
+          <figcaption class="eb-preview-foot"><span>Revenue £25m · EBITDA £5m · 18% growth</span><a href="valuation.html">Try yours &rarr;</a></figcaption>
+        </figure>
+        <nav class="eb-hero-index" aria-label="Live tools" data-hero-fade data-motion-hide>
+          <a href="valuation.html"><b>01</b>Valuation</a>
+          <a href="deal-memo.html"><b>02</b>Deal memo</a>
+          <a href="red-flag.html"><b>03</b>Red flag check</a>
+          <span>12 more in development</span>
+        </nav>
+      </div>
+    </section>
+
+    <!-- ═══ LIVE TOOLS ═══ -->
+    <section class="eb-band" id="tools" aria-labelledby="live-title">
+      <div class="container">
+        <div class="eb-band-head">
+          <div><div class="eyebrow">Live now</div><h2 id="live-title">Three Tools, <em>Ready to Use</em></h2></div>
+          <p>No sign-up and no waiting. Each one works as you type, remembers your inputs on this device, and gives you something to copy, share or print.</p>
+        </div>
+        <div class="eb-live-grid">
+          <a class="eb-live-card" href="valuation.html">
+            <div class="eb-live-top"><span class="eb-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"> <line x1="12" y1="20" x2="12" y2="10"/> <line x1="18" y1="20" x2="18" y2="4"/> <line x1="6" y1="20" x2="6" y2="16"/> </svg></span><span class="eb-badge is-live">Live</span></div>
+            <h3>Business Valuation</h3>
+            <p>An indicative enterprise value from sector multiples, cross-checked two ways, with a confidence score.</p>
+            <dl><div><dt>You enter</dt><dd>Sector, revenue and EBITDA</dd></div><div><dt>You get</dt><dd>A value range, as you type</dd></div></dl>
+            <span class="eb-live-go">Open the tool <i aria-hidden="true">&rarr;</i></span>
+          </a>
+          <a class="eb-live-card" href="deal-memo.html">
+            <div class="eb-live-top"><span class="eb-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"> <path d="M12 20h9"/> <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/> </svg></span><span class="eb-badge is-live">Live</span></div>
+            <h3>Deal Memo</h3>
+            <p>A structured investment memo, written as you fill in the deal. Copy it, share a link or print it to PDF.</p>
+            <dl><div><dt>You enter</dt><dd>The parties and what you know of the deal</dd></div><div><dt>You get</dt><dd>A board-ready first draft</dd></div></dl>
+            <span class="eb-live-go">Open the tool <i aria-hidden="true">&rarr;</i></span>
+          </a>
+          <a class="eb-live-card" href="red-flag.html">
+            <div class="eb-live-top"><span class="eb-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"> <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/> <line x1="12" y1="9" x2="12" y2="13"/> <line x1="12" y1="17" x2="12.01" y2="17"/> </svg></span><span class="eb-badge is-live">Live</span></div>
+            <h3>Red Flag Check</h3>
+            <p>Screen a target from its headline figures: profitability, revenue quality, cash, debt and team.</p>
+            <dl><div><dt>You enter</dt><dd>Any of eight headline figures</dd></div><div><dt>You get</dt><dd>Flags by severity, and a score</dd></div></dl>
+            <span class="eb-live-go">Open the tool <i aria-hidden="true">&rarr;</i></span>
+          </a>
+        </div>
+        <div class="eb-promises">
+          <div><b>Instant</b><span>Results update with every keystroke.</span></div>
+          <div><b>Private</b><span>Your figures stay in your browser. Nothing is uploaded.</span></div>
+          <div><b>Shareable</b><span>Copy the result, send a link, or print to PDF.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ IN DEVELOPMENT ═══ -->
+    <section class="eb-band" aria-labelledby="soon-title">
+      <div class="container">
+        <div class="eb-band-head">
+          <div><div class="eyebrow">The full toolkit</div><h2 id="soon-title">Every Stage of <em>the Deal</em></h2></div>
+          <p>Fifteen tools across the deal lifecycle. Three are live today; the rest are in development and arrive here as they are ready.</p>
+        </div>
+        <div class="eb-cats">
+          <div class="eb-cat">
+            <h3>Document Generation</h3>
+            <p>Drafting legal and financial deal documents.</p>
+            <ul><li>Disclosure Letter Generator<span class="eb-coming-tag">In development</span></li><li>Referral Agreement Generator<span class="eb-coming-tag">In development</span></li><li>Management Presentation Builder<span class="eb-coming-tag">In development</span></li><li><a href="deal-memo.html">Deal Memo</a><span class="eb-live-tag">Live</span></li></ul>
+          </div>
+          <div class="eb-cat">
+            <h3>Deal Execution</h3>
+            <p>From bid management through to signing and completion.</p>
+            <ul><li>Completion Checklist &amp; Signing Agenda<span class="eb-coming-tag">In development</span></li><li>Bid Management / Auction Tracker<span class="eb-coming-tag">In development</span></li><li>Working Capital Analysis<span class="eb-coming-tag">In development</span></li></ul>
+          </div>
+          <div class="eb-cat">
+            <h3>Post-Completion</h3>
+            <p>Integration planning and purchase price allocation.</p>
+            <ul><li>100-Day Integration Plan Builder<span class="eb-coming-tag">In development</span></li><li>Purchase Price Allocation (PPA)<span class="eb-coming-tag">In development</span></li></ul>
+          </div>
+          <div class="eb-cat">
+            <h3>Client &amp; Reporting</h3>
+            <p>Client portals, fees and transaction benchmarks.</p>
+            <ul><li>White-Label Client Portal<span class="eb-coming-tag">In development</span></li><li>Fee Calculator &amp; Invoice Generator<span class="eb-coming-tag">In development</span></li><li>Comparable Transactions Database<span class="eb-coming-tag">In development</span></li></ul>
+          </div>
+          <div class="eb-cat">
+            <h3>Analysis</h3>
+            <p>Valuation, risk screening and market benchmarks.</p>
+            <ul><li><a href="red-flag.html">Red Flag Check</a><span class="eb-live-tag">Live</span></li><li><a href="valuation.html">Business Valuation</a><span class="eb-live-tag">Live</span></li><li>Market Analysis<span class="eb-coming-tag">In development</span></li></ul>
+          </div>
+        </div>
+        <p class="eb-count-line"><a href="tools.html" class="btn btn-outline">All tools in detail</a></p>
+      </div>
+    </section>
+
+    <!-- ═══ CLOSE ═══ -->
+    <section class="eb-close" aria-labelledby="close-title">
+      <div class="container">
+        <div class="eyebrow">El&amp;Rock</div>
+        <h2 id="close-title">When the Numbers <em>Say Go</em></h2>
+        <p>The tools give you a first view. El&amp;Rock, our M&amp;A advisory, takes a deal from valuation through diligence, negotiation and completion.</p>
+        <div class="btn-row">
+          <a href="../el-rock/index.html" class="btn btn-primary">Meet El&amp;Rock</a>
+          <a href="../contact.html" class="btn btn-outline">Enquire</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="../js/components.js?v=bfa3e7c8c9"></script>
+  <script src="../js/main.js?v=0b9dcde418"></script>
+</body>
+</html>

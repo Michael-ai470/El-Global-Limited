@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>document.documentElement.classList.add('js');</script>
+  <title>Red Flag Check — El-Business</title>
+  <meta name="description" content="Screen a target company for red flags from its headline figures: margins, growth, customer concentration, working capital, debt and team size.">
+  <link rel="stylesheet" href="../css/style.css?v=269e500d2c">
+  <link rel="preload" href="../fonts/manrope-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../css/eb.css?v=bc5d0822ec">
+  <!-- Typography: last in <head> so its roles win -->
+  <link rel="stylesheet" href="../css/type.css?v=e9db95c20c">
+  <!-- The tool's logic (js/eb/). No motion on the tool pages: results update as you type. -->
+  <script type="module" src="../js/eb/red-flag.js?v=e2d309d474"></script>
+</head>
+<body class="eb-tool-page">
+  <main class="eb-tool">
+    <div class="container">
+      <nav class="eb-crumbs" aria-label="Breadcrumb">
+        <a href="index.html">El-Business</a><span aria-hidden="true">/</span><a href="tools.html">Tools</a><span aria-hidden="true">/</span><span>Red flag check</span>
+      </nav>
+      <div class="eb-tool-head">
+        <div>
+          <div class="eb-badges"><span class="eb-badge is-live">Live</span><span class="eb-badge">Interactive</span></div>
+          <h1>Red Flag <em>Check</em></h1>
+          <p>Screen a target from its headline figures. Each check runs as soon as its numbers are in; anything you leave blank is simply left out.</p>
+        </div>
+        <div class="eb-toolbar">
+          <div class="eb-currency" data-currency role="group" aria-label="Currency">
+            <button type="button" data-cur="GBP" aria-pressed="true">£ GBP</button><button type="button" data-cur="USD" aria-pressed="false">$ USD</button><button type="button" data-cur="EUR" aria-pressed="false">€ EUR</button>
+          </div>
+          <button type="button" class="eb-btn" data-example><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 8h10M8 3v10"/></svg>Try an example</button>
+          <button type="button" class="eb-btn" data-clear><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 4h10M6 4V2.5h4V4M5 4l.5 9.5h5L11 4"/></svg>Clear</button>
+        </div>
+      </div>
+      <p class="eb-saved" data-saved aria-live="polite"></p>
+
+      <div class="eb-layout">
+        <form class="eb-panel" data-tool="red-flag" novalidate aria-label="Company figures">
+          <fieldset class="eb-step"><legend><b>1</b>The company</legend><div class="eb-grid"><div class="eb-field is-wide"><label for="f-company">Company name</label><input id="f-company" name="company" type="text" autocomplete="off" placeholder="e.g. Target Holdings Ltd" aria-describedby="e-company"><span class="eb-error" id="e-company" data-error="company"></span></div></div></fieldset>
+          <fieldset class="eb-step"><legend><b>2</b>Performance</legend><div class="eb-grid"><div class="eb-field"><label for="f-revenue">Annual revenue</label><div class="eb-money"><span data-cur-symbol>£</span><input id="f-revenue" name="revenue" type="text" inputmode="decimal" autocomplete="off" placeholder="15m" data-money aria-describedby="e-revenue"></div><span class="eb-hint">Type 25m, 2.5bn or 750k</span><span class="eb-error" id="e-revenue" data-error="revenue"></span></div><div class="eb-field"><label for="f-ebitda">EBITDA</label><div class="eb-money"><span data-cur-symbol>£</span><input id="f-ebitda" name="ebitda" type="text" inputmode="decimal" autocomplete="off" placeholder="3m" data-money aria-describedby="e-ebitda"></div><span class="eb-error" id="e-ebitda" data-error="ebitda"></span></div><div class="eb-field"><label for="f-growth">Revenue growth, year on year</label><div class="eb-unit"><input id="f-growth" name="growth" type="text" inputmode="decimal" autocomplete="off" placeholder="12" aria-describedby="e-growth"><span>%</span></div><span class="eb-hint">Negative for a decline, e.g. −4</span><span class="eb-error" id="e-growth" data-error="growth"></span></div></div></fieldset>
+          <fieldset class="eb-step"><legend><b>3</b>Balance sheet</legend><div class="eb-grid"><div class="eb-field"><label for="f-debt">Total debt</label><div class="eb-money"><span data-cur-symbol>£</span><input id="f-debt" name="debt" type="text" inputmode="decimal" autocomplete="off" placeholder="5m" data-money aria-describedby="e-debt"></div><span class="eb-hint">Enter 0 if there is none</span><span class="eb-error" id="e-debt" data-error="debt"></span></div><div class="eb-field"><label for="f-receivables">Trade receivables</label><div class="eb-money"><span data-cur-symbol>£</span><input id="f-receivables" name="receivables" type="text" inputmode="decimal" autocomplete="off" placeholder="2.5m" data-money aria-describedby="e-receivables"></div><span class="eb-hint">Owed by customers</span><span class="eb-error" id="e-receivables" data-error="receivables"></span></div><div class="eb-field"><label for="f-payables">Trade payables</label><div class="eb-money"><span data-cur-symbol>£</span><input id="f-payables" name="payables" type="text" inputmode="decimal" autocomplete="off" placeholder="1.8m" data-money aria-describedby="e-payables"></div><span class="eb-hint">Owed to suppliers</span><span class="eb-error" id="e-payables" data-error="payables"></span></div></div></fieldset>
+          <fieldset class="eb-step"><legend><b>4</b>Customers and team</legend><div class="eb-grid"><div class="eb-field"><label for="f-topCustomer">Largest customer, share of revenue</label><div class="eb-unit"><input id="f-topCustomer" name="topCustomer" type="text" inputmode="decimal" autocomplete="off" placeholder="35" aria-describedby="e-topCustomer"><span>%</span></div><span class="eb-error" id="e-topCustomer" data-error="topCustomer"></span></div><div class="eb-field"><label for="f-employees">Number of employees</label><input id="f-employees" name="employees" type="text" autocomplete="off" placeholder="120" aria-describedby="e-employees" inputmode="numeric"><span class="eb-error" id="e-employees" data-error="employees"></span></div></div></fieldset>
+        </form>
+        <section class="eb-panel eb-results" data-results data-print-area aria-live="polite" aria-labelledby="result-title">
+          <div class="eb-results-head">
+            <h2 id="result-title">Report</h2>
+            <div class="eb-actions">
+              <button type="button" class="eb-btn" data-copy data-needs-result disabled>Copy</button>
+              <button type="button" class="eb-btn" data-share data-needs-result disabled>Copy link</button>
+              <button type="button" class="eb-btn" data-print data-needs-result disabled>Print / PDF</button>
+            </div>
+          </div>
+          <div data-result></div>
+        </section>
+      </div>
+      <section class="eb-more" aria-labelledby="how">
+        <h2 id="how">What each check <em>looks at</em></h2>
+        <p>Every check runs only on figures you enter. A blank is left out, never treated as zero.</p>
+        <div class="eb-method-grid">
+          <div class="eb-method"><h3>Profitability and revenue</h3><p>EBITDA margin (high under 5%, medium under 10%), growth (a fall, or above 40%), the largest customer's share (medium above 20%, high above 40%) and revenue per employee.</p></div>
+          <div class="eb-method"><h3>Cash and debt</h3><p>Days for customers to pay (medium above 60, high above 90), days to pay suppliers, and debt against EBITDA (medium above 2.5×, high above 4×).</p></div>
+          <div class="eb-method"><h3>The score</h3><p>Each area checked scores 100, 62 or 25 by its worst flag; the score is their average. A first screen, not diligence: <a href="../el-rock/index.html">El&amp;Rock</a> runs the full review.</p></div>
+        </div>
+      </section>
+    </div>
+  </main>
+  <a href="#result-title" class="eb-mobile-bar" data-mobile-bar hidden></a>
+
+  <script src="../js/components.js?v=bfa3e7c8c9"></script>
+  <script src="../js/main.js?v=0b9dcde418"></script>
+</body>
+</html>

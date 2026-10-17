@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>document.documentElement.classList.add('js');</script>
+  <title>Business Valuation Tool — El-Business</title>
+  <meta name="description" content="A quick, indicative business valuation from sector multiples, with a revenue cross-check and a confidence score. Results update as you type.">
+  <link rel="stylesheet" href="../css/style.css?v=269e500d2c">
+  <link rel="preload" href="../fonts/manrope-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../css/eb.css?v=bc5d0822ec">
+  <!-- Typography: last in <head> so its roles win -->
+  <link rel="stylesheet" href="../css/type.css?v=e9db95c20c">
+  <!-- The tool's logic (js/eb/). No motion on the tool pages: results update as you type. -->
+  <script type="module" src="../js/eb/valuation.js?v=76df7c4782"></script>
+</head>
+<body class="eb-tool-page">
+  <main class="eb-tool">
+    <div class="container">
+      <nav class="eb-crumbs" aria-label="Breadcrumb">
+        <a href="index.html">El-Business</a><span aria-hidden="true">/</span><a href="tools.html">Tools</a><span aria-hidden="true">/</span><span>Valuation</span>
+      </nav>
+      <div class="eb-tool-head">
+        <div>
+          <div class="eb-badges"><span class="eb-badge is-live">Live</span><span class="eb-badge">Interactive</span></div>
+          <h1>Business <em>Valuation</em></h1>
+          <p>An indicative enterprise value in seconds. Fill in the sector, revenue and EBITDA; the range updates as you type.</p>
+        </div>
+        <div class="eb-toolbar">
+          <div class="eb-currency" data-currency role="group" aria-label="Currency">
+            <button type="button" data-cur="GBP" aria-pressed="true">£ GBP</button><button type="button" data-cur="USD" aria-pressed="false">$ USD</button><button type="button" data-cur="EUR" aria-pressed="false">€ EUR</button>
+          </div>
+          <button type="button" class="eb-btn" data-example><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 8h10M8 3v10"/></svg>Try an example</button>
+          <button type="button" class="eb-btn" data-clear><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 4h10M6 4V2.5h4V4M5 4l.5 9.5h5L11 4"/></svg>Clear</button>
+        </div>
+      </div>
+      <p class="eb-saved" data-saved aria-live="polite"></p>
+
+      <div class="eb-layout">
+        <form class="eb-panel" data-tool="valuation" novalidate aria-label="Company details">
+          <fieldset class="eb-step"><legend><b>1</b>The company</legend><div class="eb-grid"><div class="eb-field is-wide"><label for="f-company">Company name</label><input id="f-company" name="company" type="text" autocomplete="off" placeholder="e.g. Acme Holdings Ltd" aria-describedby="e-company"><span class="eb-error" id="e-company" data-error="company"></span></div><div class="eb-field"><label for="f-industry">Industry sector<i>Required</i></label><select id="f-industry" name="industry" aria-describedby="e-industry"><option value="">Choose…</option><option value="technology">Technology / SaaS</option><option value="healthcare">Healthcare</option><option value="financial">Financial services</option><option value="manufacturing">Manufacturing</option><option value="consumer">Consumer / retail</option><option value="energy">Energy / utilities</option><option value="realestate">Real estate</option><option value="media">Media / entertainment</option><option value="professional">Professional services</option><option value="infrastructure">Infrastructure</option></select><span class="eb-error" id="e-industry" data-error="industry"></span></div><div class="eb-field"><label for="f-geography">Main market</label><select id="f-geography" name="geography" aria-describedby="e-geography"><option value="">Choose…</option><option value="uk">United Kingdom</option><option value="europe">Europe</option><option value="northamerica">North America</option><option value="asia">Asia Pacific</option><option value="middleeast">Middle East</option><option value="africa">Africa</option><option value="global">Global / multi-region</option></select><span class="eb-error" id="e-geography" data-error="geography"></span></div></div></fieldset>
+          <fieldset class="eb-step"><legend><b>2</b>The numbers</legend><div class="eb-grid"><div class="eb-field"><label for="f-revenue">Annual revenue<i>Required</i></label><div class="eb-money"><span data-cur-symbol>£</span><input id="f-revenue" name="revenue" type="text" inputmode="decimal" autocomplete="off" placeholder="25m" data-money aria-describedby="e-revenue"></div><span class="eb-hint">Type 25m, 2.5bn or 750k</span><span class="eb-error" id="e-revenue" data-error="revenue"></span></div><div class="eb-field"><label for="f-ebitda">EBITDA</label><div class="eb-money"><span data-cur-symbol>£</span><input id="f-ebitda" name="ebitda" type="text" inputmode="decimal" autocomplete="off" placeholder="5m" data-money aria-describedby="e-ebitda"></div><span class="eb-hint">Or leave blank and give a margin</span><span class="eb-error" id="e-ebitda" data-error="ebitda"></span></div><div class="eb-field"><label for="f-growth">Revenue growth, year on year</label><div class="eb-unit"><input id="f-growth" name="growth" type="text" inputmode="decimal" autocomplete="off" placeholder="15" aria-describedby="e-growth"><span>%</span></div><span class="eb-error" id="e-growth" data-error="growth"></span></div><div class="eb-field"><label for="f-margin">EBITDA margin</label><div class="eb-unit"><input id="f-margin" name="margin" type="text" inputmode="decimal" autocomplete="off" placeholder="20" aria-describedby="e-margin"><span>%</span></div><span class="eb-hint">Used when EBITDA is blank</span><span class="eb-error" id="e-margin" data-error="margin"></span></div></div></fieldset>
+          <fieldset class="eb-step"><legend><b>3</b>Stage</legend><div class="eb-grid"><div class="eb-field is-wide"><label for="f-stage">Company stage</label><select id="f-stage" name="stage" aria-describedby="e-stage"><option value="">Choose…</option><option value="startup">Early stage</option><option value="growth">Growth stage</option><option value="mature">Mature / established</option><option value="turnaround">Turnaround / distressed</option></select><span class="eb-hint">Growth stage lifts the multiples; turnaround lowers them</span><span class="eb-error" id="e-stage" data-error="stage"></span></div></div></fieldset>
+        </form>
+        <section class="eb-panel eb-results" data-results data-print-area aria-live="polite" aria-labelledby="result-title">
+          <div class="eb-results-head">
+            <h2 id="result-title">Valuation</h2>
+            <div class="eb-actions">
+              <button type="button" class="eb-btn" data-copy data-needs-result disabled>Copy</button>
+              <button type="button" class="eb-btn" data-share data-needs-result disabled>Copy link</button>
+              <button type="button" class="eb-btn" data-print data-needs-result disabled>Print / PDF</button>
+            </div>
+          </div>
+          <div data-result></div>
+        </section>
+      </div>
+      <section class="eb-more" aria-labelledby="how">
+        <h2 id="how">How this estimate <em>works</em></h2>
+        <p>A quick, indicative range from sector multiples: a first view before a full valuation.</p>
+        <div class="eb-method-grid">
+          <div class="eb-method"><h3>1. Earnings multiple</h3><p>EBITDA times the sector's typical EV/EBITDA range, adjusted for stage (early stage 0.7×, growth 1.15×, turnaround 0.6×) and for growth.</p></div>
+          <div class="eb-method"><h3>2. Revenue cross-check</h3><p>Revenue times the sector's EV/Revenue range. Where the two methods overlap, the estimate is sturdier; where they diverge, margins deserve a closer look.</p></div>
+          <div class="eb-method"><h3>3. Confidence</h3><p>Rises with how complete the inputs are and how closely the two methods agree. A formal valuation adds DCF, precedent transactions and diligence: <a href="../el-rock/index.html">El&amp;Rock</a> runs those.</p></div>
+        </div>
+      </section>
+    </div>
+  </main>
+  <a href="#result-title" class="eb-mobile-bar" data-mobile-bar hidden></a>
+
+  <script src="../js/components.js?v=bfa3e7c8c9"></script>
+  <script src="../js/main.js?v=0b9dcde418"></script>
+</body>
+</html>
