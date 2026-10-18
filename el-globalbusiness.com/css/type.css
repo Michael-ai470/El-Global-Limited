@@ -108,7 +108,8 @@ button, input, select, textarea { font-family: inherit; }
 .er-hero h1,
 .te-hero h1,
 .about-hero h1,
-.contact-hero h1 {
+.contact-hero h1,
+.eb-hero h1 {
   font-size: var(--t-display);
   font-weight: var(--w-light);
   line-height: var(--lh-display);

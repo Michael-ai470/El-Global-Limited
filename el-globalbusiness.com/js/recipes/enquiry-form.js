@@ -79,18 +79,26 @@ export function enquiryForm(scope) {
     }),
   );
 
+  // Other forms (El-Access requests) set data-subject and carry extra fields; each extra field
+  // goes into the email under its data-label (or its name).
+  const KNOWN = new Set(['name', 'email', 'phone', 'division', 'message']);
   const mailto = () => {
     const data = new FormData(form);
     const division = form.querySelector('input[name="division"]:checked')?.closest('label')?.querySelector('b')?.textContent || 'General';
+    const hasDivisions = !!form.querySelector('input[name="division"][type="radio"]');
+    const extra = [...data.entries()]
+      .filter(([k, v]) => !KNOWN.has(k) && String(v).trim())
+      .map(([k, v]) => `${form.querySelector(`[name="${CSS.escape(k)}"]`)?.dataset.label || k}: ${v}`);
     const body = [
       `Name: ${data.get('name') || ''}`,
       `Email: ${data.get('email') || ''}`,
       data.get('phone') ? `Phone: ${data.get('phone')}` : '',
-      `Division: ${division}`,
-      '',
-      String(data.get('message') || ''),
-    ].filter((line, i) => line !== '' || i === 4).join('\n');
-    return `mailto:${fallback}?subject=${encodeURIComponent(`Enquiry: ${division}`)}&body=${encodeURIComponent(body)}`;
+      hasDivisions || !form.dataset.subject ? `Division: ${division}` : '',
+      ...extra,
+      '\n' + String(data.get('message') || ''),
+    ].filter(Boolean).join('\n');
+    const subject = form.dataset.subject || `Enquiry: ${division}`;
+    return `mailto:${fallback}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   };
 
   const showSent = () => {

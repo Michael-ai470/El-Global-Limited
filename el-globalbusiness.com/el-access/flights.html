@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>document.documentElement.classList.add('js');</script>
+  <title>Empty-Leg Flights — El-Access | El-Global Business</title>
+  <meta name="description" content="Search empty-leg private jet flights by city, date and passengers. Whole-aircraft prices, typically 50 to 75% below a full charter.">
+  <link rel="stylesheet" href="../css/style.css?v=269e500d2c">
+  <link rel="preload" href="../fonts/manrope-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../css/ea.css?v=013f717e7c">
+  <!-- Typography: last in <head> so its roles win -->
+  <link rel="stylesheet" href="../css/type.css?v=119cd9e8d3">
+  <!-- No motion here: a list to search and scan. -->
+  <script type="module" src="../js/ea/flights.js?v=54dff1c3ab"></script>
+</head>
+<body class="ea-page" data-own-nav>
+  <!-- El-Access's own header (components.js skips the El-Global navbar: data-own-nav).
+       Back: the previous page on this site, else the El-Global homepage (js/ea/lib.js). -->
+  <header class="ea-nav is-solid" id="navbar">
+    <div class="ea-nav-inner container">
+      <a class="ea-back" href="../index.html" data-back><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M14 8H3m0 0 4-4M3 8l4 4"/></svg><span>Back</span></a>
+      <a class="ea-logo" href="index.html" aria-label="El-Access home"><img src="../img/el-access-logo.svg" alt="El-Access" width="132" height="30"></a>
+      <nav class="ea-links" aria-label="El-Access">
+        <a href="index.html#routes">Browse routes</a>
+        <a href="index.html#operators">For operators</a>
+        <span class="ea-soon-link">Blog <i>Soon</i></span>
+        <a href="../contact.html">Contact</a>
+      </nav>
+      <a class="ea-nav-cta" href="flights.html">Search flights</a>
+      <details class="ea-menu">
+        <summary aria-label="Menu"><span></span><span></span></summary>
+        <div class="ea-menu-panel">
+          <a href="flights.html">Search flights</a>
+          <a href="index.html#routes">Browse routes</a>
+          <a href="index.html#operators">For operators</a>
+          <span class="ea-soon-link">Blog <i>Soon</i></span>
+          <a href="../contact.html">Contact</a>
+          <a href="../index.html">El-Global home</a>
+        </div>
+      </details>
+    </div>
+  </header>
+
+  <main class="ea-top">
+    <div class="container">
+      <nav class="ea-crumbs" aria-label="Breadcrumb"><a href="index.html">El-Access</a><span aria-hidden="true">/</span><span>Flights</span></nav>
+      <h1 class="ea-title" data-results-title>Empty-leg flights</h1>
+      <p class="ea-lead">Whole-aircraft prices from certified operators. Pick a flight to see the details and request it.</p>
+
+      <form class="ea-search is-inline" data-ea-search data-live action="flights.html" method="get" role="search" aria-label="Search empty-leg flights">
+        <div class="ea-field" data-place>
+          <label for="s-from">From</label>
+          <input id="s-from" name="from" type="text" placeholder="City or airport" autocomplete="off" spellcheck="false">
+          <ul class="ea-list-box" role="listbox" aria-label="Departure cities" hidden></ul>
+        </div>
+        <button type="button" class="ea-swap" data-swap aria-label="Swap departure and destination">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M3 5h10m0 0-3-3m3 3-3 3M13 11H3m0 0 3-3m-3 3 3 3"/></svg>
+        </button>
+        <div class="ea-field" data-place>
+          <label for="s-to">To</label>
+          <input id="s-to" name="to" type="text" placeholder="Anywhere" autocomplete="off" spellcheck="false">
+          <ul class="ea-list-box" role="listbox" aria-label="Destination cities" hidden></ul>
+        </div>
+        <div class="ea-field">
+          <label for="s-date">Date</label>
+          <input id="s-date" name="date" type="date">
+        </div>
+        <div class="ea-field">
+          <label for="s-pax">Passengers</label>
+          <select id="s-pax" name="pax">
+            <option value="">Any</option>
+            <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option><option>12</option><option>14</option><option>16</option>
+          </select>
+        </div>
+        <button type="submit" class="ea-go">Search
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 8h11m0 0-4-4m4 4-4 4"/></svg>
+        </button>
+      </form>
+
+      <div class="ea-tools">
+        <div class="ea-chips" role="group" aria-label="Aircraft size" data-cats></div>
+        <label class="ea-sort">Sort
+          <select data-sort>
+            <option value="soonest">Soonest</option>
+            <option value="price">Lowest price</option>
+            <option value="saving">Biggest saving</option>
+          </select>
+        </label>
+      </div>
+
+      <p class="ea-count" data-results-count aria-live="polite"></p>
+      <ol class="ea-board" data-results>
+        <li class="ea-row ea-row-head" aria-hidden="true"><span>Departs</span><span>Route</span><span>Aircraft</span><span class="ea-price">Whole aircraft</span><span></span></li>
+      </ol>
+      <noscript><p class="ea-soft" style="padding:24px 0">Searching needs JavaScript. Email <a class="ea-link" href="mailto:info@el-globalbusiness.com">info@el-globalbusiness.com</a> with your route and dates and we will send you the empty legs that fit.</p></noscript>
+      <p class="ea-note" data-example-note style="margin-top:16px"></p>
+
+      <!-- ═══ Request a route ═══ -->
+      <section class="ea-section ea-request" id="request" aria-labelledby="request-title" style="margin-top:72px">
+        <div>
+          <div class="eyebrow">Not listed?</div>
+          <h2 id="request-title">Request <em>a Route</em></h2>
+          <p>New empty legs appear every day. Tell us where and when, and we will send you the ones that fit, usually within a day.</p>
+        </div>
+        <div>
+          <form class="ea-form" data-enquiry data-subject="El-Access: route request" data-fallback="info@el-globalbusiness.com" action="https://el-globalbusiness.com/contact-handler.php" method="POST">
+            <input type="hidden" name="division" value="el-access">
+            <div><label for="r-name">Your name</label><input class="ea-input" id="r-name" name="name" autocomplete="name" required><span class="ea-err" id="r-name-error" data-error-for="name"></span></div>
+            <div><label for="r-email">Email</label><input class="ea-input" id="r-email" name="email" type="email" autocomplete="email" required><span class="ea-err" id="r-email-error" data-error-for="email"></span></div>
+            <div><label for="r-route">Route</label><input class="ea-input" id="r-route" name="route" data-label="Route" placeholder="e.g. London to Nice" data-route-fill></div>
+            <div><label for="r-when">When</label><input class="ea-input" id="r-when" name="when" data-label="When" placeholder="e.g. any weekend in June"></div>
+            <div><label for="r-phone">Phone (optional)</label><input class="ea-input" id="r-phone" name="phone" type="tel" autocomplete="tel"></div>
+            <div><label for="r-pax">Passengers</label><input class="ea-input" id="r-pax" name="passengers" data-label="Passengers" inputmode="numeric" placeholder="e.g. 4"></div>
+            <div class="is-wide"><label for="r-msg">Anything else</label><textarea class="ea-input" id="r-msg" name="message" maxlength="1500" placeholder="Flexibility, luggage, pets, a one-way or a return…"></textarea><span class="ea-note" data-char-count aria-hidden="true"></span></div>
+            <button type="submit" class="btn btn-primary">Send request</button>
+            <div class="ea-status" data-status role="alert" tabindex="-1" hidden></div>
+          </form>
+          <div class="ea-sent" data-sent hidden>
+            <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="21"/><path d="M14 24.5l7 7 13-14"/></svg>
+            <h3>Request sent<span data-sent-name></span>.</h3>
+            <p>Thank you. We will be in touch with the empty legs that fit, usually within a day.</p>
+            <button type="button" class="btn btn-outline" data-sent-again>Send another</button>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script src="../js/components.js?v=3ac307181c"></script>
+  <script src="../js/main.js?v=0b9dcde418"></script>
+</body>
+</html>

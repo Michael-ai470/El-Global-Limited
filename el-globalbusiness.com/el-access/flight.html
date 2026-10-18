@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>document.documentElement.classList.add('js');</script>
+  <title>Empty-Leg Flight — El-Access | El-Global Business</title>
+  <meta name="description" content="An empty-leg private jet flight: the aircraft, the departure window and the whole-aircraft price, with a request form.">
+  <link rel="stylesheet" href="../css/style.css?v=269e500d2c">
+  <link rel="preload" href="../fonts/manrope-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../css/ea.css?v=013f717e7c">
+  <!-- Typography: last in <head> so its roles win -->
+  <link rel="stylesheet" href="../css/type.css?v=119cd9e8d3">
+  <!-- No motion here: the details and a form. -->
+  <script type="module" src="../js/ea/flight.js?v=48fbe64a54"></script>
+</head>
+<body class="ea-page" data-own-nav>
+  <!-- El-Access's own header (components.js skips the El-Global navbar: data-own-nav).
+       Back: the previous page on this site, else the El-Global homepage (js/ea/lib.js). -->
+  <header class="ea-nav is-solid" id="navbar">
+    <div class="ea-nav-inner container">
+      <a class="ea-back" href="../index.html" data-back><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M14 8H3m0 0 4-4M3 8l4 4"/></svg><span>Back</span></a>
+      <a class="ea-logo" href="index.html" aria-label="El-Access home"><img src="../img/el-access-logo.svg" alt="El-Access" width="132" height="30"></a>
+      <nav class="ea-links" aria-label="El-Access">
+        <a href="index.html#routes">Browse routes</a>
+        <a href="index.html#operators">For operators</a>
+        <span class="ea-soon-link">Blog <i>Soon</i></span>
+        <a href="../contact.html">Contact</a>
+      </nav>
+      <a class="ea-nav-cta" href="flights.html">Search flights</a>
+      <details class="ea-menu">
+        <summary aria-label="Menu"><span></span><span></span></summary>
+        <div class="ea-menu-panel">
+          <a href="flights.html">Search flights</a>
+          <a href="index.html#routes">Browse routes</a>
+          <a href="index.html#operators">For operators</a>
+          <span class="ea-soon-link">Blog <i>Soon</i></span>
+          <a href="../contact.html">Contact</a>
+          <a href="../index.html">El-Global home</a>
+        </div>
+      </details>
+    </div>
+  </header>
+
+  <main class="ea-top">
+    <div class="container">
+      <nav class="ea-crumbs" aria-label="Breadcrumb"><a href="index.html">El-Access</a><span aria-hidden="true">/</span><a href="flights.html">Flights</a><span aria-hidden="true">/</span><span data-f-id>Flight</span></nav>
+
+      <div data-flight hidden>
+        <h1 class="ea-title" data-f-title>Flight</h1>
+        <p class="ea-lead" data-f-lead></p>
+
+        <div class="ea-flight">
+          <div>
+            <div class="ea-photo"><img data-f-photo alt="" width="1200" height="600" decoding="async"></div>
+            <div class="ea-path" aria-label="Route">
+              <div><b data-f-from-code></b><span data-f-from-name></span></div>
+              <div class="ea-path-line"><em data-f-dur></em></div>
+              <div><b data-f-to-code></b><span data-f-to-name></span></div>
+            </div>
+            <dl class="ea-facts">
+              <div><dt>Aircraft</dt><dd data-f-craft></dd></div>
+              <div><dt>Size</dt><dd data-f-cat></dd></div>
+              <div><dt>Seats</dt><dd data-f-seats></dd></div>
+              <div><dt>Departs</dt><dd data-f-window></dd></div>
+              <div><dt>Flight time</dt><dd data-f-time></dd></div>
+              <div><dt>Operator</dt><dd>Certified, named on confirmation</dd></div>
+            </dl>
+            <div class="ea-good">
+              <h2>Good to know</h2>
+              <ul>
+                <li>The whole aircraft is yours, up to its seats. Split between your party, the price per seat drops accordingly.</li>
+                <li>Empty legs follow the original charter, so the window can occasionally move. We tell you straight away if it does.</li>
+                <li>If the operator cancels, you receive a full refund, and we look for an alternative with you.</li>
+                <li>Luggage space depends on the aircraft and is confirmed with your booking. Pets are welcome on most flights.</li>
+              </ul>
+            </div>
+          </div>
+
+          <aside class="ea-book" aria-labelledby="book-title">
+            <h2 id="book-title" class="ea-visually-hidden">Request this flight</h2>
+            <div class="ea-book-price"><b data-f-price></b><span>for the whole aircraft</span></div>
+            <div class="ea-book-meta"><span>Full charter <s data-f-charter></s></span><b data-f-save></b></div>
+            <form class="ea-form" data-enquiry data-fallback="info@el-globalbusiness.com" action="https://el-globalbusiness.com/contact-handler.php" method="POST">
+              <input type="hidden" name="division" value="el-access">
+              <input type="hidden" name="flight" data-label="Flight" data-f-input="flight">
+              <input type="hidden" name="route" data-label="Route" data-f-input="route">
+              <input type="hidden" name="departs" data-label="Departs" data-f-input="departs">
+              <input type="hidden" name="price" data-label="Listed price" data-f-input="price">
+              <div class="is-wide"><label for="b-name">Your name</label><input class="ea-input" id="b-name" name="name" autocomplete="name" required><span class="ea-err" id="b-name-error" data-error-for="name"></span></div>
+              <div class="is-wide"><label for="b-email">Email</label><input class="ea-input" id="b-email" name="email" type="email" autocomplete="email" required><span class="ea-err" id="b-email-error" data-error-for="email"></span></div>
+              <div><label for="b-phone">Phone (optional)</label><input class="ea-input" id="b-phone" name="phone" type="tel" autocomplete="tel"></div>
+              <div><label for="b-pax">Passengers</label><select class="ea-input" id="b-pax" name="passengers" data-label="Passengers" data-f-pax></select></div>
+              <div class="is-wide"><label for="b-msg">Anything else (optional)</label><textarea class="ea-input" id="b-msg" name="message" maxlength="1000" placeholder="Luggage, pets, catering, ground transport…"></textarea><span class="ea-note" data-char-count aria-hidden="true"></span></div>
+              <button type="submit" class="btn btn-primary">Request this flight</button>
+              <div class="ea-status" data-status role="alert" tabindex="-1" hidden></div>
+            </form>
+            <div class="ea-sent" data-sent hidden>
+              <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="21"/><path d="M14 24.5l7 7 13-14"/></svg>
+              <h3>Request sent<span data-sent-name></span>.</h3>
+              <p>We are confirming the flight with the operator and will be back to you, usually within a few hours.</p>
+              <button type="button" class="btn btn-outline" data-sent-again>Request again</button>
+            </div>
+            <p class="ea-book-note">No payment now. We confirm the flight with the operator first, then send the details and how to pay. <span data-f-example></span></p>
+          </aside>
+        </div>
+
+        <section class="ea-section" aria-labelledby="more-title" style="margin-top:80px">
+          <div class="ea-head"><div><div class="eyebrow">Also leaving</div><h2 id="more-title" data-f-more-title>More Flights</h2></div><a class="ea-link" href="flights.html" data-f-more-link>See all &rarr;</a></div>
+          <ol class="ea-board" data-f-more></ol>
+        </section>
+      </div>
+
+      <div class="ea-missing" data-missing hidden>
+        <h1 class="ea-title">That flight has gone</h1>
+        <p class="ea-lead">Empty legs are snapped up quickly. Have a look at what is leaving now.</p>
+        <a class="btn btn-primary" href="flights.html">See all flights</a>
+      </div>
+      <noscript><p class="ea-soft" style="padding:24px 0 80px">This page needs JavaScript. Email <a class="ea-link" href="mailto:info@el-globalbusiness.com">info@el-globalbusiness.com</a> and we will send you the flight details.</p></noscript>
+    </div>
+  </main>
+
+  <script src="../js/components.js?v=3ac307181c"></script>
+  <script src="../js/main.js?v=0b9dcde418"></script>
+</body>
+</html>

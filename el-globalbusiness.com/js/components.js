@@ -171,8 +171,9 @@
      INJECT INTO PAGE
      ───────────────────────────────────────────── */
 
-  // Insert header at the start of body
-  document.body.insertAdjacentHTML('afterbegin', headerHTML);
+  // Insert header at the start of body. A page with its own header (El-Access:
+  // <body data-own-nav>) keeps the site footer but not the El-Global navbar.
+  if (!document.body.hasAttribute('data-own-nav')) document.body.insertAdjacentHTML('afterbegin', headerHTML);
 
   // Insert footer at the end of body (before scripts)
   document.body.insertAdjacentHTML('beforeend', footerHTML);
