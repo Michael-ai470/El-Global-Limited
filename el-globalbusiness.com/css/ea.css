@@ -101,6 +101,16 @@
   margin: 0 0 clamp(16px, 2.6svh, 24px);
   max-width: 14em;
 }
+/* The hero keeps its own emphasis (upright, heavier, white), not the site's gold serif accent. */
+.ea-hero h1 em {
+  font-family: inherit;
+  font-style: normal;
+  font-weight: var(--w-semi);
+  font-size: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+  padding-right: 0;
+}
 .ea-hero-sub { color: #d2d2d2; max-width: 52ch; margin: 0 0 clamp(22px, 3.6svh, 36px); }
 .ea-hero-top { display: flex; justify-content: space-between; align-items: flex-end; gap: 32px 64px; }
 /* The figures from the original hero: three numbers on hairlines, level with the line under the heading. */

@@ -109,6 +109,8 @@ A page module loads **before** `js/site.js` in that page's `<head>`. `site.js`'s
 
 ## Rules this project relies on
 
+- Type accent (October 2026): the emphasised word in a page or section heading (`h1 em`, `h2 em`) is Cormorant Garamond italic, solid gold, a size up (`css/type.css`, font in `fonts/`, 19 KB). Card titles (`h3 em`, `h4 em`) stay in the sans. Only the homepage hero uses the gold gradient; elsewhere solid gold, because a gradient clipped to text can vanish on headings whose letters animate.
+
 - `offsetLeft` counts from the nearest positioned ancestor and `scrollWidth` counts transforms: measure a moving row from its cards' layout boxes (About's rail).
 - A layout that changes the page's height (a stacked or sticky arrangement) belongs in CSS behind a media query and `html.js`, not in a class the script adds: the browser restores a reload's scroll position before scripts run, and a late height change makes scroll anchoring jump the page (El&Rock process).
 - `js/main.js` still owns `form[data-ajax]` (it fakes a success after 1.5 s and sends nothing) and `[data-count]` (it counts numbers up). A form that must really send drops `data-ajax`; a counter of characters uses another hook (Enquire uses `data-enquiry` and `data-char-count`).

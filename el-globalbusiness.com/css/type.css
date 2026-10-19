@@ -210,13 +210,9 @@ h2,
   letter-spacing: var(--ls-h2);
 }
 
-/* Emphasis: same family, heavier, upright, same colour. */
-h1 em, h2 em, h3 em, h4 em,
-.seq-title em,
-.partners-header h2 em,
-/* homepage, token-el */
-.mission-quote span,
-.te-hero h1 em {
+/* Emphasis in card titles and quotes: same family, heavier, upright, same colour. */
+h3 em, h4 em,
+.mission-quote span {
   font-style: normal;
   font-weight: var(--w-semi);
   background: none;
@@ -224,6 +220,26 @@ h1 em, h2 em, h3 em, h4 em,
   background-clip: border-box;
   -webkit-text-fill-color: currentColor;
   color: inherit;
+}
+
+/* Emphasis in page and section headings: the house accent, as in the homepage hero and on
+   the live El-Global site. The key word in Cormorant Garamond italic, solid gold (a gradient
+   can vanish on headings whose letters animate), a size up because the serif runs small. */
+h1 em, h2 em,
+.seq-title em,
+.partners-header h2 em,
+.te-hero h1 em {
+  font-family: var(--font-accent-serif);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 1.12em;
+  letter-spacing: -0.01em;
+  background: none;
+  -webkit-background-clip: border-box;
+  background-clip: border-box;
+  -webkit-text-fill-color: currentColor;
+  color: var(--gold);
+  padding-right: 0.04em;   /* the italic leans past its box */
 }
 
 /* ─── Role: card and item titles ─────────────────────────────── */
