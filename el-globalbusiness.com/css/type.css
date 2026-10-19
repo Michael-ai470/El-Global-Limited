@@ -21,6 +21,17 @@
    ═══════════════════════════════════════════════════════════════ */
 
 /* ─── Font files ─────────────────────────────────────────────── */
+/* The serif accent: Cormorant Garamond italic, for the one or two words a hero line leans on
+   (homepage). Latin only, 300-700, 19 KB. SIL Open Font License: fonts/OFL-CormorantGaramond.txt */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: italic;
+  font-display: swap;
+  font-weight: 300 700;
+  src: url('../fonts/cormorant-garamond-latin-italic.woff2') format('woff2-variations');
+}
+:root { --font-accent-serif: 'Cormorant Garamond', 'Times New Roman', serif; }
+
 @font-face {
   font-family: 'Manrope';
   font-style: normal;

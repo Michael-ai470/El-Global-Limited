@@ -1297,6 +1297,30 @@ h1 em, h2 em, h3 em, h4 em {
   z-index: 1;
 }
 
+/* The footer photo: a business jet on the apron at night (img/photos/jet-night-apron-*).
+   Set low on the right and dimmed, its edges fading into the black, so it reads as the
+   scene behind the footer and every link in front of it stays clear. */
+.footer-photo {
+  position: absolute;
+  right: -9%;
+  bottom: -2%;
+  width: min(1180px, 72%);
+  aspect-ratio: 1920 / 975;
+  pointer-events: none;
+  background: url('../img/photos/jet-night-apron-1920.webp') center / cover no-repeat;
+  opacity: 0.36;
+  -webkit-mask-image: radial-gradient(ellipse 62% 70% at 55% 62%, #000 30%, transparent 78%);
+          mask-image: radial-gradient(ellipse 62% 70% at 55% 62%, #000 30%, transparent 78%);
+}
+@media (max-width: 900px) {
+  .footer-photo {
+    right: -30%;
+    width: 150%;
+    background-image: url('../img/photos/jet-night-apron-1200.webp');
+    opacity: 0.32;
+  }
+}
+
 .footer-grid {
   display: grid;
   grid-template-columns: 1.8fr 1fr 1fr 1fr;

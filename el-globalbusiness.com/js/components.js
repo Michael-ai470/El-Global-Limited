@@ -92,6 +92,8 @@
     <!-- World Map Background -->
     <div class="footer-map-bg"></div>
     <div class="footer-map-glow"></div>
+    <!-- A jet on the apron at night behind the footer: the last thing the page shows -->
+    <div class="footer-photo" aria-hidden="true"></div>
 
     <div class="container">
       <div class="footer-grid">

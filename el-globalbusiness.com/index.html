@@ -27,7 +27,7 @@
   <meta property="og:url" content="index.html">
 
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="css/style.css?v=269e500d2c">
+  <link rel="stylesheet" href="css/style.css?v=eda37262dc">
   <link rel="preload" href="fonts/manrope-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="js/vendor/lenis.css?v=2f668ae84a">
 
@@ -37,7 +37,7 @@
   <script defer src="js/vendor/CustomEase.min.js?v=466e426a5c"></script>
   <script defer src="js/vendor/SplitText.min.js?v=419f7027a5"></script>
   <script defer src="js/vendor/lenis.min.js?v=53195c9797"></script>
-  <script type="module" src="js/home.js?v=55d9d0373d"></script>
+  <script type="module" src="js/home.js?v=8af8bca6fb"></script>
 
   <style>
     /* ═══ HERO — Jet scroll sequence (recipe 6.9, docs/web-motion-engine.md) ═══
@@ -79,16 +79,17 @@
     /* Decorative, so it may start hidden: the poster is the content. */
     .seq-canvas { visibility: hidden; }
 
+    /* Lighter at the opening so the photo reads clean; the sequence deepens it behind the close. */
     .seq-scrim {
       background: #000;
-      opacity: 0.3;
+      opacity: 0.16;
     }
 
     /* Keeps the navbar and the opening line legible, and meets the next section. */
     .seq-shade {
       background: linear-gradient(180deg,
-        rgba(0,0,0,0.55) 0%,
-        rgba(0,0,0,0) 22%,
+        rgba(0,0,0,0.5) 0%,
+        rgba(0,0,0,0) 20%,
         rgba(0,0,0,0) 62%,
         rgba(10,10,10,0.9) 100%);
       pointer-events: none;
@@ -111,7 +112,7 @@
     .seq-out {
       order: 2;
       align-self: end;
-      padding-bottom: 8svh;
+      padding-bottom: 4.5svh;
     }
 
     /* Tagline decorative line */
@@ -146,7 +147,49 @@
       color: var(--text-primary);
       text-shadow: 0 2px 30px rgba(0, 0, 0, 0.45);
     }
-    .seq-statement em { font-style: normal; font-weight: 600; }
+    /* The luxury note: the key word in a fine serif italic against the clean sans, as on the
+       live El-Global site and the references. Set a touch larger, since the serif runs small. */
+    /* Gold, as a light falls across metal: a soft champagne-to-gold gradient through the
+       letters. The shadow goes on as a filter (a text-shadow would show through the clipped
+       letters and muddy them). */
+    .seq-statement em,
+    .seq-title .line-2 em {
+      background: linear-gradient(100deg, #f6e7b8 0%, #e3c27a 28%, #c9a84c 52%, #f1dca0 74%, #b68f3c 100%);
+      -webkit-background-clip: text;
+              background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+      text-shadow: none;
+      filter: drop-shadow(0 2px 18px rgba(0, 0, 0, 0.45));
+      padding: 0 0.06em 0.08em 0;   /* room for the italic's overhang, so no letter is clipped */
+    }
+    .seq-statement em {
+      font-family: var(--font-accent-serif);
+      font-style: italic;
+      font-weight: 500;
+      font-size: 1.2em;
+      letter-spacing: -0.015em;
+    }
+    /* The typing caret (js/recipes/type-line.js), as on Enquire. */
+    .type-caret {
+      display: inline-block;
+      width: 0.045em;
+      height: 0.82em;
+      margin-left: 0.05em;
+      vertical-align: -0.04em;
+      background: var(--gold);
+      animation: typeCaret 0.9s steps(1) infinite;
+    }
+    @keyframes typeCaret { 50% { opacity: 0; } }
+    .seq-kicker {
+      margin: 0 0 clamp(14px, 2.4svh, 24px);
+      font-size: 0.6875rem;
+      font-weight: 500;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.82);
+      text-shadow: 0 1px 12px rgba(0, 0, 0, 0.5);
+    }
     @media (max-width: 480px) {
       /* The label keeps to one line: no side rules on a phone. */
       .hero-tagline { gap: 0; font-size: 10.5px; white-space: nowrap; }
@@ -156,37 +199,56 @@
     .seq-value {
       max-width: 52ch;
       margin: clamp(12px, 2svh, 20px) auto 0;
-      font-size: clamp(1rem, 1.25vw, 1.1875rem);
-      line-height: 1.55;
-      color: var(--text-secondary);
+      font-size: clamp(0.9375rem, 1.1vw, 1.0625rem);
+      font-weight: 300;
+      line-height: 1.7;
+      letter-spacing: 0.01em;
+      color: rgba(255, 255, 255, 0.86);
       text-shadow: 0 1px 18px rgba(0, 0, 0, 0.6);
     }
     .seq-cta-row { margin: clamp(18px, 3svh, 28px) 0 0; }
+    /* A finer button than the navbar's solid gold Enquire: a thin gold line over frosted glass,
+       light lettering; it fills with gold on hover. */
     .seq-cta {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      padding: 13px 26px;
-      border: 1px solid var(--gold);
-      color: var(--black);
-      background: var(--gradient-signature);
-      font-size: 0.875rem;
-      font-weight: 600;
+      gap: 12px;
+      padding: 14px 30px;
+      border: 1px solid rgba(214, 180, 98, 0.75);
+      color: #f4ead2;
+      background: rgba(12, 12, 14, 0.28);
+      -webkit-backdrop-filter: blur(8px);
+              backdrop-filter: blur(8px);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
       text-decoration: none;
-      transition: box-shadow 0.35s var(--ease), filter 0.35s var(--ease);
+      transition: background-color 0.45s var(--ease), color 0.45s var(--ease), border-color 0.45s var(--ease);
     }
-    .seq-cta span { transition: transform 0.35s var(--ease); }
-    .seq-cta:hover { box-shadow: 0 8px 30px rgba(201, 168, 76, 0.3); filter: brightness(1.06); }
-    .seq-cta:hover span { transform: translateX(4px); }
+    .seq-cta span { color: var(--gold); transition: transform 0.35s var(--ease), color 0.45s var(--ease); }
+    .seq-cta:hover { background-color: var(--gold); border-color: var(--gold); color: #0a0a0a; }
+    .seq-cta:hover span { color: #0a0a0a; transform: translateX(4px); }
     .seq-cta:focus-visible { outline: 1px solid var(--gold); outline-offset: 4px; }
 
     /* The closing title, as on Token-El: light first line, the second set bold. */
-    .seq-title .line-2 em { font-weight: 600; }
+    /* "Welcome to" thin and wide-set, "the 1%" a size up in the gold serif italic, the two
+       lines pulled close so they read as one mark. The serif's small x-height needs the
+       extra size to stand level with the sans. */
+    .seq-title .line-2 em {
+      font-family: var(--font-accent-serif);
+      font-style: italic;
+      font-weight: 500;
+      font-size: 1.42em;
+      line-height: 0.9;
+      letter-spacing: -0.01em;
+    }
 
     .seq-title {
-      font-size: clamp(48px, 8vw, 112px);
-      font-weight: 300;
+      font-size: clamp(44px, 7.2vw, 100px);
+      font-weight: 200;
       line-height: 1.05;
+      letter-spacing: -0.035em;
       margin: 0;
     }
 
@@ -1179,7 +1241,7 @@
   <link rel="stylesheet" href="css/values.css?v=cb409fcb47">
   <link rel="stylesheet" href="css/presence.css?v=12eb2d0823">
   <link rel="stylesheet" href="css/motion-text.css?v=23df00290c">
-  <link rel="stylesheet" href="css/type.css?v=119cd9e8d3">
+  <link rel="stylesheet" href="css/type.css?v=209f48bef9">
 </head>
 <body class="has-overlay-nav">
 
@@ -1203,12 +1265,13 @@
           <!-- The opening: on screen as the visitor arrives, gone with the first scroll; the
                camera move follows and "Welcome to the 1%" closes it (scroll-sequence.js). -->
           <div data-seq-out class="seq-out">
-            <p data-seq-intro data-motion-hide class="seq-statement">Acquire the <em>Extraordinary.</em></p>
-            <p data-seq-intro data-motion-hide class="seq-value">
+            <p data-type-before data-motion-hide class="seq-kicker">Private acquisitions &middot; Worldwide</p>
+            <p data-type-line data-motion-hide class="seq-statement">Acquire the <em>Extraordinary.</em></p>
+            <p data-type-after data-motion-hide class="seq-value">
               Private jets, superyachts, landmark estates and off-market opportunities &mdash;
               sourced, structured and secured for you.
             </p>
-            <p data-seq-intro data-motion-hide class="seq-cta-row">
+            <p data-type-after data-motion-hide class="seq-cta-row">
               <a class="seq-cta" href="contact.html">Begin an acquisition <span aria-hidden="true">&rarr;</span></a>
             </p>
           </div>
@@ -1223,7 +1286,7 @@
     <!-- After the hero: copy, divisions and stats -->
     <section class="hero-after">
       <div class="container">
-        <p class="hero-subtitle" data-word-gather>
+        <p class="hero-subtitle" data-reveal>
           Bridging innovation and impact, transforming capital into
           sustainable global assets that generate growth, stability,
           and measurable returns.
@@ -1907,7 +1970,7 @@
   </main>
 
   <!-- Scripts -->
-  <script src="js/components.js?v=3ac307181c"></script>
+  <script src="js/components.js?v=2a190f928a"></script>
   <script src="js/main.js?v=0b9dcde418"></script>
 
 </body>

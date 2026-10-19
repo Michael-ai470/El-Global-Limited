@@ -4,7 +4,8 @@
 //
 // Top to bottom:
 //   Hero              jet scroll sequence (recipe 6.9)
-//   After the hero    subtitle words gather, stats roll
+//   Hero opening      the line types itself out (type-line), the rest fades up after it
+//   After the hero    the subtitle fades up, stats roll
 //   Who We Are        five divisions peel away (fold-stack)
 //   Mission           words light up as you read
 //   Our Divisions     the five pillars on a side rail
@@ -15,6 +16,7 @@
 import { createMotion } from './motion/core.js?v=c81884f095';
 import { startSmoothScroll } from './motion/smooth-scroll.js?v=ec39c1450d';
 import { scrollSequence } from './recipes/scroll-sequence.js?v=5d9698b6c2';
+import { typeLine } from './recipes/type-line.js?v=8ab4af20af';
 import { foldStack } from './recipes/fold-stack.js?v=740a0d0d76';
 import { sideRail } from './recipes/side-rail.js?v=06da116d88';
 import { textReveal, batchReveal, wordLight, wordGather, rollNumbers } from './recipes/text.js?v=44c82cd1c2';
@@ -37,15 +39,20 @@ const hero = $('[data-seq]');
 // Navbar: transparent over the hero, the glass bar once it has scrolled past.
 overlayNav(hero);
 
-createMotion(hero, (env) =>
+// The opening types itself out ("Acquire the Extraordinary.", as on Enquire), in the same
+// scope and before the sequence, so its gated parts have their start state before the gate
+// opens. The scroll fades the block that holds them; the typing only touches its children.
+createMotion(hero, (env) => {
+  const ready = preloaderLifted();
+  typeLine(hero.querySelector('[data-seq-out]'), env, { ready });
   scrollSequence(hero, env, {
     src: frame('desktop'),
     count: 120,
     small: { src: frame('phone'), count: 61 },
     focus: [0.43, 0.5], // keep the door in view on narrow screens at the start, centre by the end
-    ready: preloaderLifted(),
-  }),
-);
+    ready,
+  });
+});
 
 // The text and block reveals, anywhere on the page below the hero.
 const main = $('#main');
